@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
 
-class PostListing extends React.Component {
-  getPostList() {
-    const postList = [];
+class ModuleListing extends React.Component {
+  getModuleList() {
+    const moduleList = [];
     this.props.postEdges.forEach(postEdge => {
-      postList.push({
+      moduleList.push({
         path: postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
         cover: postEdge.node.frontmatter.cover,
@@ -15,15 +15,15 @@ class PostListing extends React.Component {
         timeToRead: postEdge.node.timeToRead
       });
     });
-    return postList;
+    return moduleList;
   }
   render() {
-    const postList = this.getPostList();
+    const moduleList = this.getModuleList();
     return (
       <div>
         {/* Your post list here. */
-        postList.map(post => (
-          <Link to={`/blog/${post.path}`} key={post.title}>
+        moduleList.map(post => (
+          <Link to={`/modules/${post.path}`} key={post.title}>
             <h1>{post.title}</h1>
           </Link>
         ))}
@@ -32,4 +32,4 @@ class PostListing extends React.Component {
   }
 }
 
-export default PostListing;
+export default ModuleListing;

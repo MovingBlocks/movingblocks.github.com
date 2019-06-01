@@ -11,7 +11,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from 'reactstrap';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -57,13 +58,16 @@ export default class Header extends React.Component {
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>
-                      Gameplay Template
+                      <NavLink href="/modules">All</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      Logic
+                      <NavLink href="/modules/gameplay-template">Gameplay Template</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      Content
+                      <NavLink href="/modules/logic">Logic</NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <NavLink href="/modules/content">Content</NavLink>
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>

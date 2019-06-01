@@ -44,6 +44,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
+  const modulesPage = path.resolve("src/templates/modules.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
   const categoryPage = path.resolve("src/templates/category.jsx");
 
@@ -61,6 +62,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 tags
                 category
                 date
+                posttype
               }
             }
           }
@@ -112,17 +114,25 @@ exports.createPages = async ({ graphql, actions }) => {
     const nextEdge = postsEdges[nextID];
     const prevEdge = postsEdges[prevID];
 
-    createPage({
-      path: edge.node.fields.slug,
-      component: postPage,
-      context: {
-        slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
-      }
-    });
+    if (edge.node.frontmatter.posttype === 'module') {
+      createPage({
+        path: `/modules${edge.node.fields.slug}`,
+        component: modulesPage,
+        context: {
+          slug:  edge.node.fields.slug,
+          category: edge.node.frontmatter.category,
+        }
+      });
+    } else { // blog post
+      createPage({
+        path: `/blog${edge.node.fields.slug}`,
+        component: postPage,
+        context: {
+          slug: edge.node.fields.slug, 
+          category: edge.node.frontmatter.category,
+        }
+      });
+    }
   });
 
   tagSet.forEach(tag => {

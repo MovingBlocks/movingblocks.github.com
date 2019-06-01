@@ -1,4 +1,5 @@
 ---
+posttype: "blog"
 title: "Angels of Mist"
 cover: "https://unsplash.it/400/300/?random?AngelsofMist"
 category: "test3"

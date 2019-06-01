@@ -2,11 +2,18 @@
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
     height: 100%;
 }
 
 body {
     margin: 0;
-    padding: 20px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
 }

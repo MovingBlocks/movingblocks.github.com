@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-class ModuleListing extends React.Component {
+export default class ModuleListing extends React.Component {
   getModuleList() {
     const moduleList = [];
     this.props.postEdges.forEach(postEdge => {
@@ -17,6 +17,7 @@ class ModuleListing extends React.Component {
     });
     return moduleList;
   }
+  
   render() {
     const moduleList = this.getModuleList();
     return (
@@ -31,5 +32,3 @@ class ModuleListing extends React.Component {
     );
   }
 }
-
-export default ModuleListing;

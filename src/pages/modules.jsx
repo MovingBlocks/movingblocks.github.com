@@ -6,7 +6,7 @@ import ModuleListing from "../components/ModuleListing/ModuleListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-class Module extends React.Component {
+export default class Module extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -20,8 +20,6 @@ class Module extends React.Component {
     );
   }
 }
-
-export default Module;
 
 /* eslint no-undef: "off" */
 export const moduleQuery = graphql`

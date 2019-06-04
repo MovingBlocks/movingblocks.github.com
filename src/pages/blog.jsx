@@ -6,7 +6,7 @@ import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-class Blog extends React.Component {
+export default class Blog extends React.Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
@@ -20,8 +20,6 @@ class Blog extends React.Component {
     );
   }
 }
-
-export default Blog;
 
 /* eslint no-undef: "off" */
 export const blogQuery = graphql`

@@ -1,0 +1,103 @@
+/* Navbar Specific */
+
+nav {
+    background: $white;
+    -webkit-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item {
+    margin: 0.125em;
+}
+
+/* Dropdown Specific */
+
+.slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+}
+
+.dropdown-item {
+    margin: 0.125em;
+    padding: 0.125em 0.5em;
+    border-radius: 5px;
+    transition: all 150ms linear;
+}
+
+.dropdown-item:hover {
+    transition: all 150ms linear;
+    background-color: $lg-accent;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus {
+    background-color: darken($lg-accent, 2);
+}
+
+.dropdown-menu.show {
+    margin-bottom: 1em;
+    padding: 10px;
+    border: 0 solid transparent;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+
+    @media (min-width: 768px) {
+        &:before {
+            position: absolute;
+            top: -5px;
+            left: 175px;
+            display: inline-block;
+            border-right: .4em solid transparent;
+            border-bottom: .4em solid #ffffff;
+            border-left: .4em solid transparent;
+            content: '';
+        }
+    }
+}
+
+/* Dropdown Animation */
+
+@media (min-width: 992px) {
+    .animate {
+        animation-duration: 0.3s;
+        -webkit-animation-duration: 0.3s;
+        animation-fill-mode: both;
+        -webkit-animation-fill-mode: both;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes slideIn {
+    0% {
+        -webkit-transform: transform;
+        -webkit-opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        -webkit-opacity: 1;
+    }
+
+    0% {
+        -webkit-transform: translateY(1rem);
+        -webkit-opacity: 0;
+    }
+}

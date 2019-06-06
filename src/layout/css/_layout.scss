@@ -2,18 +2,10 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
-}
-
 body {
     margin: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-}
-
-.container {
-    flex: 1;
+    background: $gray;
 }

@@ -1,0 +1,8 @@
+// Color System
+
+$primary: #00CE71 !default;
+$secondary: lighten($primary, 1) !default;
+$white: #FDFDFD !default;
+$gray: darken($white, 2) !default;
+$black: #0F1211 !default;
+$lg-accent: #D0F6E5 !default;

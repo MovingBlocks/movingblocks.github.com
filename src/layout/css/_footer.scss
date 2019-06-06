@@ -10,12 +10,12 @@ footer {
     list-style: none;
 }
 
-.footer-nav>li>a {
+.link {
     color: rgba(0, 0, 0, 0.5);
-    transition: all 50ms linear;
+    transition: all 150ms linear;
 }
 
-.footer-nav>li>a:hover {
+.link:hover {
     color: rgba(0, 0, 0, 0.7);
-    transition: all 50ms linear;
+    transition: all 150ms linear;
 }

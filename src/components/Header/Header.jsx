@@ -76,7 +76,7 @@ export default class Header extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink className="btn btn-primary" href="/download">
+                <NavLink className="btn btn-primary btn-download" href="/download">
                   <IconContext.Provider value={{ size: "1em", className: "download" }}>
                     <FaDownload />
                   </IconContext.Provider>

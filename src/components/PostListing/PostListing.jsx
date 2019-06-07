@@ -25,7 +25,7 @@ export default class PostListing extends React.Component {
         {/* Your post list here. */
         postList.map(post => (
           <Link to={`/blog/${post.path}`} key={post.title}>
-            <h1>{post.title}</h1>
+            {post.title}
           </Link>
         ))}
       </div>

@@ -25,7 +25,7 @@ export default class ModuleListing extends React.Component {
         {/* Your post list here. */
         moduleList.map(post => (
           <Link to={`/modules/${post.path}`} key={post.title}>
-            <h1>{post.title}</h1>
+            {post.title}
           </Link>
         ))}
       </div>

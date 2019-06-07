@@ -28,7 +28,9 @@ The generator repository at [https://github.com/Terasology/terasology.github.io]
 ### Prerequisites
 The generator uses node and backend framework and yarn as a pack manager.
 * node
+
 Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
 * yarn
 ```sh
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -

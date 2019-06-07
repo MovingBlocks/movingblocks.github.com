@@ -1,5 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
+import {
+  Row,
+  Col,
+  Badge
+} from "reactstrap";
 
 export default class ModuleListing extends React.Component {
   getModuleList() {
@@ -17,18 +22,30 @@ export default class ModuleListing extends React.Component {
     });
     return moduleList;
   }
-  
+
   render() {
     const moduleList = this.getModuleList();
     return (
-      <div>
+      <Row className="equal">
         {/* Your post list here. */
-        moduleList.map(post => (
-          <Link to={`/modules/${post.path}`} key={post.title}>
-            {post.title}
-          </Link>
-        ))}
-      </div>
+          moduleList.map(post => (
+            <Col md="4">
+              <div className="card-content">
+                <div className="card-img">
+                  <img src={post.cover} alt={post.title} />
+                </div>
+                <div className="card-desc">
+                  <div className="md-tag"><Badge>{post.tags}</Badge></div>
+                  <h4>{post.title}</h4>
+                  <p>{post.excerpt}</p>
+                  <Link to={`/modules/${post.path}`} key={post.title} className="btn-card">Read More</Link>
+                  <Link to={`/modules/${post.path}`} key={post.title} className="btn-card">Download</Link>
+                </div>
+              </div>
+            </Col>
+          ))
+        }
+      </Row>
     );
   }
 }

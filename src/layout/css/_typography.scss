@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
+h1 {
+    font-family: Noto Sans;
+    font-size: 4.8828125em;
+    line-height: 5rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+h2 {
+    font-family: Noto Sans;
+    font-size: 3.90625em;
+    line-height: 4rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+h3 {
+    font-family: Noto Sans;
+    font-size: 3.125em;
+    line-height: 4rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+h4 {
+    font-family: Noto Sans;
+    font-size: 2.5em;
+    line-height: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+h5 {
+    font-family: Noto Sans;
+    font-size: 2em;
+    line-height: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+h6 {
+    font-family: Noto Sans;
+    font-size: 2em;
+    line-height: 2rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+a, p {
+    font-family: Noto Sans;
+    font-size: 1.6em;
+    line-height: 2rem;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0em;
+}
+
+@media screen and (max-width: 720px) {
+    h1 {
+        font-family: Montserrat;
+        font-size: 6.103515625em;
+        line-height: 9rem;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+
+    h2 {
+        font-family: Montserrat;
+        font-size: 4.8828125em;
+        line-height: 6rem;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+
+    h3 {
+        font-family: Montserrat;
+        font-size: 3.90625em;
+        line-height: 6rem;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+
+    h4 {
+        font-family: Montserrat;
+        font-size: 3.125em;
+        line-height: 6rem;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+
+    h5 {
+        font-family: Montserrat;
+        font-size: 2.5em;
+        line-height: 3rem;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+
+    h6 {
+        font-family: Montserrat;
+        font-size: 2em;
+        line-height: 3rem;
+        font-weight: 600;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+
+    a, p {
+        font-family: Lora;
+        font-size: 1.6em;
+        line-height: 3rem;
+        font-weight: 400;
+        font-style: normal;
+        letter-spacing: 0em;
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconContext } from "react-icons";
 import {
   Container,
   Collapse,
@@ -13,6 +14,10 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import {
+  FaDownload
+} from "react-icons/fa";
+
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -71,7 +76,12 @@ export default class Header extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink className="btn btn-primary" href="/download">Download</NavLink>
+                <NavLink className="btn btn-primary" href="/download">
+                  <IconContext.Provider value={{ size: "1em", className: "download" }}>
+                    <FaDownload />
+                  </IconContext.Provider>
+                  Download
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

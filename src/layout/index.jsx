@@ -6,17 +6,15 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import "./css/style.scss";
 
-export default ({ children }) => {
-  return (
-    <body>
-      <Helmet>
-        <meta name="description" content={config.siteDescription} />
-      </Helmet>
-      <Header />
-      <Container>{children}</Container>
-      <Footer />
-    </body>
-  );
-};
+export default ({ children }) => (
+  <body>
+    <Helmet>
+      <meta name="description" content={config.siteDescription} />
+    </Helmet>
+    <Header />
+    <Container className="main">{children}</Container>
+    <Footer />
+  </body>
+);

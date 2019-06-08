@@ -10,11 +10,9 @@ export default ({ data }) => {
   const postEdges = data.allMarkdownRemark.edges;
   return (
     <Layout>
-      <div className="index-container">
-        <Helmet title={config.siteTitle} />
-        <SEO />
-        <PostListing postEdges={postEdges} />
-      </div>
+      <Helmet title={config.siteTitle} />
+      <SEO />
+      <PostListing postEdges={postEdges} />
     </Layout>
   );
 };

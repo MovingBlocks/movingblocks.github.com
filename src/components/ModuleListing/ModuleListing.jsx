@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { Row, Col, Badge } from "reactstrap";
 
 export default ({ postEdges }) => {
   const getModuleList = () => {
@@ -20,13 +21,38 @@ export default ({ postEdges }) => {
 
   const moduleList = getModuleList();
   return (
-    <div>
+    <Row className="equal">
       {/* Your post list here. */
       moduleList.map(post => (
-        <Link to={`/modules/${post.path}`} key={post.title}>
-          <h1>{post.title}</h1>
-        </Link>
+        <Col md="4">
+          <div className="card-content">
+            <div className="card-img">
+              <img src={post.cover} alt={post.title} />
+            </div>
+            <div className="card-desc">
+              <div className="md-tag">
+                <Badge>{post.tags}</Badge>
+              </div>
+              <h4>{post.title}</h4>
+              <p>{post.excerpt}</p>
+              <Link
+                to={`/modules/${post.path}`}
+                key={post.title}
+                className="btn-card"
+              >
+                Read More
+              </Link>
+              <Link
+                to={`/modules/${post.path}`}
+                key={post.title}
+                className="btn-card"
+              >
+                Download
+              </Link>
+            </div>
+          </div>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { Row, Col, Card, CardTitle, CardSubtitle, CardBody } from "reactstrap";
 
 export default ({ postEdges }) => {
   const getPostList = () => {
@@ -19,13 +20,31 @@ export default ({ postEdges }) => {
   };
   const postList = getPostList();
   return (
-    <div>
+    <Row>
       {/* Your post list here. */
       postList.map(post => (
-        <Link to={`/blog/${post.path}`} key={post.title}>
-          <h1>{post.title}</h1>
-        </Link>
+        <Col md="4">
+          <div className="card-content">
+            <div className="card-img">
+              <img src={post.cover} alt={post.title} />
+              <span>
+                <h4>{post.tags}</h4>
+              </span>
+            </div>
+            <div className="card-desc">
+              <h4>{post.title}</h4>
+              <p>{post.excerpt}</p>
+              <Link
+                to={`/blog/${post.path}`}
+                key={post.title}
+                className="btn-card"
+              >
+                Read More
+              </Link>
+            </div>
+          </div>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };

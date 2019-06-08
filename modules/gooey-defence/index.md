@@ -5,9 +5,7 @@ cover: "https://unsplash.it/400/300/?random?BoldMage"
 date: "01/01/2017"
 category: "tech"
 tags:
-    - programming
-    - stuff
-    - other
+    - Gameplay Template
 ---
 This module serves as the main module for the Gooey's Defence Gameplay Template.  
 It currently is undergoing active development and thus is not at a public release stage.

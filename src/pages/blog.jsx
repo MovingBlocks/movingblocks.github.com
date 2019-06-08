@@ -11,11 +11,9 @@ export default class Blog extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <div className="index-container">
           <Helmet title={config.siteTitle} />
           <SEO />
           <PostListing postEdges={postEdges} />
-        </div>
       </Layout>
     );
   }

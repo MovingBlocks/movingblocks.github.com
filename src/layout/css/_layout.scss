@@ -2,9 +2,8 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
+html, body {
+    font-size: 10px;
 }
 
 body {
@@ -12,8 +11,13 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: $gray;
 }
 
-.container {
-    flex: 1;
+.main {
+    padding: 2em;
+}
+
+a {
+    text-decoration: none !important;
 }

@@ -6,20 +6,18 @@ import ModuleListing from "../components/ModuleListing/ModuleListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-export default class Module extends React.Component {
-  render() {
-    const postEdges = this.props.data.allMarkdownRemark.edges;
-    return (
-      <Layout>
-        <div className="index-container">
-          <Helmet title={config.siteTitle} />
-          <SEO />
-          <ModuleListing postEdges={postEdges} />
-        </div>
-      </Layout>
-    );
-  }
-}
+export default ({ data }) => {
+  const postEdges = data.allMarkdownRemark.edges;
+  return (
+    <Layout>
+      <div className="index-container">
+        <Helmet title={config.siteTitle} />
+        <SEO />
+        <ModuleListing postEdges={postEdges} />
+      </div>
+    </Layout>
+  );
+};
 
 /* eslint no-undef: "off" */
 export const moduleQuery = graphql`

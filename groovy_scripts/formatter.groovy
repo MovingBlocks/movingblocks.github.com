@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 indexRepo = new File("./")
-gatsbyRepo = "../terasology.github.io" // Needs to be changes according to workspace setting
+gatsbyRepo = "../terasology.github.io" // Needs to be changed according to workspace setting
 
 indexRepo.eachFile {
 	if(it.isDirectory()) {
@@ -9,7 +9,7 @@ indexRepo.eachFile {
 		if(moduleFile.exists()) {		
 			moduleJson = new JsonSlurper().parseText(moduleFile.text)
 			moduleName = moduleJson.get("id")
-			println "Formatting data from " + moduleName
+			println "Formatting data for " + moduleName
 
 			readmeFile = new File("${it.toString()}/README.md").text
 
@@ -19,7 +19,6 @@ indexRepo.eachFile {
 			dependencies = []
 			displayName = moduleJson.get("displayName")
 
-			println "Started working on ${displayName}"
 			println "Fetching meta data..."
 			description = moduleJson.get("description")
 			dependenciesQuery = moduleJson.get("dependencies")
@@ -43,7 +42,7 @@ indexRepo.eachFile {
 			if(logoSrc.exists()) {
 				logoDst = new File("${moduleDir.toString()}/logo.png")
 				logoDst << logoSrc.bytes
-				print "Logo image exist!"
+				println "Logo image exist!"
 			} else {
 				println "Logo image doesn't exist, opting for fallback."
 				logoDst = "fallback link"

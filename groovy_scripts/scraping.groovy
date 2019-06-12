@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 moduleFile = new File("./module.txt")
-indexDir = "../../" // Needs to be changes according to workspace setting
+indexDir = "../../" // Needs to be changed according to workspace setting
 
 if(moduleFile.exists()) {
 	moduleJson = new JsonSlurper().parseText(moduleFile.text)

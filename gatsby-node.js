@@ -76,6 +76,52 @@ exports.createPages = async ({ graphql, actions }) => {
     throw markdownQueryResult.errors;
   }
 
+  const blogQueryResult = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          filter: {fileAbsolutePath: {regex: "/blog/.*\\\\.md$/"}}
+          ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                tags
+                category
+                date
+                posttype
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+
+  if (blogQueryResult.errors) {
+    console.error(blogQueryResult.errors);
+    throw blogQueryResult.errors;
+  }
+
+  const posts = blogQueryResult.data.allMarkdownRemark.edges
+  const postsPerPage = 6
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve("./src/pages/blog.jsx"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
   const tagSet = new Set();
   const categorySet = new Set();
 

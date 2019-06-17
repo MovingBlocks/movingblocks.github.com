@@ -76,6 +76,99 @@ exports.createPages = async ({ graphql, actions }) => {
     throw markdownQueryResult.errors;
   }
 
+  const blogQueryResult = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          filter: {fileAbsolutePath: {regex: "/blog/.*\\\\.md$/"}}
+          ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                tags
+                category
+                date
+                posttype
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+
+  if (blogQueryResult.errors) {
+    console.error(blogQueryResult.errors);
+    throw blogQueryResult.errors;
+  }
+
+  const posts = blogQueryResult.data.allMarkdownRemark.edges
+  const postsPerPage = 6
+  const postsNumPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: postsNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve("./src/templates/blog.jsx"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        postsNumPages,
+        blogCurrentPage: i + 1,
+      },
+    })
+  })
+
+
+  const moduleQueryResult = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          filter: {fileAbsolutePath: {regex: "/modules/.*\\\\.md$/"}}
+          ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                tags
+                category
+                date
+                posttype
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+
+  if (moduleQueryResult.errors) {
+    console.error(moduleQueryResult.errors);
+    throw moduleQueryResult.errors;
+  }
+
+  const modules = moduleQueryResult.data.allMarkdownRemark.edges
+  const modulesPerPage = 6
+  const moduleNumPages = Math.ceil(modules.length / modulesPerPage)
+  Array.from({ length: moduleNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/modules` : `/modules/${i + 1}`,
+      component: path.resolve("./src/templates/modulelist.jsx"),
+      context: {
+        limit: modulesPerPage,
+        skip: i * modulesPerPage,
+        moduleNumPages,
+        moduleCurrentPage: i + 1,
+      },
+    })
+  })
+
   const tagSet = new Set();
   const categorySet = new Set();
 

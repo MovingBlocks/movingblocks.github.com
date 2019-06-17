@@ -19,11 +19,12 @@ export default ({ data }) => {
 
 /* eslint no-undef: "off" */
 export const blogQuery = graphql`
-  query blogQuery {
+  query blogQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      limit: 2000
       sort: { fields: [fields___date], order: DESC }
       filter: {fileAbsolutePath: {regex: "/blog/.*\\.md$/"}}
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

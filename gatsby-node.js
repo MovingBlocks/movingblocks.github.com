@@ -3,6 +3,8 @@ const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
 
+var fs = require('fs');
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
@@ -247,3 +249,52 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+exports.onPostBuild = async ({ graphql }) => {
+  var fs = require("fs")
+  const markdownQueryResult = graphql(
+    `
+      {
+        allMarkdownRemark(
+          filter: {fileAbsolutePath: {regex: "/modules/.*\\\\.md$/"}}
+          ) {
+          edges {
+            node {
+              excerpt
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                tags
+                cover
+                date
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+  .then(res => {
+    const moduleList = [];
+    res.data.allMarkdownRemark.edges.forEach(edge => {
+      moduleList.push({
+        path: `/modules${edge.node.fields.slug}`,
+        tags: edge.node.frontmatter.tags,
+        cover: edge.node.frontmatter.cover,
+        title: edge.node.frontmatter.title,
+        date: edge.node.fields.date,
+        excerpt: edge.node.excerpt
+      });
+    })
+    moduleJSON = JSON.stringify(moduleList, null, 2)
+    fs.writeFileSync("./public/result.json", moduleJSON)
+  })
+  //.then(result => JSON.stringify(result))
+  //.then(res => JSON.stringify(res.data, null, 2))
+  //.then(res => JSON.parse(res))
+  //.then(res => fs.writeFileSync("./public/result.json", res.allMarkdownRemark.edges.forEach(key => {res.allMarkdownRemark.edgesfrontmatter.title})))
+  .catch(console.error);
+}
+

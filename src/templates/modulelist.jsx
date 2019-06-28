@@ -1,25 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "../layout";
 import ModuleListing from "../components/ModuleListing/ModuleListing";
 import SEO from "../components/SEO/SEO";
+import SearchForm from "../components/SearchForm/SearchForm";
+import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
+import moduleList from "../../public/result.json";
 
 export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } }) => {
   const postEdges = data.allMarkdownRemark.edges;
+  const DATA = moduleList
+
   const prefix = "/modules/"
   const isFirst = moduleCurrentPage === 1
   const isLast = moduleCurrentPage === moduleNumPages
-  const prevPage = moduleCurrentPage - 1 ===  1  ? "/" : (moduleCurrentPage - 1).toString()
+  const prevPage = moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString()
   const nextPage = (moduleCurrentPage + 1).toString()
+
+  const [results, setResults] = useState([])
+  const searchQuery = new URLSearchParams(location.search).get("keywords") || ""
+
+  useEffect(() => {
+    if (searchQuery) {
+      setResults(
+        DATA.filter(module => {
+          const regex = new RegExp(searchQuery, 'gi');
+          return module.title.match(regex);
+        })
+      );
+    } else {
+      setResults([]);
+    }
+  }, [location.search])
 
   return (
     <Layout>
       <div className="index-container">
         <Helmet title={config.siteTitle} />
         <SEO />
-        <ModuleListing postEdges={postEdges} />
+        <SearchForm query={searchQuery} />
+        <SearchResults id="src" query={searchQuery} results={results} />
+        <ModuleListing id="modules" postEdges={postEdges} />
       </div>
       {!isFirst && (
         <Link to={`${prefix}${prevPage}`} rel="prev">

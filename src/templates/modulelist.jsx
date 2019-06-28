@@ -7,9 +7,9 @@ import SEO from "../components/SEO/SEO";
 import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
-import moduleList from "../../public/result.json";
+import moduleList from "../generated/result.json";
 
-export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } }) => {
+export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}) => {
   const postEdges = data.allMarkdownRemark.edges;
   const DATA = moduleList
 

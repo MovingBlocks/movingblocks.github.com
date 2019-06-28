@@ -250,7 +250,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-exports.onPostBuild = async ({ graphql }) => {
+exports.onPreBuild = async ({ graphql }) => {
   var fs = require("fs")
   const markdownQueryResult = graphql(
     `
@@ -289,12 +289,8 @@ exports.onPostBuild = async ({ graphql }) => {
       });
     })
     moduleJSON = JSON.stringify(moduleList, null, 2)
-    fs.writeFileSync("./public/result.json", moduleJSON)
+    fs.writeFileSync("./src/generated/result.json", moduleJSON)
   })
-  //.then(result => JSON.stringify(result))
-  //.then(res => JSON.stringify(res.data, null, 2))
-  //.then(res => JSON.parse(res))
-  //.then(res => fs.writeFileSync("./public/result.json", res.allMarkdownRemark.edges.forEach(key => {res.allMarkdownRemark.edgesfrontmatter.title})))
   .catch(console.error);
 }
 

@@ -15,7 +15,7 @@ const SearchResults = ({ query, results }) => (
     )}
     {!!results.length && (
       <Row className="equal">
-        {results.map(({ title, path, cover, excerpt }) => (
+        {results.map(({ title, path, cover, excerpt, tags }) => (
           <Col md="4">
             <div className="card-content">
               <div className="card-img">
@@ -23,7 +23,7 @@ const SearchResults = ({ query, results }) => (
               </div>
               <div className="card-desc">
                 <div className="md-tag">
-                  <Badge>{title}</Badge>
+                  <Badge>{tags}</Badge>
                 </div>
                 <h4>{title}</h4>
                 <p>{excerpt}</p>

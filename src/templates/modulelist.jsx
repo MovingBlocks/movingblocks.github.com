@@ -9,7 +9,7 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/result.json";
 
-export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}) => {
+export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}, props) => {
   const postEdges = data.allMarkdownRemark.edges;
   const DATA = moduleList
 
@@ -18,10 +18,15 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}) => 
   const isLast = moduleCurrentPage === moduleNumPages
   const prevPage = moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString()
   const nextPage = (moduleCurrentPage + 1).toString()
+  const loc = props.location
 
   const [results, setResults] = useState([])
-  const searchQuery = new URLSearchParams(location.search).get("keywords") || ""
-
+  let srcLocation = props.location
+  if(typeof window !== `undefined`) {
+    srcLocation = location.search
+  }
+  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || ""
+  
   useEffect(() => {
     if (searchQuery) {
       setResults(
@@ -33,7 +38,7 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}) => 
     } else {
       setResults([]);
     }
-  }, [location.search])
+  }, [srcLocation])
 
   return (
     <Layout>

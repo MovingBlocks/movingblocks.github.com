@@ -8,7 +8,7 @@ import Footer from "../components/Footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.scss";
 
-export default ({ children }) => (
+export default ({ children, location }) => (
   <body>
     <Helmet>
       <meta name="description" content={config.siteDescription} />

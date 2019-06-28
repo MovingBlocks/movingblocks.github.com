@@ -29,7 +29,7 @@ export const moduleQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/modules/.*\\.md$/"}}
+      filter: {frontmatter: {posttype: {eq: "module"}}}
     ) {
       edges {
         node {

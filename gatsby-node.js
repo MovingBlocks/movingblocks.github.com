@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const _ = require("lodash");
 const fs = require("fs");
 const moment = require("moment");
@@ -226,7 +227,9 @@ exports.createPages = async ({
 
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
     const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
+    // eslint-disable-next-line no-unused-vars
     const nextEdge = postsEdges[nextID];
+    // eslint-disable-next-line no-unused-vars
     const prevEdge = postsEdges[prevID];
 
     if (edge.node.frontmatter.posttype === 'module') {
@@ -273,6 +276,7 @@ exports.createPages = async ({
 exports.onPreBuild = async ({
   graphql
 }) => {
+  // eslint-disable-next-line no-unused-vars
   const markdownQueryResult = graphql(
       `
       {

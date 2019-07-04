@@ -96,7 +96,7 @@ exports.createPages = async ({
     `
       {
         allMarkdownRemark(
-          filter: {fileAbsolutePath: {regex: "/blog/.*\\\\.md$/"}}
+          filter: {frontmatter: {posttype: {eq: "blog"}}}
           ) {
           edges {
             node {
@@ -146,7 +146,7 @@ exports.createPages = async ({
     `
       {
         allMarkdownRemark(
-          filter: {fileAbsolutePath: {regex: "/modules/.*\\\\.md$/"}}
+          filter: {frontmatter: {posttype: {eq: "module"}}}
           ) {
           edges {
             node {
@@ -277,7 +277,7 @@ exports.onPreBuild = async ({
       `
       {
         allMarkdownRemark(
-          filter: {fileAbsolutePath: {regex: "/modules/.*\\\\.md$/"}}
+          filter: {frontmatter: {posttype: {eq: "module"}}}
           ) {
           edges {
             node {

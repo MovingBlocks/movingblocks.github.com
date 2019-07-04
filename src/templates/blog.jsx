@@ -39,7 +39,7 @@ export const blogQuery = graphql`
   query blogQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/blog/.*\\.md$/"}}
+      filter: {frontmatter: {posttype: {eq: "blog"}}}
       limit: $limit
       skip: $skip
     ) {

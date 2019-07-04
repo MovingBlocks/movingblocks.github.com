@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Row, Col, Card, CardTitle, CardSubtitle, CardBody } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 export default ({ postEdges }) => {
   const getPostList = () => {

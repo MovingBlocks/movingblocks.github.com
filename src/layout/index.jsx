@@ -1,13 +1,14 @@
 import React from "react";
 import Helmet from "react-helmet";
+import { Container } from "reactstrap";
 import config from "../../data/SiteConfig";
-import { Container, Row, Col } from "reactstrap";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.scss";
 
+// eslint-disable-next-line no-unused-vars
 export default ({ children, location }) => (
   <body>
     <Helmet>

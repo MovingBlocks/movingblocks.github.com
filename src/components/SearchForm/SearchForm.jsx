@@ -1,5 +1,5 @@
-import React from "react"
-import { navigate } from "gatsby"
+import React from "react";
+import { navigate } from "gatsby";
 
 const SearchForm = ({ query }) => (
   <form role="search" method="GET">
@@ -12,12 +12,14 @@ const SearchForm = ({ query }) => (
       name="keywords"
       aria-controls="search-results-count"
       onChange={e =>
-        navigate(`${location.pathname}?keywords=${encodeURIComponent(e.target.value)}`)
+        navigate(
+          `${location.pathname}?keywords=${encodeURIComponent(e.target.value)}`
+        )
       }
       value={query}
     />
     <button type="submit">Submit</button>
   </form>
-)
+);
 
-export default SearchForm
+export default SearchForm;

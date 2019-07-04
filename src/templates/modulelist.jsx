@@ -9,36 +9,40 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/result.json";
 
-export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}, props) => {
+export default (
+  { data, pageContext: { moduleCurrentPage, moduleNumPages } },
+  props
+) => {
   const postEdges = data.allMarkdownRemark.edges;
-  const DATA = moduleList
+  const DATA = moduleList;
 
-  const prefix = "/modules/"
-  const isFirst = moduleCurrentPage === 1
-  const isLast = moduleCurrentPage === moduleNumPages
-  const prevPage = moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString()
-  const nextPage = (moduleCurrentPage + 1).toString()
-  const loc = props.location
+  const prefix = "/modules/";
+  const isFirst = moduleCurrentPage === 1;
+  const isLast = moduleCurrentPage === moduleNumPages;
+  const prevPage =
+    moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString();
+  const nextPage = (moduleCurrentPage + 1).toString();
 
-  const [results, setResults] = useState([])
-  let srcLocation = props.location
-  if(typeof window !== `undefined`) {
-    srcLocation = location.search
+  const [results, setResults] = useState([]);
+  let srcLocation = props.location;
+  if (typeof window !== `undefined`) {
+    // eslint-disable-next-line no-restricted-globals
+    srcLocation = location.search;
   }
-  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || ""
-  
+  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+
   useEffect(() => {
     if (searchQuery) {
       setResults(
         DATA.filter(module => {
-          const regex = new RegExp(searchQuery, 'gi');
+          const regex = new RegExp(searchQuery, "gi");
           return module.title.match(regex);
         })
       );
     } else {
       setResults([]);
     }
-  }, [srcLocation])
+  }, [srcLocation]);
 
   return (
     <Layout>

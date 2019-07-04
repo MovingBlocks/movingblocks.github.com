@@ -24,7 +24,8 @@ export default (
   const nextPage = (moduleCurrentPage + 1).toString();
 
   const [results, setResults] = useState([]);
-  let srcLocation = props.location;
+  // eslint-disable-next-line react/destructuring-assignment
+  let {srcLocation} = props.location;
   if (typeof window !== `undefined`) {
     // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;

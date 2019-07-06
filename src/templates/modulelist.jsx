@@ -33,12 +33,15 @@ export default (
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+  function escapeRegExp(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
 
   useEffect(() => {
     if (searchQuery) {
       setResults(
         DATA.filter(module => {
-          const regex = new RegExp(searchQuery, "gi");
+          const regex = new RegExp(escapeRegExp(searchQuery), "gi");
           return module.title.match(regex);
         })
       );

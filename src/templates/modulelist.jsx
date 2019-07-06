@@ -23,9 +23,11 @@ export default (
     moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString();
   const nextPage = (moduleCurrentPage + 1).toString();
 
+  const [isShown, setIsShown] = useState(false);
+
   const [results, setResults] = useState([]);
   // eslint-disable-next-line react/destructuring-assignment
-  let {srcLocation} = props.location;
+  let srcLocation = props.location;
   if (typeof window !== `undefined`) {
     // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
@@ -40,8 +42,10 @@ export default (
           return module.title.match(regex);
         })
       );
+      setIsShown(true);
     } else {
       setResults([]);
+      setIsShown(false);
     }
   }, [srcLocation]);
 
@@ -51,8 +55,8 @@ export default (
         <Helmet title={config.siteTitle} />
         <SEO />
         <SearchForm query={searchQuery} />
-        <SearchResults id="src" query={searchQuery} results={results} />
-        <ModuleListing id="modules" postEdges={postEdges} />
+        {isShown && <SearchResults id="src" query={searchQuery} results={results} />}
+        {!isShown && <ModuleListing id="modules" postEdges={postEdges} />}
       </div>
       {!isFirst && (
         <Link to={`${prefix}${prevPage}`} rel="prev">
@@ -74,7 +78,7 @@ export const moduleQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
-      filter: {frontmatter: {posttype: {eq: "module"}}}
+      filter: { frontmatter: { posttype: { eq: "module" } } }
     ) {
       edges {
         node {

@@ -1,12 +1,18 @@
-const path = require("path");
+/* eslint-disable no-console */
 const _ = require("lodash");
+const fs = require("fs");
 const moment = require("moment");
+const path = require("path");
 const siteConfig = require("./data/SiteConfig");
 
-var fs = require('fs');
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+exports.onCreateNode = ({
+  node,
+  actions,
+  getNode
+}) => {
+  const {
+    createNodeField
+  } = actions;
   let slug;
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
@@ -39,12 +45,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         });
       }
     }
-    createNodeField({ node, name: "slug", value: slug });
+    createNodeField({
+      node,
+      name: "slug",
+      value: slug
+    });
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+exports.createPages = async ({
+  graphql,
+  actions
+}) => {
+  const {
+    createPage
+  } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const modulesPage = path.resolve("src/templates/modules.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
@@ -82,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
-          filter: {fileAbsolutePath: {regex: "/blog/.*\\\\.md$/"}}
+          filter: {frontmatter: {posttype: {eq: "blog"}}}
           ) {
           edges {
             node {
@@ -111,7 +126,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = blogQueryResult.data.allMarkdownRemark.edges
   const postsPerPage = 6
   const postsNumPages = Math.ceil(posts.length / postsPerPage)
-  Array.from({ length: postsNumPages }).forEach((_, i) => {
+  Array.from({
+    length: postsNumPages
+  // eslint-disable-next-line no-shadow
+  }).forEach((_,i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve("./src/templates/blog.jsx"),
@@ -129,7 +147,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
-          filter: {fileAbsolutePath: {regex: "/modules/.*\\\\.md$/"}}
+          filter: {frontmatter: {posttype: {eq: "module"}}}
           ) {
           edges {
             node {
@@ -158,7 +176,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const modules = moduleQueryResult.data.allMarkdownRemark.edges
   const modulesPerPage = 6
   const moduleNumPages = Math.ceil(modules.length / modulesPerPage)
-  Array.from({ length: moduleNumPages }).forEach((_, i) => {
+  Array.from({
+    length: moduleNumPages
+  // eslint-disable-next-line no-shadow
+  }).forEach((_,i) => {
     createPage({
       path: i === 0 ? `/modules` : `/modules/${i + 1}`,
       component: path.resolve("./src/templates/modulelist.jsx"),
@@ -206,7 +227,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
     const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
+    // eslint-disable-next-line no-unused-vars
     const nextEdge = postsEdges[nextID];
+    // eslint-disable-next-line no-unused-vars
     const prevEdge = postsEdges[prevID];
 
     if (edge.node.frontmatter.posttype === 'module') {
@@ -214,7 +237,7 @@ exports.createPages = async ({ graphql, actions }) => {
         path: `/modules${edge.node.fields.slug}`,
         component: modulesPage,
         context: {
-          slug:  edge.node.fields.slug,
+          slug: edge.node.fields.slug,
           category: edge.node.frontmatter.category,
         }
       });
@@ -223,7 +246,7 @@ exports.createPages = async ({ graphql, actions }) => {
         path: `/blog${edge.node.fields.slug}`,
         component: postPage,
         context: {
-          slug: edge.node.fields.slug, 
+          slug: edge.node.fields.slug,
           category: edge.node.frontmatter.category,
         }
       });
@@ -250,13 +273,15 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-exports.onPreBuild = async ({ graphql }) => {
-  var fs = require("fs")
+exports.onPreBuild = async ({
+  graphql
+}) => {
+  // eslint-disable-next-line no-unused-vars
   const markdownQueryResult = graphql(
-    `
+      `
       {
         allMarkdownRemark(
-          filter: {fileAbsolutePath: {regex: "/modules/.*\\\\.md$/"}}
+          filter: {frontmatter: {posttype: {eq: "module"}}}
           ) {
           edges {
             node {
@@ -275,22 +300,21 @@ exports.onPreBuild = async ({ graphql }) => {
         }
       }
     `
-  )
-  .then(res => {
-    const moduleList = [];
-    res.data.allMarkdownRemark.edges.forEach(edge => {
-      moduleList.push({
-        path: `/modules${edge.node.fields.slug}`,
-        tags: edge.node.frontmatter.tags,
-        cover: edge.node.frontmatter.cover,
-        title: edge.node.frontmatter.title,
-        date: edge.node.fields.date,
-        excerpt: edge.node.excerpt
-      });
+    )
+    .then(res => {
+      const moduleList = [];
+      res.data.allMarkdownRemark.edges.forEach(edge => {
+        moduleList.push({
+          path: `/modules${edge.node.fields.slug}`,
+          tags: edge.node.frontmatter.tags,
+          cover: edge.node.frontmatter.cover,
+          title: edge.node.frontmatter.title,
+          date: edge.node.fields.date,
+          excerpt: edge.node.excerpt
+        });
+      })
+      const moduleJSON = JSON.stringify(moduleList, null, 2)
+      fs.writeFileSync("./src/generated/result.json", moduleJSON)
     })
-    moduleJSON = JSON.stringify(moduleList, null, 2)
-    fs.writeFileSync("./src/generated/result.json", moduleJSON)
-  })
-  .catch(console.error);
+    .catch(console.error);
 }
-

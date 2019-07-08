@@ -8,12 +8,13 @@ import config from "../../data/SiteConfig";
 
 export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }) => {
   const postEdges = data.allMarkdownRemark.edges;
-  const prefix = "/blog/"
-  const isFirst = blogCurrentPage === 1
-  const isLast = blogCurrentPage === postsNumPages
-  const prevPage = blogCurrentPage - 1 ===  1  ? "/" : (blogCurrentPage - 1).toString()
-  const nextPage = (blogCurrentPage + 1).toString()
-  
+  const prefix = "/blog/";
+  const isFirst = blogCurrentPage === 1;
+  const isLast = blogCurrentPage === postsNumPages;
+  const prevPage =
+    blogCurrentPage - 1 === 1 ? "/" : (blogCurrentPage - 1).toString();
+  const nextPage = (blogCurrentPage + 1).toString();
+
   return (
     <Layout>
       <Helmet title={config.siteTitle} />
@@ -38,7 +39,7 @@ export const blogQuery = graphql`
   query blogQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/blog/.*\\.md$/"}}
+      filter: {frontmatter: {posttype: {eq: "blog"}}}
       limit: $limit
       skip: $skip
     ) {

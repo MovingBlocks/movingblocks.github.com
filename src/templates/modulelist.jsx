@@ -9,36 +9,48 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/result.json";
 
-export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}, props) => {
+export default (
+  { data, pageContext: { moduleCurrentPage, moduleNumPages } },
+  props
+) => {
   const postEdges = data.allMarkdownRemark.edges;
-  const DATA = moduleList
+  const DATA = moduleList;
 
-  const prefix = "/modules/"
-  const isFirst = moduleCurrentPage === 1
-  const isLast = moduleCurrentPage === moduleNumPages
-  const prevPage = moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString()
-  const nextPage = (moduleCurrentPage + 1).toString()
-  const loc = props.location
+  const prefix = "/modules/";
+  const isFirst = moduleCurrentPage === 1;
+  const isLast = moduleCurrentPage === moduleNumPages;
+  const prevPage =
+    moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString();
+  const nextPage = (moduleCurrentPage + 1).toString();
 
-  const [results, setResults] = useState([])
-  let srcLocation = props.location
-  if(typeof window !== `undefined`) {
-    srcLocation = location.search
+  const [isShown, setIsShown] = useState(false);
+
+  const [results, setResults] = useState([]);
+  // eslint-disable-next-line react/destructuring-assignment
+  let srcLocation = props.location;
+  if (typeof window !== `undefined`) {
+    // eslint-disable-next-line no-restricted-globals
+    srcLocation = location.search;
   }
-  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || ""
-  
+  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+  function escapeRegExp(string){
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
   useEffect(() => {
     if (searchQuery) {
       setResults(
         DATA.filter(module => {
-          const regex = new RegExp(searchQuery, 'gi');
+          const regex = new RegExp(escapeRegExp(searchQuery), "gi");
           return module.title.match(regex);
         })
       );
+      setIsShown(true);
     } else {
       setResults([]);
+      setIsShown(false);
     }
-  }, [srcLocation])
+  }, [srcLocation]);
 
   return (
     <Layout>
@@ -46,8 +58,8 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages }}, pro
         <Helmet title={config.siteTitle} />
         <SEO />
         <SearchForm query={searchQuery} />
-        <SearchResults id="src" query={searchQuery} results={results} />
-        <ModuleListing id="modules" postEdges={postEdges} />
+        {isShown && <SearchResults id="src" query={searchQuery} results={results} />}
+        {!isShown && <ModuleListing id="modules" postEdges={postEdges} />}
       </div>
       {!isFirst && (
         <Link to={`${prefix}${prevPage}`} rel="prev">
@@ -69,7 +81,7 @@ export const moduleQuery = graphql`
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/modules/.*\\.md$/"}}
+      filter: { frontmatter: { posttype: { eq: "module" } } }
     ) {
       edges {
         node {

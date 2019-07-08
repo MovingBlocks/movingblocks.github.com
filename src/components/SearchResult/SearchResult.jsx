@@ -10,7 +10,13 @@ const SearchResults = ({ query, results }) => (
         id="search-results-count"
         aria-live="assertive"
       >
-        Found {results.length} posts on "{query}"
+        Found 
+        {' '}
+        {results.length}
+        {' '}
+        posts on 
+        {' '}
+        {query}
       </h2>
     )}
     {!!results.length && (
@@ -27,20 +33,12 @@ const SearchResults = ({ query, results }) => (
                 </div>
                 <h4>{title}</h4>
                 <p>{excerpt}</p>
-                <Link
-                  to={path}
-                  key={title}
-                  className="btn-card"
-                >
+                <Link to={path} key={title} className="btn-card">
                   Read More
-                      </Link>
-                <Link
-                  to={path}
-                  key={title}
-                  className="btn-card"
-                >
+                </Link>
+                <Link to={path} key={title} className="btn-card">
                   Download
-                      </Link>
+                </Link>
               </div>
             </div>
           </Col>
@@ -48,6 +46,6 @@ const SearchResults = ({ query, results }) => (
       </Row>
     )}
   </div>
-)
+);
 
-export default SearchResults
+export default SearchResults;

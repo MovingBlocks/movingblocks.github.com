@@ -1,21 +1,21 @@
 footer {
-    border-top: 0.25em solid $primary;
-    -webkit-box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
-    padding: 2em;
+  border-top: 0.25em solid $primary;
+  -webkit-box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
+  padding: 2em;
 }
 
 .footer-nav {
-    list-style: none;
+  list-style: none;
 }
 
 .link {
-    color: rgba(0, 0, 0, 0.5);
-    transition: all 150ms linear;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 150ms linear;
 }
 
 .link:hover {
-    color: rgba(0, 0, 0, 0.7);
-    transition: all 150ms linear;
+  color: rgba(0, 0, 0, 0.7);
+  transition: all 150ms linear;
 }

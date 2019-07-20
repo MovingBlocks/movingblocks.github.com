@@ -33,13 +33,13 @@ export default (
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
-  const filterTag = new URLSearchParams(srcLocation).get("filter") || "";
+  var filterTag = new URLSearchParams(srcLocation).get("filter") || "";
   function escapeRegExp(string){
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
   useEffect(() => {
-    if (searchQuery || filterTag  && filterTag != "all") {
+    if (searchQuery || filterTag) {
       setResults(
         DATA.filter(module => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");

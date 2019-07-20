@@ -33,16 +33,18 @@ export default (
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+  const filterTag = new URLSearchParams(srcLocation).get("filter") || "";
   function escapeRegExp(string){
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
   useEffect(() => {
-    if (searchQuery) {
+    if (searchQuery || filterTag  && filterTag != "all") {
       setResults(
         DATA.filter(module => {
-          const regex = new RegExp(escapeRegExp(searchQuery), "gi");
-          return module.title.match(regex);
+          const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
+          const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
+          return module.tags[0].match(tagRgx) && module.title.match(searchRgx)  ;
         })
       );
       setIsShown(true);
@@ -57,8 +59,8 @@ export default (
       <div className="index-container">
         <Helmet title={config.siteTitle} />
         <SEO />
-        <SearchForm query={searchQuery} />
-        {isShown && <SearchResults id="src" query={searchQuery} results={results} />}
+        <SearchForm query={searchQuery} filter={filterTag} />
+        {isShown && <SearchResults id="src" query={searchQuery} filter={filterTag} results={results} />}
         {!isShown && <ModuleListing id="modules" postEdges={postEdges} />}
       </div>
       {!isFirst && (

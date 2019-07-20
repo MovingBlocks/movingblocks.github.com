@@ -5,7 +5,7 @@ import { Row, Col, Badge } from "reactstrap";
 const SearchResults = ({ query, results }) => (
   <div aria-label="Search results for all posts">
     {!!results.length && query && (
-      <h2
+      <h4
         className="search-results-count"
         id="search-results-count"
         aria-live="assertive"
@@ -14,11 +14,15 @@ const SearchResults = ({ query, results }) => (
         {' '}
         {results.length}
         {' '}
-        posts on 
+        {results.length==1 && "module matching with"} 
+        {results.length>1 && "modules matching with"} 
         {' '}
-        {query}
-      </h2>
+        "{query}"
+      </h4>
     )}
+    <h4>
+      {results.length<1 && "Found nothing"} 
+    </h4>
     {!!results.length && (
       <Row className="equal">
         {results.map(({ title, path, cover, excerpt, tags }) => (

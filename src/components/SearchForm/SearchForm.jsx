@@ -5,30 +5,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 const SearchForm = ({ query, filter }) => (
   <Form role="search" method="GET">
     <Row form id="search-form">
-      <Col md="6">
-        <FormGroup>
-          <Label for="searchQuery">
-            <h7>Search</h7>
-          </Label>
-          <Input
-            type="search"
-            id="search-input"
-            name="keywords"
-            bsSize="lg"
-            aria-controls="search-results-count"
-            onChange={e =>
-              navigate(
-                `${location.pathname}?keywords=${encodeURIComponent(
-                  e.target.value
-                )}&filter=${filter}`
-              )
-            }
-            placeholder="Search..."
-            value={query}
-          />
-        </FormGroup>
-      </Col>
-      <Col md="4">
+      <Col md="2">
         <FormGroup>
           <Label for="searchFilter">
             <h7>Filter</h7>
@@ -54,6 +31,29 @@ const SearchForm = ({ query, filter }) => (
             <option value="gameplay">Gameplay</option>
             <option value="logic">Logic</option>
           </Input>
+        </FormGroup>
+      </Col>
+      <Col md="8">
+        <FormGroup>
+          <Label for="searchQuery">
+            <h7>Search</h7>
+          </Label>
+          <Input
+            type="search"
+            id="search-input"
+            name="keywords"
+            bsSize="lg"
+            aria-controls="search-results-count"
+            onChange={e =>
+              navigate(
+                `${location.pathname}?keywords=${encodeURIComponent(
+                  e.target.value
+                )}&filter=${filter}`
+              )
+            }
+            placeholder="Search..."
+            value={query}
+          />
         </FormGroup>
       </Col>
       <Col md="2">

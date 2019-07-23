@@ -40,27 +40,9 @@ export default () => {
             <NavItem>
               <NavLink href="https://forum.terasology.org/">Forum</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Modules
-              </DropdownToggle>
-              <DropdownMenu className="slideIn animate" right>
-                <DropdownItem>
-                  <NavLink href="/modules">All</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink href="/modules/gameplay-template">
-                    Gameplay Template
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink href="/modules/logic">Logic</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink href="/modules/content">Content</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavItem>
+              <NavLink href="/modules">Modules</NavLink>
+            </NavItem>
             <NavItem>
               <NavLink
                 className="btn btn-primary btn-download"

@@ -31,6 +31,10 @@ nav {
   animation-name: slideIn;
 }
 
+li:last-child {
+  margin-left: 0.5em;
+}
+
 .dropdown-item {
   margin: 0.125em;
   padding: 0.125em 0.5em;

@@ -33,7 +33,7 @@ export default class ModuleTemplate extends React.Component {
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
               <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
+              <SocialLinks postPath={"/modules"+slug} postNode={postNode} />
             </div>
           </div>
         </div>

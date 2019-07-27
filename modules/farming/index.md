@@ -8,7 +8,7 @@ tags:
     - Logic
 ---
 
-![header](https://i.imgur.com/Bo7RZQv.png)
+![header](title.png)
 
 **Simple Farming** adds the ability to create bushes and vines that can grow and give produce.  
 

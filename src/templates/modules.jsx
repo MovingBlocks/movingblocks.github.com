@@ -30,9 +30,10 @@ export default class ModuleTemplate extends React.Component {
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <h1>{post.title}</h1>
+            <hr></hr>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
-              <PostTags tags={post.tags} />
+              <PostTags tags={post.tags} type={"modules"} />
               <SocialLinks postPath={"/modules"+slug} postNode={postNode} />
             </div>
           </div>

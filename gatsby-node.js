@@ -5,14 +5,8 @@ const moment = require("moment");
 const path = require("path");
 const siteConfig = require("./data/SiteConfig");
 
-exports.onCreateNode = ({
-  node,
-  actions,
-  getNode
-}) => {
-  const {
-    createNodeField
-  } = actions;
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
   let slug;
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
@@ -53,17 +47,10 @@ exports.onCreateNode = ({
   }
 };
 
-exports.createPages = async ({
-  graphql,
-  actions
-}) => {
-  const {
-    createPage
-  } = actions;
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const modulesPage = path.resolve("src/templates/modules.jsx");
-  const tagPage = path.resolve("src/templates/tag.jsx");
-  const categoryPage = path.resolve("src/templates/category.jsx");
 
   const markdownQueryResult = await graphql(
     `
@@ -97,8 +84,8 @@ exports.createPages = async ({
     `
       {
         allMarkdownRemark(
-          filter: {frontmatter: {posttype: {eq: "blog"}}}
-          ) {
+          filter: { frontmatter: { posttype: { eq: "blog" } } }
+        ) {
           edges {
             node {
               fields {
@@ -123,13 +110,13 @@ exports.createPages = async ({
     throw blogQueryResult.errors;
   }
 
-  const posts = blogQueryResult.data.allMarkdownRemark.edges
-  const postsPerPage = 6
-  const postsNumPages = Math.ceil(posts.length / postsPerPage)
+  const posts = blogQueryResult.data.allMarkdownRemark.edges;
+  const postsPerPage = 6;
+  const postsNumPages = Math.ceil(posts.length / postsPerPage);
   Array.from({
     length: postsNumPages
-  // eslint-disable-next-line no-shadow
-  }).forEach((_,i) => {
+    // eslint-disable-next-line no-shadow
+  }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve("./src/templates/blog.jsx"),
@@ -137,18 +124,17 @@ exports.createPages = async ({
         limit: postsPerPage,
         skip: i * postsPerPage,
         postsNumPages,
-        blogCurrentPage: i + 1,
-      },
-    })
-  })
-
+        blogCurrentPage: i + 1
+      }
+    });
+  });
 
   const moduleQueryResult = await graphql(
     `
       {
         allMarkdownRemark(
-          filter: {frontmatter: {posttype: {eq: "module"}}}
-          ) {
+          filter: { frontmatter: { posttype: { eq: "module" } } }
+        ) {
           edges {
             node {
               fields {
@@ -173,13 +159,13 @@ exports.createPages = async ({
     throw moduleQueryResult.errors;
   }
 
-  const modules = moduleQueryResult.data.allMarkdownRemark.edges
-  const modulesPerPage = 6
-  const moduleNumPages = Math.ceil(modules.length / modulesPerPage)
+  const modules = moduleQueryResult.data.allMarkdownRemark.edges;
+  const modulesPerPage = 6;
+  const moduleNumPages = Math.ceil(modules.length / modulesPerPage);
   Array.from({
     length: moduleNumPages
-  // eslint-disable-next-line no-shadow
-  }).forEach((_,i) => {
+    // eslint-disable-next-line no-shadow
+  }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/modules` : `/modules/${i + 1}`,
       component: path.resolve("./src/templates/modulelist.jsx"),
@@ -187,13 +173,10 @@ exports.createPages = async ({
         limit: modulesPerPage,
         skip: i * modulesPerPage,
         moduleNumPages,
-        moduleCurrentPage: i + 1,
-      },
-    })
-  })
-
-  const tagSet = new Set();
-  const categorySet = new Set();
+        moduleCurrentPage: i + 1
+      }
+    });
+  });
 
   const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
 
@@ -215,16 +198,6 @@ exports.createPages = async ({
   });
 
   postsEdges.forEach((edge, index) => {
-    if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
-        tagSet.add(tag);
-      });
-    }
-
-    if (edge.node.frontmatter.category) {
-      categorySet.add(edge.node.frontmatter.category);
-    }
-
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
     const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
     // eslint-disable-next-line no-unused-vars
@@ -232,57 +205,36 @@ exports.createPages = async ({
     // eslint-disable-next-line no-unused-vars
     const prevEdge = postsEdges[prevID];
 
-    if (edge.node.frontmatter.posttype === 'module') {
+    if (edge.node.frontmatter.posttype === "module") {
       createPage({
         path: `/modules${edge.node.fields.slug}`,
         component: modulesPage,
         context: {
           slug: edge.node.fields.slug,
-          category: edge.node.frontmatter.category,
+          category: edge.node.frontmatter.category
         }
       });
-    } else { // blog post
+    } else {
+      // blog post
       createPage({
         path: `/blog${edge.node.fields.slug}`,
         component: postPage,
         context: {
           slug: edge.node.fields.slug,
-          category: edge.node.frontmatter.category,
+          category: edge.node.frontmatter.category
         }
       });
     }
   });
-
-  tagSet.forEach(tag => {
-    createPage({
-      path: `/tags/${_.kebabCase(tag)}/`,
-      component: tagPage,
-      context: {
-        tag
-      }
-    });
-  });
-  categorySet.forEach(category => {
-    createPage({
-      path: `/categories/${_.kebabCase(category)}/`,
-      component: categoryPage,
-      context: {
-        category
-      }
-    });
-  });
 };
 
-exports.onPreBuild = async ({
-  graphql
-}) => {
+exports.onPreBuild = async ({ graphql }) => {
   // eslint-disable-next-line no-unused-vars
-  const markdownQueryResult = graphql(
-      `
+  var markdownQueryResult = {};
+  markdownQueryResult = graphql(
+    `
       {
-        allMarkdownRemark(
-          filter: {frontmatter: {posttype: {eq: "module"}}}
-          ) {
+        allMarkdownRemark {
           edges {
             node {
               excerpt
@@ -290,6 +242,7 @@ exports.onPreBuild = async ({
                 slug
               }
               frontmatter {
+                posttype
                 title
                 tags
                 cover
@@ -300,7 +253,7 @@ exports.onPreBuild = async ({
         }
       }
     `
-    )
+  )
     .then(res => {
       const moduleList = [];
       res.data.allMarkdownRemark.edges.forEach(edge => {
@@ -309,12 +262,12 @@ exports.onPreBuild = async ({
           tags: edge.node.frontmatter.tags,
           cover: edge.node.frontmatter.cover,
           title: edge.node.frontmatter.title,
-          date: edge.node.fields.date,
+          date: edge.node.frontmatter.date,
           excerpt: edge.node.excerpt
         });
-      })
-      const moduleJSON = JSON.stringify(moduleList, null, 2)
-      fs.writeFileSync("./src/generated/result.json", moduleJSON)
+      });
+      const moduleJSON = JSON.stringify(moduleList, null, 2);
+      fs.writeFileSync("./src/generated/result.json", moduleJSON);
     })
     .catch(console.error);
-}
+};

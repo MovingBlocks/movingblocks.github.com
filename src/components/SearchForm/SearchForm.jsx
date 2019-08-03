@@ -8,7 +8,7 @@ const SearchForm = ({ query, filter }) => (
       <Col md="2">
         <FormGroup>
           <Label for="searchFilter">
-            <h7>Filter</h7>
+            <h6>Filter</h6>
           </Label>
           <Input
             type="select"
@@ -36,7 +36,7 @@ const SearchForm = ({ query, filter }) => (
       <Col md="8">
         <FormGroup>
           <Label for="searchQuery">
-            <h7>Search</h7>
+            <h6>Search</h6>
           </Label>
           <Input
             type="search"

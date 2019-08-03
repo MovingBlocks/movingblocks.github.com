@@ -18,6 +18,36 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 90,
+      },
+    },
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [{
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 768,
+              linkImagesToOriginal: false,
+              backgroundColor: `transparent`,
+              wrapperStyle: `left:0; width: 100%;`
+            }
+          },
+          {
+            resolve: "gatsby-remark-responsive-iframe"
+          },
+          "gatsby-remark-prismjs",
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-autolink-headers"
+        ]
+      }
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     "gatsby-plugin-lodash",
@@ -52,29 +82,6 @@ module.exports = {
       resolve: "gatsby-plugin-nprogress",
       options: {
         color: config.themeColor
-      }
-    },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [{
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 768,
-              linkImagesToOriginal: false,
-              backgroundColor: `transparent`,
-              wrapperStyle: `left:0; width: 100%;`
-            }
-          },
-          {
-            resolve: "gatsby-remark-responsive-iframe"
-          },
-          "gatsby-remark-prismjs",
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers"
-        ]
       }
     },
     "gatsby-plugin-catch-links",

@@ -6,7 +6,6 @@ import config from "../../../data/SiteConfig";
 export default ({ postNode, postPath, postSEO }) => {
   let title;
   let description;
-  let image;
   let postURL;
   if (postSEO) {
     const postMeta = postNode.frontmatter;
@@ -14,15 +13,12 @@ export default ({ postNode, postPath, postSEO }) => {
     description = postMeta.description
       ? postMeta.description
       : postNode.excerpt;
-    image = postMeta.cover;
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
-    image = config.siteLogo;
   }
 
-  image = urljoin(config.siteUrl, config.pathPrefix, image);
   const blogURL = urljoin(config.siteUrl, config.pathPrefix);
   const schemaOrgJSONLD = [
     {
@@ -45,7 +41,6 @@ export default ({ postNode, postPath, postSEO }) => {
             item: {
               "@id": postURL,
               name: title,
-              image
             }
           }
         ]
@@ -57,10 +52,6 @@ export default ({ postNode, postPath, postSEO }) => {
         name: title,
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
         headline: title,
-        image: {
-          "@type": "ImageObject",
-          url: image
-        },
         description
       }
     );
@@ -69,7 +60,6 @@ export default ({ postNode, postPath, postSEO }) => {
     <Helmet>
       {/* General tags */}
       <meta name="description" content={description} />
-      <meta name="image" content={image} />
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
@@ -81,7 +71,6 @@ export default ({ postNode, postPath, postSEO }) => {
       {postSEO ? <meta property="og:type" content="article" /> : null}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
       <meta
         property="fb:app_id"
         content={config.siteFBAppID ? config.siteFBAppID : ""}
@@ -95,7 +84,6 @@ export default ({ postNode, postPath, postSEO }) => {
       />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
     </Helmet>
   );
 };

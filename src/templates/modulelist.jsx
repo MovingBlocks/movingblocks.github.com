@@ -9,10 +9,7 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/result.json";
 
-export default (
-  { data, pageContext: { moduleCurrentPage, moduleNumPages } },
-  props
-) => {
+export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  props) => {
   const postEdges = data.allMarkdownRemark.edges;
   const DATA = moduleList;
 
@@ -34,8 +31,8 @@ export default (
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
   var filterTag = new URLSearchParams(srcLocation).get("filter") || "";
-  function escapeRegExp(string){
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
   useEffect(() => {
@@ -44,7 +41,7 @@ export default (
         DATA.filter(module => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return module.tags[0].match(tagRgx) && module.title.match(searchRgx)  ;
+          return module.tags[0].match(tagRgx) && module.title.match(searchRgx);
         })
       );
       setIsShown(true);
@@ -60,7 +57,14 @@ export default (
         <Helmet title={config.siteTitle} />
         <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
-        {isShown && <SearchResults id="src" query={searchQuery} filter={filterTag} results={results} />}
+        {isShown && (
+          <SearchResults
+            id="src"
+            query={searchQuery}
+            filter={filterTag}
+            results={results}
+          />
+        )}
         {!isShown && <ModuleListing id="modules" postEdges={postEdges} />}
       </div>
       {!isFirst && (
@@ -96,7 +100,14 @@ export const moduleQuery = graphql`
           frontmatter {
             title
             tags
-            cover
+            cover {
+              publicURL
+              childImageSharp {
+                sizes(maxWidth: 2000) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
             date
           }
         }

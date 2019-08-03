@@ -1,11 +1,10 @@
 ---
 posttype: "module"
 title: "Farming"
-cover: "https://unsplash.it/400/300/?random?BoldMage"
+cover: "./title.png"
 date: "01/01/2017"
 category: "tech"
-tags:
-    - Logic
+tags: "Logic"
 ---
 
 ![header](title.png)

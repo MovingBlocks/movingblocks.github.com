@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Row, Col } from "reactstrap";
+import Img from 'gatsby-image';
 
 export default ({ postEdges }) => {
   const getPostList = () => {
@@ -12,7 +13,7 @@ export default ({ postEdges }) => {
         cover: postEdge.node.frontmatter.cover,
         title: postEdge.node.frontmatter.title,
         date: postEdge.node.fields.date,
-        excerpt: postEdge.node.excerpt,
+        desc: postEdge.node.frontmatter.description,
         timeToRead: postEdge.node.timeToRead
       });
     });
@@ -26,14 +27,14 @@ export default ({ postEdges }) => {
         <Col md="4">
           <div className="card-content">
             <div className="card-img">
-              <img src={post.cover} alt={post.title} />
+              <Img sizes={post.cover.childImageSharp.sizes} alt={post.title} />
               <span>
                 <h4>{post.tags}</h4>
               </span>
             </div>
             <div className="card-desc">
-              <h4>{post.title}</h4>
-              <p>{post.excerpt}</p>
+              <h4 className="post-content">{post.title}</h4>
+              <p>{post.desc}</p>
               <Link
                 to={`/blog/${post.path}`}
                 key={post.title}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "../layout";
-import ModuleListing from "../components/ModuleListing/ModuleListing";
+import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
@@ -63,9 +63,10 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  p
             query={searchQuery}
             filter={filterTag}
             results={results}
+            postEdges={postEdges}
           />
         )}
-        {!isShown && <ModuleListing id="modules" postEdges={postEdges} />}
+        {!isShown && <PostListing id="modules" postEdges={postEdges} />}
       </div>
       {!isFirst && (
         <Link to={`${prefix}${prevPage}`} rel="prev">
@@ -100,15 +101,15 @@ export const moduleQuery = graphql`
           frontmatter {
             title
             tags
+            date
             cover {
               publicURL
               childImageSharp {
-                sizes(maxWidth: 2000) {
+                sizes(maxWidth: 768) {
                   ...GatsbyImageSharpSizes
                 }
               }
             }
-            date
           }
         }
       }

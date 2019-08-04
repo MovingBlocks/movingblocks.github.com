@@ -2,7 +2,7 @@ const config = {
   siteTitle: "Terasology Project", // Site title.
   siteTitleShort: "Terasology", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "Terasology Project | An Open Source Voxel World", // Alternative site title for SEO.
-  siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
+  siteLogo: "/logos/logo.png", // Logo used for SEO and manifest.
   siteUrl: "https://terasology.org", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for RSS feeds/meta description tag.

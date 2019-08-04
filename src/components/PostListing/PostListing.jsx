@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Row, Col } from "reactstrap";
+import { Badge, Row, Col } from "reactstrap";
 import Img from 'gatsby-image';
 
 export default ({ postEdges }) => {
@@ -28,11 +28,11 @@ export default ({ postEdges }) => {
           <div className="card-content">
             <div className="card-img">
               <Img sizes={post.cover.childImageSharp.sizes} alt={post.title} />
-              <span>
-                <h4>{post.tags}</h4>
-              </span>
             </div>
             <div className="card-desc">
+            <div className="md-tag">
+                <Badge>{post.tags}</Badge>
+              </div>
               <h4 className="post-content">{post.title}</h4>
               <p>{post.desc}</p>
               <Link

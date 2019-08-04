@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import SearchForm from "../components/SearchForm/SearchForm";
+import SearchForm from "../components/BlogSearchForm/BlogSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
@@ -41,7 +41,7 @@ export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props
         DATA.filter(blog => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return blog.tags[0].match(tagRgx) && blog.title.match(searchRgx);
+          return blog.tags.match(tagRgx) && blog.title.match(searchRgx);
         })
       );
       setIsShown(true);
@@ -65,7 +65,7 @@ export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props
             results={results}
           />
         )}
-        {!isShown && <PostListing id="modules" postEdges={postEdges} />}
+        {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>
       {!isFirst && (
         <Link to={`${prefix}${prevPage}`} rel="prev">

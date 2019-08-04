@@ -1,38 +1,56 @@
 [
   {
-    "path": "/blog/say-hello-to-our-new-website",
-    "tags": "Announcement",
-    "title": "Say Hello to Our New Website!",
-    "date": "2017-06-14"
-  },
-  {
     "path": "/blog/gsoc-2017-an-overview",
-    "tags": "Announcement",
+    "tags": "GSoC",
+    "cover": {
+      "publicURL": "/static/cover-02eacd41fa1a2c04252403fa79c5f1a9.jpg"
+    },
     "title": "GSOC 2017 - An Overview",
-    "date": "2017-07-14"
+    "description": "The first hurdle of Google Summer of Code is already over for our students, so it's about time to happily announce that all ten students have passed the first evaluation."
   },
   {
     "path": "/blog/lost-exploration-world",
-    "tags": "Announcement",
+    "tags": "Project",
+    "cover": {
+      "publicURL": "/static/cover-f1716dd84106e92556709ddecea7db9c.jpg"
+    },
     "title": "Lost Exploration World",
-    "date": "2017-09-17"
+    "description": "It all started with one hot sleepless night in October. I stumbled upon the Terasology project and hopped on to the org's IRC."
+  },
+  {
+    "path": "/blog/say-hello-to-our-new-website",
+    "tags": "Update",
+    "cover": {
+      "publicURL": "/static/cover-36490eab8dbb0a4ae8a1c8a643039e6d.jpg"
+    },
+    "title": "Say Hello to Our New Website!",
+    "description": "If you have visited our website before you might notice something different now. Yep, we have a new design!"
   },
   {
     "path": "/blog/google-code-in-with-tiled",
-    "tags": "Announcement",
+    "tags": "Update",
+    "cover": {
+      "publicURL": "/static/cover-7a1748f57787e6b191d9f87d6bf63a50.jpg"
+    },
     "title": "Google Code-In with Tiled",
-    "date": "2017-11-28"
+    "description": "MovingBlocks is once again participating in Google Code-In this year. Google Code-In is a program aimed at getting younger students..."
   },
   {
     "path": "/blog/gsoc-2018-results",
-    "tags": "Announcement",
+    "tags": "GSoC",
+    "cover": {
+      "publicURL": "/static/cover-b25f979477137945540267cd05cc91f2.jpg"
+    },
     "title": "GSOC 2018 - Results",
-    "date": "2018-09-02"
+    "description": "For Google Summer of Code (GSOC) 2018 we had 9 awesome students working on a mix of content tasks and other improvements."
   },
   {
     "path": "/blog/gsoc-2019-an-overview",
-    "tags": "Announcement",
+    "tags": "GSoC",
+    "cover": {
+      "publicURL": "/static/cover-cf3b939df010662b145b4380cb9e76ee.png"
+    },
     "title": "GSOC 2019 - An Overview",
-    "date": "2019-05-29"
+    "description": "It’s that time of the year again - Google Summer of Code (GSOC) is ahead of us. For the 4th year running we welcome students to become part of our community and join efforts with mentors..."
   }
 ]

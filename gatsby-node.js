@@ -69,11 +69,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 posttype
                 cover {
                   publicURL
-                  childImageSharp {
-                    sizes(maxWidth: 768) {
-                      src
-                    }
-                  }
                 }
               }
             }
@@ -106,8 +101,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 tags
                 category
-                date
+                description
                 posttype
+                cover {
+                  publicURL
+                }
               }
             }
           }
@@ -128,8 +126,7 @@ exports.createPages = async ({ graphql, actions }) => {
       tags: edge.node.frontmatter.tags,
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
-      date: edge.node.frontmatter.date,
-      excerpt: edge.node.excerpt
+      description: edge.node.frontmatter.description
     });
   });
   const blogJSON = JSON.stringify(blogList, null, 2);
@@ -169,6 +166,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 category
                 date
                 posttype
+                cover {
+                  publicURL
+                }
               }
             }
           }

@@ -7,7 +7,7 @@ import SEO from "../components/SEO/SEO";
 import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
-import blogList from "../generated/result.json";
+import blogList from "../generated/blog-result.json";
 
 export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props) => {
   const postEdges = data.allMarkdownRemark.edges;

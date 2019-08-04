@@ -67,6 +67,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 category
                 date
                 posttype
+                cover {
+                  publicURL
+                  childImageSharp {
+                    sizes(maxWidth: 768) {
+                      src
+                    }
+                  }
+                }
               }
             }
           }
@@ -79,6 +87,9 @@ exports.createPages = async ({ graphql, actions }) => {
     console.error(markdownQueryResult.errors);
     throw markdownQueryResult.errors;
   }
+
+  const blogList = [];
+  const moduleList = [];
 
   const blogQueryResult = await graphql(
     `
@@ -111,6 +122,18 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const posts = blogQueryResult.data.allMarkdownRemark.edges;
+  posts.forEach(edge => {
+    blogList.push({
+      path: `/blog${edge.node.fields.slug}`,
+      tags: edge.node.frontmatter.tags,
+      cover: edge.node.frontmatter.cover,
+      title: edge.node.frontmatter.title,
+      date: edge.node.frontmatter.date,
+      excerpt: edge.node.excerpt
+    });
+  });
+  const blogJSON = JSON.stringify(blogList, null, 2);
+  fs.writeFileSync("./src/generated/blog-result.json", blogJSON);
   const postsPerPage = 6;
   const postsNumPages = Math.ceil(posts.length / postsPerPage);
   Array.from({
@@ -160,6 +183,18 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const modules = moduleQueryResult.data.allMarkdownRemark.edges;
+  modules.forEach(edge => {
+    moduleList.push({
+      path: `/modules${edge.node.fields.slug}`,
+      tags: edge.node.frontmatter.tags,
+      cover: edge.node.frontmatter.cover,
+      title: edge.node.frontmatter.title,
+      date: edge.node.frontmatter.date,
+      excerpt: edge.node.excerpt
+    });
+  });
+  const moduleJSON = JSON.stringify(moduleList, null, 2);
+  fs.writeFileSync("./src/generated/module-result.json", moduleJSON);
   const modulesPerPage = 6;
   const moduleNumPages = Math.ceil(modules.length / modulesPerPage);
   Array.from({
@@ -226,48 +261,4 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     }
   });
-};
-
-exports.onPreBuild = async ({ graphql }) => {
-  // eslint-disable-next-line no-unused-vars
-  var markdownQueryResult = {};
-  markdownQueryResult = graphql(
-    `
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              excerpt
-              fields {
-                slug
-              }
-              frontmatter {
-                posttype
-                title
-                tags
-                cover
-                date
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-    .then(res => {
-      const moduleList = [];
-      res.data.allMarkdownRemark.edges.forEach(edge => {
-        moduleList.push({
-          path: `/modules${edge.node.fields.slug}`,
-          tags: edge.node.frontmatter.tags,
-          cover: edge.node.frontmatter.cover,
-          title: edge.node.frontmatter.title,
-          date: edge.node.frontmatter.date,
-          excerpt: edge.node.excerpt
-        });
-      });
-      const moduleJSON = JSON.stringify(moduleList, null, 2);
-      fs.writeFileSync("./src/generated/result.json", moduleJSON);
-    })
-    .catch(console.error);
 };

@@ -1,7 +1,7 @@
 ---
 posttype: "module"
 title: "Light And Shadow"
-cover: "https://unsplash.it/400/300/?random?BoldMage"
+cover: "../farming/title.png"
 date: "01/01/2017"
 category: "tech"
 tags: "Gameplay Template"

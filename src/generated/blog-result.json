@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/blog/say-hello-to-our-new-website",
+    "tags": "Announcement",
+    "title": "Say Hello to Our New Website!",
+    "date": "2017-06-14"
+  },
+  {
+    "path": "/blog/gsoc-2017-an-overview",
+    "tags": "Announcement",
+    "title": "GSOC 2017 - An Overview",
+    "date": "2017-07-14"
+  },
+  {
+    "path": "/blog/lost-exploration-world",
+    "tags": "Announcement",
+    "title": "Lost Exploration World",
+    "date": "2017-09-17"
+  },
+  {
+    "path": "/blog/google-code-in-with-tiled",
+    "tags": "Announcement",
+    "title": "Google Code-In with Tiled",
+    "date": "2017-11-28"
+  },
+  {
+    "path": "/blog/gsoc-2018-results",
+    "tags": "Announcement",
+    "title": "GSOC 2018 - Results",
+    "date": "2018-09-02"
+  },
+  {
+    "path": "/blog/gsoc-2019-an-overview",
+    "tags": "Announcement",
+    "title": "GSOC 2019 - An Overview",
+    "date": "2019-05-29"
+  }
+]

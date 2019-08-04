@@ -7,7 +7,7 @@ import SEO from "../components/SEO/SEO";
 import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
-import moduleList from "../generated/result.json";
+import moduleList from "../generated/module-result.json";
 
 export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  props) => {
   const postEdges = data.allMarkdownRemark.edges;
@@ -41,7 +41,7 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  p
         DATA.filter(module => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return module.tags[0].match(tagRgx) && module.title.match(searchRgx);
+          return module.tags.match(tagRgx) && module.title.match(searchRgx);
         })
       );
       setIsShown(true);

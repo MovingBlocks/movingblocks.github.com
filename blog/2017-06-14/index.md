@@ -12,7 +12,7 @@ tags: "Update"
 
 <br>
 
-If you have visited our website before you might notice something different now. Yep, we have a new design!
+If you have visited our website in the past you might notice something different. Yep, we have a new design!
 
 Our new website is heavily inspired by Google's Material Design and is inline with the Design Unification Project ([Read more](http://forum.terasology.org/threads/design-unification-project-web-game-etc.1746/))
 

@@ -17,7 +17,7 @@ nav {
 }
 
 .btn-download {
-  font-size: 1.6em;
+  font-size: 1.6rem;
 }
 
 .download {
@@ -29,6 +29,10 @@ nav {
 .slideIn {
   -webkit-animation-name: slideIn;
   animation-name: slideIn;
+}
+
+li:last-child {
+  margin-left: 0.5em;
 }
 
 .dropdown-item {

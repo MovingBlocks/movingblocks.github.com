@@ -28,8 +28,9 @@ const SearchForm = ({ query, filter }) => (
             value={filter}
           >
             <option value="">All</option>
-            <option value="gameplay">Gameplay</option>
-            <option value="logic">Logic</option>
+            <option value="gsoc">Google Summer Of Code</option>
+            <option value="project">Project</option>
+            <option value="update">Update</option>
           </Input>
         </FormGroup>
       </Col>

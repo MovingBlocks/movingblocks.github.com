@@ -6,8 +6,7 @@ import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import "./b16-tomorrow-dark.css";
-import "./post.css";
+import Img from 'gatsby-image';
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -29,11 +28,17 @@ export default class PostTemplate extends React.Component {
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <div className={"title"}>
+              <h1>{post.title}</h1>
+              <h6>Posted by {post.author} on <span>{post.ddate}</span></h6>
+            </div>
+            <br />
+            <Img className={"post-cover"} sizes={post.cover.childImageSharp.sizes} style={{maxHeight: 500}} />
+            <br /><hr />
+            <div className="post-content" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <hr />
             <div className="post-meta">
-              <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
+            <SocialLinks postPath={slug} postNode={postNode} />
             </div>
           </div>
         </div>
@@ -51,10 +56,17 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        cover
-        date
-        category
+        ddate
         tags
+        author
+        cover {
+          publicURL
+          childImageSharp {
+            sizes(maxWidth: 768) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
       fields {
         slug

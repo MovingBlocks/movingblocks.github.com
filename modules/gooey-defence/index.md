@@ -1,11 +1,10 @@
 ---
 posttype: "module"
 title: "Gooey Defence"
-cover: "https://unsplash.it/400/300/?random?BoldMage"
+cover: "../farming/title.png"
 date: "01/01/2017"
 category: "tech"
-tags:
-    - Gameplay Template
+tags: "Gameplay Template"
 ---
 This module serves as the main module for the Gooey's Defence Gameplay Template.  
 It currently is undergoing active development and thus is not at a public release stage.

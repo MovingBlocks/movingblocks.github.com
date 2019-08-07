@@ -1,18 +1,18 @@
 import React from "react";
 import _ from "lodash";
 import { Link } from "gatsby";
+import { Button } from "reactstrap";
 
-export default ({ tags }) => (
+export default ({ tags, type }) => (
   <div className="post-tag-container">
-    {tags &&
-      tags.map(tag => (
+    {tags && 
         <Link
-          key={tag}
+          key={tags}
           style={{ textDecoration: "none" }}
-          to={`/tags/${_.kebabCase(tag)}`}
+          to={`/${type}/?keywords=&filter=${_.kebabCase(tags)}`}
         >
-          <button>{tag}</button>
+          <Button color="primary" size="lg">{tags}</Button>
         </Link>
-      ))}
+      }
   </div>
 );

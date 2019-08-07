@@ -5249,6 +5249,11 @@ gatsby-cli@^2.6.5:
     ink "^2.0.5"
     ink-spinner "^3.0.1"
 
+gatsby-core-utils@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.3.tgz#f7616192ac0b4d0fc04587d924533c3cece70980"
+  integrity sha512-01B0wqVTftFcYwVR7HGJy+Nriy+xxC++VZhsWNCFWtby1NwfSDUwkoScGcZ/jXvg9waEmBC1n70FwVIDnoHzSA==
+
 gatsby-image@^2.0.41:
   version "2.0.41"
   resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.0.41.tgz#d2f41b13013c7294123c341799d3645bb1a6dbe7"
@@ -5359,24 +5364,26 @@ gatsby-plugin-sass@^2.0.11:
     "@babel/runtime" "^7.0.0"
     sass-loader "^7.0.1"
 
-gatsby-plugin-sharp@^2.0.37:
-  version "2.0.37"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.37.tgz#3cc07de6b3eb13df80317ad45bd639074a4f2d59"
-  integrity sha512-SB0aLXx+wP6dm9ph5r+4TKHyaBdOWmADADIzyxvWF3BQiL2ErqSvoRc16GuAhQUeUJYNkU5cUs+NvA0lVMz0Mg==
+gatsby-plugin-sharp@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.2.9.tgz#9a5a4778e767c31621dd4cc46271b64a7af4b8de"
+  integrity sha512-yFaBuV4G6NRl3ExkWOJFtQlUO5rA3guvuR+30GwwdiHTSYuIFBvoCDgKQ+4k2fpAM5tbG6BHaUr7r/ccxWUWYg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     async "^2.1.2"
     bluebird "^3.5.0"
     fs-extra "^7.0.0"
+    gatsby-core-utils "^1.0.0"
+    got "^8.3.2"
     imagemin "^6.0.0"
     imagemin-mozjpeg "^8.0.0"
     imagemin-pngquant "^6.0.0"
     imagemin-webp "^5.0.0"
-    lodash "^4.17.10"
+    lodash "^4.17.14"
     mini-svg-data-uri "^1.0.0"
     potrace "^2.1.1"
     probe-image-size "^4.0.0"
-    progress "^1.1.8"
+    progress "^2.0.3"
     semver "^5.6.0"
     sharp "^0.22.1"
     svgo "^1.2.0"
@@ -5432,15 +5439,15 @@ gatsby-remark-copy-linked-files@^2.0.12:
     probe-image-size "^4.0.0"
     unist-util-visit "^1.3.0"
 
-gatsby-remark-images@^3.0.11:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.11.tgz#248d3575720802df67f4320feb4dceb42188ac57"
-  integrity sha512-EWcxWXyBYsHaAmFAT4Icxz7OFcurhVqRfSrHf/CeJ2Olk8rmBIIrrUnDW/mSOAdO1fPB7RHA1HHGBjanhGYL4w==
+gatsby-remark-images@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.7.tgz#baa168afe680f4b6f209ee1d04aa801de38aaa23"
+  integrity sha512-lTfHUUwCLEMpM4OlaLzjipcuuOIgj1PoxXhFwETgR3qaeLRovMtvCF26NqYShBkGn8R42WnegJw5Wh4yTQJDow==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
     is-relative-url "^2.0.0"
-    lodash "^4.17.10"
+    lodash "^4.17.14"
     mdast-util-definitions "^1.2.0"
     potrace "^2.1.1"
     query-string "^6.1.0"
@@ -6060,7 +6067,7 @@ got@^7.0.0, got@^7.1.0:
     url-parse-lax "^1.0.0"
     url-to-options "^1.0.1"
 
-got@^8.3.1:
+got@^8.3.1, got@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/got/-/got-8.3.2.tgz#1d23f64390e97f776cac52e5b936e5f514d2e937"
   integrity sha512-qjUJ5U/hawxosMryILofZCkm3C84PLJS/0grRIpjAwu+Lkxxj5cxeCU25BG0/3mDSpXKTyZr8oh8wIgLaH0QCw==
@@ -7963,6 +7970,11 @@ lodash.uniq@^4.5.0:
 lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@~4.17.10:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
+lodash@^4.17.14:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -10362,6 +10374,11 @@ progress@^1.1.8:
 progress@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
+
+progress@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
+  integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
 promise-inflight@^1.0.1:
   version "1.0.1"

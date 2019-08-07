@@ -6,8 +6,6 @@ import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import "./b16-tomorrow-dark.css";
-import "./post.css";
 
 export default class ModuleTemplate extends React.Component {
   render() {
@@ -30,10 +28,11 @@ export default class ModuleTemplate extends React.Component {
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <h1>{post.title}</h1>
+            <hr></hr>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
-              <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
+              <PostTags tags={post.tags} type={"modules"} />
+              <SocialLinks postPath={"/modules"+slug} postNode={postNode} />
             </div>
           </div>
         </div>
@@ -51,7 +50,14 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        cover
+        cover {
+          publicURL
+          childImageSharp {
+            sizes(maxWidth: 2000) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
         date
         category
         tags

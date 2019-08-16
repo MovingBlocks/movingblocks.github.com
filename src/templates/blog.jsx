@@ -54,7 +54,7 @@ export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props
   return (
     <Layout>
       <div className="index-container">
-        <Helmet title={config.siteTitle} />
+        <Helmet title={`Blog | ${config.siteTitle}`} />
         <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
         {isShown && (

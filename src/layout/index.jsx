@@ -14,10 +14,10 @@ export default ({ children, location }) => (
   <body>
     <Helmet>
       <meta name="description" content={config.siteDescription} />
+      <link rel="icon shortcut" href={favicon} type="image/png" />
     </Helmet>
     <Header />
     <Container className="main">{children}</Container>
-    <link rel="icon shortcut" href={favicon} type="image/png" />
     <Footer />
   </body>
 );

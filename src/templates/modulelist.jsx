@@ -54,7 +54,7 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  p
   return (
     <Layout>
       <div className="index-container">
-        <Helmet title={config.siteTitle} />
+      <Helmet title={`Modules | ${config.siteTitle}`} />
         <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
         {isShown && (

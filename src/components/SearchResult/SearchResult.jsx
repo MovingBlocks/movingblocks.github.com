@@ -41,9 +41,6 @@ const SearchResults = ({ query, filter, results }) => (
                 <Link to={path} key={title} className="btn-card">
                   Read More
                 </Link>
-                <Link to={path} key={title} className="btn-card">
-                  Download
-                </Link>
               </div>
             </div>
           </Col>

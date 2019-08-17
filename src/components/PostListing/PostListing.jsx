@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
 import Img from 'gatsby-image';
 
-export default ({ postEdges }) => {
+export default ({ id, postEdges }) => {
   const getPostList = () => {
     const postList = [];
     postEdges.forEach(postEdge => {
@@ -36,7 +36,7 @@ export default ({ postEdges }) => {
               <h4 className="post-content">{post.title}</h4>
               <p>{post.desc}</p>
               <Link
-                to={`/blog/${post.path}`}
+                to={`/${id}/${post.path}`}
                 key={post.title}
                 className="btn-card"
               >

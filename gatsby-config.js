@@ -98,7 +98,7 @@ module.exports = {
         theme_color: config.themeColor,
         display: "minimal-ui",
         icons: [{
-          src: "/logos/logo.png",
+          src: "/static/logos/logo.png",
           sizes: "192x192",
           type: "image/png"
         }]

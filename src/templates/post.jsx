@@ -38,7 +38,7 @@ export default class PostTemplate extends React.Component {
             <div className="post-content" dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <hr />
             <div className="post-meta">
-            <SocialLinks postPath={slug} postNode={postNode} />
+            <SocialLinks postPath={"/blog"+slug} postNode={postNode} />
             </div>
           </div>
         </div>

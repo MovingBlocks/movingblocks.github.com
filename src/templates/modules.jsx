@@ -6,6 +6,7 @@ import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
+import Img from "gatsby-image";
 
 export default class ModuleTemplate extends React.Component {
   render() {
@@ -24,14 +25,15 @@ export default class ModuleTemplate extends React.Component {
         <div>
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
-          </Helmet>
+            </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
+            <Img className={"post-cover"} sizes={post.cover.childImageSharp.sizes} style={{maxHeight: 500}} />
             <h1>{post.title}</h1>
+            <PostTags tags={post.tags} type={"modules"} />
             <hr></hr>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
-              <PostTags tags={post.tags} type={"modules"} />
               <SocialLinks postPath={"/modules"+slug} postNode={postNode} />
             </div>
           </div>

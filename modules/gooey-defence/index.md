@@ -1,7 +1,7 @@
 ---
 posttype: "module"
 title: "Gooey Defence"
-cover: "../farming/title.png"
+cover: "../../static/logos/cover.jpg"
 date: "01/01/2017"
 category: "tech"
 tags: "Gameplay Template"

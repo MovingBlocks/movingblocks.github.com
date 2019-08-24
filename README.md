@@ -1,58 +1,61 @@
+<h1 align="center">Module Showcase Website</h1>
+
+<h5 align="center">Keeping track of Terasology's modules since 2019.</h5>
+
+[![status](https://img.shields.io/badge/status-pre--alpha-red.svg)](https://github.com/Terasology/terasology.github.io)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/Terasology/terasology.github.io.svg)](hhttps://github.com/Terasology/terasology.github.io/issues/)
+
+---
+
 <p align="center">
-  <h3 align="center">Module Showcase Website</h3>
-  <p align="center">
-    Keeping track of Terasology's modules since 2019.
-  </p>
+  <a href="#setup">About</a>&nbsp;&nbsp;
+  <a href="#help">Setup</a>&nbsp;&nbsp;
+  <a href="#testing">Testing</a>&nbsp;&nbsp;
+  <a href="#contributing">Contributing</a>
 </p>
 
-## Table of Contents
+---
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Setup](#setup)
+<h2 id="about">About The Project</h2>
 
-## About The Project
 Terasology’s basic engine can be extended by a huge amount (201 right now!) of modules. Keeping track of them is not the easiest task. This is why this gatsby framework provides an automated generator for a website, listing all of them. This showcase website will increase discoverability by allowing to filter and search for modules by keywords and categories.
 
-### Built With
+<h2 id="built-with">Built With</h2>
+
 The following generator is built using the following software, you'll need them installed in your workspace to run properly. 
 * [Node](https://nodejs.org/en/)
 * [Gatsby](https://www.gatsbyjs.org/)
-* [Groovy](http://groovy-lang.org/)
 
-## Getting Started
-The generator repository at [https://github.com/Terasology/terasology.github.io](https://github.com/Terasology/terasology.github.io) is the heart and central workspace of Module Showcase Website. To set up the workspace is a fairly easy process:
+<h2 id="setup">Setup</h2>
 
-### Prerequisites
 The generator uses node and backend framework and yarn as a pack manager.
 * node
 
 Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
 * yarn
-```sh
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-sudo apt-get update && sudo apt-get install yarn
-```
-If using  `nvm`  you can avoid the  `node`  installation by doing:
-```sh
-sudo apt-get update && sudo apt-get install --no-install-recommends yarn
-```
+Download and setup yarn package manager from [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
 
-### Setup
-1. Clone the repo
-```sh
-git clone https://github.com/Terasology/terasology.github.io
-```
-2. Install Node packages
-```sh
-yarn
-```
-3. Run the generator locally
-```sh
-gatsby  develop
-```
+- Fork the repository
+- Clone the repository `git clone forked-repository-link`
+- Navigate inside the repository `cd terasology.github.io`
+- Install the dependencies ( yarn is recommended ) `yarn install --production`
+- Test the website `gatsby develop`
+
+<h2 id="testing">Testing</h2>
+
+<h2 id="contributing">Contributing</h2>
+
+To add a new feature or fix a bug follow the steps - 
+
+- Make sure your local workspace is up-to-date with the main repository.
+    - Add the original repository as `upstream` in you local git remote `git remote add upstream https://github.com/Terasology/terasology.github.io`
+    - Fetch the latest code `git fetch remote upstream master`
+    - Checkout to your local master branch `git checkout master`
+    - Merge changes from `upstream/master` to sync `git merge upstream/master`
+- Create a new branch to work on the new feature or bug via the updated master branch `git checkout -b "branch_name"`
+- Work on feature/bug and stage all the files to commit it on that branch `git add .` > `git commit -m "Commit Message"`
+- Push the branch to your fork `git push -u origin branch_name`
+- Create a pull request.

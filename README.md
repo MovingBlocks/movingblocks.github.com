@@ -26,6 +26,7 @@ Terasology’s basic engine can be extended by a huge amount (201 right now!) of
 The following generator is built using the following software, you'll need them installed in your workspace to run properly. 
 * [Node](https://nodejs.org/en/)
 * [Gatsby](https://www.gatsbyjs.org/)
+* [Yarn](https://yarnpkg.com/en/)
 
 <h2 id="setup">Setup</h2>
 

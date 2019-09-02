@@ -31,6 +31,7 @@ The following generator is built using the following software, you'll need them 
 <h2 id="setup">Setup</h2>
 
 The generator uses node and backend framework and yarn as a pack manager.
+
 * node
 
 Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
@@ -39,10 +40,14 @@ Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.
 
 Download and setup yarn package manager from [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
 
+* gatsby-cli
+
+You can install `gatsby-cli` using npm via `npm install -g gatsby-cli` 
+
 - Fork the repository
 - Clone the repository `git clone forked-repository-link`
 - Navigate inside the repository `cd terasology.github.io`
-- Install the dependencies ( yarn is recommended ) `yarn install --production`
+- Install the dependencies ( yarn is recommended ) `yarn`
 - Test the website `gatsby develop`
 
 <h2 id="testing">Testing</h2>

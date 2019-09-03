@@ -43,7 +43,7 @@ export default () => {
             <NavItem>
               <NavLink href="/modules">Modules</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="download-btn">
               <NavLink
                 className="btn btn-primary btn-download"
                 href="https://github.com/MovingBlocks/TerasologyLauncher/releases/latest/download/TerasologyLauncher.zip"

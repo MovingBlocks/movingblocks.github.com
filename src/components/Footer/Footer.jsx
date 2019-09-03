@@ -18,9 +18,7 @@ export default () => (
       <Row>
         <Col md="3">
           <h5>
-            Terasology,
-            <br />
-            Moving Blocks!
+            The Terasology Foundation
           </h5>
         </Col>
         <Col md="3">

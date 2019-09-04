@@ -4,7 +4,7 @@
 
 [![status](https://img.shields.io/badge/status-pre--alpha-red.svg)](https://github.com/Terasology/terasology.github.io)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/Terasology/terasology.github.io.svg)](hhttps://github.com/Terasology/terasology.github.io/issues/)
+[![GitHub issues](https://img.shields.io/github/issues/Terasology/terasology.github.io.svg)](https://github.com/Terasology/terasology.github.io/issues/)
 
 ---
 

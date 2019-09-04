@@ -1,7 +1,7 @@
 ---
 posttype: "module"
 title: "Gooey Example"
-cover: "../farming/title.png"
+cover: "../../static/logos/cover.jpg"
 date: "01/01/2017"
 category: "logic"
 tags: "Logic"

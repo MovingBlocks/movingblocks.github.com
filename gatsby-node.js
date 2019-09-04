@@ -119,6 +119,13 @@ exports.createPages = async ({ graphql, actions }) => {
     throw blogQueryResult.errors;
   }
 
+  fs.mkdir('src/generated', (err) => {
+    if (err) {
+      return console.log(err);
+    }
+  console.log("Directory created successfully!");
+  });
+
   const posts = blogQueryResult.data.allMarkdownRemark.edges;
   posts.forEach(edge => {
     blogList.push({

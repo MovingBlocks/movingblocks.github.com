@@ -1,9 +1,11 @@
-var git = require('simple-git')
-var fs = require('fs-extra')
+/* eslint-disable no-console */
 
-var repoLink = "" // Repository link for metadata
-var branchName = "" // Branch containing formatted metadata
-var metaDir = "modules" // Directory containing module data to build the website
+const git = require('simple-git')
+const fs = require('fs-extra')
+
+const repoLink = process.env.META // Repository link for metadata
+const branchName = process.env.BRANCH // Branch containing formatted metadata
+const metaDir = "modules" // Directory containing module data to build the website
 
 // Deletes boilerplate data while deploying to render
 fs.remove(metaDir, err => {

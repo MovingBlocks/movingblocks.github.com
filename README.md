@@ -21,6 +21,8 @@
 
 Terasology’s basic engine can be extended by a huge amount (201 right now!) of modules. Keeping track of them is not the easiest task. This is why this gatsby framework provides an automated generator for a website, listing all of them. This showcase website will increase discoverability by allowing to filter and search for modules by keywords and categories.
 
+---
+
 <h2 id="built-with">Built With</h2>
 
 The following generator is built using the following software, you'll need them installed in your workspace to run properly. 
@@ -28,29 +30,38 @@ The following generator is built using the following software, you'll need them 
 * [Gatsby](https://www.gatsbyjs.org/)
 * [Yarn](https://yarnpkg.com/en/)
 
+---
+
 <h2 id="setup">Setup</h2>
 
 The generator uses node and backend framework and yarn as a pack manager.
+* Setting up workspace
 
-* node
+  * node
 
-Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+    * Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
-* yarn
+  * yarn
 
-Download and setup yarn package manager from [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
+    * Download and setup yarn package manager from [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
 
-* gatsby-cli
+  * gatsby-cli
 
-You can install `gatsby-cli` using npm via `npm install -g gatsby-cli` 
+    * You can install `gatsby-cli` using npm via `npm install -g gatsby-cli` or using yarn via `yarn global add gatsby-cli`
+
 
 - Fork the repository
 - Clone the repository `git clone forked-repository-link`
 - Navigate inside the repository `cd terasology.github.io`
 - Install the dependencies ( yarn is recommended ) `yarn`
-- Test the website `gatsby develop`
+
+---
 
 <h2 id="testing">Testing</h2>
+
+You can test the website locally using `gatsby develop` or you can deploy the site to [GitHub Pages](https://pages.github.com/) or [Render](https://render.com/) using the deploy scripts present in the `scripts` directory via NodeJs.
+
+---
 
 <h2 id="contributing">Contributing</h2>
 
@@ -65,3 +76,9 @@ To add a new feature or fix a bug follow the steps -
 - Work on feature/bug and stage all the files to commit it on that branch `git add .` > `git commit -m "Commit Message"`
 - Push the branch to your fork `git push -u origin branch_name`
 - Create a pull request.
+
+---
+
+## Contributors
+
+A list of contributors can be found [here](https://github.com/Terasology/terasology.github.io/graphs/contributors).

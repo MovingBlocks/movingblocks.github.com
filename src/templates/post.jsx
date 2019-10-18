@@ -1,12 +1,12 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import Img from 'gatsby-image';
 import Layout from "../layout";
 import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import Img from 'gatsby-image';
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -30,15 +30,16 @@ export default class PostTemplate extends React.Component {
           <div>
             <div className={"title"}>
               <h1>{post.title}</h1>
-              <h6>Posted by {post.author} on <span>{post.ddate}</span></h6>
+              <h6> Posted by {post.author} on <span>{post.ddate}</span></h6>
             </div>
             <br />
             <Img className={"post-cover"} sizes={post.cover.childImageSharp.sizes} style={{maxHeight: 500}} />
-            <br /><hr />
+            <br />
+            <hr />
             <div className="post-content" dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <hr />
             <div className="post-meta">
-            <SocialLinks postPath={"/blog"+slug} postNode={postNode} />
+              <SocialLinks postPath={`/blog${slug}`} postNode={postNode} />
             </div>
           </div>
         </div>

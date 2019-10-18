@@ -8,6 +8,7 @@ import SearchForm from "../components/BlogSearchForm/BlogSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
+import favicon from "../../static/logos/logo.png";
 
 export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props) => {
   const postEdges = data.allMarkdownRemark.edges;

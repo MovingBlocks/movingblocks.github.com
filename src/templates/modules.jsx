@@ -1,12 +1,12 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import Layout from "../layout";
 import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import Img from "gatsby-image";
 
 export default class ModuleTemplate extends React.Component {
   render() {
@@ -25,16 +25,20 @@ export default class ModuleTemplate extends React.Component {
         <div>
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
-            </Helmet>
+            <meta property="og:title" content={config.siteTitle} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={`${config.siteUrl}/modules${slug}`} />
+            <meta property="og:image" content="" />
+          </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <Img className={"post-cover"} sizes={post.cover.childImageSharp.sizes} style={{maxHeight: 500}} />
             <h1>{post.title}</h1>
             <PostTags tags={post.tags} type={"modules"} />
-            <hr></hr>
+            <hr />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
-              <SocialLinks postPath={"/modules"+slug} postNode={postNode} />
+              <SocialLinks postPath={`/modules${slug}`} postNode={postNode} />
             </div>
           </div>
         </div>

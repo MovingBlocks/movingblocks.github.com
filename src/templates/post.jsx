@@ -25,12 +25,16 @@ export default class PostTemplate extends React.Component {
         <div>
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
+            <meta property="og:title" content={config.siteTitle} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={`${config.siteUrl}/post${slug}`} />
+            <meta property="og:image" content="" />
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <div className={"title"}>
               <h1>{post.title}</h1>
-              <h6> Posted by {post.author} on <span>{post.ddate}</span></h6>
+              <h6>Posted by {post.author} on <span>{post.ddate}</span></h6>
             </div>
             <br />
             <Img className={"post-cover"} sizes={post.cover.childImageSharp.sizes} style={{maxHeight: 500}} />

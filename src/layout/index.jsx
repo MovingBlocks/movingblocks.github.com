@@ -19,7 +19,7 @@ export default ({ children, location }) => (
       <meta property="og:title" content={config.siteTitle} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={config.siteUrl} />
-      <meta property="og:image" content={favicon} />
+      <meta property="og:image" content="" />
     </Helmet>
 
     <body>

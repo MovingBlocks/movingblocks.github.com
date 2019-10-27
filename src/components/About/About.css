@@ -8,7 +8,7 @@
 }
 
 .about_bg{
-  background-image: url('./images/ss_2.jpg');
+  background-image: url('../../../static/images/2.jpg');
   width: 100%;
   height: 400px;
   background-repeat: no-repeat;
@@ -37,25 +37,4 @@
 }
 section p{
   font-size:15px;
-}
-.mod_bg{
-  width: 100%;
-  height: 100%;
-  background-image: url('./images/mods.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.mod_api-bg{
-  width: 100%;
-  height: 100%;
-  background-image: url('./images/mod2.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.mod_group{
-  width: 100%;
-  height: 100%;
-  background-image: url('./images/community.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 }

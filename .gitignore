@@ -63,4 +63,4 @@ src/generated/blog-result.json
 src/generated/module-result.json
 
 #Intellij Configuration files
-.idea/*
+.idea/

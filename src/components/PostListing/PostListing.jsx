@@ -30,7 +30,7 @@ export default ({ id, postEdges }) => {
               <Img sizes={post.cover.childImageSharp.sizes} alt={post.title} />
             </div>
             <div className="card-desc">
-            <div className="md-tag">
+              <div className="md-tag">
                 <Badge>{post.tags}</Badge>
               </div>
               <h4 className="post-content">{post.title}</h4>

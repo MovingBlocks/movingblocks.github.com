@@ -1,0 +1,22 @@
+iframe {
+    width: 100%;
+    min-height: 400px;
+    padding-top: 5%;
+}
+
+.p-title {
+    padding-top: 10%;
+    font-style: italic;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: gray;
+    border: gray;
+    padding: 10px;
+}
+
+.link-about{
+    color: gray;
+}

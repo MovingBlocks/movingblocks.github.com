@@ -11,12 +11,19 @@ iframe {
 
 .button {
     background-color: #4CAF50; /* Green */
-    border: none;
-    color: gray;
-    border: gray;
-    padding: 10px;
+    
+}
+
+.center-btn{
+    text-align: center;
 }
 
 .link-about{
-    color: gray;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.sect-home {
+    padding-top: 0%;
 }

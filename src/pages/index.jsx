@@ -8,7 +8,6 @@ export default () => (
   <Layout>
     <div className="about-container">
       <Helmet title={`Home | ${config.siteTitle}`} />
-      <h1>Welcome To Terasology</h1>
       <Index />
     </div>
   </Layout>

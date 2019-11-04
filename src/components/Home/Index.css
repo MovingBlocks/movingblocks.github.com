@@ -1,0 +1,33 @@
+iframe {
+    width: 100%;
+    min-height: 300px;
+    padding-top: 0%;
+}
+
+.p-title {
+    padding-top: 3%;
+    font-style: italic;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    
+}
+
+.center-btn{
+    text-align: center;
+}
+
+.link-about{
+    color: white;
+    font-weight: bold;
+    
+}
+
+.link-about:hover {
+    color: white;
+}
+
+.sect-home {
+    padding-top: 0%;
+}

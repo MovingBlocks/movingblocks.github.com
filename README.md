@@ -4,7 +4,7 @@
 
 [![status](https://img.shields.io/badge/status-pre--alpha-red.svg)](https://github.com/Terasology/terasology.github.io)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/Terasology/terasology.github.io.svg)](https://github.com/Terasology/terasology.github.io/issues/)
+[![GitHub issues](https://img.shields.io/github/issues/MovingBlocks/ModuleSite.svg)](https://github.com/MovingBlocks/ModuleSite/issues/)
 
 ---
 
@@ -52,7 +52,7 @@ The generator uses node and backend framework and yarn as a pack manager.
 
 - Fork the repository
 - Clone the repository `git clone forked-repository-link`
-- Navigate inside the repository `cd terasology.github.io`
+- Navigate inside the repository `cd ModuleSite`
 - Install the dependencies ( yarn is recommended ) `yarn`
 
 ---
@@ -68,7 +68,7 @@ You can test the website locally using `gatsby develop` or you can deploy the si
 To add a new feature or fix a bug follow the steps - 
 
 - Make sure your local workspace is up-to-date with the main repository.
-    - Add the original repository as `upstream` in you local git remote `git remote add upstream https://github.com/Terasology/terasology.github.io`
+    - Add the original repository as `upstream` in you local git remote `git remote add upstream https://github.com/MovingBlocks/ModuleSite.io`
     - Fetch the latest code `git fetch upstream`
     - Checkout to your local master branch `git checkout master`
     - Merge changes from `upstream/master` to sync `git merge upstream/master`
@@ -81,4 +81,4 @@ To add a new feature or fix a bug follow the steps -
 
 ## Contributors
 
-A list of contributors can be found [here](https://github.com/Terasology/terasology.github.io/graphs/contributors).
+A list of contributors can be found [here](https://github.com/MovingBlocks/ModuleSite/graphs/contributors).

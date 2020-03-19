@@ -1,0 +1,40 @@
+.contact {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  min-height: 300px;
+  flex-direction:column;
+}
+
+.contact_bg{
+  background-image: url('../../../static/images/2.jpg');
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  border-radius: 5px;
+}
+
+.contact__bg-overlay{
+  width: 100%;
+  height: auto;
+  background: rgba(40, 167, 69, 0.6);
+  color: #fff;
+  text-align: center;
+  padding-top: 2rem;
+}
+.contact__bg-overlay p{
+  font-size: 20px;
+}
+.contact_bg .btn{
+  font-size: 18px;
+  color:rgba(40, 167, 69);
+}
+.mt-6e{
+  margin-top: 6rem;
+}
+section p{
+  font-size:15px;
+}

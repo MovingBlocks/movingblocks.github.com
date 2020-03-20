@@ -10,7 +10,6 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaGooglePlusSquare,
   FaComments
 } from "react-icons/fa";
 
@@ -116,21 +115,6 @@ export default () => {
                 {' '}
               </center> 
             </a>
-          </IconContext.Provider>
-          <IconContext.Provider value={{ size: "4em" }}>
-            <a
-              style={{padding:"5px"}}
-              className="link"
-              href="https://plus.google.com/103835217961917018533"
-            >
-              <center> 
-                <FaGooglePlusSquare style={{color:'#db4a39'}} />
-                <br />
-                Google Plus
-              </center> 
-            </a>
-          </IconContext.Provider>
-          <IconContext.Provider value={{ size: "4em" }}>
             <a 
               style={{padding:"5px"}}
               className="link"
@@ -149,3 +133,4 @@ export default () => {
     </div>
   )
 };
+

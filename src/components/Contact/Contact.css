@@ -17,7 +17,7 @@
   border-radius: 5px;
 }
 
-.contact__bg-overlay{
+.contact_bg-overlay{
   width: 100%;
   height: auto;
   background: rgba(40, 167, 69, 0.6);
@@ -25,16 +25,16 @@
   text-align: center;
   padding-top: 2rem;
 }
-.contact__bg-overlay p{
+
+.contact_bg-overlay p{
   font-size: 20px;
 }
+
 .contact_bg .btn{
   font-size: 18px;
   color:rgba(40, 167, 69);
 }
-.mt-6e{
-  margin-top: 6rem;
-}
+
 section p{
   font-size:15px;
 }

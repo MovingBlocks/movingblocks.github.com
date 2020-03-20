@@ -28,13 +28,12 @@ export default () => {
         </div>
       </div>
       <section className="contact_details py-4 mt-6e">
-        
         <center> 
-      
+    
           <h5>Be part of the community by joining the following handles</h5>
           <br />
 
-        
+
           <Row style={{marginLeft:'15px'}}>
             <IconContext.Provider value={{ size: "4em"}}>
               <a 

@@ -61,4 +61,3 @@ bundle-stats.json
 # Generated JSON
 src/generated/blog-result.json
 src/generated/module-result.json
-.package-lock.json

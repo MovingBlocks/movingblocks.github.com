@@ -39,3 +39,14 @@ section p{
   font-size:15px;
 }
 
+.container{
+color: #606060;
+font-size: 12px;
+line-height: 1.5em;
+outline: 0;
+font-family: "Nunito Sans",sans-serif!important;
+box-sizing: border-box;
+zoom: 1;
+padding: 3rem 0;
+margin: 0 auto;
+text-align: center; }

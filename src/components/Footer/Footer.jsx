@@ -8,7 +8,6 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaGooglePlusSquare,
   FaComments
 } from "react-icons/fa";
 
@@ -108,14 +107,6 @@ export default () => (
           <IconContext.Provider value={{ size: "2.5em" }}>
             <a className="link" href="https://reddit.com/r/Terasology">
               <FaRedditSquare />
-            </a>
-          </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
-            <a
-              className="link"
-              href="https://plus.google.com/103835217961917018533"
-            >
-              <FaGooglePlusSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>

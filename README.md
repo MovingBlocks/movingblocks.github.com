@@ -2,6 +2,7 @@
 
 <h5 align="center">Keeping track of Terasology's modules since 2019.</h5>
 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/MovingBlocks/ModuleSite) 
 [![status](https://img.shields.io/badge/status-pre--alpha-red.svg)](https://github.com/MovingBlocks/ModuleSite)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/MovingBlocks/ModuleSite.svg)](https://github.com/MovingBlocks/ModuleSite/issues/)

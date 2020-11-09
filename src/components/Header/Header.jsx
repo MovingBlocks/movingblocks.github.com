@@ -35,6 +35,9 @@ export default () => {
               <NavLink href="/media">Media</NavLink>
             </NavItem>
             <NavItem>
+              <NavLink href="/AdventureSite">Explore</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink href="/game">The Game</NavLink>
             </NavItem>
             <NavItem>

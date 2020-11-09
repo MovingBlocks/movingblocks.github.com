@@ -8,7 +8,8 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaComments
+  FaComments,
+  FaPatreon
 } from "react-icons/fa";
 
 export default () => (
@@ -109,12 +110,9 @@ export default () => (
               <FaRedditSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
-            <a
-              className="link"
-              href="http://webchat.freenode.net/?channels=terasology&uio=d4?channels=%23terasology&nick=Terasologist...&prompt=1&useUserListIcons=true"
-            >
-              <FaComments />
+          <IconContext.Provider value={{ size: "2em" }}>
+            <a className="link icon" href="https://www.patreon.com/Terasology">
+              <FaPatreon />
             </a>
           </IconContext.Provider>
         </Col>

@@ -8,7 +8,6 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaComments,
   FaPatreon
 } from "react-icons/fa";
 

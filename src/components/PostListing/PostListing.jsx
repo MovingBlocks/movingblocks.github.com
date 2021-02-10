@@ -36,7 +36,7 @@ export default ({ id, postEdges }) => {
               <h4 className="post-content">{post.title}</h4>
               <p>{post.desc}</p>
               <Link
-                to={`/${id}/${post.path}`}
+                to={`/${id}${post.path}`}
                 key={post.title}
                 className="btn-card"
               >

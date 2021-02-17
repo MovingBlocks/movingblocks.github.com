@@ -68,7 +68,7 @@ export default props => {
                   alt="Terasology History" />
               </Col>
               <Col lg="7">
-                <h3 className="mb-3 text-right mr-4">History</h3>
+                <h3 className="mb-3 mr-4">History</h3>
                 <p className="text-justify">
                 Founded in 2011 by Benjamin "Begla" Glatzel while researching procedural terrain generation and effective 
                 rendering techniques, He succeded in creating a minecraft like demo

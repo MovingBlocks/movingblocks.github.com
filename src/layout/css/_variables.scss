@@ -1,7 +1,7 @@
 // Color System
 
-$primary: #28a745 !default;
-$secondary: #218838 !default;
+$primary: #08a045 !default;
+$secondary: lighten($primary, 5) !default;
 $white: #fdfdfd !default;
 $gray: darken($white, 2) !default;
 $gray-2: darken($white, 75) !default;

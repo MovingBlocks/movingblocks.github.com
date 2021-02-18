@@ -103,7 +103,7 @@ section {
   padding: 0;
 }
 
-.btn-card {
+.btn-primary {
   margin-right: 1em;
   border-radius: 2px;
   padding: 0.25em 0.5em;
@@ -113,7 +113,7 @@ section {
   transition: all 150ms linear;
 }
 
-.btn-card:hover {
+.btn-primary:hover {
   background-color: $secondary;
   border-color: $secondary;
   color: $lg-accent !important;
@@ -121,7 +121,7 @@ section {
   transition: all 150ms linear;
 }
 
-a.btn-card {
+a.btn-primary {
   text-decoration: none;
   color: $white;
 }

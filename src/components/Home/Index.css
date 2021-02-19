@@ -1,33 +1,78 @@
 iframe {
-    width: 100%;
-    min-height: 300px;
-    padding-top: 0%;
+  width: 100%;
+  min-height: 300px;
+  padding-top: 0%;
 }
 
 .p-title {
-    padding-top: 3%;
-    font-style: italic;
+  padding-top: 1%;
+  font-style: italic;
+  font-weight: 600;
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
-    
+  background-color: #4caf50; /* Green */
 }
 
-.center-btn{
-    text-align: center;
+.center-btn {
+  text-align: center;
 }
 
-.link-about{
-    color: white;
-    font-weight: bold;
-    
+.link-about {
+  color: white;
+  font-weight: bold;
 }
 
 .link-about:hover {
-    color: white;
+  color: white;
 }
 
 .sect-home {
+<<<<<<< Updated upstream
+  padding-top: 0%;
+}
+
+.home-underline {
+  background-color: #08a045;
+  height: 2px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.row_shadow {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.row_shadow:hover {
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.author {
+  margin-top: 10px;
+  color: #333;
+}
+
+.read-more-link {
+  margin-top: 20px;
+}
+
+.gatsby-image-wrapper img {
+  border-radius: 5px 0 0 5px;
+  cursor: initial;
+}
+
+@media (max-width: 768px) {
+  .gatsby-image-wrapper img {
+    border-radius: 5px 5px 0 0;
+  }
+=======
     padding-top: 0%;
+>>>>>>> Stashed changes
 }

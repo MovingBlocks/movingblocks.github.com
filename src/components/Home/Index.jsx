@@ -12,7 +12,7 @@ const Index = () => {
       allMarkdownRemark(
         sort: { fields: [fields___date], order: DESC }
         filter: { frontmatter: { posttype: { eq: "blog" } } }
-        limit: 3
+        limit: 4
       ) {
         edges {
           node {
@@ -20,7 +20,7 @@ const Index = () => {
               slug
               date
             }
-            excerpt
+            excerpt(format: PLAIN, pruneLength: 125, truncate: true)
             timeToRead
             frontmatter {
               title
@@ -47,7 +47,7 @@ const Index = () => {
       <Row>
         <Col md="12">
           <div>
-            <h1 className="text-center">WELCOME TO TERASOLOGY</h1>
+            <h1 className="text-center">Welcome to Terasology</h1>
             <div className="container my-4">
               <div className="home-underline"></div>
             </div>
@@ -91,39 +91,38 @@ const Index = () => {
       </Row>
       <Row>
         <Col md="12">
-          <h1 className="text-center">BLOG</h1>
+          <h1 className="text-center">Blog</h1>
           <div className="container my-4">
             <div className="home-underline"></div>
           </div>
         </Col>
       </Row>
-      <Col>
-        {RecentPost.map(({ node }) => (
-          <Row className="justify-content-center ">
-            <Col md="11">
+
+      <Col lg="12">
+        <Row className="justify-content-center ">
+          {RecentPost.map(({ node }) => (
+            <Col className="m-4" lg="5" md="8" sm="12">
               <Row className="row_shadow">
-                <Col lg="7" md="12">
+                <Col lg="12" md="12">
                   <Img
                     sizes={node.frontmatter.cover.childImageSharp.sizes}
                     alt={node.frontmatter.title}
                     style={{
                       position: "static",
-                      height: "100px",
-                      borderRadius: "0 0 10px 10px",
                     }}
                   />
                 </Col>
-                <Col lg="5" md="12">
-                  <h4>{node.frontmatter.title}</h4>
+                <div className="my-4 ml-4">
+                  <h4 className="text-center">{node.frontmatter.title}</h4>
                   <div>
-                    <p className="font-weight-bold author ">
+                    <p className="font-weight-bold author text-center">
                       By: {node.frontmatter.author}
                     </p>
                   </div>
-                  <p className="my-4">{node.frontmatter.description}</p>
+                  <p className="my-4">{node.excerpt}</p>
 
-                  <div className="d-flex justify-content-between">
-                    <div className="read-more-link">
+                  <div className="d-flex justify-content-center">
+                    <div>
                       <Link
                         to={`/${`blog`}${node.fields.slug}`}
                         key={node.frontmatter.title}
@@ -133,11 +132,11 @@ const Index = () => {
                       </Link>
                     </div>
                   </div>
-                </Col>
+                </div>
               </Row>
             </Col>
-          </Row>
-        ))}
+          ))}
+        </Row>
       </Col>
     </section>
   );

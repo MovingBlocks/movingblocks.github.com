@@ -8,7 +8,8 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaComments
+  FaComments,
+  FaPatreon,
 } from "react-icons/fa";
 
 export default () => (
@@ -16,9 +17,7 @@ export default () => (
     <Container className="footer">
       <Row>
         <Col md="3">
-          <h5>
-            The Terasology Foundation
-          </h5>
+          <h5>The Terasology Foundation</h5>
         </Col>
         <Col md="3">
           <ul className="footer-nav">
@@ -54,11 +53,6 @@ export default () => (
             <li>
               <a className="link" href="/modules">
                 Modules
-              </a>
-            </li>
-            <li>
-              <a className="link" href="/contact">
-                Contact Us
               </a>
             </li>
             <li>
@@ -115,6 +109,11 @@ export default () => (
               href="http://webchat.freenode.net/?channels=terasology&uio=d4?channels=%23terasology&nick=Terasologist...&prompt=1&useUserListIcons=true"
             >
               <FaComments />
+            </a>
+          </IconContext.Provider>
+          <IconContext.Provider value={{ size: "2.2em" }}>
+            <a className="link ml-2" href="https://www.patreon.com/Terasology">
+              <FaPatreon />
             </a>
           </IconContext.Provider>
         </Col>

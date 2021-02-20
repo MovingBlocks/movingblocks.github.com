@@ -28,7 +28,6 @@ iframe {
 }
 
 .sect-home {
-<<<<<<< Updated upstream
   padding-top: 0%;
 }
 
@@ -59,20 +58,8 @@ iframe {
   color: #333;
 }
 
-.read-more-link {
-  margin-top: 20px;
-}
-
 .gatsby-image-wrapper img {
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px 5px 0 0;
   cursor: initial;
 }
 
-@media (max-width: 768px) {
-  .gatsby-image-wrapper img {
-    border-radius: 5px 5px 0 0;
-  }
-=======
-    padding-top: 0%;
->>>>>>> Stashed changes
-}

@@ -38,7 +38,7 @@ export default ({ id, postEdges }) => {
               <Link
                 to={`/${id}${post.path}`}
                 key={post.title}
-                className="btn-card"
+                className="btn-primary"
               >
                 Read More
               </Link>

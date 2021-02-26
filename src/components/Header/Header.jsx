@@ -46,7 +46,7 @@ export default () => {
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink
                 className="text-white"
-                href="https://github.com/MovingBlocks/TerasologyLauncher/releases/latest/download/TerasologyLauncher.zip"
+                href="/downloads"
               >
                 <IconContext.Provider
                   value={{ size: "1em", className: "download" }}

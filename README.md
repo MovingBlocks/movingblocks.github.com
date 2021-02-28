@@ -10,8 +10,8 @@
 ---
 
 <p align="center">
-  <a href="#setup">About</a>&nbsp;&nbsp;
-  <a href="#help">Setup</a>&nbsp;&nbsp;
+  <a href="#about">About</a>&nbsp;&nbsp;
+  <a href="#setup">Setup</a>&nbsp;&nbsp;
   <a href="#testing">Testing</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>
 </p>
@@ -24,7 +24,13 @@ Terasology’s basic engine can be extended by a huge amount (201 right now!) of
 
 ---
 
-<h2 id="built-with">Built With</h2>
+<h2> Getting Started </h2>
+
+The module website development environment can be installed on macOS, Windows, and Linux (Debian or Ubuntu recommended). You’ll need at least 1GB of available RAM.
+
+---
+
+<h2 id="built-with">Built Sith</h2>
 
 The following generator is built using the following software, you'll need them installed in your workspace to run properly. 
 * [Node](https://nodejs.org/en/)
@@ -33,43 +39,51 @@ The following generator is built using the following software, you'll need them 
 
 ---
 
-<h2 id="setup">Setup</h2>
+<h2 id="setup"> Setting Up Development Workspace </h2>
 
-The generator uses node and backend framework and yarn as a pack manager.
-* Setting up workspace
+Start by cloning your fork of the ModuleSite repository and connecting the ModuleSite upstream repository:
 
-  * node
+```
+git clone --config pull.rebase git@github.com:YOURUSERNAME/ModuleSite.git
+cd ModuleSite
+git remote add -f upstream git@github.com:MovingBlocks/ModuleSite.git
+```
 
-    * Download and setup NodeJs from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+<h2> Docker Setup </h2>
 
-  * yarn
+> **TODO**
 
-    * Download and setup yarn package manager from [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
+<h2> Manual Setup </h2>
 
-  * gatsby-cli
+<details>
+  <summary>Steps</summary>
 
-    * You can install `gatsby-cli` using npm via `npm install -g gatsby-cli` or using yarn via `yarn global add gatsby-cli`
+- Install the following dependencies on your system
+  - [Node](https://nodejs.org/en/)
+  - [Yarn](https://yarnpkg.com/en/)
+  - [Gatsby](https://www.gatsbyjs.org/)
 
+- '`cd`' into the directory
 
-- Fork the repository
-- Clone the repository `git clone forked-repository-link`
-- Navigate inside the repository `cd ModuleSite`
-- Install the dependencies ( yarn is recommended ) `yarn`
+- Run '`yarn`' inside the directory to install all the dependencies
+
+- Once the dependencies are installed you can launch development server via '`yarn run develop`'
+
+</details>
 
 ---
+
+> To learn more about the project structure and working of the project please refer to our [docs](docs/project-structure.md).
 
 <h2 id="testing">Testing</h2>
 
-You can test the website locally using `gatsby develop` or you can deploy the site to [GitHub Pages](https://pages.github.com/) or [Render](https://render.com/) using the deploy scripts present in the `scripts` directory via NodeJs.
-
----
+> TODO
 
 <h2 id="contributing">Contributing</h2>
 
 To add a new feature or fix a bug follow the steps - 
 
 - Make sure your local workspace is up-to-date with the main repository.
-    - Add the original repository as `upstream` in you local git remote `git remote add upstream https://github.com/MovingBlocks/ModuleSite.io`
     - Fetch the latest code `git fetch upstream`
     - Checkout to your local master branch `git checkout master`
     - Merge changes from `upstream/master` to sync `git merge upstream/master`

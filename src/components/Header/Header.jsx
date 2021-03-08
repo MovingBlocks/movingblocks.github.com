@@ -9,10 +9,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 
@@ -44,10 +40,7 @@ export default () => {
               <NavLink href="/modules">Modules</NavLink>
             </NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
-              <NavLink
-                className="text-white"
-                href="https://github.com/MovingBlocks/TerasologyLauncher/releases/latest/download/TerasologyLauncher.zip"
-              >
+              <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider
                   value={{ size: "1em", className: "download" }}
                 >

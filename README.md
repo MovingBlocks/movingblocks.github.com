@@ -30,7 +30,7 @@ The module website development environment can be installed on macOS, Windows, a
 
 ---
 
-<h2 id="built-with">Built Sith</h2>
+<h2 id="built-with">Built With</h2>
 
 The following generator is built using the following software, you'll need them installed in your workspace to run properly. 
 * [Node](https://nodejs.org/en/)

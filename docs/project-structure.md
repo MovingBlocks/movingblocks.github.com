@@ -10,7 +10,8 @@
 │   ├── layout      - The structure of the website, may be interpreted as a skeleton which is later filled with react components to bring it to life
 │   ├── pages       - Gatsby uses the pages directory to generate all the pages we see throughout the website²
 │   ├── template    - Not all pages needs to hard-coded, Gatsby uses templates to programmatically generate pages ³
-├── satic           - Images, Logos, robots.txt etc
+├── static          - Images, Logos, robots.txt etc
+
 ├── ...
 ├── gatsby-node.js  - Gatsby's website generating pipeline
 └── ...

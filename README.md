@@ -12,7 +12,6 @@
 <p align="center">
   <a href="#about">About</a>&nbsp;&nbsp;
   <a href="#setup">Setup</a>&nbsp;&nbsp;
-  <a href="#testing">Testing</a>&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>
 </p>
 
@@ -49,10 +48,6 @@ cd ModuleSite
 git remote add -f upstream git@github.com:MovingBlocks/ModuleSite.git
 ```
 
-<h2> Docker Setup </h2>
-
-> **TODO**
-
 <h2> Manual Setup </h2>
 
 <details>
@@ -74,10 +69,6 @@ git remote add -f upstream git@github.com:MovingBlocks/ModuleSite.git
 ---
 
 > To learn more about the project structure and working of the project please refer to our [docs](docs/project-structure.md).
-
-<h2 id="testing">Testing</h2>
-
-> TODO
 
 <h2 id="contributing">Contributing</h2>
 

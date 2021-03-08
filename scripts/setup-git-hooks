@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Check if git is 2.9 or greater
+# Only git 2.9 and greater supports `cor.hooksPath`
+if (echo a version 2.9.0; git --version) | sort -Vk3 | tail -1 | grep -q git
+then
+  git config core.hooksPath .githooks
+else
+  find .git/hooks -type l -exec rm {} \;
+  find .githooks -type f -exec ln -sf ../../{} .git/hooks/ \;
+fi

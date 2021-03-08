@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Fixes git index after commit
+# Issue: https://github.com/prettier/prettier/issues/2978#issuecomment-334408427
+git update-index -g

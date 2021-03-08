@@ -1,9 +1,9 @@
 import React from "react";
 import Layout from "../layout";
-import Download from "../components/Download/Download"
+import Download from "../components/Download/Download";
 
 export default () => (
   <Layout>
-     <Download />
+    <Download />
   </Layout>
 );

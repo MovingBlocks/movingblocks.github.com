@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, NavLink, Input, Row, Col,Alert } from "reactstrap";
+import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
 import "./Download.css";
@@ -7,7 +7,7 @@ import "./Download.css";
 export default () => {
   const [platform, setPlatform] = useState("");
   const [visible, setVisible] = useState(false);
-  const [status,setStatus]=useState("");
+  const [status, setStatus] = useState("");
 
   const onDismiss = () => setVisible(false);
 
@@ -22,15 +22,14 @@ export default () => {
   }, []);
 
   const download = async () => {
-   
-      const url =
-        "https://api.github.com/repos/MovingBlocks/TerasologyLauncher/releases/latest";
-      const response = await fetch(url);
-     
-      if(response.ok){
-        const data = await response.json();
+    const url =
+      "https://api.github.com/repos/MovingBlocks/TerasologyLauncher/releases/latest";
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const data = await response.json();
       let downloadUrl;
-   
+
       if (platform == "Win32") {
         downloadUrl = data.assets && data.assets[3].browser_download_url;
         window.location.href = downloadUrl;
@@ -41,13 +40,10 @@ export default () => {
         downloadUrl = data.assets && data.assets[1].browser_download_url;
         window.location.href = downloadUrl;
       }
-      }else{
-        setVisible(true)
-       setStatus(response.status)
-       
-      }
-     
-   
+    } else {
+      setVisible(true);
+      setStatus(response.status);
+    }
   };
 
   return (
@@ -96,9 +92,16 @@ export default () => {
               </option>
             </Input>
 
-            <Alert className="my-2 alert-box" color="danger" isOpen={visible} toggle={onDismiss}>
-            <span className="alert-box">Problem fetching download link.(Error Code: {status})</span>  
-             </Alert>
+            <Alert
+              className="my-2 alert-box"
+              color="danger"
+              isOpen={visible}
+              toggle={onDismiss}
+            >
+              <span className="alert-box">
+                Problem fetching download link.(Error Code: {status})
+              </span>
+            </Alert>
           </Col>
           <Col lg="3" md="9">
             <div className="text-center font-weight-bold btn-primary download-btn">

@@ -6,7 +6,7 @@ description: " It has been a fun week for a handful of our contributors in Munic
   We took the opportunity of the Google Mentor Summit and added our own little
   TeraCon meetup in the Bavarian capital."
 author: "Niruandaleth & Skaldarnar"
-ddate: "Oct 10th, 2019"
+ddate: "Oct 28th, 2019"
 date: "2019-10-28"
 tags: "GSoC"
 ---

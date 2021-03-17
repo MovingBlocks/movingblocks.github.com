@@ -91,7 +91,7 @@ const Index = () => {
       </Row>
       <Row>
         <Col md="12">
-          <h1 className="text-center">Blog</h1>
+          <h1 className="text-center">Recent News</h1>
           <div className="container my-4">
             <div className="home-underline"></div>
           </div>

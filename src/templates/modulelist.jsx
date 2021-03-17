@@ -17,7 +17,7 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  p
   const isFirst = moduleCurrentPage === 1;
   const isLast = moduleCurrentPage === moduleNumPages;
   const prevPage =
-    moduleCurrentPage - 1 === 1 ? "/" : (moduleCurrentPage - 1).toString();
+    moduleCurrentPage - 1 === 1 ? "" : (moduleCurrentPage - 1).toString();
   const nextPage = (moduleCurrentPage + 1).toString();
 
   const [isShown, setIsShown] = useState(false);

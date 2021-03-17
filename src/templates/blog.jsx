@@ -17,7 +17,7 @@ export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props
   const isFirst = blogCurrentPage === 1;
   const isLast = blogCurrentPage === postsNumPages;
   const prevPage =
-    blogCurrentPage - 1 === 1 ? "/" : (blogCurrentPage - 1).toString();
+    blogCurrentPage - 1 === 1 ? "" : (blogCurrentPage - 1).toString();
   const nextPage = (blogCurrentPage + 1).toString();
 
   const [isShown, setIsShown] = useState(false);

@@ -4,7 +4,7 @@ import { Row, Col } from "reactstrap";
 import { Link } from "gatsby";
 import { graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
-import { CardImg } from "../../../node_modules/reactstrap/es/index";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const Index = () => {
   const data = useStaticQuery(graphql`
@@ -29,9 +29,10 @@ const Index = () => {
               description
               cover {
                 publicURL
+
                 childImageSharp {
-                  sizes(maxWidth: 768) {
-                    ...GatsbyImageSharpSizes
+                  fluid(maxWidth: 768, maxHeight: 432) {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }
@@ -102,27 +103,26 @@ const Index = () => {
         <Row className="justify-content-center ">
           {RecentPost.map(({ node }) => (
             <Col className="m-4" lg="5" md="8" sm="12">
-              <Row className="row_shadow">
-                <Col lg="12" md="12">
+              <Row className="row_shadow h-100">
+                <Col lg="12" md="12" className="p-0">
                   <Img
-                    sizes={node.frontmatter.cover.childImageSharp.sizes}
+                    fluid={node.frontmatter.cover.childImageSharp.fluid}
                     alt={node.frontmatter.title}
-                    style={{
-                      position: "static",
-                    }}
                   />
                 </Col>
-                <div className="my-4 ml-4">
-                  <h4 className="text-center">{node.frontmatter.title}</h4>
+                <div className="d-flex flex-column my-4 ml-4">
+                  <h4 className="mt-auto">
+                    {node.frontmatter.title}
+                  </h4>
                   <div>
-                    <p className="font-weight-bold author text-center">
+                    <p className="mt-auto font-weight-bold author">
                       By: {node.frontmatter.author}
                     </p>
                   </div>
-                  <p className="my-4">{node.excerpt}</p>
+                  <p className="mt-auto my-4 mr-1">{node.excerpt}</p>
 
-                  <div className="d-flex justify-content-center">
-                    <div>
+                  <div className="mt-auto mb-4">
+                    <div className="align-self-end">
                       <Link
                         to={`/${`blog`}${node.fields.slug}`}
                         key={node.frontmatter.title}
@@ -138,6 +138,24 @@ const Index = () => {
           ))}
         </Row>
       </Col>
+
+      <div className="d-flex justify-content-center mb-4">
+        <div>
+          <Link
+            to="/blog"
+            className="btn-primary btn-read-moreblog font-weight-bold"
+          >
+            Read More Blogs
+            <FaRegArrowAltCircleRight
+              style={{
+                fontSize: "28px",
+                marginBottom: "4px",
+                marginLeft:"6px"
+              }}
+            />
+          </Link>
+        </div>
+      </div>
     </section>
   );
 };

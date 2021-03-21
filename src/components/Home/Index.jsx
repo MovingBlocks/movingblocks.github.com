@@ -111,9 +111,7 @@ const Index = () => {
                   />
                 </Col>
                 <div className="d-flex flex-column my-4 ml-4">
-                  <h4 className="mt-auto">
-                    {node.frontmatter.title}
-                  </h4>
+                  <h4 className="mt-auto">{node.frontmatter.title}</h4>
                   <div>
                     <p className="mt-auto font-weight-bold author">
                       By: {node.frontmatter.author}
@@ -150,7 +148,7 @@ const Index = () => {
               style={{
                 fontSize: "28px",
                 marginBottom: "4px",
-                marginLeft:"6px"
+                marginLeft: "6px",
               }}
             />
           </Link>

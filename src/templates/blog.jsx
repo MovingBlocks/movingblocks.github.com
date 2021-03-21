@@ -8,8 +8,14 @@ import SearchForm from "../components/BlogSearchForm/BlogSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props) => {
+import { Badge, Row, Col } from "reactstrap";
+
+export default (
+  { data, pageContext: { blogCurrentPage, postsNumPages } },
+  props
+) => {
   const postEdges = data.allMarkdownRemark.edges;
   const DATA = blogList;
 
@@ -38,7 +44,7 @@ export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props
   useEffect(() => {
     if (searchQuery || filterTag) {
       setResults(
-        DATA.filter(blog => {
+        DATA.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           return blog.tags.match(tagRgx) && blog.title.match(searchRgx);
@@ -67,16 +73,30 @@ export default ({ data, pageContext: { blogCurrentPage, postsNumPages } }, props
         )}
         {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>
-      {!isFirst && (
-        <Link to={`${prefix}${prevPage}`} rel="prev">
-          ← Previous Page
-        </Link>
-      )}
-      {!isLast && (
-        <Link to={`${prefix}${nextPage}`} rel="next">
-          Next Page →
-        </Link>
-      )}
+      <Row>
+        {!isFirst && (
+          <Col className="text-center m-4">
+            <Link
+              to={`${prefix}${prevPage}`}
+              rel="prev"
+              className="btn-primary"
+            >
+              <FiArrowLeft /> Previous Page
+            </Link>
+          </Col>
+        )}
+        {!isLast && (
+          <Col className="text-center m-4">
+            <Link
+              to={`${prefix}${nextPage}`}
+              rel="next"
+              className="btn-primary"
+            >
+              Next Page <FiArrowRight />
+            </Link>
+          </Col>
+        )}
+      </Row>
     </Layout>
   );
 };
@@ -96,7 +116,7 @@ export const blogQuery = graphql`
             slug
             date
           }
-          excerpt
+          excerpt(format: PLAIN, pruneLength: 150, truncate: true)
           timeToRead
           frontmatter {
             title
@@ -105,7 +125,7 @@ export const blogQuery = graphql`
             cover {
               publicURL
               childImageSharp {
-                sizes(maxWidth: 768) {
+                sizes(maxWidth: 768, maxHeight: 432) {
                   ...GatsbyImageSharpSizes
                 }
               }

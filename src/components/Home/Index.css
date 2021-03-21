@@ -39,7 +39,6 @@ iframe {
 }
 
 .row_shadow {
- 
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
@@ -64,14 +63,14 @@ iframe {
   cursor: initial;
 }
 
-.truncate-text{
- width: 350px;
+.truncate-text {
+  width: 350px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.btn-read-moreblog{
+.btn-read-moreblog {
   font-size: 16px;
   font-weight: 500;
   padding: 10px;

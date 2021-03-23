@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import "./Header.css";
+import { Link } from "gatsby";
 
 export default () => {
   const [isOpen, toggle] = useState(false);
@@ -23,46 +24,87 @@ export default () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink
-                href="/"
-                active={window.location.pathname === "/" ? "true" : null}
-              >
-                Home
+              <NavLink>
+                <Link
+                  to="/"
+                  style={{ color: "#6c757d" }}
+                  activeStyle={{
+                    color: "black",
+                    borderBottom: "4px solid #08a045",
+                  }}
+                >
+                  Home
+                </Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="/blog"
-                active={window.location.pathname === "/blog" ? "true" : null}
-              >
-                Blog
+              <NavLink>
+                <Link
+                  to="/blog"
+                  style={{ color: "#6c757d" }}
+                  activeStyle={{
+                    color: "black",
+                    borderBottom: "4px solid #08a045",
+                  }}
+                >
+                  Blog
+                </Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="/media"
-                active={window.location.pathname === "/media" ? "true" : null}
-              >
-                Media
+              <NavLink>
+                <Link
+                  to="/media"
+                  style={{ color: "#6c757d" }}
+                  activeStyle={{
+                    color: "black",
+                    borderBottom: "4px solid #08a045",
+                  }}
+                >
+                  Media
+                </Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="/game"
-                active={window.location.pathname === "/game" ? "true" : null}
-              >
-                The Game
+              <NavLink>
+                <Link
+                  to="/game"
+                  style={{ color: "#6c757d" }}
+                  activeStyle={{
+                    color: "black",
+                    borderBottom: "4px solid #08a045",
+                  }}
+                >
+                  The Game
+                </Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://forum.terasology.org/">Forum</NavLink>
+              <NavLink>
+                <Link
+                  to="https://forum.terasology.org/"
+                  style={{ color: "grey" }}
+                  activeStyle={{
+                    color: "black",
+                    borderBottom: "4px solid #08a045",
+                  }}
+                >
+                  Forum
+                </Link>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="/modules"
-                active={window.location.pathname === "/modules" ? "true" : null}
-              >
-                Modules
+              <NavLink>
+                <Link
+                  to="/modules"
+                  style={{ color: "#6c757d" }}
+                  activeStyle={{
+                    color: "black",
+                    borderBottom: "4px solid #08a045",
+                  }}
+                >
+                  Modules
+                </Link>
               </NavLink>
             </NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">

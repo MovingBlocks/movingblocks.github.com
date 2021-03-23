@@ -11,6 +11,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
+import "./Header.css";
 
 export default () => {
   const [isOpen, toggle] = useState(false);
@@ -22,22 +23,47 @@ export default () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink
+                href="/"
+                active={window.location.pathname === "/" ? "true" : null}
+              >
+                Home
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/blog">Blog</NavLink>
+              <NavLink
+                href="/blog"
+                active={window.location.pathname === "/blog" ? "true" : null}
+              >
+                Blog
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/media">Media</NavLink>
+              <NavLink
+                href="/media"
+                active={window.location.pathname === "/media" ? "true" : null}
+              >
+                Media
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/game">The Game</NavLink>
+              <NavLink
+                href="/game"
+                active={window.location.pathname === "/game" ? "true" : null}
+              >
+                The Game
+              </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://forum.terasology.org/">Forum</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/modules">Modules</NavLink>
+              <NavLink
+                href="/modules"
+                active={window.location.pathname === "/modules" ? "true" : null}
+              >
+                Modules
+              </NavLink>
             </NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">

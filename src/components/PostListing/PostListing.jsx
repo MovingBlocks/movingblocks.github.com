@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
 import Img from "gatsby-image";
+import "./PostListing.css";
 
 export default ({ id, postEdges }) => {
   const getPostList = () => {
@@ -40,8 +41,9 @@ export default ({ id, postEdges }) => {
 
               <div className="d-flex flex-column ml-3">
                 <h5 className="mt-1">{post.title}</h5>
-
-                <p className="mt-auto mr-2">{post.excerpt}</p>
+                <div className="mt-auto mr-2" lang="en">
+                  <p className="word-break">{post.excerpt}</p>
+                </div>
 
                 <div className="mt-auto mb-4">
                   <Link

@@ -30,7 +30,7 @@ const SearchForm = ({ query, filter }) => (
             <option value="">All</option>
             <option value="gsoc">Google Summer Of Code</option>
             <option value="project">Project</option>
-            <option value="gsoc">TeraSaturday</option>
+            <option value="TeraSaturday">TeraSaturday</option>
             <option value="update">Update</option>
           </Input>
         </FormGroup>

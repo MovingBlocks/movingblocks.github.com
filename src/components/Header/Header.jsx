@@ -11,7 +11,6 @@ import {
   NavLink,
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
-import "./Header.css";
 import { Link } from "gatsby";
 
 export default () => {

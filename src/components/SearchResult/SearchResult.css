@@ -1,0 +1,10 @@
+.word-break {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.search-cards {
+  border-radius: 5px 5px 0 0;
+}

@@ -97,6 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
               fields {
                 slug
               }
+              excerpt(format: PLAIN, pruneLength: 125, truncate: true)
               frontmatter {
                 title
                 tags
@@ -133,6 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
       tags: edge.node.frontmatter.tags,
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
+      excerpt:edge.node.excerpt,
       description: edge.node.frontmatter.description
     });
   });

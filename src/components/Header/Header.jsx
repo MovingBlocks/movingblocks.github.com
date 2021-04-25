@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
+import "./Header.css";
 
 export default () => {
   const [isOpen, toggle] = useState(false);
@@ -24,14 +25,7 @@ export default () => {
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink>
-                <Link
-                  to="/"
-                  style={{ color: "#6c757d" }}
-                  activeStyle={{
-                    color: "black",
-                    borderBottom: "4px solid #08a045",
-                  }}
-                >
+                <Link to="/" className="text-color" activeClassName="active">
                   Home
                 </Link>
               </NavLink>
@@ -40,11 +34,8 @@ export default () => {
               <NavLink>
                 <Link
                   to="/blog"
-                  style={{ color: "#6c757d" }}
-                  activeStyle={{
-                    color: "black",
-                    borderBottom: "4px solid #08a045",
-                  }}
+                  className="text-color"
+                  activeClassName="active"
                 >
                   Blog
                 </Link>
@@ -54,11 +45,8 @@ export default () => {
               <NavLink>
                 <Link
                   to="/media"
-                  style={{ color: "#6c757d" }}
-                  activeStyle={{
-                    color: "black",
-                    borderBottom: "4px solid #08a045",
-                  }}
+                  className="text-color"
+                  activeClassName="active"
                 >
                   Media
                 </Link>
@@ -68,11 +56,8 @@ export default () => {
               <NavLink>
                 <Link
                   to="/game"
-                  style={{ color: "#6c757d" }}
-                  activeStyle={{
-                    color: "black",
-                    borderBottom: "4px solid #08a045",
-                  }}
+                  className="text-color"
+                  activeClassName="active"
                 >
                   The Game
                 </Link>
@@ -81,31 +66,26 @@ export default () => {
             <NavItem>
               <NavLink>
                 <Link
-                  to="https://forum.terasology.org/"
-                  style={{ color: "grey" }}
-                  activeStyle={{
-                    color: "black",
-                    borderBottom: "4px solid #08a045",
-                  }}
+                  to="/modules"
+                  className="text-color"
+                  activeClassName="active"
                 >
-                  Forum
+                  Modules
                 </Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
                 <Link
-                  to="/modules"
-                  style={{ color: "#6c757d" }}
-                  activeStyle={{
-                    color: "black",
-                    borderBottom: "4px solid #08a045",
-                  }}
+                  to="https://forum.terasology.org/"
+                  className="text-color"
+                  activeClassName="active"
                 >
-                  Modules
+                  Forum
                 </Link>
               </NavLink>
             </NavItem>
+
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider

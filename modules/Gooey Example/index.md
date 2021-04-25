@@ -7,5 +7,5 @@ category: "logic"
 tags: "Logic"
 ---
 
-No information available for this module.The information will be available in upcoming updates. You can have more details about this module [here](https://github.com/Terasology)
+Currently, there's no information available for this module. Please, refer to the method repo in [here](https://github.com/Terasology) for details.
 

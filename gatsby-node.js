@@ -169,6 +169,7 @@ exports.createPages = async ({ graphql, actions }) => {
               fields {
                 slug
               }
+              excerpt(format: PLAIN, pruneLength: 125, truncate: true)
               frontmatter {
                 title
                 tags

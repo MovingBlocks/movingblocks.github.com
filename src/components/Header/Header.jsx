@@ -11,6 +11,8 @@ import {
   NavLink,
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
+import { Link } from "gatsby";
+import "./Header.css";
 
 export default () => {
   const [isOpen, toggle] = useState(false);
@@ -22,23 +24,68 @@ export default () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink>
+                <Link to="/" className="text-color" activeClassName="active">
+                  Home
+                </Link>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/blog">Blog</NavLink>
+              <NavLink>
+                <Link
+                  to="/blog"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Blog
+                </Link>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/media">Media</NavLink>
+              <NavLink>
+                <Link
+                  to="/media"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Media
+                </Link>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/game">The Game</NavLink>
+              <NavLink>
+                <Link
+                  to="/game"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  The Game
+                </Link>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://forum.terasology.org/">Forum</NavLink>
+              <NavLink>
+                <Link
+                  to="/modules"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Modules
+                </Link>
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/modules">Modules</NavLink>
+              <NavLink>
+                <Link
+                  to="https://forum.terasology.org/"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Forum
+                </Link>
+              </NavLink>
             </NavItem>
+
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider

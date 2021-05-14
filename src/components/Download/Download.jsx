@@ -4,7 +4,15 @@ import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
 import "./Download.css";
 
-export default () => {
+const Download = () => {
+  const isBrowser = typeof window !== "undefined";
+  let srcNavigator;
+  let srcLoc;
+  if (isBrowser) {
+    srcNavigator = window.navigator.platform;
+    srcLoc = window.location;
+  }
+
   const [platform, setPlatform] = useState("");
   const [visible, setVisible] = useState(false);
   const [status, setStatus] = useState("");
@@ -13,7 +21,7 @@ export default () => {
 
   useEffect(() => {
     const availableOs = ["Win32", "Linux x86_64", "MacIntel"];
-    const detectedOs = window.navigator.platform;
+    const detectedOs = srcNavigator;
     if (availableOs.includes(detectedOs)) {
       setPlatform(detectedOs);
     } else {
@@ -32,13 +40,13 @@ export default () => {
 
       if (platform == "Win32") {
         downloadUrl = data.assets && data.assets[3].browser_download_url;
-        window.location.href = downloadUrl;
+        srcLoc.href = downloadUrl;
       } else if (platform == "Linux x86_64") {
         downloadUrl = data.assets && data.assets[0].browser_download_url;
-        window.location.href = downloadUrl;
+        srcLoc.href = downloadUrl;
       } else if (platform == "MacIntel") {
         downloadUrl = data.assets && data.assets[1].browser_download_url;
-        window.location.href = downloadUrl;
+        srcLoc.href = downloadUrl;
       }
     } else {
       setVisible(true);
@@ -68,25 +76,19 @@ export default () => {
             >
               <option
                 value="Win32"
-                selected={
-                  window.navigator.platform == "Win32" ? "selected" : ""
-                }
+                selected={srcNavigator == "Win32" ? "selected" : ""}
               >
                 Windows (64-bit)
               </option>
               <option
                 value="Linux x86_64"
-                selected={
-                  window.navigator.platform == "Linux x86_64" ? "selected" : ""
-                }
+                selected={srcNavigator == "Linux x86_64" ? "selected" : ""}
               >
                 Linux (64-bit)
               </option>
               <option
                 value="MacIntel"
-                selected={
-                  window.navigator.platform == "MacIntel" ? "selected" : ""
-                }
+                selected={srcNavigator == "MacIntel" ? "selected" : ""}
               >
                 macOS
               </option>
@@ -174,3 +176,5 @@ export default () => {
     </div>
   );
 };
+
+export default Download;

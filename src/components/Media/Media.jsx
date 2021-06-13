@@ -1,6 +1,6 @@
 import React ,{useEffect, useRef} from "react";
 import "./Media.css";
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from 'reactstrap';
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -32,12 +32,7 @@ const Gallery = () => {
         id
         name
         childImageSharp {
-          fixed(width: 240, height: 240) {
-            ...GatsbyImageSharpFixed
-          }
-          fluid(maxWidth: 800) {
-            src
-          }
+          gatsbyImageData
       }
     }
   }
@@ -48,19 +43,31 @@ const Gallery = () => {
   return (
     <section>
       <Row className="justify-content-center">
-        <Col lg="8">
-          <div>
+        
+    
             {data.images.nodes.map(image => (
-              <button class="btnImage" onClick={(e) => ZoomImages(image.childImageSharp.fluid.src,e)}>
-                <Img class="images" key={image.id} fixed={image.childImageSharp.fixed}></Img>
+               <Col lg="4" md="4" sm="6" xs="6" >
+              <button class="btnImage" onClick={(e) => ZoomImages(image.childImageSharp.gatsbyImageData.images.fallback.src)}>
+               
+                <GatsbyImage
+                    image={
+                      image.childImageSharp.gatsbyImageData
+                    }
+                    imgStyle={{
+                      borderRadius: "0px 0px 0px 0px",
+                      cursor: "initial",
+                    }}
+                  />
+              
               </button>
+              </Col>
             ))}
-          </div>
+         
           <div id="imageModal" class="modal" ref={modal}>
             <img class="modal-content" id="imageZoom" ref={modalImg}></img>
           </div>
-        </Col>
-      </Row>
+          
+       </Row>
     </section>
   )
 }

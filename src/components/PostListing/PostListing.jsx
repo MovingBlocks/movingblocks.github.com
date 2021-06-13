@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import "./PostListing.css";
 
-export default ({ id, postEdges }) => {
+const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {
     const postList = [];
     postEdges.forEach((postEdge) => {
@@ -30,10 +30,11 @@ export default ({ id, postEdges }) => {
           <Col className="ml-4 mr-4 mt-2 mb-2" lg="3" md="8" sm="12">
             <Row className="row_shadow h-100">
               <Col lg="12" md="12" className="p-0">
-                <Img
-                  sizes={post.cover.childImageSharp.sizes}
-                  alt={post.title}
-                />
+                  <GatsbyImage
+                    image={
+                      post.cover.childImageSharp.gatsbyImageData
+                    }
+                  />
                 <div className="md-tag mt-3 ml-3">
                   <Badge>{post.tags}</Badge>
                 </div>
@@ -62,3 +63,5 @@ export default ({ id, postEdges }) => {
     </Col>
   );
 };
+
+export default PostListing

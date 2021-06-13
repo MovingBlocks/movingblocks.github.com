@@ -12,7 +12,7 @@ import {
   FaPatreon,
 } from "react-icons/fa";
 
-export default () => (
+const Footer = () => (
   <footer className="mt-auto">
     <Container className="footer">
       <Row>
@@ -121,3 +121,5 @@ export default () => (
     </Container>
   </footer>
 );
+
+export default Footer;

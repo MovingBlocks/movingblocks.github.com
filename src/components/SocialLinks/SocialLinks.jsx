@@ -18,7 +18,7 @@ import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 import "./SocialLinks.css";
 
-export default ({ postNode, postPath, mobile }) => {
+const SocialLinks = ({ postNode, postPath, mobile }) => {
   const post = postNode.frontmatter;
   const url = urljoin(config.siteUrl, config.pathPrefix, postPath);
   const iconSize = mobile ? 36 : 48;
@@ -57,3 +57,5 @@ export default ({ postNode, postPath, mobile }) => {
     </div>
   );
 };
+
+export default SocialLinks

@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
-export default ({ postNode, postPath, postSEO }) => {
+const SEO = ({ postNode, postPath, postSEO }) => {
   let title;
   let description;
   let postURL;
@@ -87,3 +87,5 @@ export default ({ postNode, postPath, postSEO }) => {
     </Helmet>
   );
 };
+
+export default SEO

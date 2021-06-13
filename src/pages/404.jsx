@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
 
-export default () => (
+const error404 = () => (
   <Layout>
     <div className="about-container">
       <Helmet title={`Not Found | ${config.siteTitle}`} />
@@ -14,3 +14,5 @@ export default () => (
     </center>
   </Layout>
 );
+
+export default  error404

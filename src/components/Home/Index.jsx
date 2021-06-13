@@ -3,7 +3,7 @@ import "./Index.css";
 import { Row, Col } from "reactstrap";
 import { Link } from "gatsby";
 import { graphql, useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const Index = () => {
@@ -28,12 +28,8 @@ const Index = () => {
               tags
               description
               cover {
-                publicURL
-
                 childImageSharp {
-                  fluid(maxWidth: 768, maxHeight: 432) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData
                 }
               }
             }
@@ -43,6 +39,7 @@ const Index = () => {
     }
   `);
   const RecentPost = data.allMarkdownRemark.edges;
+
   return (
     <section className="sect-home">
       <Row>
@@ -105,9 +102,10 @@ const Index = () => {
             <Col className="m-4" lg="5" md="8" sm="12">
               <Row className="row_shadow h-100">
                 <Col lg="12" md="12" className="p-0">
-                  <Img
-                    fluid={node.frontmatter.cover.childImageSharp.fluid}
-                    alt={node.frontmatter.title}
+                  <GatsbyImage
+                    image={
+                      node.frontmatter.cover.childImageSharp.gatsbyImageData
+                    }
                   />
                 </Col>
                 <div className="d-flex flex-column my-4 ml-4">

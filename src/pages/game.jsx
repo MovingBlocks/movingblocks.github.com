@@ -4,7 +4,7 @@ import Layout from "../layout";
 import About from "../components/About/About";
 import config from "../../data/SiteConfig";
 
-export default () => (
+const game =() => (
   <Layout>
     <div className="about-container">
       <Helmet title={`The Game | ${config.siteTitle}`} />
@@ -12,3 +12,5 @@ export default () => (
     </div>
   </Layout>
 );
+
+export default game

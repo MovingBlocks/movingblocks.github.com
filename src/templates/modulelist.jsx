@@ -9,7 +9,10 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/module-result.json";
 
-export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  props) => {
+const modulelist = (
+  { data, pageContext: { moduleCurrentPage, moduleNumPages } },
+  props
+) => {
   const postEdges = data.allMarkdownRemark.edges;
   const DATA = moduleList;
 
@@ -38,7 +41,7 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  p
   useEffect(() => {
     if (searchQuery || filterTag) {
       setResults(
-        DATA.filter(module => {
+        DATA.filter((module) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           return module.tags.match(tagRgx) && module.title.match(searchRgx);
@@ -54,7 +57,7 @@ export default ({ data, pageContext: { moduleCurrentPage, moduleNumPages } },  p
   return (
     <Layout>
       <div className="index-container">
-      <Helmet title={`Modules | ${config.siteTitle}`} />
+        <Helmet title={`Modules | ${config.siteTitle}`} />
         <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
         {isShown && (
@@ -94,7 +97,6 @@ export const moduleQuery = graphql`
         node {
           fields {
             slug
-            date
           }
           excerpt
           timeToRead
@@ -105,9 +107,7 @@ export const moduleQuery = graphql`
             cover {
               publicURL
               childImageSharp {
-                sizes(maxWidth: 768) {
-                  ...GatsbyImageSharpSizes
-                }
+                gatsbyImageData
               }
             }
           }
@@ -116,3 +116,5 @@ export const moduleQuery = graphql`
     }
   }
 `;
+
+export default modulelist;

@@ -1,6 +1,6 @@
 pipeline {
     agent any 
-	 tools {nodejs "Nodejs"}
+	tools {nodejs "Nodejs"}
    
     stages {
          stage('Requirement install') { 
@@ -28,13 +28,13 @@ pipeline {
             sh '''
 
 	        cd public
-	        git config --global user.email "<user mail id>"
+	        git config --global user.email "<user@gmail.com>"
             git config --global user.name "<username>"
 	    
 	        git init
             git add .              
 	        git commit -m "push build to git deploy Repository"
-            git push https://${GIT_CREDS}@github.com/MovingBlocks/<respository>.git  <branch> -f
+            git push https://${GIT_CREDS}@github.com/MovingBlocks/<respository>.git  HEAD:<branch> -f
             '''
                 
 		    cleanWs()

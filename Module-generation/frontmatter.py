@@ -95,8 +95,3 @@ for folders in  os.listdir(DIR):
             IndexMd.write(readmedata.read())
         else:
             IndexMd.write("No info available")
-
-
-
-
-

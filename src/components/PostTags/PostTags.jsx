@@ -3,7 +3,7 @@ import _ from "lodash";
 import { Link } from "gatsby";
 import { Button } from "reactstrap";
 
-export default  ({ tags, type }) => (
+const PostTags = ({ tags, type }) => (
   <div className="post-tag-container">
     {tags && 
         <Link
@@ -16,3 +16,5 @@ export default  ({ tags, type }) => (
       }
   </div>
 );
+
+export default PostTags

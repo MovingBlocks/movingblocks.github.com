@@ -14,7 +14,7 @@ import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
 import "./Header.css";
 
-export default () => {
+const Header = () => {
   const [isOpen, toggle] = useState(false);
   return (
     <Navbar light expand="md" sticky="top">
@@ -102,3 +102,5 @@ export default () => {
     </Navbar>
   );
 };
+
+export default Header;

@@ -12,7 +12,7 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 import { Badge, Row, Col } from "reactstrap";
 
-export default (
+const blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
   props
 ) => {
@@ -123,11 +123,8 @@ export const blogQuery = graphql`
             tags
             description
             cover {
-              publicURL
               childImageSharp {
-                sizes(maxWidth: 768, maxHeight: 432) {
-                  ...GatsbyImageSharpSizes
-                }
+                gatsbyImageData
               }
             }
           }
@@ -136,3 +133,5 @@ export const blogQuery = graphql`
     }
   }
 `;
+
+export default blog;

@@ -18,6 +18,7 @@ module.exports = {
     }
   },
   plugins: [
+    "gatsby-plugin-image",
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -39,9 +40,6 @@ module.exports = {
               backgroundColor: `transparent`,
               wrapperStyle: `left:0; width: 100%;`
             }
-          },
-          {
-            resolve: "gatsby-remark-responsive-iframe"
           },
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",

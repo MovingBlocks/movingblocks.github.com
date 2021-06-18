@@ -10,7 +10,7 @@ import "./css/style.scss";
 import favicon from "../../static/logos/logo.png";
 
 // eslint-disable-next-line no-unused-vars
-export default ({ children, location }) => (
+const Layout = ({ children, location }) => (
   <body>
     <Helmet>
       <meta name="description" content={config.siteDescription} />
@@ -21,3 +21,5 @@ export default ({ children, location }) => (
     <Footer />
   </body>
 );
+
+export default Layout

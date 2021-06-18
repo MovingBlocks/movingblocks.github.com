@@ -4,7 +4,7 @@ import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import Index from "../components/Home/Index"
 
-export default () => (
+const index = () => (
   <Layout>
     <div className="about-container">
       <Helmet title={`Home | ${config.siteTitle}`} />
@@ -12,3 +12,5 @@ export default () => (
     </div>
   </Layout>
 );
+
+export default index

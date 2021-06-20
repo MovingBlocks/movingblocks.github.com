@@ -3,82 +3,64 @@ import json
 import requests
 from github import Github
 
-IndexDir = "./meta-data/"
+IndexDir="./meta-data/"
 os.mkdir(IndexDir)
 
-accessToken = os.environ.get('GIT_CREDS')
+accessToken=os.environ.get('GIT_TOKEN')
 g = Github(accessToken)
 
-user = g.get_user('Terasology')
+user= g.get_user('Terasology')
 repo = user.get_repo("Index")
+allModules= repo.get_contents("/distros/omega/gradle.properties")
+getModules=allModules.decoded_content.decode()
+filterData= getModules.split("\n",1)[1]
+filterData= filterData.rsplit("\n",5)[0]
+word1='extraModules='
+word2='\n'
+wordreplace=filterData.replace(word1, "")
+wordreplace=wordreplace.replace(word2,"") 
+Modules=wordreplace.split(",")
 
-contents = repo.get_contents("/distros/omega/gradle.properties")
-string = contents.decoded_content.decode()
+## Collect modules 
+for module in range(len(Modules)):
+    if(module<len(Modules)):
+        repository=user.get_repo(Modules[module])
 
-filterData = string.split("\n", 1)[1]
-filterData = filterData.rsplit("\n", 5)[0]
-word1 = 'extraModules='
-word2 = '\n'
-wordreplace = filterData.replace(word1, "")
-wordreplace = wordreplace.replace(word2, "")
-Modules = wordreplace.split(",")
+        #Fetch module Information
+        try:
+            moduleContent=repository.get_contents("module.txt")
+            getModuleData=moduleContent.decoded_content.decode()
+            parseModuleData=json.loads(getModuleData)
+            ModuleName=parseModuleData['id']
+            ModuleDir=os.mkdir(IndexDir+ModuleName)
+            ModuleDirSrc=IndexDir+ModuleName
+            ModuleFile= open(ModuleDirSrc+"/module.txt", "a")
+            ModuleFile.write(getModuleData)
+            ModuleFile.close()
+        except:
+            print("Repository is not a Module "+ModuleName)
 
-# Collect Modules
-for i in range(0, len(Modules)):
-    if(i < (len(Modules))):
-        repository = user.get_repo(Modules[i])
-        con = repository.get_contents("")
-        for content_file in con:
-            if(content_file.path == "module.txt"):
-                getModuleCon = repository.get_contents("module.txt")
-                getData = getModuleCon.decoded_content.decode()
-                parseData = json.loads(getData)
-                ModuleName = parseData['id']
-                ModuleDir = os.mkdir(IndexDir+ModuleName)
-                ModuleDirSrc = IndexDir+ModuleName
+        #Fetch Readme file
+        try:
+            readmeContent=repository.get_contents("README.md")
+            getReadmeData=readmeContent.decoded_content.decode()
+            ModuleReadmeFile= open(ModuleDirSrc+"/README.md", "a")
+            ModuleReadmeFile.write(getReadmeData)
+            ModuleReadmeFile.close()
+        except:
+            print("No Readme Found "+ModuleName)
 
-                # write module.txt in module directory
-                ModuleFile = open(ModuleDirSrc+"/module.txt", "a")
-                ModuleFile.write(getData)
-                ModuleFile.close()
-
-                # search for readme files
-                readmeFound = 0
-                for Readme in con:
-                    if(Readme.path == "README.md" or Readme.path == "README.MD" or Readme.path == "README.markdown"):
-                        print("Readme Found")
-                        readmeFound += 1
-                        ModuleReadmeCon = repository.get_contents(Readme.path)
-                        getReadmeData = ModuleReadmeCon.decoded_content.decode()
-                        ModuleReadmeFile = open(ModuleDirSrc+"/README.md", "a")
-                        ModuleReadmeFile.write(getReadmeData)
-                        ModuleReadmeFile.close()
-
-                if(readmeFound == 0):
-                    print("No Readme found")
-
-                bannerFound = 0
-                for banner in con:
-                    if(banner.type == "dir"):
-                        bannerCon = con.extend(
-                            repository.get_contents(banner.path))
-                    else:
-                        if(banner.path == "docs/_media/banner.png" or banner.path == "docs/_media/banner.jpg"):
-                            print("Image Found")
-                            bannerFound += 1
-                            bannerImage = "https://raw.githubusercontent.com/Terasology/" + \
-                                ModuleName+"/develop/"+banner.path
-                            response = requests.get(bannerImage)
-                            imageFile = open(ModuleDirSrc+"/logo.jpg", "wb")
-                            imageFile.write(response.content)
-                            imageFile.close()
-
-                if(bannerFound == 0):
-                    print("Resloving with default image")
-                    defaultImage = "https://avatars.githubusercontent.com/u/4554375?s=200&v=4"
-                    response = requests.get(defaultImage)
-                    defaultImageFile = open(ModuleDirSrc+"/logo.jpg", "wb")
-                    defaultImageFile.write(response.content)
-                    defaultImageFile.close()
-            else:
-                print("repository is not a module")
+        #Fetch banner image
+        bannerImage="https://raw.githubusercontent.com/Terasology/"+ModuleName+"/develop/docs/_media/banner.png"
+        response = requests.get(bannerImage)
+        if(response.ok):
+            imageFile = open(ModuleDirSrc+"/cover.png", "wb")
+            imageFile.write(response.content)
+            imageFile.close()
+        else:
+            print("No banner found on "+ ModuleName+",resolving with default banner")
+            sourceImage=open("defaultBanner.png", "rb+")
+            readSourceImage=sourceImage.read()
+            defaultImageFile = open(ModuleDirSrc+"/cover.png", "wb+")
+            defaultImageFile.write(readSourceImage)
+            defaultImageFile.close()

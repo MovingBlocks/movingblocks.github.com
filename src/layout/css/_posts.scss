@@ -1,11 +1,11 @@
 .post-meta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .post-content {
-    color: $gray-2;
+  color: $gray-2;
 }
 
 .post-content img {
@@ -15,14 +15,21 @@
 }
 
 .post-cover {
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .title span {
-    color: lighten($gray-2, 10);
+  color: lighten($gray-2, 10);
 }
 
 .title * {
-    color: $gray-2;
+  color: $gray-2;
+}
+
+.word-break {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }

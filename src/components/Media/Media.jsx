@@ -1,5 +1,4 @@
 import React ,{useEffect, useRef} from "react";
-import "./Media.css";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from 'reactstrap';
 import { useStaticQuery, graphql } from "gatsby"

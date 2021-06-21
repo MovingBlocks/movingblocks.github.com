@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
-import "./Header.css";
+
 
 const Header = () => {
   const [isOpen, toggle] = useState(false);

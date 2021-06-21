@@ -22,4 +22,4 @@ const Layout = ({ children, location }) => (
   </body>
 );
 
-export default Layout
+export default Layout;

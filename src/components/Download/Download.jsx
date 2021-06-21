@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
-import "./Download.css";
+
 
 const Download = () => {
   const isBrowser = typeof window !== "undefined";

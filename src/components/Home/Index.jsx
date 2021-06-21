@@ -1,5 +1,4 @@
 import React from "react";
-import "./Index.css";
 import { Row, Col } from "reactstrap";
 import { Link } from "gatsby";
 import { graphql, useStaticQuery } from "gatsby";

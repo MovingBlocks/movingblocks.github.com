@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
 import { GatsbyImage } from "gatsby-plugin-image";
-import "./PostListing.css";
 
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {

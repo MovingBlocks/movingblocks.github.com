@@ -66,6 +66,17 @@ nav {
   }
 }
 
+.text-color {
+  color: #6c757d;
+}
+.text-color:hover {
+  color: #6c757d;
+}
+.active {
+  color: black;
+  border-bottom: 4px solid #08a045;
+}
+
 /* Dropdown Animation */
 
 @media (min-width: 992px) {

@@ -16,7 +16,6 @@ import {
 } from "react-icons/fa";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
-import "./SocialLinks.css";
 
 const SocialLinks = ({ postNode, postPath, mobile }) => {
   const post = postNode.frontmatter;

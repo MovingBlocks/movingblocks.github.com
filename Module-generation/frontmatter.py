@@ -5,8 +5,8 @@ DIR = "./meta-data/"
 DST = "./modules/"
 os.mkdir(DST)
 
-for folders in os.listdir(DIR):
-    moduleFile = DIR+folders+"/module.txt"
+for folder in os.listdir(DIR):
+    moduleFile = DIR+folder+"/module.txt"
     if(os.path.isfile(moduleFile)):
         getModuledata = open(moduleFile, "r")
         readModuleData = getModuledata.read()
@@ -14,7 +14,7 @@ for folders in os.listdir(DIR):
         moduleName = parseData['id']
         moduleDescription = parseData['description']
         moduleLogo = "cover.png"
-        moduleReadme = DIR+folders+"/README.md"
+        moduleReadme = DIR+folder+"/README.md"
 
         os.mkdir(DST+moduleName)
         IndexMd = open(DST+moduleName+"/index.md", "a+")

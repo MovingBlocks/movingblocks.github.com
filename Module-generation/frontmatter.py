@@ -1,40 +1,38 @@
 import os
 import json
 
-DIR="./meta-data/"
-DST="./modules/"
+DIR = "./meta-data/"
+DST = "./modules/"
 os.mkdir(DST)
 
-for folders in  os.listdir(DIR):
-    moduleFile=DIR+folders+"/module.txt"
+for folders in os.listdir(DIR):
+    moduleFile = DIR+folders+"/module.txt"
     if(os.path.isfile(moduleFile)):
-        getModuledata = open(moduleFile,"r")
-        readModuleData=getModuledata.read()
-        parseData=json.loads(readModuleData)
-        moduleName=parseData['id']
-        moduleDescription=parseData['description']
-        
-        moduleLogo="logo.jpg"
-        moduleReadme=DIR+folders+"/README.md"
+        getModuledata = open(moduleFile, "r")
+        readModuleData = getModuledata.read()
+        parseData = json.loads(readModuleData)
+        moduleName = parseData['id']
+        moduleDescription = parseData['description']
+        moduleLogo = "cover.png"
+        moduleReadme = DIR+folders+"/README.md"
 
         os.mkdir(DST+moduleName)
-        IndexMd=open(DST+moduleName+"/index.md","a+")
+        IndexMd = open(DST+moduleName+"/index.md", "a+")
         IndexMd.write('---\n')
         IndexMd.write('posttype: "module" \n')
         IndexMd.write('title: '+moduleName+'\n')
         IndexMd.write('description: "'+moduleDescription+'"\n')
 
         if(os.path.isfile(moduleLogo)):
-            print("yes")
-            IndexMd.write('cover: "./logo.jpg"'+'\n')
-            sourceImage=open(moduleLogo, "rb")
-            readImage=sourceImage.read()
-            ImageFile = open(DST+moduleName+"/logo.jpg", "wb+")    
+            IndexMd.write('cover: "./cover.png"'+'\n')
+            sourceImage = open(moduleLogo, "rb")
+            readImage = sourceImage.read()
+            ImageFile = open(DST+moduleName+"/logo.png", "wb+")
             ImageFile.write(readImage)
             ImageFile.close()
             sourceImage.close()
 
-        Tags=[]
+        Tags = []
         if "isGameplay" in parseData:
             if (parseData['isGameplay']):
                 Tags.append("Gameplay")
@@ -50,11 +48,11 @@ for folders in  os.listdir(DIR):
         if "isAugmentation" in parseData:
             if (parseData['isAugmentation']):
                 Tags.append("Augment")
-        
+
         if "isLibrary" in parseData:
             if(parseData['isLibrary']):
                 Tags.append("Library")
-       
+
         if "isAsset" in parseData:
             if(parseData['isAsset']):
                 Tags.append("Asset")
@@ -67,7 +65,7 @@ for folders in  os.listdir(DIR):
         IndexMd.write('---\n')
 
         if(os.path.isfile(moduleReadme)):
-            readmedata=open(moduleReadme,"r")
+            readmedata = open(moduleReadme, "r")
             IndexMd.write(readmedata.read())
         else:
             IndexMd.write("No info available")

@@ -112,6 +112,7 @@ export const blogQuery = graphql`
     ) {
       edges {
         node {
+          excerpt
           fields {
             slug
             date
@@ -123,6 +124,7 @@ export const blogQuery = graphql`
             tags
             description
             cover {
+              publicURL
               childImageSharp {
                 gatsbyImageData
               }

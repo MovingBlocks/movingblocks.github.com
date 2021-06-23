@@ -58,6 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark {
           edges {
             node {
+              excerpt
               fields {
                 slug
               }
@@ -69,6 +70,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 posttype
                 cover {
                   publicURL
+                  childImageSharp {
+                    gatsbyImageData
+                  }
                 }
               }
             }
@@ -94,6 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              excerpt
               fields {
                 slug
               }
@@ -105,6 +110,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 posttype
                 cover {
                   publicURL
+                  childImageSharp {
+                    gatsbyImageData
+                  }
                 }
               }
             }
@@ -133,6 +141,7 @@ exports.createPages = async ({ graphql, actions }) => {
       tags: edge.node.frontmatter.tags,
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
+      excerpt: edge.node.excerpt,
       description: edge.node.frontmatter.description
     });
   });
@@ -164,6 +173,7 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              excerpt
               fields {
                 slug
               }
@@ -175,6 +185,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 posttype
                 cover {
                   publicURL
+                  childImageSharp {
+                    gatsbyImageData
+                  }
                 }
               }
             }

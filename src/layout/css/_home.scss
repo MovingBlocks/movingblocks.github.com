@@ -10,10 +10,6 @@ iframe {
   font-weight: 600;
 }
 
-.button {
-  background-color: $primary; /* Green */
-}
-
 .center-btn {
   text-align: center;
 }
@@ -68,11 +64,4 @@ iframe {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.btn-read-moreblog {
-  font-size: 16px;
-  font-weight: 500;
-  padding: 10px;
-  border-radius: 5px;
 }

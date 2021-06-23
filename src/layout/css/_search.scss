@@ -4,18 +4,7 @@
 }
 
 #search-input,
-#search-tag,
-#search-btn {
+#search-tag {
   font-size: 1.75rem;
 }
 
-#search-btn {
-  margin-top: 31px;
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  #search-btn {
-    margin-top: 10px;
-  }
-}

@@ -15,12 +15,12 @@ iframe {
 }
 
 .link-about {
-  color: white;
+  color: $white;
   font-weight: bold;
 }
 
 .link-about:hover {
-  color: white;
+  color: $white;
 }
 
 .sect-home {
@@ -51,7 +51,7 @@ iframe {
 
 .author {
   margin-top: 10px;
-  color: #333;
+  color: $gray-2;
 }
 
 .gatsby-image-wrapper img {

@@ -26,7 +26,7 @@ and realease it.Their are some argument which is required by the gatsby publish 
 to push changes when it is done building and second argument is deploy branch.In our case branch name is `deploy`
 
 Above we saw what is our workflow for Deployment. Now let's understand how Gatsby Publish template works behind the scenes
-During every push the gatsby template runs a `gatsby build` command which outputs the `public` directory and the template initilize a new repository inside
+During every push the gatsby template runs a `gatsby build` command which outputs the `public` directory and the template initialize a new repository inside
 the public directoy, commit it and push it into the deploy branch mentioned above
 
 ### CNAME

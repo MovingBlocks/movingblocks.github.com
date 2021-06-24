@@ -13,7 +13,7 @@ for folder in os.listdir(DIR):
         parseData = json.loads(readModuleData)
         moduleName = parseData['id']
         moduleDescription = parseData['description']
-        moduleLogo = "cover.png"
+        moduleLogo = "defaultBanner.png"
         moduleReadme = DIR+folder+"/README.md"
 
         os.mkdir(DST+moduleName)
@@ -27,7 +27,7 @@ for folder in os.listdir(DIR):
             IndexMd.write('cover: "./cover.png"'+'\n')
             sourceImage = open(moduleLogo, "rb")
             readImage = sourceImage.read()
-            ImageFile = open(DST+moduleName+"/logo.png", "wb+")
+            ImageFile = open(DST+moduleName+"/cover.png", "wb+")
             ImageFile.write(readImage)
             ImageFile.close()
             sourceImage.close()

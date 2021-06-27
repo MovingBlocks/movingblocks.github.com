@@ -1,4 +1,4 @@
-<h1 align="center"> ModuleSite Deployment </h1>
+# ModuleSite Deployment
 
 [ModuleSite](https://github.com/MovingBlocks/ModuleSite) uses a [Github Actions](https://github.com/features/actions) to automate the deployment process.On every push Github actions are triggered and ModuleSite is build and it is deployed on
 [Github pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)

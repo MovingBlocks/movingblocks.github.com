@@ -10,21 +10,17 @@ iframe {
   font-weight: 600;
 }
 
-.button {
-  background-color: #4caf50; /* Green */
-}
-
 .center-btn {
   text-align: center;
 }
 
 .link-about {
-  color: white;
+  color: $white;
   font-weight: bold;
 }
 
 .link-about:hover {
-  color: white;
+  color: $white;
 }
 
 .sect-home {
@@ -32,7 +28,7 @@ iframe {
 }
 
 .home-underline {
-  background-color: #08a045;
+  background-color: $primary;
   height: 2px;
   width: 100%;
   margin-top: 5px;
@@ -55,7 +51,7 @@ iframe {
 
 .author {
   margin-top: 10px;
-  color: #333;
+  color: $gray-2;
 }
 
 .gatsby-image-wrapper img {
@@ -68,11 +64,4 @@ iframe {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.btn-read-moreblog {
-  font-size: 16px;
-  font-weight: 500;
-  padding: 10px;
-  border-radius: 5px;
 }

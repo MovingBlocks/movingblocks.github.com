@@ -1,19 +1,9 @@
 #search-form > div {
-    padding-top: 0px;
-    padding-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
-#search-input, #search-tag, #search-btn {
-    font-size: 1.75rem;
-}
-
-#search-btn {
-    margin-top: 31px;
-    width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-    #search-btn {
-        margin-top: 10px; 
-    }
+#search-input,
+#search-tag {
+  font-size: 1.75rem;
 }

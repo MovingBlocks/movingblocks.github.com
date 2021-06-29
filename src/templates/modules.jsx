@@ -31,7 +31,7 @@ export default class ModuleTemplate extends React.Component {
             <GatsbyImage
               className={"post-cover"}
               image={post.cover.childImageSharp.gatsbyImageData}
-              style={{ maxHeight: 500 }}
+              
             />
 
             <h1>{post.title}</h1>
@@ -60,9 +60,7 @@ export const pageQuery = graphql`
         cover {
           publicURL
           childImageSharp {
-            fixed(width: 2000) {
-              src
-            }
+            gatsbyImageData
           }
         }
         date

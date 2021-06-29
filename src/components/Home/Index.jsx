@@ -1,5 +1,4 @@
 import React from "react";
-import "./Index.css";
 import { Row, Col } from "reactstrap";
 import { Link } from "gatsby";
 import { graphql, useStaticQuery } from "gatsby";
@@ -66,7 +65,7 @@ const Index = () => {
             artists, and musicians. We encourage others to join!
           </p>
           <div className="my-5">
-            <button className="font-weight-bold btn btn-lg btn-success button">
+            <button className="font-weight-bold btn btn-lg btn-success home-btn">
               <Link to="/game" className="link-about">
                 Learn More
               </Link>
@@ -139,7 +138,7 @@ const Index = () => {
         <div>
           <Link
             to="/blog"
-            className="btn-primary btn-read-moreblog font-weight-bold"
+            className="btn-primary home-btn-read-more-blog font-weight-bold"
           >
             Read More Blogs
             <FaRegArrowAltCircleRight

@@ -2,11 +2,11 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layout";
-import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
+
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -35,10 +35,9 @@ export default class PostTemplate extends React.Component {
               </h6>
             </div>
             <br />
-            <Img
+            <GatsbyImage
               className={"post-cover"}
-              sizes={post.cover.childImageSharp.sizes}
-              style={{ maxHeight: 500 }}
+              image={post.cover.childImageSharp.gatsbyImageData}
             />
             <br />
             <hr />
@@ -72,9 +71,7 @@ export const pageQuery = graphql`
         cover {
           publicURL
           childImageSharp {
-            fixed(width: 768) {
-              src
-            }
+            gatsbyImageData
           }
         }
       }

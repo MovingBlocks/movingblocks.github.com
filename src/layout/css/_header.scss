@@ -59,11 +59,22 @@ nav {
       left: 175px;
       display: inline-block;
       border-right: 0.4em solid transparent;
-      border-bottom: 0.4em solid #ffffff;
+      border-bottom: 0.4em solid $white;
       border-left: 0.4em solid transparent;
       content: "";
     }
   }
+}
+
+.text-color {
+  color: #6c757d;
+}
+.text-color:hover {
+  color: $gray-2;
+}
+.active {
+  color: $black;
+  border-bottom: 4px solid $primary;
 }
 
 /* Dropdown Animation */

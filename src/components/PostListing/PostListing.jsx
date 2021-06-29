@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
-import { GatsbyImage } from "gatsby-plugin-image";
-import "./PostListing.css";
+
+import Cards from "../Cards/Cards.jsx";
 
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {
@@ -27,41 +27,17 @@ const PostListing = ({ id, postEdges }) => {
       <Row className="justify-content-center">
         {/* Your post list here. */
         postList.map((post) => (
-          <Col className="ml-4 mr-4 mt-2 mb-2" lg="3" md="8" sm="12">
-            <Row className="row_shadow h-100">
-              <Col lg="12" md="12" className="p-0">
-                  <GatsbyImage
-                    image={
-                      post.cover.childImageSharp.gatsbyImageData
-                    }
-                  />
-                <div className="md-tag mt-3 ml-3">
-                  <Badge>{post.tags}</Badge>
-                </div>
-              </Col>
-
-              <div className="d-flex flex-column ml-3">
-                <h5 className="mt-1">{post.title}</h5>
-                <div className="mt-auto mr-2" lang="en">
-                  <p className="word-break">{post.excerpt}</p>
-                </div>
-
-                <div className="mt-auto mb-4">
-                  <Link
-                    to={`/${id}${post.path}`}
-                    key={post.title}
-                    className="mt-auto btn-primary"
-                  >
-                    Read More
-                  </Link>
-                </div>
-              </div>
-            </Row>
-          </Col>
+          <Cards
+            title={post.title}
+            path={`/${id}${post.path}`}
+            cover={post.cover.childImageSharp}
+            tags={post.tags}
+            excerpt={post.excerpt}
+          />
         ))}
       </Row>
     </Col>
   );
 };
 
-export default PostListing
+export default PostListing;

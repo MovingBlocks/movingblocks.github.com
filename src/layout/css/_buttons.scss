@@ -1,21 +1,26 @@
 .btn-primary {
+  margin-right: 1em;
+  border-radius: 2px;
+  padding: 0.25em 0.5em;
   background-color: $primary;
   border-color: $primary;
   color: $white !important;
+  transition: all 150ms linear;
 }
 
 .btn-primary:hover {
-  background-color: $secondary;
-  border-color: $secondary;
-  color: $lg-accent !important;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary:active {
   background-color: $secondary !important;
   border-color: $secondary !important;
-  color: $lg-accent !important;
+  color: $lg-accent;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  transition: all 150ms linear;
 }
+
+a.btn-primary {
+  text-decoration: none;
+  color: $white;
+}
+
 
 .btn-primary:focus {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.1) !important;
@@ -23,4 +28,27 @@
 
 .download-btn {
   margin-left: 0.5em;
+}
+
+.home-btn {
+  background-color: $primary;
+}
+
+.home-btn-read-more-blog {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#search-btn {
+  margin-top: 31px;
+  font-size: 1.75rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  #search-btn {
+    margin-top: 10px;
+  }
 }

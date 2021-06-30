@@ -13,7 +13,6 @@ import {
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
 
-
 const Header = () => {
   const [isOpen, toggle] = useState(false);
   return (
@@ -71,6 +70,17 @@ const Header = () => {
                   activeClassName="active"
                 >
                   Modules
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link
+                  to="/mentors"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Mentor's
                 </Link>
               </NavLink>
             </NavItem>

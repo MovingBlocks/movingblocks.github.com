@@ -1,0 +1,15 @@
+.modal {
+  z-index: 9999 !important;
+}
+
+.Modal-custominfo {
+  border: 5px solid $primary;
+  border-bottom: 0;
+  border-top: 0;
+  border-right: 0;
+}
+
+.Modal-customFiled {
+  font-size: 18px;
+  font-weight: 500;
+}

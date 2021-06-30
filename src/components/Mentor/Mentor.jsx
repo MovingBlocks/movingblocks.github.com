@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Alert } from "reactstrap";
 import defaultprofile from "../../../static/logos/profile-placeholder.png";
 import moment from "moment-timezone";
 import MentorModal from "../MentorModal/MentorModal.jsx";
 
 const Mentor = () => {
   const [mentors, setmentors] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [status, setStatus] = useState("");
+  const onDismiss = () => setVisible(false);
+
   const getmentor = async () => {
     const url =
       "https://api.trello.com/1/lists/5eb715b48caa18614425c25e/cards?fields=name,labels,cover,desc&customFields=true&customFieldItems=true&attachments=true&attachment_fields=all";
@@ -15,7 +19,8 @@ const Mentor = () => {
       const data = await response.json();
       setmentors(data);
     } else {
-      console.log("No data found");
+      setVisible(true);
+      setStatus(response.status);
     }
   };
 
@@ -29,6 +34,18 @@ const Mentor = () => {
         <h1 className="text-center">Mentor's</h1>
         <div className="container my-4">
           <div className="home-underline"></div>
+        </div>
+        <div className="container">
+          <Alert
+            className="my-2 alert-box"
+            color="danger"
+            isOpen={visible}
+            toggle={onDismiss}
+          >
+            <span className="alert-box">
+              Problem fetching Mentor's Information .(Error Code: {status})
+            </span>
+          </Alert>
         </div>
       </div>
       <Row className="justify-content-center">

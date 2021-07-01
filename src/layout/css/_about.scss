@@ -59,22 +59,26 @@ section p {
   );
 }
 
+.font-weight-about {
+  font-weight: 600;
+}
+
 @media (max-width: 750px) {
   .left-overlay_about_content {
     background: linear-gradient(
-    0deg,
-    rgba(17, 191, 86, 0.1) 0%,
-    rgba(5, 173, 73, 0.9) 0%
-  );
+      0deg,
+      rgba(17, 191, 86, 0.1) 0%,
+      rgba(5, 173, 73, 0.9) 0%
+    );
   }
   .empty-about-content {
     display: none;
   }
   .right-overlay_about_content {
     background: linear-gradient(
-    90deg,
-    rgba(17, 191, 86, 0.1) 0%,
-    rgba(5, 173, 73, 0.9) 0%
-  );
+      90deg,
+      rgba(17, 191, 86, 0.1) 0%,
+      rgba(5, 173, 73, 0.9) 0%
+    );
   }
 }

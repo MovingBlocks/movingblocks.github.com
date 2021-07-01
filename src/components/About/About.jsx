@@ -74,7 +74,7 @@ const About = (props) => {
               <div className="left-overlay_about_content">
                 <Col md="5">
                   <h3 className="mb-3  mr-4 text-white">History</h3>
-                  <p className="text-justify text-white">
+                  <p className="text-justify text-white font-weight-about">
                     Founded in 2011 by Benjamin "Begla" Glatzel while
                     researching procedural terrain generation and effective
                     rendering techniques, He succeded in creating a minecraft
@@ -103,22 +103,22 @@ const About = (props) => {
                 <Row>
                   <Col className="empty-about-content" md="7"></Col>
                   <Col md="5" className="text-white float-right ">
-                    <div className="ml-4 mr-4">
+                    <div className="ml-4 mr-4 ">
                       <h3 className="mb-3 text-white">Modding API</h3>
-                      <p className="text-justify">
+                      <p className="text-justify font-weight-about">
                         Terasology's engine uses a whitelisting approach to
                         expose an API for modules using two primary methods and
                         a rarely needed third one:
                       </p>
                       <ul>
-                        <li>
+                        <li className="font-weight-about">
                           Classes or packages marked with the @API annotation
                         </li>
-                        <li>
+                        <li className="font-weight-about">
                           Classes or packages in the basic whitelist defined in
                           ExternalApiWhitelist.java
                         </li>
-                        <li>
+                        <li className="font-weight-about">
                           Rarely blocks of code in the engine may be hit in a
                           way requiring use of
                           AccessController.doPrivileged(...) usually module
@@ -137,7 +137,7 @@ const About = (props) => {
               <div className="left-overlay_about_content">
                 <Col md="5" className="text-white">
                   <h3 className="mb-3  mr-4">Terasology Community</h3>
-                  <p className="text-justify">
+                  <p className="text-justify font-weight-about">
                     The creators and maintainers are a diverse mix of software
                     developers, designers, game testers, graphic artists,
                     musicians and open source loving high schoolers. We
@@ -146,7 +146,7 @@ const About = (props) => {
                     you have any questions or if you just want to chat use this
                     invite link for our{" "}
                     <a
-                      className="text-white font-weight-bold"
+                      className="text-white font-weight-bolder"
                       href="https://discordapp.com/invite/Terasology"
                     >
                       Discord

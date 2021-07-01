@@ -52,6 +52,10 @@ const About = (props) => {
         <Row className="justify-content-center">
           <Col md="8">
             <h2 className="mb-5 text-center">About Us</h2>
+            <div className=" my-4">
+              <div className="home-underline"></div>
+            </div>
+           
             <p className="text-center">
               The Terasology project was and is becoming a stable platform for
               various types of gameplay settings in a voxel world. The creators
@@ -59,6 +63,8 @@ const About = (props) => {
               designers, game testers, graphic artists, and musicians. We
               encourage others to join
             </p>
+           
+            
           </Col>
         </Row>
 
@@ -67,7 +73,7 @@ const About = (props) => {
             <BgImage image={data.historyImg.childImageSharp.gatsbyImageData}>
               <div className="left-overlay_about_content">
                 <Col md="5">
-                  <h3 className="mb-3 mr-4 text-white">History</h3>
+                  <h3 className="mb-3  mr-4 text-white">History</h3>
                   <p className="text-justify text-white">
                     Founded in 2011 by Benjamin "Begla" Glatzel while
                     researching procedural terrain generation and effective
@@ -95,9 +101,9 @@ const About = (props) => {
             <BgImage image={data.modding.childImageSharp.gatsbyImageData}>
               <div className="right-overlay_about_content">
                 <Row>
-                  <Col md="7"></Col>
+                  <Col className="empty-about-content" md="7"></Col>
                   <Col md="5" className="text-white float-right ">
-                    <div className="mr-4">
+                    <div className="ml-4 mr-4">
                       <h3 className="mb-3 text-white">Modding API</h3>
                       <p className="text-justify">
                         Terasology's engine uses a whitelisting approach to

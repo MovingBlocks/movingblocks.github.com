@@ -7,6 +7,7 @@ os.mkdir(DST)
 
 for folder in os.listdir(DIR):
     moduleFile = DIR+folder+"/module.txt"
+    # check for Module.txt to get infomation about module
     if(os.path.isfile(moduleFile)):
         getModuledata = open(moduleFile, "r")
         readModuleData = getModuledata.read()
@@ -22,7 +23,8 @@ for folder in os.listdir(DIR):
         IndexMd.write('posttype: "module" \n')
         IndexMd.write('title: '+moduleName+'\n')
         IndexMd.write('description: "'+moduleDescription+'"\n')
-
+        
+        # check for module logo or cover image
         if(os.path.isfile(moduleLogo)):
             IndexMd.write('cover: "./cover.png"'+'\n')
             sourceImage = open(moduleLogo, "rb")
@@ -32,6 +34,7 @@ for folder in os.listdir(DIR):
             ImageFile.close()
             sourceImage.close()
 
+        # collecting tags
         Tags = []
         if "isGameplay" in parseData:
             if (parseData['isGameplay']):
@@ -64,6 +67,7 @@ for folder in os.listdir(DIR):
         IndexMd.write("tags: "+"["+','.join(f'"{w}"' for w in Tags)+"]\n")
         IndexMd.write('---\n')
 
+        # check for readmeFile
         if(os.path.isfile(moduleReadme)):
             readmedata = open(moduleReadme, "r")
             IndexMd.write(readmedata.read())

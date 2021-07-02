@@ -51,14 +51,16 @@ for module in range(len(Modules)):
             print("No Readme Found "+ModuleName)
 
         # Fetch banner image
-        bannerImage = "https://raw.githubusercontent.com/Terasology/"+ModuleName+"/develop/docs/_media/banner.png"
+        bannerImage = "https://raw.githubusercontent.com/Terasology/" + \
+            ModuleName+"/develop/docs/_media/banner.png"
         response = requests.get(bannerImage)
         if(response.ok):
             imageFile = open(ModuleDirSrc+"/cover.png", "wb")
             imageFile.write(response.content)
             imageFile.close()
         else:
-            print("No banner found on "+ModuleName+",resolving with default banner")
+            print("No banner found on "+ModuleName +
+                  ",resolving with default banner")
             sourceImage = open("defaultBanner.png", "rb+")
             readSourceImage = sourceImage.read()
             defaultImageFile = open(ModuleDirSrc+"/cover.png", "wb+")

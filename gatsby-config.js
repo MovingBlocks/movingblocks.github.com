@@ -2,7 +2,7 @@ const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
 
 module.exports = {
-  pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
+  pathPrefix: config.pathPrefix === "" ? "/ModuleSite" : config.pathPrefix,
   siteMetadata: {
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
     rssMetadata: {

@@ -55,7 +55,7 @@ const About = (props) => {
             <div className=" my-4">
               <div className="home-underline"></div>
             </div>
-           
+
             <p className="text-center">
               The Terasology project was and is becoming a stable platform for
               various types of gameplay settings in a voxel world. The creators
@@ -63,8 +63,6 @@ const About = (props) => {
               designers, game testers, graphic artists, and musicians. We
               encourage others to join
             </p>
-           
-            
           </Col>
         </Row>
 
@@ -74,7 +72,7 @@ const About = (props) => {
               <div className="left-overlay_about_content">
                 <Col md="5">
                   <h3 className="mb-3  mr-4 text-white">History</h3>
-                  <p className="text-justify text-white font-weight-about">
+                  <p className="text-justify text-white ">
                     Founded in 2011 by Benjamin "Begla" Glatzel while
                     researching procedural terrain generation and effective
                     rendering techniques, He succeded in creating a minecraft
@@ -105,20 +103,20 @@ const About = (props) => {
                   <Col md="5" className="text-white float-right ">
                     <div className="ml-4 mr-4 ">
                       <h3 className="mb-3 text-white">Modding API</h3>
-                      <p className="text-justify font-weight-about">
+                      <p className="text-justify ">
                         Terasology's engine uses a whitelisting approach to
                         expose an API for modules using two primary methods and
                         a rarely needed third one:
                       </p>
                       <ul>
-                        <li className="font-weight-about">
+                        <li>
                           Classes or packages marked with the @API annotation
                         </li>
-                        <li className="font-weight-about">
+                        <li>
                           Classes or packages in the basic whitelist defined in
                           ExternalApiWhitelist.java
                         </li>
-                        <li className="font-weight-about">
+                        <li>
                           Rarely blocks of code in the engine may be hit in a
                           way requiring use of
                           AccessController.doPrivileged(...) usually module
@@ -137,7 +135,7 @@ const About = (props) => {
               <div className="left-overlay_about_content">
                 <Col md="5" className="text-white">
                   <h3 className="mb-3  mr-4">Terasology Community</h3>
-                  <p className="text-justify font-weight-about">
+                  <p className="text-justify ">
                     The creators and maintainers are a diverse mix of software
                     developers, designers, game testers, graphic artists,
                     musicians and open source loving high schoolers. We

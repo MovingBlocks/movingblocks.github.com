@@ -17,7 +17,7 @@ jobs:
       # Template to build and release ModuleSite
       - uses: enriikke/gatsby-gh-pages-action@v2.2.0
         with:
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+          access-token: ${{ secrets.MODULESITE_DEPLOY_TOKEN }}
           # Output after building the ModuleSite will be pushed on deploy branch
           deploy-branch: deploy
           # Additional arguments that get passed to gatsby build 

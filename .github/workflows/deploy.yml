@@ -10,7 +10,7 @@ jobs:
   # Trigger job i.e. build and run on the latest version of ubuntu
   build:
     runs-on: ubuntu-latest
-    #Templates for building and release ModuleSite
+    # Templates for building and releasing ModuleSite
     steps:
       # Template that allows deploy.yml file to access github project when running on its own environment
       - uses: actions/checkout@v2

@@ -21,7 +21,7 @@ For using the GitHub action, Gatsby Publish provides some configuration options:
   This is the branch to which all the outputs after executing `gatsby build` will be pushed. This includes static files that were generated during build process.
 
 - **gatsby-args:**
-  Additional arguments that get passed to gatsby build. See the [Gatsby documentation](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) for a list of allowed options. Provided as an input. Defaults to nothing.
+  Additional arguments that get passed to `gatsby build`. See the [Gatsby documentation](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) for a list of allowed options. Provided as an input. Defaults to nothing.
 
 The above configuration options are used by the ModuleSite. For more information about the configuration visit [Gatsby Publish](https://github.com/marketplace/actions/gatsby-publish).
 

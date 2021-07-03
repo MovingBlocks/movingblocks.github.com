@@ -27,6 +27,9 @@ const GsocTsoc = () => {
 
   const [readyProjects, setReadyprojects] = useState([]);
   const [ongoingProjects, setOngoingprojects] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [status, setStatus] = useState("");
+  const onDismiss = () => setVisible(false);
 
   const readyIdeas = async () => {
     const url =
@@ -38,7 +41,8 @@ const GsocTsoc = () => {
       setReadyprojects(data);
       console.log(data);
     } else {
-      console.log("not found");
+      setVisible(true);
+      setStatus(response.status);
     }
   };
 
@@ -52,7 +56,8 @@ const GsocTsoc = () => {
       setOngoingprojects(data);
       console.log(data);
     } else {
-      console.log("not found");
+      setVisible(true);
+      setStatus(response.status);
     }
   };
 
@@ -64,23 +69,21 @@ const GsocTsoc = () => {
   return (
     <div>
       <div>
-        <h4 className="text-center">
-          About Google summer of code & Terasology summer of code{" "}
-        </h4>
+        <h4 className="text-center">GSoC & TSoC @ Terasology </h4>
         <div className="container my-4">
           <div className="home-underline"></div>
 
           <Row className="justify-content-center">
             <div className="col-md-10">
               <div className="text-center  gsoc_tsoc_content">
-                Google Summer of Code (GSoC) is a global program focused on
-                bringing more student developers into open source software
-                development.Every year more than 1200 students are
+                <b> Google Summer of Code (GSoC) </b> is a global program
+                focused on bringing more student developers into open source
+                software development.Every year more than 1200 students are
                 accepted.Accepted students work with a mentor and become a part
                 of the open source community. Many become lifetime open source
                 developers.Spend your summer break writing code and learning
                 about open source development while earning a stipend. for more
-                you can visit{" "}
+                information visit{" "}
                 <a
                   className="text-success font-weight-bold"
                   href="https://summerofcode.withgoogle.com/"
@@ -90,11 +93,12 @@ const GsocTsoc = () => {
               </div>
 
               <div className="text-center mt-4 gsoc_tsoc_content">
-                Terasology Summer of Code (TSoC) is similar as Google Summer of
-                Code (GSoC).It is sponsored by Teraslogy with different Timeline
-                then GSoC, do half of work, take a break for exams and other
-                thing and then do second half work .Lower stipend then GSoC. for
-                more information join our{" "}
+                <b>Terasology Summer of Code (TSoC)</b> is similar to Google
+                Summer of Code (GSoC). It provides more flexible conditions
+                regarding time and project scope than GSoC to also suit students
+                that do not have a 10-week break over the summer. However, as it
+                is sponsored directly by Terasology the stipends are lower than
+                with GSoC. For more information join our{" "}
                 <a
                   className="text-success font-weight-bold"
                   href="https://discordapp.com/invite/Terasology"
@@ -112,7 +116,21 @@ const GsocTsoc = () => {
         <div className="container my-4">
           <div className="home-underline"></div>
         </div>
+
+        <div className="container">
+          <Alert
+            className="my-2 alert-box"
+            color="danger"
+            isOpen={visible}
+            toggle={onDismiss}
+          >
+            <span className="alert-box">
+              Problem fetching Projects Information .(Error Code: {status})
+            </span>
+          </Alert>
+        </div>
       </div>
+
       <Carousel
         responsive={responsive}
         removeArrowOnDeviceType={["tablet", "mobile"]}

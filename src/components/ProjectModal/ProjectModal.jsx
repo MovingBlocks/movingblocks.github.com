@@ -18,7 +18,7 @@ const ProjectModal = ({ name, desc, tags }) => {
           onClick={toggle}
           className="btn btn-lg btn-primary border border-0 p-2 font-weight-bold"
         >
-          More about project
+          Project Details
         </button>
       </div>
       <Modal className="modal-dialog modal-xl" isOpen={modal} toggle={toggle}>
@@ -26,7 +26,7 @@ const ProjectModal = ({ name, desc, tags }) => {
         <hr />
         <div className="m-4">
           <div className="m-3">{parse(descs)}</div>
-          <h6 className="mt-4 ml-2">Project tags:</h6>
+          <h6 className="mt-4 ml-2">Project Tags:</h6>
           <div className="d-flex overflow-auto ml-2 ">
             {tags &&
               tags.map((tag) => {

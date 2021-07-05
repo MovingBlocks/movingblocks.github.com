@@ -4,12 +4,6 @@ import { Row, Col, Badge } from "reactstrap";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 const Cards = ({ title, cover, tags, excerpt, path }) => {
-  let totalTags = [];
-  if (tags.length >= 1) {
-    for (let tag = 0; tag <= 1; tag++) {
-      totalTags.push(tags[tag]);
-    }
-  }
   let tagCount = tags.length - 2;
   return (
     <Col className="ml-4 mr-4 mt-2 mb-2 " lg="3" md="8" sm="12">
@@ -20,7 +14,7 @@ const Cards = ({ title, cover, tags, excerpt, path }) => {
           </div>
           <div className="d-flex">
             <div className="md-tag mt-3 ml-3">
-              {totalTags.map((tag) => {
+              {tags.slice(0, 2).map((tag) => {
                 return <Badge className="mr-2">{tag}</Badge>;
               })}
             </div>

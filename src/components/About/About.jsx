@@ -70,8 +70,8 @@ const About = (props) => {
           <Col md="12">
             <BgImage image={data.historyImg.childImageSharp.gatsbyImageData}>
               <div className="left-overlay_about_content">
-                <Col md="5">
-                  <h3 className="mb-3  mr-4 text-white">History</h3>
+                <Col md="5" className="p-4">
+                  <h3 className="text-white">History</h3>
                   <p className="text-justify text-white ">
                     Founded in 2011 by Benjamin "Begla" Glatzel while
                     researching procedural terrain generation and effective
@@ -101,9 +101,9 @@ const About = (props) => {
                 <Row>
                   <Col className="empty-about-content" md="7"></Col>
                   <Col md="5" className="text-white float-right ">
-                    <div className="ml-4 mr-4 ">
-                      <h3 className="mb-3 text-white">Modding API</h3>
-                      <p className="text-justify ">
+                    <div className="ml-2 mr-4 ">
+                      <h3 className="ml-2 mb-3 text-white">Modding API</h3>
+                      <p className="ml-2 mr-3 text-justify ">
                         Terasology's engine uses a whitelisting approach to
                         expose an API for modules using two primary methods and
                         a rarely needed third one:
@@ -133,7 +133,7 @@ const About = (props) => {
           <Col md="12">
             <BgImage image={data.community.childImageSharp.gatsbyImageData}>
               <div className="left-overlay_about_content">
-                <Col md="5" className="text-white">
+                <Col md="5" className="text-white p-4">
                   <h3 className="mb-3  mr-4">Terasology Community</h3>
                   <p className="text-justify ">
                     The creators and maintainers are a diverse mix of software

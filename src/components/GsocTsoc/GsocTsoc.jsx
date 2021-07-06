@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
+import { Table, NavLink, Input, Badge, Row, Col, Alert } from "reactstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
@@ -78,10 +78,10 @@ const GsocTsoc = () => {
               <div className="text-center  gsoc_tsoc_content">
                 <b> Google Summer of Code (GSoC) </b> is a global program
                 focused on bringing more student developers into open source
-                software development.Every year more than 1200 students are
-                accepted.Accepted students work with a mentor and become a part
+                software development. Every year more than 1200 students are
+                accepted. Accepted students work with a mentor and become a part
                 of the open source community. Many become lifetime open source
-                developers.Spend your summer break writing code and learning
+                developers. Spend your summer break writing code and learning
                 about open source development while earning a stipend. for more
                 information visit{" "}
                 <a
@@ -155,8 +155,16 @@ const GsocTsoc = () => {
                 )}
                 <div className="card-body h-25 mt-2">
                   <p className="font-weight-bolder">{project.name}</p>
+                  <div className="d-flex">
+                    <div className="md-tag tag_size">
+                      {project &&
+                        project.labels.map((tag) => {
+                          return <Badge className="m-1">{tag.name}</Badge>;
+                        })}
+                    </div>
+                  </div>
                 </div>
-                <div className="ml-3 mb-4">
+                <div className="ml-4 mb-4">
                   <ProjectModal
                     name={project.name}
                     desc={project.desc}
@@ -202,9 +210,17 @@ const GsocTsoc = () => {
 
                   <div className="card-body  mt-2">
                     <p className="font-weight-bolder">{project.name}</p>
+                    <div className="d-flex">
+                      <div className="md-tag tag_size">
+                        {project &&
+                          project.labels.map((tag) => {
+                            return <Badge className="m-1">{tag.name}</Badge>;
+                          })}
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="ml-3 mb-4">
+                  <div className="ml-4 mb-4">
                     <ProjectModal
                       name={project.name}
                       desc={project.desc}

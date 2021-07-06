@@ -54,6 +54,28 @@ picture {
   animation-duration: 0.6s;
 }
 
+.media-img {
+  border: 5px solid transparent;
+}
+
+.media-img:hover {
+  border-color: $secondary;
+  transform: border-color 0.1s;
+}
+
+.lightbox {
+  z-index: 9999;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.backblur{
+  filter: blur(2px);
+}
+
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(0);

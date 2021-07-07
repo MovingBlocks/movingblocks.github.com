@@ -13,13 +13,10 @@ user = g.get_user('Terasology')
 repo = user.get_repo("Index")
 allModules = repo.get_contents("/distros/omega/gradle.properties")
 getModules = allModules.decoded_content.decode()
-filterData = getModules.split("\n", 1)[1]
-filterData = filterData.rsplit("\n", 5)[0]
-word1 = 'extraModules='
-word2 = '\n'
-wordreplace = filterData.replace(word1, "")
-wordreplace = wordreplace.replace(word2, "")
-Modules = wordreplace.split(",")
+for line in getModules.split():
+    if line.startswith('extraModules='):
+        filterData=line[13:]
+        Modules=filterData.split(",")
 
 # Collect modules
 for module in range(len(Modules)):

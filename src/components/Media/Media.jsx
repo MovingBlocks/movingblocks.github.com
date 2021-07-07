@@ -3,7 +3,10 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from "reactstrap";
 import { useStaticQuery, graphql } from "gatsby";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
+import MediaPagination from "../MediaPagination/MediaPagination.jsx";
+import { getDirectiveValues } from "../../../node_modules/graphql/index.js";
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`
@@ -13,7 +16,7 @@ const Gallery = () => {
           id
           name
           childImageSharp {
-            gatsbyImageData(width: 850, placeholder: BLURRED)
+            gatsbyImageData(width: 1080, placeholder: BLURRED)
           }
         }
       }
@@ -66,10 +69,10 @@ const Gallery = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [imagePerPage, setImagePerPage] = useState(9);
-
   const indexOfLastImage = currentPage * imagePerPage;
   const indexOfFirstImage = indexOfLastImage - imagePerPage;
   const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
+  const paginate = (pageNum) => setCurrentPage(pageNum);
 
   return (
     <div>
@@ -93,49 +96,81 @@ const Gallery = () => {
             >
               <div className="media-img">
                 {" "}
-                <GatsbyImage image={image} />
+                <GatsbyImage
+                  image={image}
+                  imgStyle={{
+                    transform: "none",
+                  }}
+                />
               </div>
             </Col>
           ))}
 
           {imageDisplay ? (
-            <div className=" lightbox">
-              <button
-                className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
-                onClick={showPrev}
-              >
-                {" "}
-                <IconContext.Provider
-                  value={{ size: "2em", className: "mr-1" }}
-                >
-                  <FaCaretLeft />
-                </IconContext.Provider>
-              </button>
-              <div>
-                <GatsbyImage
-                  image={imageToShow}
-                  id="lightbox-img"
-                  onClick={hideImage}
-                  className="m-4"
-                />
-              </div>
+            <div className="media-modal">
+              <div className="lightbox">
+                <div>
+                  <button
+                    className="btn btn-lg btn-primary font-weigth-bolder rounded-circle media-button"
+                    onClick={showPrev}
+                  >
+                    {" "}
+                    <IconContext.Provider
+                      value={{ size: "2em", className: "mr-1" }}
+                    >
+                      <FaCaretLeft />
+                    </IconContext.Provider>
+                  </button>
+                </div>
 
-              <button
-                className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
-                onClick={showNext}
-              >
-                <IconContext.Provider
-                  value={{ size: "2em", className: "ml-1" }}
-                >
-                  <FaCaretRight />
-                </IconContext.Provider>
-              </button>
+                <div className="align-items-center">
+                  <Col className="d-flex justify-content-end">
+                    <button
+                      className="btn btn-lg btn-primary rounded-circle media-button-cancel"
+                      onClick={hideImage}
+                    >
+                      <IconContext.Provider value={{ size: "1.5em" }}>
+                        <ImCross />
+                      </IconContext.Provider>
+                    </button>
+                  </Col>
+
+                  <div>
+                    <GatsbyImage
+                      image={imageToShow}
+                      id="lightbox-img"
+                      onClick={hideImage}
+                      className="m-4"
+                      imgStyle={{ boxShadow: "0 0 30px rgba(0, 0, 0, 0.5)" }}
+                    />
+                  </div>
+                </div>
+
+                <div className="">
+                  <button
+                    className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
+                    onClick={showNext}
+                  >
+                    <IconContext.Provider
+                      value={{ size: "2em", className: "ml-1" }}
+                    >
+                      <FaCaretRight />
+                    </IconContext.Provider>
+                  </button>
+                </div>
+              </div>
             </div>
           ) : (
             ""
           )}
         </Row>
       </div>
+      <MediaPagination
+        imagePerPage={imagePerPage}
+        totalImages={imgArray.length}
+        paginate={paginate}
+        currentSlider={currentPage}
+      />
     </div>
   );
 };

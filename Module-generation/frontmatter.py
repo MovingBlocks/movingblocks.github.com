@@ -68,5 +68,6 @@ for moduleDir in os.listdir(moduleDirs):
         moduleReadme = moduleDirs+moduleDir+"/README.md"
         readmedata = open(moduleReadme, "r")
         indexMd.write(readmedata.read())
+        indexMd.close()
     except Exception as e:
         print(e)

@@ -3,7 +3,7 @@ import json
 import requests
 from github import Github
 
-indexDir = "./meta-data/"
+indexDir = "./scrape-data/"
 os.mkdir(indexDir)
 
 accessToken = os.environ.get('GIT_TOKEN')
@@ -22,7 +22,7 @@ for line in getModules.split():
 for module in range(len(modules)):
     if(module<2):
         repository=user.get_repo(modules[module])
-        
+
         #Fetch module Information
         try:
             moduleContent=repository.get_contents("module.txt")

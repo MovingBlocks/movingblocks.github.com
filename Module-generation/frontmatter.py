@@ -1,40 +1,38 @@
 import os
 import json
 
-DIR = "./meta-data/"
-DST = "./modules/"
-os.mkdir(DST)
+moduleDirs = "./scrape-data/"
+moduleDst = "./modules/"
+os.mkdir(moduleDst)
 
-for folder in os.listdir(DIR):
-    moduleFile = DIR+folder+"/module.txt"
-    # check for Module.txt to get infomation about module
-    if(os.path.isfile(moduleFile)):
+for moduleDir in os.listdir(moduleDirs):
+    moduleFile = moduleDirs+moduleDir+"/module.txt"
+    try:
+        # Fetch module information and write on index.md file
         getModuledata = open(moduleFile, "r")
         readModuleData = getModuledata.read()
         parseData = json.loads(readModuleData)
         moduleName = parseData['id']
         moduleDescription = parseData['description']
-        moduleLogo = "defaultBanner.png"
-        moduleReadme = DIR+folder+"/README.md"
 
-        os.mkdir(DST+moduleName)
-        IndexMd = open(DST+moduleName+"/index.md", "a+")
-        IndexMd.write('---\n')
-        IndexMd.write('posttype: "module" \n')
-        IndexMd.write('title: '+moduleName+'\n')
-        IndexMd.write('description: "'+moduleDescription+'"\n')
-        
-        # check for module logo or cover image
-        if(os.path.isfile(moduleLogo)):
-            IndexMd.write('cover: "./cover.png"'+'\n')
-            sourceImage = open(moduleLogo, "rb")
-            readImage = sourceImage.read()
-            ImageFile = open(DST+moduleName+"/cover.png", "wb+")
-            ImageFile.write(readImage)
-            ImageFile.close()
-            sourceImage.close()
+        os.mkdir(moduleDst+moduleName)
+        indexMd = open(moduleDst+moduleName+"/index.md", "a+")
+        indexMd.write('---\n')
+        indexMd.write('posttype: "module" \n')
+        indexMd.write('title: '+moduleName+'\n')
+        indexMd.write('description: "'+moduleDescription+'"\n')
 
-        # collecting tags
+        # get module cover image, write on index.md file and copy to paticular module folder
+        moduleLogo = moduleDirs+moduleDir+"/cover.png"
+        indexMd.write('cover: "./cover.png"'+'\n')
+        sourceImage = open(moduleLogo, "rb")
+        readImage = sourceImage.read()
+        imageFile = open(moduleDst+moduleName+"/cover.png", "wb+")
+        imageFile.write(readImage)
+        imageFile.close()
+        sourceImage.close()
+
+        # collect tags and append to index.md
         Tags = []
         if "isGameplay" in parseData:
             if (parseData['isGameplay']):
@@ -64,12 +62,12 @@ for folder in os.listdir(DIR):
             if(parseData['isSpecific']):
                 Tags.append("Specific")
 
-        IndexMd.write("tags: "+"["+','.join(f'"{w}"' for w in Tags)+"]\n")
-        IndexMd.write('---\n')
+        indexMd.write("tags: "+"["+','.join(f'"{w}"' for w in Tags)+"]\n")
+        indexMd.write('---\n')
 
-        # check for readmeFile
-        if(os.path.isfile(moduleReadme)):
-            readmedata = open(moduleReadme, "r")
-            IndexMd.write(readmedata.read())
-        else:
-            IndexMd.write("No info available")
+        # append readme information to module
+        moduleReadme = moduleDirs+moduleDir+"/README.md"
+        readmedata = open(moduleReadme, "r")
+        indexMd.write(readmedata.read())
+    except Exception as e:
+        print(e)

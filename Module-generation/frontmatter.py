@@ -7,14 +7,13 @@ os.mkdir(moduleDst)
 
 for moduleDir in os.listdir(moduleDirs):
     moduleFile = moduleDirs+moduleDir+"/module.txt"
+    getModuledata = open(moduleFile, "r")
+    readModuleData = getModuledata.read()
+    parseData = json.loads(readModuleData)
+    # Fetch module information and write on index.md file
     try:
-        # Fetch module information and write on index.md file
-        getModuledata = open(moduleFile, "r")
-        readModuleData = getModuledata.read()
-        parseData = json.loads(readModuleData)
         moduleName = parseData['id']
         moduleDescription = parseData['description']
-
         os.mkdir(moduleDst+moduleName)
         indexMd = open(moduleDst+moduleName+"/index.md", "a+")
         indexMd.write('---\n')

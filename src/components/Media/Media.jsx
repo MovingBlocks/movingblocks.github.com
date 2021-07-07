@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from "reactstrap";
 import { useStaticQuery, graphql } from "gatsby";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`
@@ -63,12 +64,12 @@ const Gallery = () => {
     }
   };
 
-  const [currentPage,setCurrentPage]=useState(1)
-  const [imagePerPage,setImagePerPage]=useState(9)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [imagePerPage, setImagePerPage] = useState(9);
 
-  const indexOfLastImage=currentPage*imagePerPage
-  const indexOfFirstImage= indexOfLastImage-imagePerPage
-  const currentImgArray=imgArray.slice(indexOfFirstImage,indexOfLastImage)
+  const indexOfLastImage = currentPage * imagePerPage;
+  const indexOfFirstImage = indexOfLastImage - imagePerPage;
+  const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
 
   return (
     <div>
@@ -100,11 +101,15 @@ const Gallery = () => {
           {imageDisplay ? (
             <div className=" lightbox">
               <button
-                className="btn btn-lg btn-primary ml-3 font-weigth-bolder"
+                className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
                 onClick={showPrev}
               >
                 {" "}
-                <FiArrowLeft />
+                <IconContext.Provider
+                  value={{ size: "2em", className: "mr-1" }}
+                >
+                  <FaCaretLeft />
+                </IconContext.Provider>
               </button>
               <div>
                 <GatsbyImage
@@ -116,10 +121,14 @@ const Gallery = () => {
               </div>
 
               <button
-                className="btn btn-lg btn-primary ml-3 font-weigth-bolder"
+                className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
                 onClick={showNext}
               >
-                <FiArrowRight />
+                <IconContext.Provider
+                  value={{ size: "2em", className: "ml-1" }}
+                >
+                  <FaCaretRight />
+                </IconContext.Provider>
               </button>
             </div>
           ) : (

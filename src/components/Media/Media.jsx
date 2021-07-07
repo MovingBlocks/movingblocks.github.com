@@ -9,6 +9,7 @@ import MediaPagination from "../MediaPagination/MediaPagination.jsx";
 import { getDirectiveValues } from "../../../node_modules/graphql/index.js";
 
 const Gallery = () => {
+  console.log(window.innerWidth)
   const data = useStaticQuery(graphql`
     query Images {
       images: allFile(filter: { relativeDirectory: { eq: "images" } }) {
@@ -16,7 +17,7 @@ const Gallery = () => {
           id
           name
           childImageSharp {
-            gatsbyImageData(width: 1080, placeholder: BLURRED)
+            gatsbyImageData(width: 1200, placeholder: BLURRED)
           }
         }
       }

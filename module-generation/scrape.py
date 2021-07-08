@@ -20,10 +20,10 @@ for line in getModules.split():
 
 # Collect modules 
 for module in range(len(modules)):
-    if(module<2):
+    if(module<len(modules)):
         repository=user.get_repo(modules[module])
 
-        #Fetch module Information
+        #Fetch module information
         try:
             moduleContent=repository.get_contents("module.txt")
             getModuleData=moduleContent.decoded_content.decode()
@@ -37,7 +37,7 @@ for module in range(len(modules)):
         except:
             print("Repository is not a Module "+moduleName)
 
-        #Fetch Readme file
+        #Fetch readme file
         try:
             readmeContent=repository.get_contents("README.md")
             getReadmeData=readmeContent.decoded_content.decode()
@@ -59,7 +59,7 @@ for module in range(len(modules)):
             imageFile.close()
         else:
             print("No banner found on "+ moduleName+",resolving with default banner")
-            sourceImage=open("defaultBanner.png", "rb+")
+            sourceImage=open("./module-generation/defaultBanner.png", "rb+")
             readSourceImage=sourceImage.read()
             defaultImageFile = open(moduleDirSrc+"/cover.png", "wb+")
             defaultImageFile.write(readSourceImage)

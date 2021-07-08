@@ -34,12 +34,10 @@ const Gallery = () => {
   const showImage = (image) => {
     setImageToShow(image);
     setImageDisplay(true);
-    setblur("backblur");
   };
 
   const hideImage = () => {
     setImageDisplay(false);
-    setblur("");
   };
 
   const showNext = (e) => {
@@ -47,7 +45,6 @@ const Gallery = () => {
     let currentIndex = imgArray.indexOf(imageToShow);
     if (currentIndex >= imgArray.length - 1) {
       setImageDisplay(false);
-      setblur("");
     } else {
       let nextImage = imgArray[currentIndex + 1];
       setImageToShow(nextImage);
@@ -59,7 +56,6 @@ const Gallery = () => {
     let currentIndex = imgArray.indexOf(imageToShow);
     if (currentIndex <= 0) {
       setImageDisplay(false);
-      setblur("");
     } else {
       let nextImage = imgArray[currentIndex - 1];
       setImageToShow(nextImage);

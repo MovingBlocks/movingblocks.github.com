@@ -6,7 +6,6 @@ import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
 import MediaPagination from "../MediaPagination/MediaPagination.jsx";
-import { getDirectiveValues } from "../../../node_modules/graphql/index.js";
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`

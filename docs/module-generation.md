@@ -17,7 +17,7 @@ This will be a [Pipeline](https://www.jenkins.io/doc/book/pipeline/) job that wi
 
 ### Module Generation Diagram
 
-<img src="./Module-Generation.png" width="450" height="500">
+<img src="./images/Module-Generation.png" width="450" height="500">
 
 ## Collecting Data
 

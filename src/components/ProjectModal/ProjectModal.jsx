@@ -21,11 +21,12 @@ const ProjectModal = ({ name, desc, tags }) => {
           Project Details
         </button>
       </div>
+
       <Modal className="modal-dialog modal-xl" isOpen={modal} toggle={toggle}>
         <h4 className="mt-3 ml-3">{name}</h4>
         <hr />
         <div className="m-4">
-          <div className="m-3">{parse(descs)}</div>
+          <div className="m-3 overflow-auto">{parse(descs)}</div>
           <h6 className="mt-4 ml-2">Project Tags:</h6>
           <div className="d-flex overflow-auto ml-2 ">
             {tags &&

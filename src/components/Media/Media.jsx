@@ -9,7 +9,6 @@ import MediaPagination from "../MediaPagination/MediaPagination.jsx";
 import { getDirectiveValues } from "../../../node_modules/graphql/index.js";
 
 const Gallery = () => {
-  
   const data = useStaticQuery(graphql`
     query Images {
       images: allFile(filter: { relativeDirectory: { eq: "images" } }) {
@@ -31,7 +30,6 @@ const Gallery = () => {
 
   const [imageDisplay, setImageDisplay] = useState(false);
   const [imageToShow, setImageToShow] = useState(``);
-  const [blur, setblur] = useState(``);
 
   const showImage = (image) => {
     setImageToShow(image);
@@ -77,7 +75,7 @@ const Gallery = () => {
 
   return (
     <div>
-      <div className={blur}>
+      <div>
         <h1 className="text-center">Screenshots</h1>
         <div className="container my-4">
           <div className="home-underline"></div>
@@ -87,14 +85,7 @@ const Gallery = () => {
       <div>
         <Row className="justify-content-center">
           {currentImgArray.map((image) => (
-            <Col
-              lg="4"
-              md="6"
-              sm="6"
-              xs="6"
-              className={blur}
-              onClick={() => showImage(image)}
-            >
+            <Col lg="4" md="6" sm="6" xs="6" onClick={() => showImage(image)}>
               <div className="media-img">
                 {" "}
                 <GatsbyImage

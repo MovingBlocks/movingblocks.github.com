@@ -105,6 +105,7 @@ const Index = () => {
                     image={
                       node.frontmatter.cover.childImageSharp.gatsbyImageData
                     }
+                    className="home-img"
                   />
                 </Col>
                 <div className="d-flex flex-column my-4 ml-4">

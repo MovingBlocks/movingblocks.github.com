@@ -47,6 +47,16 @@ a.btn-primary {
   width: 100%;
 }
 
+.media-button {
+  width: 50px;
+  height: 50px;
+}
+
+.media-button-cancel {
+  width: 40px;
+  height: 40px;
+}
+
 @media screen and (max-width: 768px) {
   #search-btn {
     margin-top: 10px;

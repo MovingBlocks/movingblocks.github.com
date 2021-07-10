@@ -1,0 +1,27 @@
+.page-section {
+  list-style-type: none;
+  justify-content: center;
+}
+
+.page-link {
+  border: none;
+  background-color: transparent;
+}
+
+.page-link:hover {
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.page-link:focus {
+  box-shadow: none;
+}
+
+.pagination-icon {
+  color: $primary;
+}
+
+.pagination-icon:hover {
+  color: $primary;
+}

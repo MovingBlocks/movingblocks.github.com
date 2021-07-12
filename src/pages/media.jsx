@@ -4,7 +4,7 @@ import Layout from "../layout";
 import Media from "../components/Media/Media";
 import config from "../../data/SiteConfig";
 
-const media =() => (
+const media = () => (
   <Layout>
     <div className="media-container">
       <Helmet title={`Media | ${config.siteTitle}`} />
@@ -13,5 +13,4 @@ const media =() => (
   </Layout>
 );
 
-
-export default media
+export default media;

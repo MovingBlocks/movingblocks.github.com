@@ -1,19 +1,20 @@
 import os
 import json
 
-moduleDirs = "./scrape-data/"
+scrapeDataDir = "./scrape-data/"
 moduleDst = "./modules/"
 os.mkdir(moduleDst)
 
-for moduleDir in os.listdir(moduleDirs):
-    moduleFile = moduleDirs+moduleDir+"/module.txt"
-    getModuledata = open(moduleFile, "r")
-    readModuleData = getModuledata.read()
-    parseData = json.loads(readModuleData)
+for moduleDir in os.listdir(scrapeDataDir):
+    moduleFile = scrapeDataDir+moduleDir+"/module.txt"
+    with open(moduleFile, mode="r") as moduleMetadataFile:
+        moduleMetadata = moduleMetadataFile.read()
+        parseToJson = json.loads(moduleMetadata)
+        module = parseToJson
     # Fetch module information and write on index.md file
     try:
-        moduleName = parseData['id']
-        moduleDescription = parseData['description']
+        moduleName = module['id']
+        moduleDescription = module['description']
         os.mkdir(moduleDst+moduleName)
         indexMd = open(moduleDst+moduleName+"/index.md", "a+")
         indexMd.write('---\n')
@@ -22,52 +23,50 @@ for moduleDir in os.listdir(moduleDirs):
         indexMd.write('description: "'+moduleDescription+'"\n')
 
         # get module cover image, write on index.md file and copy to paticular module folder
-        moduleLogo = moduleDirs+moduleDir+"/cover.png"
+        moduleLogo = scrapeDataDir+moduleDir+"/cover.png"
         indexMd.write('cover: "./cover.png"'+'\n')
-        sourceImage = open(moduleLogo, "rb")
-        readImage = sourceImage.read()
-        imageFile = open(moduleDst+moduleName+"/cover.png", "wb+")
-        imageFile.write(readImage)
-        imageFile.close()
-        sourceImage.close()
+        with open(moduleLogo, mode="rb") as sourceImage:
+            readSourceImage = sourceImage.read()
+        with open(moduleDst+moduleName+"/cover.png", mode="rb") as imageFile:
+            imageFile.write(readSourceImage)
 
         # collect tags and append to index.md
         Tags = []
-        if "isGameplay" in parseData:
-            if (parseData['isGameplay']):
+        if "isGameplay" in module:
+            if (module['isGameplay']):
                 Tags.append("Gameplay")
 
-        if "isServerSideOnly" in parseData:
-            if(parseData['isServerSideOnly']):
+        if "isServerSideOnly" in module:
+            if(module['isServerSideOnly']):
                 Tags.append("Server")
 
-        if "isWorld" in parseData:
-            if (parseData['isWorld']):
+        if "isWorld" in module:
+            if (module['isWorld']):
                 Tags.append("World")
 
-        if "isAugmentation" in parseData:
-            if (parseData['isAugmentation']):
+        if "isAugmentation" in module:
+            if (module['isAugmentation']):
                 Tags.append("Augment")
 
-        if "isLibrary" in parseData:
-            if(parseData['isLibrary']):
+        if "isLibrary" in module:
+            if(module['isLibrary']):
                 Tags.append("Library")
 
-        if "isAsset" in parseData:
-            if(parseData['isAsset']):
+        if "isAsset" in module:
+            if(module['isAsset']):
                 Tags.append("Asset")
 
-        if "isSpecific" in parseData:
-            if(parseData['isSpecific']):
+        if "isSpecific" in module:
+            if(module['isSpecific']):
                 Tags.append("Specific")
 
         indexMd.write("tags: "+"["+','.join(f'"{w}"' for w in Tags)+"]\n")
         indexMd.write('---\n')
 
         # append readme information to module
-        moduleReadme = moduleDirs+moduleDir+"/README.md"
-        readmedata = open(moduleReadme, "r")
-        indexMd.write(readmedata.read())
-        indexMd.close()
+        moduleReadme = scrapeDataDir+moduleDir+"/README.md"
+        with open(moduleReadme, mode="r") as readmedata:
+            indexMd.write(readmedata.read())
+
     except Exception as e:
         print(e)

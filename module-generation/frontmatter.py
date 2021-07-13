@@ -70,4 +70,3 @@ for moduleDir in os.listdir(scrapeDataDir):
 
     except Exception as e:
         print(e)
-        

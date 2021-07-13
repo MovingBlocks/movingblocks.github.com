@@ -11,7 +11,7 @@ pipeline {
                 sh 'python3 ./module-generation/frontmatter.py'
             }
         }
-        stage('load Data') {
+        stage('load data') {
             steps {
                 sh 'bash ./module-generation/loadModules.sh'
             }

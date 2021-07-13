@@ -1,10 +1,9 @@
 # Module Generation Automation
 
-The automation focuses on automating the [ModuleSite](https://github.com/MovingBlocks/ModuleSite) for gathering information about modules from [Index repository](https://github.com/Terasology/Index/blob/master/distros/omega/gradle.properties) and
-exhibit their generated information on ModuleSite.This uses an automation tool called [Jenkins](https://www.jenkins.io/), which provides stages and steps in the
-pipeline to perform different operations
+The automation focuses on gathering information about modules listed as part of the `omega` distro in the [Index repository](https://github.com/Terasology/Index/blob/master/distros/omega/gradle.properties) and exhibit the generated information on the [ModuleSite](https://github.com/MovingBlocks/ModuleSite).
+Both steps are performed in a [Jenkins pipeline](https://www.jenkins.io/doc/book/pipeline/).
 
-This will be a [Pipeline](https://www.jenkins.io/doc/book/pipeline/) job that will run periodically so that if there will be any changes in module information present in the Index repository that information can be updated on ModuleSite easily.Let's try to understand Automation part deeply
+The pipeline will be run periodically as a cron job, so that the ModuleSite is up-to-date with any changes in module information.
 
 ### File Structure
 
@@ -21,13 +20,13 @@ This will be a [Pipeline](https://www.jenkins.io/doc/book/pipeline/) job that wi
 
 ## Collecting Data
 
-At the starting stage of the pipeline some scripts will be triggered which will create API calls to Github Index repository to fetch all the required information i.e. `module.txt, Readme, cover image` if `Readme, cover image` will not be available we will fallback to default image and default readme text.Next step will be to prepare Readme file to display that collected infromation on ModuleSite.An new script will br triggered that will prepare information that are going to displayed on ModuleSite. As you see above file structure we have `scrape.py` and `frontmatter.py` which will perform this opertaions. `scrape.py` uses [PyGithub](https://pygithub.readthedocs.io/en/latest/) to create API calls
+At the starting stage of the pipeline, the "scrape" script sends API calls to GitHub to fetch all required information from the Index repository, i.e. `module.txt`, and optionally the `README.md` and a cover image.
+If `README.md` or the cover image are not available. we will fallback to a default image and a default readme text.
+Afterwards, the "frontmatter" script prepares the collected information for display on the ModuleSite.
 
-## Generate Artifact
+## load modules
 
-This stage tries to copy the [artifact](https://www.jenkins.io/doc/pipeline/tour/tests-and-artifacts/) of last successful build, if it does not found any artifact it create
-new artifact of current build and create pull request to the ModuleSite using the supporting bash script `loadModules.sh`. If it gets the last successful build
-, it compares the current build and the last successful build, if their is anu changes between the build, the last successful build is removed and current build is archived and create pull request to ModuleSite.
+This stage simply clone ModuleSite, copy the modules directory on cloned ModuleSite and perform git operations to push the changes on ModuleSite.All this actions are performed by `loadModules.sh`
 
 ## Clean Workspace
 

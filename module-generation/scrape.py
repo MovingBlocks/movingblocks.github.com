@@ -3,17 +3,16 @@ import json
 import requests
 from github import Github
 
-indexModules = "./scrape-data/"
-os.mkdir(indexModules)
+scrapeDir = "./scrape-data/"
+os.mkdir(scrapeDir)
 
 accessToken = os.environ.get('GIT_TOKEN')
 g = Github(accessToken)
 
 user = g.get_user('Terasology')
 repo = user.get_repo("Index")
-content = repo.get_contents("/distros/omega/gradle.properties")
-decodeContent = content.decoded_content.decode()
-for line in decodeContent.split():
+content = repo.get_contents("/distros/omega/gradle.properties").decoded_content.decode()
+for line in content.split():
     if line.startswith('extraModules='):
         modules = line[13:].split(",")
 
@@ -23,27 +22,23 @@ for module in modules:
 
     # Fetch module information
     try:
-        moduleContent = repository.get_contents("module.txt")
-        decodeModuleContent = moduleContent.decoded_content.decode()
-        parseToJson = json.loads(decodeModuleContent)
-        moduleData = parseToJson
+        moduleContent = repository.get_contents("module.txt"). decoded_content.decode()
+        moduleData = json.loads(moduleContent)
         moduleName = moduleData['id']
-        moduleDir = os.mkdir(indexModules+moduleName)
-        moduleDirSrc = indexModules+moduleName
+        moduleDir = os.mkdir(scrapeDir+moduleName)
+        moduleDirSrc = scrapeDir+moduleName
         with open(moduleDirSrc+"/module.txt", mode="a") as moduleFile:
-            moduleFile.write(decodeModuleContent)
-    except:
-        print("Repository is not a Module "+moduleName)
+            moduleFile.write(moduleContent)
+    except Exception as e:
+        print("Repository is not a Module "+moduleName+":"+ e)
 
     # Fetch readme file
     try:
-        readmeContent = repository.get_contents("README.md")
-        decodeReadmeContent = readmeContent.decoded_content.decode()
+        readmeContent = repository.get_contents("README.md").decoded_content.decode()
         with open(moduleDirSrc+"/README.md", mode="a") as moduleReadmeFile:
-            moduleReadmeFile.write(decodeReadmeContent)
+            moduleReadmeFile.write(readmeContent)
     except Exception as e:
-        print("Couldn't fetch README.md"+moduleName)
-        print(e)
+        print("Couldn't fetch README.md"+moduleName+": "+e)
         with open(moduleDirSrc+"/README.md", mode="a") as moduleDefaultReadme:
             moduleDefaultReadme.write(
                 "This is a module for Terasology. It is currently lacking a README.md for documenting its purpose, usage, and contribution to Terasology.")
@@ -55,8 +50,8 @@ for module in modules:
         with open(moduleDirSrc+"/cover.png", mode="wb") as imageFile:
             imageFile.write(response.content)
     else:
-        print("Couldn't fetch cover image on " + moduleName + ",resolving with default cover image")
+        print("Couldn't fetch cover image on " + moduleName +",error code:"+ response.status_code + ",resolving with default cover image")
         with open("./module-generation/defaultBanner.png", mode="rb+") as sourceImage:
             readSourceImage = sourceImage.read()
-        with open(moduleDirSrc+"/cover.png", mode="wb") as defaultImageFile:
-            defaultImageFile.write(readSourceImage)
+            with open(moduleDirSrc+"/cover.png", mode="wb") as defaultImageFile:
+                defaultImageFile.write(readSourceImage)

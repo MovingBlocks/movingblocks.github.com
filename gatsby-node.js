@@ -4,7 +4,10 @@ const fs = require("fs");
 const moment = require("moment");
 const path = require("path");
 const siteConfig = require("./data/SiteConfig");
-const { generateTeraSaturdayImage } = require("./scripts/image-generation");
+const {
+  generateTeraSaturdayImage,
+  generateGsocImage,
+} = require("./scripts/image-generation");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -157,6 +160,12 @@ exports.createPages = async ({ graphql, actions }) => {
       let terasaturdayNumber = edge.node.frontmatter.TeraSaturdayNumber;
       let blogName = edge.node.frontmatter.date;
       generateTeraSaturdayImage(blogName, terasaturdayNumber, coverImage);
+    }
+
+    if (edge.node.frontmatter.imagetag == "GSoC") {
+      let coverImage = edge.node.frontmatter.mainImage;
+      let blogName = edge.node.frontmatter.date;
+      generateGsocImage(blogName, coverImage);
     }
   });
 

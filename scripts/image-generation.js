@@ -13,15 +13,11 @@ let c = {
   height: 700,
 };
 
-const canvas = createCanvas(c.width, c.height);
-const ctx = canvas.getContext("2d");
-
 exports.generateTeraSaturdayImage = (blogName, postNumber, defaultImage) => {
   const canvas = createCanvas(c.width, c.height);
   const ctx = canvas.getContext("2d");
   ctx.save();
   loadImage(defaultImage).then((image) => {
-    
     ctx.drawImage(image, 0, 0, c.width, c.height);
 
     let postid = postNumber;
@@ -77,5 +73,23 @@ exports.generateTeraSaturdayImage = (blogName, postNumber, defaultImage) => {
 
     let buffer = canvas.toBuffer("image/png");
     fs.writeFileSync("./blog/" + blogName + "/cover.jpg", buffer);
+  });
+};
+
+exports.generateGsocImage = (blogName, defaultImage) => {
+  const canvas = createCanvas(c.width, c.height);
+  const ctx = canvas.getContext("2d");
+  const gsocImage = "./static/logos/gsoc_logo.png";
+
+  loadImage(defaultImage).then((image) => {
+    ctx.drawImage(image, 0, 0, c.width, c.height);
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0, 0, c.width, c.height);
+
+    loadImage(gsocImage).then((gsocimage) => {
+      ctx.drawImage(gsocimage, c.width - 350, 50, 300, 300);
+      let buffer = canvas.toBuffer("image/png");
+      fs.writeFileSync("./blog/" + blogName + "/cover.jpg", buffer);
+    });
   });
 };

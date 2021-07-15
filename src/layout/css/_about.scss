@@ -20,7 +20,11 @@
 .about__bg-overlay {
   width: 100%;
   height: 400px;
-  background: rgba(40, 167, 69, 0.6);
+  background: linear-gradient(
+    0deg,
+    rgba(17, 191, 86, 0.1) 0%,
+    rgba(5, 173, 73, 0.7) 0%
+  );
   color: $white;
   text-align: center;
   padding-top: 2rem;
@@ -37,4 +41,40 @@
 }
 section p {
   font-size: 15px;
+}
+
+.left-overlay_about_content {
+  background: linear-gradient(
+    270deg,
+    rgba(17, 191, 86, 0.2) 43%,
+    rgba(5, 173, 73, 0.9) 65%
+  );
+}
+
+.right-overlay_about_content {
+  background: linear-gradient(
+    90deg,
+    rgba(17, 191, 86, 0.2) 43%,
+    rgba(5, 173, 73, 0.9) 65%
+  );
+}
+
+@media (max-width: 750px) {
+  .left-overlay_about_content {
+    background: linear-gradient(
+      0deg,
+      rgba(17, 191, 86, 0.1) 0%,
+      rgba(5, 173, 73, 0.9) 0%
+    );
+  }
+  .empty-about-content {
+    display: none;
+  }
+  .right-overlay_about_content {
+    background: linear-gradient(
+      90deg,
+      rgba(17, 191, 86, 0.1) 0%,
+      rgba(5, 173, 73, 0.9) 0%
+    );
+  }
 }

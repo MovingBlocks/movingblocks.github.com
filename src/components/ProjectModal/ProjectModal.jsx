@@ -8,7 +8,7 @@ const ProjectModal = ({ name, desc, tags }) => {
   const toggle = () => setModal(!modal);
   const md = new Remarkable();
 
-  const descs = md.render(desc);
+  const description = md.render(desc);
 
   return (
     <div>
@@ -26,7 +26,7 @@ const ProjectModal = ({ name, desc, tags }) => {
         <h4 className="mt-3 ml-3">{name}</h4>
         <hr />
         <div className="m-4">
-          <div className="m-3 overflow-auto">{parse(descs)}</div>
+          <div className="m-3 overflow-auto">{parse(description)}</div>
           <h6 className="mt-4 ml-2">Project Tags:</h6>
           <div className="d-flex overflow-auto ml-2 ">
             {tags &&

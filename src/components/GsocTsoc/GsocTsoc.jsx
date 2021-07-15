@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Table, NavLink, Input, Badge, Row, Col, Alert } from "reactstrap";
+import { Row,Alert } from "reactstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
-import defaultcardimg from "../../../static/logos/defaultCardcover.jpg";
+import defaultCardImg from "../../../static/logos/defaultCardcover.jpg";
 
 const GsocTsoc = () => {
   const responsive = {
@@ -27,9 +27,14 @@ const GsocTsoc = () => {
 
   const [readyProjects, setReadyprojects] = useState([]);
   const [ongoingProjects, setOngoingprojects] = useState([]);
-  const [visible, setVisible] = useState(false);
-  const [status, setStatus] = useState("");
-  const onDismiss = () => setVisible(false);
+
+  const [availableProjectVisible, setAvailableProjectVisible] = useState(false);
+  const [availableProjectStatus, setAvailableProjectStatus] = useState("");
+  const AvailabeProjectDismiss = () => setAvailableProjectVisible(false);
+
+  const [ongoingProjectVisible, setOngoingProjectVisible] = useState(false);
+  const [ongoingProjectStatus, setOngoingProjectStatus] = useState("");
+  const ongoingProjectDismiss = () => setOngoingProjectVisible(false);
 
   const readyIdeas = async () => {
     const url =
@@ -39,10 +44,9 @@ const GsocTsoc = () => {
     if (response.ok) {
       const data = await response.json();
       setReadyprojects(data);
-      console.log(data);
     } else {
-      setVisible(true);
-      setStatus(response.status);
+      setAvailableProjectVisible(true);
+      setAvailableProjectStatus(response.status);
     }
   };
 
@@ -54,10 +58,9 @@ const GsocTsoc = () => {
     if (response.ok) {
       const data = await response.json();
       setOngoingprojects(data);
-      console.log(data);
     } else {
-      setVisible(true);
-      setStatus(response.status);
+      setOngoingProjectVisible(true);
+      setOngoingProjectStatus(response.status);
     }
   };
 
@@ -69,7 +72,9 @@ const GsocTsoc = () => {
   return (
     <div>
       <div>
-        <h4 className="text-center">GSoC & TSoC @ Terasology </h4>
+        <h4 className="text-center">
+          About Google summer of code & Terasology summer of code{" "}
+        </h4>
         <div className="container my-4">
           <div className="home-underline"></div>
 
@@ -93,12 +98,11 @@ const GsocTsoc = () => {
               </div>
 
               <div className="text-center mt-4 gsoc_tsoc_content">
-                <b>Terasology Summer of Code (TSoC)</b> is similar to Google
-                Summer of Code (GSoC). It provides more flexible conditions
-                regarding time and project scope than GSoC to also suit students
-                that do not have a 10-week break over the summer. However, as it
-                is sponsored directly by Terasology the stipends are lower than
-                with GSoC. For more information join our{" "}
+                Terasology Summer of Code (TSoC) is similar as Google Summer of
+                Code (GSoC).It is sponsored by Teraslogy with different Timeline
+                then GSoC, do half of work, take a break for exams and other
+                thing and then do second half work .Lower stipend then GSoC. for
+                more information join our{" "}
                 <a
                   className="text-success font-weight-bold"
                   href="https://discordapp.com/invite/Terasology"
@@ -116,21 +120,19 @@ const GsocTsoc = () => {
         <div className="container my-4">
           <div className="home-underline"></div>
         </div>
-
-        <div className="container">
-          <Alert
-            className="my-2 alert-box"
-            color="danger"
-            isOpen={visible}
-            toggle={onDismiss}
-          >
-            <span className="alert-box">
-              Problem fetching Projects Information .(Error Code: {status})
-            </span>
-          </Alert>
-        </div>
       </div>
-
+      <div className="container">
+        <Alert
+          className="my-2 alert-box"
+          color="danger"
+          isOpen={availableProjectVisible}
+          toggle={AvailabeProjectDismiss}
+        >
+          <span className="alert-box">
+            Problem fetching projects .(Error Code: {availableProjectStatus})
+          </span>
+        </Alert>
+      </div>
       <Carousel
         responsive={responsive}
         removeArrowOnDeviceType={["tablet", "mobile"]}
@@ -148,23 +150,15 @@ const GsocTsoc = () => {
                   />
                 ) : (
                   <img
-                    src={defaultcardimg}
+                    src={defaultCardImg}
                     class="card-img-top"
                     alt={project.name}
                   />
                 )}
                 <div className="card-body h-25 mt-2">
                   <p className="font-weight-bolder">{project.name}</p>
-                  <div className="d-flex">
-                    <div className="md-tag tag_size">
-                      {project &&
-                        project.labels.map((tag) => {
-                          return <Badge className="m-1">{tag.name}</Badge>;
-                        })}
-                    </div>
-                  </div>
                 </div>
-                <div className="ml-4 mb-4">
+                <div className="ml-3 mb-4">
                   <ProjectModal
                     name={project.name}
                     desc={project.desc}
@@ -184,6 +178,18 @@ const GsocTsoc = () => {
             <div className="home-underline"></div>
           </div>
         </div>
+        <div className="container">
+          <Alert
+            className="my-2 alert-box"
+            color="danger"
+            isOpen={ongoingProjectVisible}
+            toggle={ongoingProjectDismiss}
+          >
+            <span className="alert-box">
+              Problem fetching projects .(Error Code: {ongoingProjectStatus})
+            </span>
+          </Alert>
+        </div>
 
         <Carousel
           responsive={responsive}
@@ -202,7 +208,7 @@ const GsocTsoc = () => {
                     />
                   ) : (
                     <img
-                      src={defaultcardimg}
+                      src={defaultCardImg}
                       class="card-img-top"
                       alt={project.name}
                     />
@@ -210,17 +216,9 @@ const GsocTsoc = () => {
 
                   <div className="card-body  mt-2">
                     <p className="font-weight-bolder">{project.name}</p>
-                    <div className="d-flex">
-                      <div className="md-tag tag_size">
-                        {project &&
-                          project.labels.map((tag) => {
-                            return <Badge className="m-1">{tag.name}</Badge>;
-                          })}
-                      </div>
-                    </div>
                   </div>
 
-                  <div className="ml-4 mb-4">
+                  <div className="ml-3 mb-4">
                     <ProjectModal
                       name={project.name}
                       desc={project.desc}

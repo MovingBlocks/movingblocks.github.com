@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row,Alert } from "reactstrap";
+import { Row, Alert } from "reactstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
@@ -96,7 +96,6 @@ const GsocTsoc = () => {
                   here
                 </a>
               </div>
-
               <div className="text-center mt-4 gsoc_tsoc_content">
                 Terasology Summer of Code (TSoC) is similar as Google Summer of
                 Code (GSoC).It is sponsored by Teraslogy with different Timeline
@@ -170,7 +169,6 @@ const GsocTsoc = () => {
           );
         })}
       </Carousel>
-
       <div>
         <div>
           <h4 className="text-center">Ongoing Projects</h4>

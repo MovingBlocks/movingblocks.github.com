@@ -16,5 +16,9 @@
 
 .modal {
   padding-top: 10px !important;
-  overflow-x: scroll !important;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }

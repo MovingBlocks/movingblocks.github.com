@@ -8,8 +8,8 @@ ddate: "June 14th, 2017"
 date: "2017-06-14"
 tags: "Updates"
 mainImage: "./static/images/7.jpg"
-imagetag: "TeraSaturday"
-TeraSaturdayNumber: "#1"
+imagetag: "TeraSpotlight"
+postNumber: "#1"
 ---
 ### Heya Terasologist!
 

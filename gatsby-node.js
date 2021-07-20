@@ -6,6 +6,7 @@ const path = require("path");
 const siteConfig = require("./data/SiteConfig");
 const {
   generateTeraSaturdayImage,
+  generateTeraSpotlightImage,
   generateGsocImage,
 } = require("./scripts/image-generation");
 
@@ -115,7 +116,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 date
                 posttype
                 imagetag
-                TeraSaturdayNumber
+                postNumber
+                position
+                
                 mainImage
                 cover {
                   publicURL
@@ -157,16 +160,33 @@ exports.createPages = async ({ graphql, actions }) => {
 
     if (edge.node.frontmatter.imagetag == "TeraSaturday") {
       let coverImage = edge.node.frontmatter.mainImage;
-      let terasaturdayNumber = edge.node.frontmatter.TeraSaturdayNumber;
+      let terasaturdayNumber = edge.node.frontmatter.postNumber;
       let blogName = edge.node.frontmatter.date;
       generateTeraSaturdayImage(blogName, terasaturdayNumber, coverImage);
+    }
+
+    if (edge.node.frontmatter.imagetag == "TeraSpotlight") {
+      let coverImage = edge.node.frontmatter.mainImage;
+      let teraspotlightNumber= edge.node.frontmatter.postNumber;
+      let blogName = edge.node.frontmatter.date;
+      generateTeraSpotlightImage(blogName, teraspotlightNumber, coverImage);
     }
 
     if (edge.node.frontmatter.imagetag == "GSoC") {
       let coverImage = edge.node.frontmatter.mainImage;
       let blogName = edge.node.frontmatter.date;
-      generateGsocImage(blogName, coverImage);
+      let pos = edge.node.frontmatter.position;
+      generateGsocImage(blogName, coverImage,pos);
     }
+    
+    // if (edge.node.frontmatter.imagetag == "other") {
+    //   let coverImage = edge.node.frontmatter.mainImage;
+    //   let blogName = edge.node.frontmatter.date;
+    //   let otherLogoURL = edge.node.frontmatter.LogoURL;
+    //   let position = edge.node.frontmatter.position;
+    //   generateOtherImage(blogName, coverImage , otherLogoURL,position);
+    // }
+    
   });
 
   const blogJSON = JSON.stringify(blogList, null, 2);

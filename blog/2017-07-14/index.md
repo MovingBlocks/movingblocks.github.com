@@ -10,6 +10,7 @@ date: "2017-07-14"
 mainImage: "./static/images/9.jpg"
 tags: "GSoC"
 imagetag: "GSoC"
+position: "start"
 ---
 
 The first hurdle of [Google Summer of Code][GSOC] is already over for our students, so it's about time to happily announce

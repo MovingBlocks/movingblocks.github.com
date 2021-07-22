@@ -1,6 +1,6 @@
 import React from "react";
 import { navigate } from "gatsby";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { Col, Form, FormGroup, Input, Label } from "reactstrap";
 import { FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
 const moment = require("moment");
@@ -10,7 +10,6 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
   let srcLocation = props.location;
 
   if (typeof window !== `undefined`) {
-    // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
   let urlTag = new URLSearchParams(srcLocation).get("tag") || "";
@@ -30,7 +29,6 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
 
   return (
     <Form role="search" method="GET" className="mb-0">
-      
       <div class="row justify-content-center" form id="search-form">
         <Col md="10">
           <FormGroup>
@@ -70,7 +68,6 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
       </div>
       <div class="row justify-content-center">
         <Col md="10" className="pt-0 align-item-center pb-0">
-          
           <div class="row mt-0 justify-content-center">
             <Col md="3" className="pt-3">
               <FormGroup className="text-center">
@@ -84,7 +81,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                   id="search-tag"
                   bsSize="lg"
                   aria-controls="search-results-count"
-                  style={{ textAlignLast: "center" }}
+                 className="option-position"
                   onChange={(e) =>
                     navigate(
                       `${location.pathname}?keywords=${query}&tag=${encodeURI(
@@ -116,7 +113,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                   id="search-tag"
                   bsSize="lg"
                   aria-controls="search-results-count"
-                  style={{ textAlignLast: "center" }}
+                  className="option-position"
                   onChange={(e) =>
                     navigate(
                       `${location.pathname}?keywords=${query}&tag=${
@@ -146,7 +143,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                   id="search-tag"
                   bsSize="lg"
                   aria-controls="search-results-count"
-                  style={{ textAlignLast: "center" }}
+                  className="option-position"
                   onChange={(e) =>
                     navigate(
                       `${location.pathname}?keywords=${query}&tag=${

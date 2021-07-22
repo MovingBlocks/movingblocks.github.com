@@ -10,7 +10,7 @@ import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-import {Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 const blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
@@ -84,8 +84,7 @@ const blog = (
         {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>
       <Row>
-        
-        { !isFirst &&  (
+        {!isFirst && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}${prevPage}`}
@@ -96,7 +95,7 @@ const blog = (
             </Link>
           </Col>
         )}
-        {!isLast &&   results.length===0 && (
+        {!isLast && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}${nextPage}`}

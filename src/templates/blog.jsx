@@ -10,7 +10,7 @@ import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-import { Badge, Row, Col } from "reactstrap";
+import {Row, Col } from "reactstrap";
 
 const blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
@@ -36,18 +36,28 @@ const blog = (
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
-  var filterTag = new URLSearchParams(srcLocation).get("filter") || "";
+  var filterTag = new URLSearchParams(srcLocation).get("tag") || "";
+  var filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
+  var filterddate = new URLSearchParams(srcLocation).get("ddate") || "";
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
   useEffect(() => {
-    if (searchQuery || filterTag) {
+    if (searchQuery || filterTag || filterAuthor || filterddate) {
       setResults(
         DATA.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return blog.tags.match(tagRgx) && blog.title.match(searchRgx);
+          const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
+          const ddateRgx = new RegExp(escapeRegExp(filterddate), "gi");
+
+          return (
+            (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
+            blog.tags.match(tagRgx) &&
+            blog.author.match(authorRgx) &&
+            blog.ddate.match(ddateRgx)
+          );
         })
       );
       setIsShown(true);
@@ -62,19 +72,20 @@ const blog = (
       <div className="index-container">
         <Helmet title={`Blog | ${config.siteTitle}`} />
         <SEO />
-        <SearchForm query={searchQuery} filter={filterTag} />
+        <SearchForm
+          query={searchQuery}
+          tag={filterTag}
+          author={filterAuthor}
+          ddate={filterddate}
+        />
         {isShown && (
-          <SearchResults
-            id="src"
-            query={searchQuery}
-            filter={filterTag}
-            results={results}
-          />
+          <SearchResults id="src" query={searchQuery} results={results} />
         )}
         {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>
       <Row>
-        {!isFirst && (
+        
+        { !isFirst &&  (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}${prevPage}`}
@@ -85,7 +96,7 @@ const blog = (
             </Link>
           </Col>
         )}
-        {!isLast && (
+        {!isLast &&   results.length===0 && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}${nextPage}`}
@@ -116,10 +127,13 @@ export const blogQuery = graphql`
             slug
             date
           }
-          excerpt(format: PLAIN, pruneLength: 150, truncate: true)
+          excerpt(format: PLAIN, pruneLength: 120, truncate: true)
           timeToRead
           frontmatter {
             title
+            date
+            author
+            ddate
             tags
             description
             cover {

@@ -17,13 +17,15 @@ const PostListing = ({ id, postEdges }) => {
         desc: postEdge.node.frontmatter.description,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead,
+        ddate: postEdge.node.frontmatter.ddate,
+        author: postEdge.node.frontmatter.author,
       });
     });
     return postList;
   };
   const postList = getPostList();
   return (
-    <Col lg="12">
+    <Col lg="12" className="pt-0">
       <Row className="justify-content-center">
         {/* Your post list here. */
         postList.map((post) => (
@@ -33,6 +35,8 @@ const PostListing = ({ id, postEdges }) => {
             cover={post.cover.childImageSharp}
             tags={post.tags}
             excerpt={post.excerpt}
+            author={post.author}
+            ddate={post.ddate}
           />
         ))}
       </Row>

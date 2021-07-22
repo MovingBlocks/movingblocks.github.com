@@ -2,11 +2,11 @@ import React from "react";
 import { Row, Col, Badge } from "reactstrap";
 import Cards from "../Cards/Cards.jsx";
 
-const SearchResults = ({ query, filter, results }) => (
+const SearchResults = ({ query, results }) => (
   <div aria-label="Search results for all posts">
     {!!results.length && query && (
       <h4
-        className="search-results-count"
+        className="search-results-count text-center"
         id="search-results-count"
         aria-live="assertive"
       >
@@ -17,13 +17,15 @@ const SearchResults = ({ query, filter, results }) => (
     <h4>{results.length < 1 && "Found nothing"}</h4>
     {!!results.length && (
       <Row className="justify-content-center">
-        {results.map(({ title, path, cover, tags, excerpt }) => (
+        {results.map(({ title, path, cover, tags, excerpt, ddate, author }) => (
           <Cards
             title={title}
             path={path}
             cover={cover.childImageSharp}
             tags={tags}
             excerpt={excerpt}
+            ddate={ddate}
+            author={author}
           />
         ))}
       </Row>

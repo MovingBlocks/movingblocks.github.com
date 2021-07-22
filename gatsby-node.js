@@ -105,6 +105,9 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
+                date
+                ddate
+                author
                 category
                 description
                 posttype
@@ -114,6 +117,9 @@ exports.createPages = async ({ graphql, actions }) => {
                     gatsbyImageData
                   }
                 }
+              }
+              internal{
+                content
               }
             }
           }
@@ -142,8 +148,12 @@ exports.createPages = async ({ graphql, actions }) => {
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
       excerpt: edge.node.excerpt,
-      description: edge.node.frontmatter.description
-    });
+      description: edge.node.frontmatter.description,
+      author:  edge.node.frontmatter.author,
+      date:  edge.node.frontmatter.date,
+      ddate:  edge.node.frontmatter.ddate,
+      content: edge.node.internal.content,
+    }); 
   });
   const blogJSON = JSON.stringify(blogList, null, 2);
   fs.writeFileSync("./src/generated/blog-result.json", blogJSON);

@@ -6,7 +6,6 @@ const path = require("path");
 const siteConfig = require("./data/SiteConfig");
 const {
   generateTeraSaturdayImage,
-  generateTeraSpotlightImage,
   generateGsocImage,
 } = require("./scripts/image-generation");
 
@@ -118,7 +117,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 imagetag
                 postNumber
                 position
-                
+
                 mainImage
                 cover {
                   publicURL
@@ -158,35 +157,27 @@ exports.createPages = async ({ graphql, actions }) => {
       description: edge.node.frontmatter.description,
     });
 
-    if (edge.node.frontmatter.imagetag == "TeraSaturday") {
-      let coverImage = edge.node.frontmatter.mainImage;
-      let terasaturdayNumber = edge.node.frontmatter.postNumber;
-      let blogName = edge.node.frontmatter.date;
-      generateTeraSaturdayImage(blogName, terasaturdayNumber, coverImage);
+    let imageData = edge.node.frontmatter;
+
+    if (
+      imageData.imagetag == "TeraSaturday" ||
+      imageData.imagetag == "TeraSpotlight"
+    ) {
+      generateTeraSaturdayImage(
+        imageData.date,
+        imageData.postNumber,
+        imageData.mainImage,
+        imageData.imagetag
+      );
     }
 
-    if (edge.node.frontmatter.imagetag == "TeraSpotlight") {
-      let coverImage = edge.node.frontmatter.mainImage;
-      let teraspotlightNumber= edge.node.frontmatter.postNumber;
-      let blogName = edge.node.frontmatter.date;
-      generateTeraSpotlightImage(blogName, teraspotlightNumber, coverImage);
+    if (imageData.imagetag == "GSoC") {
+      generateGsocImage(
+        imageData.date,
+        imageData.mainImage,
+        imageData.position
+      );
     }
-
-    if (edge.node.frontmatter.imagetag == "GSoC") {
-      let coverImage = edge.node.frontmatter.mainImage;
-      let blogName = edge.node.frontmatter.date;
-      let pos = edge.node.frontmatter.position;
-      generateGsocImage(blogName, coverImage,pos);
-    }
-    
-    // if (edge.node.frontmatter.imagetag == "other") {
-    //   let coverImage = edge.node.frontmatter.mainImage;
-    //   let blogName = edge.node.frontmatter.date;
-    //   let otherLogoURL = edge.node.frontmatter.LogoURL;
-    //   let position = edge.node.frontmatter.position;
-    //   generateOtherImage(blogName, coverImage , otherLogoURL,position);
-    // }
-    
   });
 
   const blogJSON = JSON.stringify(blogList, null, 2);

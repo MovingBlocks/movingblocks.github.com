@@ -7,9 +7,10 @@ that all ten students have passed the first evaluation."
 author: "skaldarnar"
 ddate: "July 14th, 2017"
 date: "2017-07-14"
-mainImage: "./static/images/9.jpg"
 tags: "GSoC"
-imagetag: "GSoC"
+mainImage: "./static/images/9.jpg"
+customLogo: "./static/logos/gsoc_logo.png"
+imagetag: "CustomImage"
 position: "start"
 ---
 

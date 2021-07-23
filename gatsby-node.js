@@ -6,7 +6,7 @@ const path = require("path");
 const siteConfig = require("./data/SiteConfig");
 const {
   generateTeraSaturdayImage,
-  generateGsocImage,
+  generateCustomLogoImage,
 } = require("./scripts/image-generation");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -115,9 +115,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 date
                 posttype
                 imagetag
+                customLogo
                 postNumber
                 position
-
                 mainImage
                 cover {
                   publicURL
@@ -171,11 +171,12 @@ exports.createPages = async ({ graphql, actions }) => {
       );
     }
 
-    if (imageData.imagetag == "GSoC") {
-      generateGsocImage(
+    if (imageData.imagetag == "CustomImage") {
+      generateCustomLogoImage(
         imageData.date,
         imageData.mainImage,
-        imageData.position
+        imageData.position,
+        imageData.customLogo
       );
     }
   });

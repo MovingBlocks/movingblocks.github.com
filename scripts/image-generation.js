@@ -29,7 +29,7 @@ exports.generateTeraSaturdayImage = (
 
     let tagColor = "#8DE10D";
 
-    if (tag ==="Saturday") {
+    if (tag === "Saturday") {
       tagColor = "#E8BE36";
     }
 
@@ -89,52 +89,30 @@ exports.generateTeraSaturdayImage = (
   });
 };
 
-exports.generateGsocImage = (blogName, defaultImage, position) => {
+exports.generateCustomLogoImage = (
+  blogName,
+  defaultImage,
+  position,
+  customLogo
+) => {
   const canvas = createCanvas(c.width, c.height);
   const ctx = canvas.getContext("2d");
-  const gsocImage = "./static/logos/gsoc_logo.png";
+  const customImage = customLogo;
 
   loadImage(defaultImage).then((image) => {
     ctx.drawImage(image, 0, 0, c.width, c.height);
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, c.width, c.height);
 
-    loadImage(gsocImage).then((gsocimage) => {
+    loadImage(customImage).then((image) => {
       if (position == "end" || position == "End") {
-        ctx.drawImage(gsocimage, c.width - 350, 50, 300, 300);
+        ctx.drawImage(image, c.width - 350, 50, 300, 300);
       } else if (position == "start" || position == "Start") {
-        ctx.drawImage(gsocimage, 100, 50, 300, 300);
+        ctx.drawImage(image, 100, 50, 300, 300);
       } else if (position == "center" || position == "Center") {
-        ctx.drawImage(gsocimage, c.width / 2, c.width / 2, 300, 300);
+        ctx.drawImage(image, c.width / 2, c.width / 2, 300, 300);
       } else {
-        ctx.drawImage(gsocimage, c.width - 350, 50, 300, 300);
-      }
-
-      let buffer = canvas.toBuffer("image/png");
-      fs.writeFileSync("./blog/" + blogName + "/cover.jpg", buffer);
-    });
-  });
-};
-
-exports.generateOtherImage = (blogName, defaultImage, otherLogoURL) => {
-  const canvas = createCanvas(c.width, c.height);
-  const ctx = canvas.getContext("2d");
-  const otherLogo = otherLogoURL;
-
-  loadImage(defaultImage).then((image) => {
-    ctx.drawImage(image, 0, 0, c.width, c.height);
-    ctx.strokeStyle = "black";
-    ctx.strokeRect(0, 0, c.width, c.height);
-
-    loadImage(otherLogo).then((Logo) => {
-      if (position == "end" || position == "End") {
-        ctx.drawImage(Logo, c.width - 350, 50, 300, 300);
-      } else if (position == "start" || position == "Start") {
-        ctx.drawImage(Logo, 350, 50, 300, 300);
-      } else if (position == "center" || position == "Center") {
-        ctx.drawImage(Logo, c.width / 2, c.width / 2, 300, 300);
-      } else {
-        ctx.drawImage(Logo, c.width - 350, 50, 300, 300);
+        ctx.drawImage(image, c.width - 350, 50, 300, 300);
       }
 
       let buffer = canvas.toBuffer("image/png");

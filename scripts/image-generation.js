@@ -1,5 +1,7 @@
 const { createCanvas, loadImage, registerFont } = require("canvas");
 const fs = require("fs");
+const blogList = require("../src/generated/blog-result.json");
+
 registerFont("./static/fonts/PressStart2P-Regular.tff", {
   family: "Press Start 2P",
 });
@@ -13,7 +15,8 @@ let c = {
   height: 700,
 };
 
-exports.generateTeraSaturdayImage = (
+// functions to generate TeraSaturday and TeraSpotlight image
+const generateTeraSaturdayImage = (
   blogName,
   postNumber,
   defaultImage,
@@ -26,7 +29,6 @@ exports.generateTeraSaturdayImage = (
     ctx.drawImage(image, 0, 0, c.width, c.height);
 
     let tag = imageTag.slice(4);
-
     let tagColor = "#8DE10D";
 
     if (tag === "Saturday") {
@@ -36,7 +38,6 @@ exports.generateTeraSaturdayImage = (
     let postid = postNumber;
 
     ctx.font = '100px "Press Start 2P"';
-
     ctx.strokeStyle = "black";
     ctx.lineWidth = 18;
     ctx.lineCap = "round";
@@ -89,7 +90,8 @@ exports.generateTeraSaturdayImage = (
   });
 };
 
-exports.generateCustomLogoImage = (
+// functions to generate image with logo
+const generateCustomLogoImage = (
   blogName,
   defaultImage,
   position,
@@ -120,3 +122,24 @@ exports.generateCustomLogoImage = (
     });
   });
 };
+
+// Fetch data and generate image
+blogList.forEach((edge) => {
+  if (edge.imagetag == "TeraSaturday" || edge.imagetag == "TeraSpotlight") {
+    generateTeraSaturdayImage(
+      edge.date,
+      edge.postNumber,
+      edge.mainImage,
+      edge.imagetag
+    );
+  }
+
+  if (edge.imagetag == "CustomImage") {
+    generateCustomLogoImage(
+      edge.date,
+      edge.mainImage,
+      edge.position,
+      edge.customLogo
+    );
+  }
+});

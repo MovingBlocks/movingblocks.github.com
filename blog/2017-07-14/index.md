@@ -11,7 +11,7 @@ tags: "GSoC"
 mainImage: "./static/images/9.jpg"
 customLogo: "./static/logos/gsoc_logo.png"
 imagetag: "CustomImage"
-position: "start"
+position: "end"
 ---
 
 The first hurdle of [Google Summer of Code][GSOC] is already over for our students, so it's about time to happily announce

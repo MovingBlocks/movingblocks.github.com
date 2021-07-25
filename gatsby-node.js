@@ -4,10 +4,6 @@ const fs = require("fs");
 const moment = require("moment");
 const path = require("path");
 const siteConfig = require("./data/SiteConfig");
-const {
-  generateTeraSaturdayImage,
-  generateCustomLogoImage,
-} = require("./scripts/image-generation");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -147,7 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   const posts = blogQueryResult.data.allMarkdownRemark.edges;
-  posts.forEach((edge, index) => {
+  posts.forEach((edge) => {
     blogList.push({
       path: `/blog${edge.node.fields.slug}`,
       tags: edge.node.frontmatter.tags,
@@ -155,30 +151,13 @@ exports.createPages = async ({ graphql, actions }) => {
       title: edge.node.frontmatter.title,
       excerpt: edge.node.excerpt,
       description: edge.node.frontmatter.description,
+      date: edge.node.frontmatter.date,
+      imagetag: edge.node.frontmatter.imagetag,
+      customLogo: edge.node.frontmatter.customLogo,
+      postNumber: edge.node.frontmatter.postNumber,
+      position: edge.node.frontmatter.position,
+      mainImage: edge.node.frontmatter.mainImage,
     });
-
-    let imageData = edge.node.frontmatter;
-
-    if (
-      imageData.imagetag == "TeraSaturday" ||
-      imageData.imagetag == "TeraSpotlight"
-    ) {
-      generateTeraSaturdayImage(
-        imageData.date,
-        imageData.postNumber,
-        imageData.mainImage,
-        imageData.imagetag
-      );
-    }
-
-    if (imageData.imagetag == "CustomImage") {
-      generateCustomLogoImage(
-        imageData.date,
-        imageData.mainImage,
-        imageData.position,
-        imageData.customLogo
-      );
-    }
   });
 
   const blogJSON = JSON.stringify(blogList, null, 2);

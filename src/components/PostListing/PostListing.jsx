@@ -25,7 +25,7 @@ const PostListing = ({ id, postEdges }) => {
   };
   const postList = getPostList();
   return (
-    <Col lg="12" className="pt-0">
+    <Col lg="12" className="card-spacing">
       <Row className="justify-content-center">
         {/* Your post list here. */
         postList.map((post) => (

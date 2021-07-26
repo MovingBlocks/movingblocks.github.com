@@ -8,65 +8,29 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaComments,
   FaPatreon,
 } from "react-icons/fa";
-
 const Footer = () => (
   <footer className="mt-auto">
     <Container className="footer">
-      <Row>
-        <Col md="3">
-          <h5>The Terasology Foundation</h5>
+      <Row className="justify-content-center">
+        <Col md="6" className="text-center">
+          <h5>
+            <span> The Terasology Foundation</span>
+          </h5>
+          <h6>
+            {" "}
+            Licensed under:&nbsp;
+            <a
+              className="link"
+              href="https://www.apache.org/licenses/LICENSE-2.0"
+            >
+              Apache 2.0
+            </a>
+          </h6>
         </Col>
-        <Col md="3">
-          <ul className="footer-nav">
-            <li>
-              <a className="link" href="/">
-                Home
-              </a>
-            </li>
-            <li>
-              <a className="link" href="/blog">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a className="link" href="/media">
-                Media
-              </a>
-            </li>
-            <li>
-              <a className="link" href="/game">
-                The Game
-              </a>
-            </li>
-            <li>
-              <a className="link" href="https://forum.terasology.org/">
-                Forum
-              </a>
-            </li>
-          </ul>
-        </Col>
-        <Col md="3">
-          <ul className="footer-nav">
-            <li>
-              <a className="link" href="/modules">
-                Modules
-              </a>
-            </li>
-            <li>
-              <a
-                className="link"
-                href="https://www.apache.org/licenses/LICENSE-2.0"
-              >
-                License
-              </a>
-            </li>
-          </ul>
-        </Col>
-        <Col md="3">
-          <h5>Get in touch:</h5>
+
+        <Col md="6" className="text-center">
           <IconContext.Provider value={{ size: "2.5em" }}>
             <a
               className="link"
@@ -92,23 +56,15 @@ const Footer = () => (
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
             <a
-              className="link"
+              className="link "
               href="https://www.youtube.com/user/blockmaniaTV"
             >
               <FaYoutubeSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
-            <a className="link" href="https://reddit.com/r/Terasology">
+            <a className="link " href="https://reddit.com/r/Terasology">
               <FaRedditSquare />
-            </a>
-          </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
-            <a
-              className="link"
-              href="http://webchat.freenode.net/?channels=terasology&uio=d4?channels=%23terasology&nick=Terasologist...&prompt=1&useUserListIcons=true"
-            >
-              <FaComments />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.2em" }}>

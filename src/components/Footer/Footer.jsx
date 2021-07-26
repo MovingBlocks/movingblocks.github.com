@@ -18,11 +18,10 @@ const Footer = () => (
           <h5>
             <span> The Terasology Foundation</span>
           </h5>
-          <h6>
-            {" "}
-            Licensed under:&nbsp;
-            <a
-              className="link"
+          <h6 className="text-muted">
+            Licensed under: {"  "}
+              <a
+              className="link text-success"
               href="https://www.apache.org/licenses/LICENSE-2.0"
             >
               Apache 2.0
@@ -33,42 +32,57 @@ const Footer = () => (
         <Col md="6" className="text-center">
           <IconContext.Provider value={{ size: "2.5em" }}>
             <a
-              className="link"
+              className="link text-dark"
               href="https://github.com/MovingBlocks/Terasology"
             >
               <FaGithubSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
-            <a className="link" href="https://www.facebook.com/Terasology">
+            <a
+              className="link text-primary"
+              href="https://www.facebook.com/Terasology"
+            >
               <FaFacebookSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
-            <a className="link" href="https://twitter.com/terasology">
+            <a
+              className="link text-primary"
+              href="https://twitter.com/terasology"
+            >
               <FaTwitterSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
-            <a className="link" href="https://discord.gg/terasology">
+            <a
+              className="link text-primary"
+              href="https://discord.gg/terasology"
+            >
               <FaDiscord />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
             <a
-              className="link "
+              className="link text-danger"
               href="https://www.youtube.com/user/blockmaniaTV"
             >
               <FaYoutubeSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.5em" }}>
-            <a className="link " href="https://reddit.com/r/Terasology">
+            <a
+              className="link reddit-icon-color"
+              href="https://reddit.com/r/Terasology"
+            >
               <FaRedditSquare />
             </a>
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "2.2em" }}>
-            <a className="link ml-2" href="https://www.patreon.com/Terasology">
+            <a
+              className="link ml-2 patreon-icon-color"
+              href="https://www.patreon.com/Terasology"
+            >
               <FaPatreon />
             </a>
           </IconContext.Provider>

@@ -5,11 +5,12 @@ import { Button } from "reactstrap";
 
 const PostTags = ({ tags, type }) => (
   <div className="post-tag-container">
+    {console.log(tags)}
     {tags && (
       <Link
         key={tags}
         style={{ textDecoration: "none" }}
-        to={`/${type}/?keywords=&filter=${_.kebabCase(tags.split(" ")[0])}`}
+        to={`/${type}/?keywords=&filter=${_.kebabCase(tags)}`}
       >
         <Button color="primary" size="lg">
           {tags}

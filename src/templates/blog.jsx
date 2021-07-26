@@ -47,7 +47,11 @@ const blog = (
         DATA.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return blog.tags.match(tagRgx) && blog.title.match(searchRgx);
+          let matchedTag=[]
+          blog.tags.map(tag=>{
+            matchedTag.push(tag.match(tagRgx))
+          })
+          return matchedTag.toString().match(tagRgx) && blog.title.match(searchRgx);
         })
       );
       setIsShown(true);

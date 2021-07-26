@@ -44,7 +44,13 @@ const modulelist = (
         DATA.filter((module) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return module.tags.match(tagRgx) && module.title.match(searchRgx);
+          let matchedTag = [];
+          module.tags.map((tag) => {
+            if (tag != null) {
+              matchedTag.push(tag.match(tagRgx));
+            }
+          });
+          return matchedTag.toString().match(tagRgx) && module.title.match(searchRgx);
         })
       );
       setIsShown(true);

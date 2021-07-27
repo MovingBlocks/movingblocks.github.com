@@ -17,7 +17,7 @@ const blog = (
   props
 ) => {
   const postEdges = data.allMarkdownRemark.edges;
-  const DATA = blogList;
+  const blogData = blogList;
 
   const prefix = "/blog/";
   const isFirst = blogCurrentPage === 1;
@@ -44,14 +44,13 @@ const blog = (
   useEffect(() => {
     if (searchQuery || filterTag) {
       setResults(
-        DATA.filter((blog) => {
+        blogData.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          let matchedTag=[]
-          blog.tags.map(tag=>{
-            matchedTag.push(tag.match(tagRgx))
-          })
-          return matchedTag.toString().match(tagRgx) && blog.title.match(searchRgx);
+          const matchedTag = blog.tags.filter(tag => tag != null).map(t => t.match(tagRgx))
+          return (
+            matchedTag.toString().match(tagRgx) && blog.title.match(searchRgx)
+          );
         })
       );
       setIsShown(true);

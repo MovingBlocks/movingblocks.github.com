@@ -12,6 +12,10 @@ nav {
   font-size: 2em;
 }
 
+.navbar-light .navbar-toggler-icon {
+  background-image: url("../../../static/logos/collaspe.svg");
+}
+
 .nav-item {
   margin: 0.125em;
 }

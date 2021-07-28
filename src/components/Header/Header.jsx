@@ -143,7 +143,7 @@ const Header = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
 
-            <NavItem className="ml-4 font-weight-bold btn-primary download-btn">
+            <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider
                   value={{ size: "1em", className: "download" }}

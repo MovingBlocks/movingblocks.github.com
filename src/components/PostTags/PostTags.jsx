@@ -5,7 +5,6 @@ import { Button } from "reactstrap";
 
 const PostTags = ({ tags, type }) => (
   <div className="post-tag-container">
-    {console.log(tags)}
     {tags && (
       <Link
         key={tags}

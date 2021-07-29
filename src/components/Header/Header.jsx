@@ -47,56 +47,38 @@ const Header = () => {
                 </Link>
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                The Game
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  <Link
-                    to="/media"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Media
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    to="/modules"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Modules
-                  </Link>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                About us
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
+            <NavItem>
+              <div className="dropdown">
+                <NavLink>
                   <Link
                     to="/game"
                     className="text-color"
                     activeClassName="active"
                   >
-                    The Game
+                    Terasology
                   </Link>
-                </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    to="/mentors"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Mentors
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>
+                  <div class="dropdown-content">
+                    <Link
+                      to="/media"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Media
+                    </Link>
+                    <Link
+                      to="/modules"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Modules
+                    </Link>
+                  </div>
+                </NavLink>
+              </div>
+            </NavItem>
+            <NavItem>
+              <div className="dropdown">
+                <NavLink>
                   <Link
                     to="/gsoc_tsoc"
                     className="text-color"
@@ -104,45 +86,30 @@ const Header = () => {
                   >
                     GSoC & TSoC
                   </Link>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Explore
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  <Link
-                    to="https://terasology.org/AdventureSite/"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Adventure Site
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    to="https://forum.terasology.org/"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Forum
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    to="https://github.com/Terasology"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Github
-                  </Link>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-
+                  <div class="dropdown-content">
+                    <Link
+                      to="/mentors"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Mentors
+                    </Link>
+                  </div>
+                </NavLink>
+              </div>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+              <Link
+      to="https://terasology.org/AdventureSite/"
+      className="text-color"
+      activeClassName="active"
+    >
+      Explore
+    </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem></NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider

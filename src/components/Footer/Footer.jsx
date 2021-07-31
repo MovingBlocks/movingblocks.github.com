@@ -38,25 +38,25 @@ const Footer = () => (
               <FaGithubSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
+          <IconContext.Provider value={{ size: "2.5em",color: "#3B5998" }}>
             <a
-              className="link text-primary"
+              className="link"
               href="https://www.facebook.com/Terasology"
             >
               <FaFacebookSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
+          <IconContext.Provider value={{ size: "2.5em", color: "#1BAAE1" }}>
             <a
-              className="link text-primary"
+              className="link"
               href="https://twitter.com/terasology"
             >
               <FaTwitterSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
+          <IconContext.Provider value={{ size: "2.5em", color: " #5865F2" }}>
             <a
-              className="link text-primary"
+              className="link"
               href="https://discord.gg/terasology"
             >
               <FaDiscord />
@@ -70,7 +70,7 @@ const Footer = () => (
               <FaYoutubeSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
+          <IconContext.Provider value={{ size: "2.5em", color: "#ff4500" }}>
             <a
               className="link reddit-icon-color"
               href="https://reddit.com/r/Terasology"

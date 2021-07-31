@@ -10,8 +10,10 @@ import {
   FaRedditSquare,
   FaPatreon,
 } from "react-icons/fa";
-const Footer = () => (
-  <footer className="mt-auto">
+const Footer = () => {
+  const footerIconSize = "2.5em"
+  return(
+    <footer className="mt-auto">
     <Container className="footer">
       <Row className="justify-content-center">
         <Col md="6" className="text-center">
@@ -30,7 +32,7 @@ const Footer = () => (
         </Col>
 
         <Col md="6" className="text-center">
-          <IconContext.Provider value={{ size: "2.5em" }}>
+          <IconContext.Provider value={{ size: footerIconSize }}>
             <a
               className="link text-dark"
               href="https://github.com/MovingBlocks/Terasology"
@@ -38,31 +40,31 @@ const Footer = () => (
               <FaGithubSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em",color: "#3B5998" }}>
+          <IconContext.Provider value={{ size: footerIconSize}}>
             <a
-              className="link"
+              className="link facebook-icon-color"
               href="https://www.facebook.com/Terasology"
             >
               <FaFacebookSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em", color: "#1BAAE1" }}>
+          <IconContext.Provider value={{ size: footerIconSize, }}>
             <a
-              className="link"
+              className="link twitter-icon-color"
               href="https://twitter.com/terasology"
             >
               <FaTwitterSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em", color: " #5865F2" }}>
+          <IconContext.Provider value={{ size: footerIconSize}}>
             <a
-              className="link"
+              className="link discord-icon-color"
               href="https://discord.gg/terasology"
             >
               <FaDiscord />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em" }}>
+          <IconContext.Provider value={{ size: footerIconSize }}>
             <a
               className="link text-danger"
               href="https://www.youtube.com/user/blockmaniaTV"
@@ -70,7 +72,7 @@ const Footer = () => (
               <FaYoutubeSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.5em", color: "#ff4500" }}>
+          <IconContext.Provider value={{ size: footerIconSize}}>
             <a
               className="link reddit-icon-color"
               href="https://reddit.com/r/Terasology"
@@ -78,7 +80,7 @@ const Footer = () => (
               <FaRedditSquare />
             </a>
           </IconContext.Provider>
-          <IconContext.Provider value={{ size: "2.2em" }}>
+          <IconContext.Provider value={{ size: footerIconSize }}>
             <a
               className="link ml-2 patreon-icon-color"
               href="https://www.patreon.com/Terasology"
@@ -90,6 +92,9 @@ const Footer = () => (
       </Row>
     </Container>
   </footer>
-);
+  )
+}
+   
+ 
 
 export default Footer;

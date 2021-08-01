@@ -10,8 +10,8 @@ import {
   FaRedditSquare,
   FaPatreon,
 } from "react-icons/fa";
-
 import forumIcon from "../../../static/logos/gooey.ico";
+
 const Footer = () => {
   const footerIconSize = "2.5em";
   return (
@@ -34,14 +34,8 @@ const Footer = () => {
           </Col>
 
           <Col md="6" className="text-center">
-          <a href="https://forum.terasology.org/" className="mr-1">
-              <img
-                className="gooey-icon"
-                src={forumIcon}
-                width="43px"
-                height="45px"
-                alt="forum-icon"
-              /> 
+            <a href="https://forum.terasology.org/" className="mr-1">
+              <img className="gooey-icon" src={forumIcon} alt="forum-icon" />
             </a>
             <IconContext.Provider value={{ size: footerIconSize }}>
               <a
@@ -91,7 +85,7 @@ const Footer = () => {
                 <FaRedditSquare />
               </a>
             </IconContext.Provider>
-           
+
             <IconContext.Provider value={{ size: footerIconSize }}>
               <a
                 className="ml-2  mt-2 patreon-icon-color"
@@ -100,8 +94,6 @@ const Footer = () => {
                 <FaPatreon />
               </a>
             </IconContext.Provider>
-
-           
           </Col>
         </Row>
       </Container>

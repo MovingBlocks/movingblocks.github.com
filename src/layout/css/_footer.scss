@@ -20,6 +20,10 @@ footer {
   transition: all 150ms linear;
 }
 
+a:hover {
+  color: grey;
+}
+
 .reddit-icon-color {
   color: #ff4301;
 }
@@ -28,14 +32,27 @@ footer {
   color: #f96854;
 }
 
-.discord-icon-color{
-  color: #5865F2
+.discord-icon-color {
+  color: #5865f2;
 }
 
-.twitter-icon-color{
-  color: #1BAAE1
+.twitter-icon-color {
+  color: #1baae1;
 }
 
-.facebook-icon-color{
-  color: #3B5998
+.facebook-icon-color {
+  color: #3b5998;
+}
+
+.youtube-icon-color {
+  color: #ff0000;
+}
+
+.github-icon-color {
+  color: #333333;
+}
+
+.gooey-icon {
+  width: 43px;
+  height: 45px;
 }

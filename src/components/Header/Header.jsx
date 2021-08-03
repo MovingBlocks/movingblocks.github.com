@@ -50,28 +50,38 @@ const Header = () => {
             <NavItem>
               <div className="dropdown">
                 <NavLink>
-                  <Link
-                    to="/game"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Terasology
-                  </Link>
+                  <div>Terasology</div>
+
                   <div class="dropdown-content">
-                    <Link
-                      to="/media"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Media
-                    </Link>
-                    <Link
-                      to="/modules"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Modules
-                    </Link>
+                    <NavLink>
+                      <Link
+                        to="/game"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Terasology
+                      </Link>
+                    </NavLink>
+
+                    <NavLink>
+                      <Link
+                        to="/media"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Media
+                      </Link>
+                    </NavLink>
+
+                    <NavLink>
+                      <Link
+                        to="/modules"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Modules
+                      </Link>
+                    </NavLink>
                   </div>
                 </NavLink>
               </div>
@@ -79,34 +89,39 @@ const Header = () => {
             <NavItem>
               <div className="dropdown">
                 <NavLink>
-                  <Link
-                    to="/gsoc_tsoc"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    GSoC & TSoC
-                  </Link>
+                  <div>GSoC & TSoC</div>
                   <div class="dropdown-content">
-                    <Link
-                      to="/mentors"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Mentors
-                    </Link>
+                    <NavLink className="pl-0">
+                      <Link
+                        to="/gsoc_tsoc"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        GSoC & TSoC
+                      </Link>
+                    </NavLink>
+                    <NavLink>
+                      <Link
+                        to="/mentors"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Mentors
+                      </Link>
+                    </NavLink>
                   </div>
                 </NavLink>
               </div>
             </NavItem>
             <NavItem>
               <NavLink>
-              <Link
-      to="https://terasology.org/AdventureSite/"
-      className="text-color"
-      activeClassName="active"
-    >
-      Explore
-    </Link>
+                <a
+                  href="https://terasology.org/AdventureSite/"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Explore
+                </a>
               </NavLink>
             </NavItem>
             <NavItem></NavItem>

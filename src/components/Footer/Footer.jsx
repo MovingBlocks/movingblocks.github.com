@@ -33,19 +33,21 @@ const Footer = () => {
           </Col>
           <Col lg="6" md="4">
             <Row className="justify-content-center">
-              <a href="https://forum.terasology.org/">
-                <div className="gooey-icon" />
-              </a>
-
-              <IconContext.Provider value={{ size: footerIconSize }}>
-                <a
-                  className="github-icon-color"
-                  href="https://github.com/MovingBlocks/Terasology"
-                >
-                  <FaGithubSquare />
+              <div className="mr-1">
+                <a href="https://forum.terasology.org/">
+                  <div className="gooey-icon" />
                 </a>
-              </IconContext.Provider>
-
+              </div>
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="github-icon-color"
+                    href="https://github.com/MovingBlocks/Terasology"
+                  >
+                    <FaGithubSquare />
+                  </a>
+                </IconContext.Provider>
+              </div>
               <div>
                 <IconContext.Provider value={{ size: footerIconSize }}>
                   <a
@@ -56,7 +58,6 @@ const Footer = () => {
                   </a>
                 </IconContext.Provider>
               </div>
-
               <div>
                 <IconContext.Provider value={{ size: footerIconSize }}>
                   <a
@@ -77,7 +78,6 @@ const Footer = () => {
                   </a>
                 </IconContext.Provider>
               </div>
-
               <div>
                 <IconContext.Provider value={{ size: footerIconSize }}>
                   <a

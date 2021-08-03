@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IconContext } from "react-icons";
+import GithubCorner from "react-github-corner";
 import {
   Container,
   Collapse,
@@ -9,10 +10,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
@@ -138,6 +135,11 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Container>
+      <GithubCorner
+        size="70"
+        bannerColor="#08a045"
+        href="https://github.com/MovingBlocks/Terasology"
+      />
     </Navbar>
   );
 };

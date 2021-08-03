@@ -10,7 +10,6 @@ import {
   FaRedditSquare,
   FaPatreon,
 } from "react-icons/fa";
-import forumIcon from "../../../static/logos/gooey.ico";
 
 const Footer = () => {
   const footerIconSize = "2.5em";
@@ -32,68 +31,84 @@ const Footer = () => {
               </a>
             </h6>
           </Col>
+          <Col lg="6" md="4">
+            <Row className="justify-content-center">
+              <a href="https://forum.terasology.org/">
+                <div className="gooey-icon" />
+              </a>
 
-          <Col md="6" className="text-center">
-            <a href="https://forum.terasology.org/" className="mr-1">
-              <img className="gooey-icon" src={forumIcon} alt="forum-icon" />
-            </a>
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="github-icon-color"
-                href="https://github.com/MovingBlocks/Terasology"
-              >
-                <FaGithubSquare />
-              </a>
-            </IconContext.Provider>
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="facebook-icon-color"
-                href="https://www.facebook.com/Terasology"
-              >
-                <FaFacebookSquare />
-              </a>
-            </IconContext.Provider>
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="twitter-icon-color"
-                href="https://twitter.com/terasology"
-              >
-                <FaTwitterSquare />
-              </a>
-            </IconContext.Provider>
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="discord-icon-color"
-                href="https://discord.gg/terasology"
-              >
-                <FaDiscord />
-              </a>
-            </IconContext.Provider>
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="youtube-icon-color footericon"
-                href="https://www.youtube.com/user/blockmaniaTV"
-              >
-                <FaYoutubeSquare />
-              </a>
-            </IconContext.Provider>
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="reddit-icon-color "
-                href="https://reddit.com/r/Terasology"
-              >
-                <FaRedditSquare />
-              </a>
-            </IconContext.Provider>
+              <IconContext.Provider value={{ size: footerIconSize }}>
+                <a
+                  className="github-icon-color"
+                  href="https://github.com/MovingBlocks/Terasology"
+                >
+                  <FaGithubSquare />
+                </a>
+              </IconContext.Provider>
 
-            <IconContext.Provider value={{ size: footerIconSize }}>
-              <a
-                className="ml-2  mt-2 patreon-icon-color"
-                href="https://www.patreon.com/Terasology"
-              >
-                <FaPatreon />
-              </a>
-            </IconContext.Provider>
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="facebook-icon-color"
+                    href="https://www.facebook.com/Terasology"
+                  >
+                    <FaFacebookSquare />
+                  </a>
+                </IconContext.Provider>
+              </div>
+
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="twitter-icon-color"
+                    href="https://twitter.com/terasology"
+                  >
+                    <FaTwitterSquare />
+                  </a>
+                </IconContext.Provider>
+              </div>
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="discord-icon-color"
+                    href="https://discord.gg/terasology"
+                  >
+                    <FaDiscord />
+                  </a>
+                </IconContext.Provider>
+              </div>
+
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="youtube-icon-color footericon"
+                    href="https://www.youtube.com/user/blockmaniaTV"
+                  >
+                    <FaYoutubeSquare />
+                  </a>
+                </IconContext.Provider>
+              </div>
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="reddit-icon-color "
+                    href="https://reddit.com/r/Terasology"
+                  >
+                    <FaRedditSquare />
+                  </a>
+                </IconContext.Provider>
+              </div>
+              <div>
+                <IconContext.Provider value={{ size: footerIconSize }}>
+                  <a
+                    className="ml-2  mt-2 patreon-icon-color"
+                    href="https://www.patreon.com/Terasology"
+                  >
+                    <FaPatreon />
+                  </a>
+                </IconContext.Provider>
+              </div>
+            </Row>
           </Col>
         </Row>
       </Container>

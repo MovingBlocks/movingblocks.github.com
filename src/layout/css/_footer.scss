@@ -62,5 +62,12 @@ a:hover {
 
 .gooey-icon {
   width: 43px;
-  height: 45px;
+  height: 44px;
+  background-image: url("../../../static/logos/gooey-1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gooey-icon:hover {
+  background-image: url("../../../static/logos/gooey_gray.png");
 }

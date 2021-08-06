@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { navigate } from "gatsby";
 import { Col, Form, FormGroup, Input, Label, Button } from "reactstrap";
 import { IconContext } from "react-icons";
-import { FaSearch, FaFilter } from "react-icons/fa";
-import { BsFilter } from "react-icons/bs";
-import { GrPowerReset } from "react-icons/gr";
-import { set } from "lodash";
+import { FaSearch } from "react-icons/fa";
 const moment = require("moment");
 moment.locale("en");
 

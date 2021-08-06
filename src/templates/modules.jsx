@@ -31,11 +31,13 @@ export default class ModuleTemplate extends React.Component {
             <GatsbyImage
               className={"post-cover"}
               image={post.cover.childImageSharp.gatsbyImageData}
-              
             />
-
             <h1>{post.title}</h1>
-            <PostTags tags={post.tags} type={"modules"} />
+            <div className="d-flex mt-2 ml-2">
+              {post.tags.map((tag) => {
+                return <PostTags tags={tag} type={"modules"} />;
+              })}
+            </div>
             <hr></hr>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">

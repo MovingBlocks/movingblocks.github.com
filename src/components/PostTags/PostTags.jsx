@@ -5,16 +5,18 @@ import { Button } from "reactstrap";
 
 const PostTags = ({ tags, type }) => (
   <div className="post-tag-container">
-    {tags && 
-        <Link
-          key={tags}
-          style={{ textDecoration: "none" }}
-          to={`/${type}/?keywords=&filter=${_.kebabCase(tags.split(" ")[0])}`}
-        >
-          <Button color="primary" size="lg">{tags}</Button>
-        </Link>
-      }
+    {tags && (
+      <Link
+        key={tags}
+        style={{ textDecoration: "none" }}
+        to={`/${type}/?keywords=&filter=${_.kebabCase(tags)}`}
+      >
+        <Button color="primary" size="lg">
+          {tags}
+        </Button>
+      </Link>
+    )}
   </div>
 );
 
-export default PostTags
+export default PostTags;

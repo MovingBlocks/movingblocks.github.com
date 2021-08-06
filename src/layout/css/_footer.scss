@@ -19,3 +19,55 @@ footer {
   color: rgba(0, 0, 0, 0.7);
   transition: all 150ms linear;
 }
+
+a:hover {
+  color: grey;
+}
+
+.reddit-icon-color {
+  color: #ff4301;
+}
+
+.patreon-icon-color {
+  color: #f96854;
+}
+
+.discord-icon-color {
+  color: #5865f2;
+}
+
+.twitter-icon-color {
+  color: #1baae1;
+}
+
+.facebook-icon-color {
+  color: #3b5998;
+}
+
+.youtube-icon-color {
+  color: #ff0000;
+}
+
+.github-icon-color {
+  color: #333333;
+}
+
+.telegram-icon-color {
+  color: #0088cc;
+}
+
+.linkedin-icon-color {
+  color: #4875b4;
+}
+
+.gooey-icon {
+  width: 43px;
+  height: 44px;
+  background-image: url("../../../static/logos/gooey-1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gooey-icon:hover {
+  background-image: url("../../../static/logos/gooey_gray.png");
+}

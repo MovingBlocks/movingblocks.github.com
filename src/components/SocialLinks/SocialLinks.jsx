@@ -25,18 +25,24 @@ const SocialLinks = ({ postNode, postPath, mobile }) => {
   return (
     <div className="social-links">
       <RedditShareButton url={url} title={post.title}>
-        <IconContext.Provider value={{ size: iconSize, color: "#ff4500" }}>
-          <FaReddit />
+        <IconContext.Provider value={{ size: iconSize }}>
+          <div className="reddit-icon-color">
+            <FaReddit />
+          </div>
         </IconContext.Provider>
       </RedditShareButton>
       <TwitterShareButton url={url} title={post.title}>
-        <IconContext.Provider value={{ size: iconSize, color: "#1BAAE1" }}>
-          <FaTwitter />
+        <IconContext.Provider value={{ size: iconSize }}>
+          <div className="twitter-icon-color">
+            <FaTwitter />
+          </div>
         </IconContext.Provider>
       </TwitterShareButton>
       <FacebookShareButton url={url} quote={postNode.excerpt}>
-        <IconContext.Provider value={{ size: iconSize, color: "#3B5998" }}>
-          <FaFacebook />
+        <IconContext.Provider value={{ size: iconSize }}>
+          <div className="facebook-icon-color">
+            <FaFacebook />
+          </div>
         </IconContext.Provider>
       </FacebookShareButton>
       <LinkedinShareButton
@@ -44,17 +50,21 @@ const SocialLinks = ({ postNode, postPath, mobile }) => {
         title={post.title}
         description={postNode.excerpt}
       >
-        <IconContext.Provider value={{ size: iconSize, color: "#4875B4" }}>
-          <FaLinkedin />
+        <IconContext.Provider value={{ size: iconSize }}>
+          <div className="linkedin-icon-color">
+            <FaLinkedin />
+          </div>
         </IconContext.Provider>
       </LinkedinShareButton>
       <TelegramShareButton url={url}>
-        <IconContext.Provider value={{ size: iconSize, color: "#00405d" }}>
-          <FaTelegram />
+        <IconContext.Provider value={{ size: iconSize }}>
+          <div className="telegram-icon-color">
+            <FaTelegram />
+          </div>
         </IconContext.Provider>
       </TelegramShareButton>
     </div>
   );
 };
 
-export default SocialLinks
+export default SocialLinks;

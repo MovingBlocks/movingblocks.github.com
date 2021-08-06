@@ -4,7 +4,7 @@ title: "GSOC 2017 - An Overview"
 cover: "./cover.jpg"
 description: "The first hurdle of Google Summer of Code is already over for our students, so it's about time to happily announce
 that all ten students have passed the first evaluation."
-author: "skaldarnar"
+author: "Skaldarnar"
 ddate: "July 14th, 2017"
 date: "2017-07-14"
 tags: ["GSoC"]

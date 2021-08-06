@@ -3,6 +3,7 @@ import { navigate } from "gatsby";
 import { Col, Form, FormGroup, Input, Label, Button } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
+import blogList from "../../generated/blog-result.json";
 const moment = require("moment");
 moment.locale("en");
 
@@ -15,18 +16,18 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
   let urlTag = new URLSearchParams(srcLocation).get("tag") || "";
   let urlAuthor = new URLSearchParams(srcLocation).get("author") || "";
   let urlDdate = new URLSearchParams(srcLocation).get("ddate") || "";
-  let authorList = [
-    "Cervator",
-    "Skaldarnar",
-    "Niruandaleth",
-    "Niruandaleth & Skaldarnar",
-    "Scott Moses Sunarto",
-    "nihal111",
-    "Thorbjørn Lindeijer",
-    "Jordan H. (Qwertygiy)",
-  ];
-  let tagList = ["GSoC", "Project", "Update", "TeraSaturday", "TeraSpotlight"];
+  let authorList = [];
+  let tagList = [];
 
+  blogList.forEach((element) => {
+    authorList.push(element.author);
+    element.tags.forEach((tag)=>{
+      tagList.push(tag);
+    })
+  });
+
+  authorList = [...new Set(authorList)];
+  tagList=[...new Set(tagList)]
   return (
     <Form role="search" method="GET" className="mb-0 pb-0">
       <div class="row justify-content-center " id="search-form">

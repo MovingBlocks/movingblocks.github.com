@@ -14,7 +14,7 @@ const modulelist = (
   props
 ) => {
   const postEdges = data.allMarkdownRemark.edges;
-  const DATA = moduleList;
+  const moduleData = moduleList;
 
   const prefix = "/modules/";
   const isFirst = moduleCurrentPage === 1;
@@ -41,10 +41,15 @@ const modulelist = (
   useEffect(() => {
     if (searchQuery || filterTag) {
       setResults(
-        DATA.filter((module) => {
+        moduleData.filter((module) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          return module.tags.match(tagRgx) && module.title.match(searchRgx);
+          const matchedTag = module.tags
+            .filter((tag) => tag != null)
+            .map((t) => t.match(tagRgx));
+          return (
+            matchedTag.toString().match(tagRgx) && module.title.match(searchRgx)
+          );
         })
       );
       setIsShown(true);

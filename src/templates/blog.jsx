@@ -9,7 +9,6 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-
 import { Row, Col } from "reactstrap";
 
 const blog = (

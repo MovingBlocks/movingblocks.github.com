@@ -19,15 +19,16 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
   let authorList = [];
   let tagList = [];
 
-  blogList.forEach((element) => {
-    authorList.push(element.author);
-    element.tags.forEach((tag)=>{
+  blogList.forEach((blog) => {
+    authorList.push(blog.author);
+    blog.tags.forEach((tag) => {
       tagList.push(tag);
-    })
+    });
   });
 
   authorList = [...new Set(authorList)];
-  tagList=[...new Set(tagList)]
+  tagList = [...new Set(tagList)];
+
   return (
     <Form role="search" method="GET" className="mb-0 pb-0">
       <div class="row justify-content-center " id="search-form">
@@ -87,7 +88,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                   className="option-position"
                   onChange={(e) =>
                     navigate(
-                      `${location.pathname}?keywords=${query}&tag=${encodeURI(
+                      `${location.pathname}?keywords=${query}&tag=${encodeURIComponent(
                         e.target.value
                       )}&author=${
                         author === undefined ? `${urlAuthor}` : `${author}`
@@ -121,7 +122,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                     navigate(
                       `${location.pathname}?keywords=${query}&tag=${
                         tag === undefined ? `${urlTag}` : `${tag}`
-                      }&author=${encodeURI(e.target.value)}&ddate=${
+                      }&author=${encodeURIComponent(e.target.value)}&ddate=${
                         ddate === undefined ? `${urlDdate}` : `${ddate}`
                       }`
                     )

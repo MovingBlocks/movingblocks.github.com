@@ -17,12 +17,15 @@ let c = {
 
 // functions to generate TeraSaturday and TeraSpotlight image
 const generateTeraSaturdayImage = (
-  blogName,
+  date,
   postNumber,
   defaultImage,
-  imageTag
+  imageTag,
+  title
 ) => {
   const canvas = createCanvas(c.width, c.height);
+  let blogName = date + "-" + title.replace(/([^a-zA-z0-9]+)/g, "-");
+
   const ctx = canvas.getContext("2d");
   ctx.save();
   loadImage(defaultImage).then((image) => {
@@ -72,7 +75,7 @@ const generateTeraSaturdayImage = (
     ctx.fillStyle = tagColor;
     ctx.fillText(tag, c.width / 2 - 20, c.height / 3);
 
-    var pst =
+    let pst =
       ctx.measureText("sology").width - ctx.measureText(postid).width + 70;
 
     ctx.restore();
@@ -92,14 +95,18 @@ const generateTeraSaturdayImage = (
 
 // functions to generate image with logo
 const generateCustomLogoImage = (
-  blogName,
+  date,
   defaultImage,
   position,
-  customLogo
+  customLogo,
+  title
 ) => {
   const canvas = createCanvas(c.width, c.height);
+  let blogName = date + "-" + title.replace(/([^a-zA-z0-9]+)/g, "-");
   const ctx = canvas.getContext("2d");
   const customImage = customLogo;
+  console.log(title);
+  console.log(blogName);
 
   loadImage(defaultImage).then((image) => {
     ctx.drawImage(image, 0, 0, c.width, c.height);
@@ -130,16 +137,18 @@ blogList.forEach((edge) => {
       edge.date,
       edge.postNumber,
       edge.mainImage,
-      edge.imagetag
+      edge.imagetag,
+      edge.title
     );
   }
 
-  if (edge.imagetag == "CustomImage") {
+  if (edge.imagetag == "other" || edge.imagetag == "Other") {
     generateCustomLogoImage(
       edge.date,
       edge.mainImage,
       edge.position,
-      edge.customLogo
+      edge.customLogo,
+      edge.title
     );
   }
 });

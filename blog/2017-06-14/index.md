@@ -7,6 +7,11 @@ author: "Scott Moses Sunarto"
 ddate: "June 14th, 2017"
 date: "2017-06-14"
 tags: ["Update"]
+imagetag: "TeraSaturday"
+postNumber: "12"
+mainImage: "./static/images/7.jpg"
+customLogo: ""
+position: ""
 ---
 ### Heya Terasologist!
 

@@ -107,7 +107,13 @@ exports.createPages = async ({ graphql, actions }) => {
                 tags
                 category
                 description
+                date
                 posttype
+                imagetag
+                customLogo
+                postNumber
+                position
+                mainImage
                 cover {
                   publicURL
                   childImageSharp {
@@ -142,7 +148,13 @@ exports.createPages = async ({ graphql, actions }) => {
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
       excerpt: edge.node.excerpt,
-      description: edge.node.frontmatter.description
+      description: edge.node.frontmatter.description,
+      date: edge.node.frontmatter.date,
+      imagetag: edge.node.frontmatter.imagetag,
+      customLogo: edge.node.frontmatter.customLogo,
+      postNumber: edge.node.frontmatter.postNumber,
+      position: edge.node.frontmatter.position,
+      mainImage: edge.node.frontmatter.mainImage,
     });
   });
   const blogJSON = JSON.stringify(blogList, null, 2);

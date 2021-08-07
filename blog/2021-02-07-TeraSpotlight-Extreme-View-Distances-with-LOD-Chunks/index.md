@@ -6,7 +6,7 @@ description: "The idea of extreme view distances with LOD chunks is nearly as ol
 author: "Skaldarnar"
 ddate: "Feb 07th, 2021"
 date: "2021-02-7"
-tags: "TeraSpotlight"
+tags: ["TeraSpotlight"]
 ---
 
 _Please enjoy this special spotlight post about a new feature we are excited about. We hope you will like it as much as we do!_

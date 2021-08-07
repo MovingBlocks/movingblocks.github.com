@@ -6,7 +6,7 @@ description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth & Skaldarnar"
 ddate: "Mar 13th, 2021"
 date: "2021-03-13"
-tags: "TeraSaturday"
+tags: ["TeraSaturday"]
 ---
 
 _Welcome to the return of TeraSaturday, a not-so-weekly update post about all the neat stuff that has been going on in

@@ -6,7 +6,7 @@ description: "A short spotlight on the results of our first community workshop t
 author: "Niruandaleth"
 ddate: "May 02nd, 2021"
 date: "2021-05-02"
-tags: "TeraSpotlight"
+tags: ["TeraSpotlight"]
 ---
 
 _Please enjoy this special spotlight post about results of a workshop we are excited about. We hope you will like it as much as we do!_

@@ -6,7 +6,7 @@ description: "For this year I'm proposing a bit of a week-long celebration of so
 author: "Cervator"
 ddate: "September 28th, 2018"
 date: "2018-09-28"
-tags: "Update"
+tags: ["Update"]
 ---
 
 And ... first formal news post in a while, although it is starting out pretty small. It'll grow over the next week!

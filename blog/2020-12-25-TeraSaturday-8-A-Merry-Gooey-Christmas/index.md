@@ -6,7 +6,7 @@ description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth"
 ddate: "Dec 25th, 2020"
 date: "2020-12-25"
-tags: "TeraSaturday"
+tags: ["TeraSaturday"]
 ---
 
 _Welcome to the return of TeraSaturday, a not-so-weekly update post about all the neat stuff that has been going on in

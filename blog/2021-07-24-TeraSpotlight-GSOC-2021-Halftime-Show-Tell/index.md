@@ -6,7 +6,7 @@ description: "In this post we are presenting the achievements of the student pro
 author: "Niruandaleth"
 ddate: "July 24th, 2021"
 date: "2021-07-24"
-tags: "TeraSpotlight"
+tags: ["TeraSpotlight"]
 ---
 
 _We are proud to present the achievements of this year's student projects for the first half of the [Google Summer of Code]._

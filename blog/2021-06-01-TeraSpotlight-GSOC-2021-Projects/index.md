@@ -6,7 +6,7 @@ description: "In this post we are presenting the student projects we accepted fo
 author: "Niruandaleth & Skaldarnar"
 ddate: "June 01st, 2021"
 date: "2021-06-01"
-tags: "TeraSpotlight"
+tags: ["TeraSpotlight"]
 ---
 
 _We are proud to present this year's student projects for the [Google Summer of Code]._

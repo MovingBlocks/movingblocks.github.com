@@ -18,18 +18,17 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
   let urlTag = new URLSearchParams(srcLocation).get("tag") || "";
   let urlAuthor = new URLSearchParams(srcLocation).get("author") || "";
   let urlDdate = new URLSearchParams(srcLocation).get("ddate") || "";
-  let authorList = [];
-  let tagList = [];
+  let authorList = new Set();
+  let tagList = new Set();
 
   blogList.forEach((blog) => {
-    authorList.push(blog.author);
+    authorList.add(blog.author);
     blog.tags.forEach((tag) => {
-      tagList.push(tag);
+      tagList.add(tag);
     });
   });
 
-  authorList = [...new Set(authorList)];
-  tagList = [...new Set(tagList)];
+  
 
   return (
     <Form role="search" method="GET">
@@ -107,7 +106,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {tagList.map((tag) => {
+                    {[...tagList.values()].map((tag) => {
                       return <option value={tag}>{tag}</option>;
                     })}
                   </Input>
@@ -137,7 +136,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                     value={author}
                   >
                     <option value="">All</option>
-                    {authorList.map((author) => {
+                    {[...authorList.values()].map((author) => {
                       return <option value={author}>{author}</option>;
                     })}
                   </Input>

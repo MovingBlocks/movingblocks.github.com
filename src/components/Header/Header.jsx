@@ -46,11 +46,15 @@ const Header = () => {
             </NavItem>
             <NavItem>
               <div className="dropdown">
+              
                 <NavLink>
-                  <div>Terasology</div>
+                     
+                        Terasology
+                    
+                    </NavLink>
 
                   <div class="dropdown-content">
-                    <NavLink>
+                  <NavLink>
                       <Link
                         to="/game"
                         className="text-color"
@@ -59,7 +63,6 @@ const Header = () => {
                         Terasology
                       </Link>
                     </NavLink>
-
                     <NavLink>
                       <Link
                         to="/media"
@@ -80,13 +83,14 @@ const Header = () => {
                       </Link>
                     </NavLink>
                   </div>
-                </NavLink>
+               
               </div>
             </NavItem>
             <NavItem>
               <div className="dropdown">
                 <NavLink>
-                  <div>GSoC & TSoC</div>
+                  GSoC & TSoC
+                  </NavLink>
                   <div class="dropdown-content">
                     <NavLink className="pl-0">
                       <Link
@@ -107,7 +111,7 @@ const Header = () => {
                       </Link>
                     </NavLink>
                   </div>
-                </NavLink>
+                
               </div>
             </NavItem>
             <NavItem>

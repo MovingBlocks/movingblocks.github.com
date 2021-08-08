@@ -34,10 +34,10 @@ const blog = (
     // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
-  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
-  var filterTag = new URLSearchParams(srcLocation).get("tag") || "";
-  var filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
-  var filterddate = new URLSearchParams(srcLocation).get("ddate") || "";
+  let searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+  let filterTag = new URLSearchParams(srcLocation).get("tag") || "";
+  let filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
+  let filterddate = new URLSearchParams(srcLocation).get("ddate") || "";
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }

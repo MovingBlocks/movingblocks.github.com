@@ -157,7 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
   const blogJSON = JSON.stringify(blogList, null, 2);
   fs.writeFileSync("./src/generated/blog-result.json", blogJSON);
-  const postsPerPage = 6;
+  const postsPerPage = 25;
   const postsNumPages = Math.ceil(posts.length / postsPerPage);
   Array.from({
     length: postsNumPages

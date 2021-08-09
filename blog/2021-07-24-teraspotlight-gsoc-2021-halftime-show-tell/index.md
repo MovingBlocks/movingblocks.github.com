@@ -30,7 +30,21 @@ The final results of GSoC 2021 will be announced on August 31, a bit more than f
 Read on to learn what the students achieved in the first half of their projects!
 
 <div class="col" markdown="1">
-  {% include gsoc_card.html student=site.data.gsoc2021.ahv %}
+ <div class="card w-100 mt-4 shadow p-3 mb-5 bg-white rounded" style="height: 180px">
+   <div class="row">
+   <div class="col-2"> 
+     <img  class="rounded-circle ml-4" style="height: 30%" src="https://avatars.githubusercontent.com/ahv15" />
+   </div>
+   <div class="col-9"> 
+     <p class="card-title text-muted">Alluri Harshit Varma</p>
+    <h5 class="card-text">Quality Improvements for Light & Shadow</h5>
+    <hr />
+    <div>
+   <a class="text-warning" href="https://summerofcode.withgoogle.com/organizations/5338575677161472/#4719812875386880">PROJECT CARD</a>
+    </div>
+   </div>
+   </div>
+</div>
 
 Alluri (aka _@ahv15_) completed the overhaul of the [`LightAndShadow`](https://github.com/Terasology/lightandshadow) module.
 The student removed unused code and refactored the remainder of the project to properly follow our event-based Entity-Component-System architecture.
@@ -55,7 +69,21 @@ This will include a wallet with starting budget for each player and a shop to bu
 
 The project is mentored by _@Niruandaleth_ (aka _@jdrueckert_) and _@Skaldarnar_.
 
-{% include gsoc_card.html student=site.data.gsoc2021.meet %}
+<div class="card w-100 mt-4 shadow p-3 mb-5 bg-white rounded" style="height: 180px">
+   <div class="row">
+   <div class="col-2"> 
+     <img  class="rounded-circle ml-4" style="height: 30%" src="https://avatars.githubusercontent.com/meetcshah19" />
+   </div>
+   <div class="col-9"> 
+     <p class="card-title text-muted">Meet Shah</p>
+    <h5 class="card-text">Animal Interaction Improvements in Josharia’s Survival</h5>
+    <hr />
+    <div>
+   <a class="text-warning" href="https://summerofcode.withgoogle.com/organizations/5338575677161472/#6428949812346880">PROJECT CARD</a>
+    </div>
+   </div>
+   </div>
+</div>
 
 Meet (aka _@meetcshah19_) completed the introduction of a gameplay mechanism to shear sheep.
 Before, the only possible interaction with animals in Josharias' Survival was killing them.
@@ -76,7 +104,21 @@ For the remaining weeks, Meet plans to add behavior that will make sheep follow 
 
 The project is mentored by _@Niruandaleth_ (aka _@jdrueckert_) and _@keturn_, with additional support from _@casals_ and last year's student _@ktksan_.
 
-{% include gsoc_card.html student=site.data.gsoc2021.lorxu %}
+<div class="card w-100 mt-4 shadow p-3 mb-5 bg-white rounded" style="height: 180px">
+   <div class="row">
+   <div class="col-2"> 
+     <img  class="rounded-circle ml-4" style="height: 30%" src="https://avatars.githubusercontent.com/tolziplohu" />
+   </div>
+   <div class="col-9"> 
+     <p class="card-title text-muted">Lorxu</p>
+    <h5 class="card-text">Distinct Terrain Features for Metal Renegades</h5>
+    <hr />
+    <div>
+   <a class="text-warning" href="https://summerofcode.withgoogle.com/organizations/5338575677161472/#6733281816477696"> PROJECT CARD</a>
+    </div>
+   </div>
+   </div>
+</div>
 
 _@Lorxu_ (aka _@tolziplohu_) completed the expansion of the Metal Renegades world generation with more interesting terrain typical of the Old West:
 fertile river beds, additional biomes for scrubland, steppe, and rocky terrain, strata and mesas.
@@ -96,7 +138,21 @@ Furthermore, the student wants to continue helping to improve performance and po
 
 The project is mentored by _@Skaldarnar_ and _@keturn_, with additional support from _@Suhas_ (aka _@agent-q1_).
 
-{% include gsoc_card.html student=site.data.gsoc2021.yash %}
+<div class="card w-100 mt-4 shadow p-3 mb-5 bg-white rounded" style="height: 180px">
+   <div class="row">
+   <div class="col-2"> 
+     <img  class="rounded-circle ml-4" style="height: 30%" src="https://avatars.githubusercontent.com/ryuk156" />
+   </div>
+   <div class="col-9"> 
+     <p class="card-title text-muted">Yash Patel</p>
+    <h5 class="card-text">Migrate Web Presence to new Module Site</h5>
+    <hr />
+    <div>
+   <a class="text-warning" href="https://summerofcode.withgoogle.com/organizations/5338575677161472/#5855615500419072">PROJECT CARD</a>
+    </div>
+   </div>
+   </div>
+</div>
 
 Yash (aka _@ryuk156_) completed the automation efforts for the generation of module information, the deployment of the ModuleSite and the integration with the [Trello board for GSoC / TSoC topics](https://trello.com/b/5QQGHuTt/gsoc-gsod-ideas).
 In addition, the site was successfully migrated to SCSS and most of the website pages were migrated and the underlying technical features overhauled.
@@ -113,7 +169,21 @@ For the remaining weeks, Yash plans to improve the search capabilities for blogs
 
 The project is mentored by _@majordwarf_ and _@Michael P_ (aka _@pollend_), with additional support from _@Niruandaleth_ (aka _@jdrueckert_) and _@Cervator_.
 
-{% include gsoc_card.html student=site.data.gsoc2021.isaiah %}
+<div class="card w-100 mt-4 shadow p-3 mb-5 bg-white rounded" style="height: 180px">
+   <div class="row">
+   <div class="col-2"> 
+     <img  class="rounded-circle ml-4" style="height: 60%" src="https://avatars.githubusercontent.com/IsaiahBlanks" />
+   </div>
+   <div class="col-9"> 
+     <p class="card-title text-muted">Isaiah Blanks</p>
+    <h5 class="card-text">Destination: Sol World-Gen Modularization</h5>
+    <hr />
+    <div>
+   <a class="text-warning" href="https://summerofcode.withgoogle.com/organizations/5338575677161472/#4852389992988672">PROJECT CARD</a>
+    </div>
+   </div>
+   </div>
+</div>
 
 Isaiah (aka _@IsaiahBlanks_) completed the creation of a framework of skeleton classes to be filled in with more details later.
 The first class to be filled and completed was `WorldBuilder`, which looks through available solar system generators, picks generator types at random and creates instances of them according to the number of systems to be created for a world.

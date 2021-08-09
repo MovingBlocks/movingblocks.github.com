@@ -82,4 +82,4 @@ But don't worry: if you're getting nostalgic you can crawl through the [releases
 
 [v4.3.3]: https://github.com/MovingBlocks/TerasologyLauncher/releases/tag/v4.3.3
 [v4.3.4]: https://github.com/MovingBlocks/TerasologyLauncher/releases/tag/v4.3.4
-[terasaturday #13]: https://terasology.org/ModuleSite/blog/2021-04-17-terasaturday-13
+[terasaturday #13]: https://terasology.org/ModuleSite/blog/2021-04-17-terasaturday-13-may-the-maven-be-with-us

@@ -79,4 +79,4 @@ With DPP and GDPR, there's two more big topics to work out before we can move to
 
 <!-- References -->
 
-[terasaturday #12]: https://terasology.org/ModuleSite/blog/2021-03-20-terasaturday-12
+[terasaturday #12]: https://terasology.org/ModuleSite/blog/2021-03-20-terasaturday-12-whatever-floats-your-island

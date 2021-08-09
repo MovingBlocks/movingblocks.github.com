@@ -138,4 +138,4 @@ Let's end this post with a teaser for a TeraSpotlight post about our recent comm
 [movingblocks/gestalt]: https://github.com/MovingBlocks/gestalt
 [movingblocks/teranui]: https://github.com/MovingBlocks/TeraNUI
 [terasology github organization]: https://github.com/Terasology
-[terasaturday #11]: https://terasology.org/ModuleSite/blog/TeraSaturday-11-GSOC-2021-is-Coming
+[terasaturday #11]: https://terasology.org/ModuleSite/blog/2021-03-13-terasaturday-11-gsoc-2021-is-coming

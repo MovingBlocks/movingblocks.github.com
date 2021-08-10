@@ -7,6 +7,9 @@ author: "Skaldarnar"
 ddate: "Dec 21st, 2020"
 date: "2020-11-21"
 tags: ["TeraSaturday"]
+imageTag: "TeraSaturday"
+postNumber: "#5"
+mainImage: "./static/images/13.jpg"
 ---
 
 _Welcome to the return of TeraSaturday, a not-so-weekly update post about all the neat stuff that has been going on in

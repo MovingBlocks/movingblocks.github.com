@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: "GSOC 2020 - An Overview"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "5th year anniversary for Terasology participating in Google Summer of Code 🎉 
   A warm welcome to all six of our students this year!
   Read on to get a brief overview of all projects for the upcoming summer."
@@ -9,6 +9,10 @@ author: "Niruandaleth & Skaldarnar"
 ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["GSOC"]
+imageTag: "other"
+customLogo: "./static/logos/gsoc.png"
+mainImage: "./static/images/14.jpg"
+position: "end"
 ---
 
 This year is the 5th year anniversary for Terasology participating in the Google Summer of Code (GSOC) 🎉

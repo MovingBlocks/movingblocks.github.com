@@ -159,16 +159,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                       )
                     }
                     value={date}
-                  >
-                    {/* <option value="">All</option>
-                    {moment.monthsShort().map((month) => {
-                      return (
-                        <option value={month}>
-                          {moment(month, "MMM").format("MMMM")}
-                        </option>
-                      );
-                    })} */}
-                  </Input>
+                  ></Input>
                 </FormGroup>
               </Col>
 

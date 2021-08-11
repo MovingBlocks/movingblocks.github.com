@@ -37,19 +37,19 @@ const blog = (
   let searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
   let filterTag = new URLSearchParams(srcLocation).get("tag") || "";
   let filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
-  let filterddate = new URLSearchParams(srcLocation).get("ddate") || "";
+  let filterdate = new URLSearchParams(srcLocation).get("date") || "";
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
   useEffect(() => {
-    if (searchQuery || filterTag || filterAuthor || filterddate) {
+    if (searchQuery || filterTag || filterAuthor || filterdate) {
       setResults(
         blogData.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
-          const ddateRgx = new RegExp(escapeRegExp(filterddate), "gi");
+          const dateRgx = new RegExp(escapeRegExp(filterdate), "gi");
           const matchedTag = blog.tags
             .filter((tag) => tag != null)
             .map((t) => t.match(tagRgx));
@@ -57,7 +57,7 @@ const blog = (
             (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
             matchedTag.toString().match(tagRgx) &&
             blog.author.match(authorRgx) &&
-            blog.ddate.match(ddateRgx)
+            blog.date.match(dateRgx)
           );
         })
       );
@@ -77,7 +77,7 @@ const blog = (
           query={searchQuery}
           tag={filterTag}
           author={filterAuthor}
-          ddate={filterddate}
+          date={filterdate}
         />
         {isShown && (
           <SearchResults id="src" query={searchQuery} results={results} />

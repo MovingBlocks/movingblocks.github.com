@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { navigate } from "gatsby";
 import { Col, Form, FormGroup, Input, Label, Button, Row } from "reactstrap";
 import { IconContext } from "react-icons";
-import { FaSearch, FaEquals } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import blogList from "../../generated/blog-result.json";
 const moment = require("moment");
 moment.locale("en");
 
-const SearchForm = ({ query, tag, author, ddate }, props) => {
-  console.log(blogList);
+const SearchForm = ({ query, tag, author, date }, props) => {
   const [showFilter, setShowFilter] = useState(false);
   let srcLocation = props.location;
 
@@ -17,7 +16,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
   }
   let urlTag = new URLSearchParams(srcLocation).get("tag") || "";
   let urlAuthor = new URLSearchParams(srcLocation).get("author") || "";
-  let urlDdate = new URLSearchParams(srcLocation).get("ddate") || "";
+  let urldate = new URLSearchParams(srcLocation).get("date") || "";
   let authorList = new Set();
   let tagList = new Set();
 
@@ -27,8 +26,6 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
       tagList.add(tag);
     });
   });
-
-  
 
   return (
     <Form role="search" method="GET">
@@ -51,7 +48,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                     e.target.value
                   )}&tag=${tag === undefined ? `${urlTag}` : `${tag}`}&author=${
                     author === undefined ? `${urlAuthor}` : `${author}`
-                  }&ddate=${ddate === undefined ? `${urlDdate}` : `${ddate}`}`
+                  }&date=${date === undefined ? `${urldate}` : `${date}`}`
                 )
               }
               placeholder="Search..."
@@ -69,7 +66,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
             size="lg"
             id="search-btn"
           >
-            <FaEquals /> Filter
+            <FaFilter /> Filter
           </Button>
         </Col>
       </Row>
@@ -77,7 +74,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
         <div class="row justify-content-center">
           <Col md="10" className="pt-0 align-item-center pb-0 input-col">
             <div class="row mt-0 justify-content-center">
-              <Col md="3" className="pt-3">
+              <Col md="3" className="pt-1">
                 <FormGroup>
                   <Label for="searchQuery">
                     <h6>Tags</h6>
@@ -98,9 +95,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                           e.target.value
                         )}&author=${
                           author === undefined ? `${urlAuthor}` : `${author}`
-                        }&ddate=${
-                          ddate === undefined ? `${urlDdate}` : `${ddate}`
-                        }`
+                        }&date=${date === undefined ? `${urldate}` : `${date}`}`
                       )
                     }
                     value={tag}
@@ -112,7 +107,7 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                   </Input>
                 </FormGroup>
               </Col>
-              <Col md="3" className="pt-3">
+              <Col md="3" className="pt-1 pb-0">
                 <FormGroup>
                   <Label for="searchQuery">
                     <h6>Author</h6>
@@ -128,8 +123,8 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                       navigate(
                         `${location.pathname}?keywords=${query}&tag=${
                           tag === undefined ? `${urlTag}` : `${tag}`
-                        }&author=${encodeURIComponent(e.target.value)}&ddate=${
-                          ddate === undefined ? `${urlDdate}` : `${ddate}`
+                        }&author=${encodeURIComponent(e.target.value)}&date=${
+                          date === undefined ? `${urldate}` : `${date}`
                         }`
                       )
                     }
@@ -142,13 +137,13 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                   </Input>
                 </FormGroup>
               </Col>
-              <Col md="3" className="pt-3">
+              <Col md="3" className="pt-1 pb-0">
                 <FormGroup>
                   <Label for="searchQuery">
                     <h6>Date</h6>
                   </Label>
                   <Input
-                    type="select"
+                    type="date"
                     name="author"
                     id="search-tag"
                     bsSize="lg"
@@ -160,24 +155,24 @@ const SearchForm = ({ query, tag, author, ddate }, props) => {
                           tag === undefined ? `${urlTag}` : `${tag}`
                         }&author=${
                           author === undefined ? `${urlAuthor}` : `${author}`
-                        }&ddate=${encodeURIComponent(e.target.value)}`
+                        }&date=${encodeURIComponent(e.target.value)}`
                       )
                     }
-                    value={ddate}
+                    value={date}
                   >
-                    <option value="">All</option>
+                    {/* <option value="">All</option>
                     {moment.monthsShort().map((month) => {
                       return (
                         <option value={month}>
                           {moment(month, "MMM").format("MMMM")}
                         </option>
                       );
-                    })}
+                    })} */}
                   </Input>
                 </FormGroup>
               </Col>
 
-              <Col md="2" className="pt-3">
+              <Col md="2" className="pt-1 pb-0">
                 <FormGroup className="text-center ">
                   <Button
                     type="button"

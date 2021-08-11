@@ -46,23 +46,16 @@ const Header = () => {
             </NavItem>
             <NavItem>
               <div className="dropdown">
-              
                 <NavLink>
-                     
-                        Terasology
-                    
-                    </NavLink>
+                  <Link
+                    to="/game"
+                    className="text-color"
+                    activeClassName="active"
+                  >
+                    Terasology
+                  </Link>
 
                   <div class="dropdown-content">
-                  <NavLink>
-                      <Link
-                        to="/game"
-                        className="text-color"
-                        activeClassName="active"
-                      >
-                        Terasology
-                      </Link>
-                    </NavLink>
                     <NavLink>
                       <Link
                         to="/media"
@@ -83,24 +76,21 @@ const Header = () => {
                       </Link>
                     </NavLink>
                   </div>
-               
+                </NavLink>
               </div>
             </NavItem>
             <NavItem>
               <div className="dropdown">
                 <NavLink>
-                  GSoC & TSoC
-                  </NavLink>
+                  <Link
+                    to="/gsoc_tsoc"
+                    className="text-color"
+                    activeClassName="active"
+                  >
+                    GSoC & TSoC
+                  </Link>
+
                   <div class="dropdown-content">
-                    <NavLink className="pl-0">
-                      <Link
-                        to="/gsoc_tsoc"
-                        className="text-color"
-                        activeClassName="active"
-                      >
-                        GSoC & TSoC
-                      </Link>
-                    </NavLink>
                     <NavLink>
                       <Link
                         to="/mentors"
@@ -111,7 +101,7 @@ const Header = () => {
                       </Link>
                     </NavLink>
                   </div>
-                
+                </NavLink>
               </div>
             </NavItem>
             <NavItem>

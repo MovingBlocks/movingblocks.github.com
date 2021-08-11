@@ -49,13 +49,13 @@ But what power lets these islands float in the air (and prevent them from fallin
 On the tracks of _[Gulliver's Travels](https://en.wikipedia.org/wiki/Laputa)_ we discover that there is a strange block at the core of each of the islands, shimmering of magic.
 
 <p align="center">
-<video width= "320" height="240" controls autoplay loop>
+<video width= "320" height="240"  autoplay loop>
   <source src="./laputa-adamant.webm" type="video/webm">
 </video>
 </p>
 
 > Working on a new block texture for the `Laputa Adamant` block in Flying Islands was pretty fun.
-> I used the opportunity to try out [aseprite] for the pixel art, and am pretty satsified with how intuitive the UX is.
+> I used thecontrols opportunity to try out [aseprite] for the pixel art, and am pretty satsified with how intuitive the UX is.
 > I tried to catch the magical essence of the block - it is floating for some non-obvious reason, there has to be magic involved!✨ - by giving it a cracked look, with a purple light shining from the core.
 >
 > After _@4Denthusiast_ pointed out that we support **animated block tiles** the frame-by-frame animation of aseprite came in pretty handy, and now we have a pulsating, magical block 🙃
@@ -67,7 +67,6 @@ On the tracks of _[Gulliver's Travels](https://en.wikipedia.org/wiki/Laputa)_ we
   <div align="center" class="mb-4">
       <img src="./laputa-adamant-aseprite.png" alt="Working on Lapuata Adamant block texture in aseprite"/>
   </div>
-
 
 ### ✔️ Writing Actionable Action Items
 

@@ -68,9 +68,9 @@ We are happy to announce that all five students passed their halftime evaluation
 Check out [TeraSpotlight: GSOC 2021 Halftime Show & Tell] to find out about the students' achievements over the past few weeks. Below are some canapés:
 
   <div class="row">
-   <div class="col-md-4"> <img src="../2021-07-24-TeraSpotlight-GSOC-2021-Halftime-Show-Tell/las_pregame-phase-countdown.png"  /> </div>
-   <div class="col-md-4">  <img src="../2021-07-24-TeraSpotlight-GSOC-2021-Halftime-Show-Tell/js_sheep-shearing-before.png"  /></div>
-   <div class="col-md-4">  <img src="../2021-07-24-TeraSpotlight-GSOC-2021-Halftime-Show-Tell/mr_mesas.png"  /></div>
+   <div class="col-md-4"> <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/las_pregame-phase-countdown.png"  /> </div>
+   <div class="col-md-4">  <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/js_sheep-shearing-before.png"  /></div>
+   <div class="col-md-4">  <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/mr_mesas.png"  /></div>
   </div>
 
 The students will continue to contribute to different areas of our wide ecosystem, ranging from modernizing our web presence over world generation both, in space and on earth, to improvements in various gameplays.

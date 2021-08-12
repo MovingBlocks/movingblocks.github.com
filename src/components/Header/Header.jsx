@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IconContext } from "react-icons";
+import GithubCorner from "react-github-corner";
 import {
   Container,
   Collapse,
@@ -19,10 +20,11 @@ const Header = () => {
   return (
     <Navbar light expand="md" sticky="top">
       <Container>
-        <NavbarBrand href="/">
-          <img src={navLogo} alt="Terasology" width="225" />
-        </NavbarBrand>
         <NavbarToggler onClick={() => toggle(!isOpen)} />
+        <div href="/" className="navbar-brand mx-auto">
+          <img src={navLogo} alt="Terasology" width="225" />
+        </div>
+
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -128,6 +130,11 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Container>
+      <GithubCorner
+        size={65}
+        bannerColor="#08a045"
+        href="https://github.com/MovingBlocks/Terasology"
+      />
     </Navbar>
   );
 };

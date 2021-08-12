@@ -116,7 +116,6 @@ const Header = () => {
                 </a>
               </NavLink>
             </NavItem>
-            <NavItem></NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider

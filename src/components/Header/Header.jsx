@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IconContext } from "react-icons";
+import GithubCorner from "react-github-corner";
 import {
   Container,
   Collapse,
@@ -12,14 +13,18 @@ import {
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
+import navLogo from "../../../static/logos/nav_logo.png";
 
 const Header = () => {
   const [isOpen, toggle] = useState(false);
   return (
     <Navbar light expand="md" sticky="top">
       <Container>
-        <NavbarBrand href="/">Terasology</NavbarBrand>
         <NavbarToggler onClick={() => toggle(!isOpen)} />
+        <div href="/" className="navbar-brand mx-auto">
+          <img src={navLogo} alt="Terasology" width="225" />
+        </div>
+
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -41,72 +46,76 @@ const Header = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                <Link
-                  to="/media"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  Media
-                </Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link
-                  to="/game"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  The Game
-                </Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link
-                  to="/modules"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  Modules
-                </Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link
-                  to="/mentors"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  Mentor's
-                </Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link
-                  to="/gsoc_tsoc"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  GSoC & TSoC
-                </Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link
-                  to="https://forum.terasology.org/"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  Forum
-                </Link>
-              </NavLink>
-            </NavItem>
+              <div className="dropdown">
+                <NavLink>
+                  <Link
+                    to="/game"
+                    className="text-color"
+                    activeClassName="active"
+                  >
+                    Terasology
+                  </Link>
 
+                  <div class="dropdown-content">
+                    <NavLink>
+                      <Link
+                        to="/media"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Media
+                      </Link>
+                    </NavLink>
+
+                    <NavLink>
+                      <Link
+                        to="/modules"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Modules
+                      </Link>
+                    </NavLink>
+                  </div>
+                </NavLink>
+              </div>
+            </NavItem>
+            <NavItem>
+              <div className="dropdown">
+                <NavLink>
+                  <Link
+                    to="/gsoc_tsoc"
+                    className="text-color"
+                    activeClassName="active"
+                  >
+                    GSoC & TSoC
+                  </Link>
+
+                  <div class="dropdown-content">
+                    <NavLink>
+                      <Link
+                        to="/mentors"
+                        className="text-color"
+                        activeClassName="active"
+                      >
+                        Mentors
+                      </Link>
+                    </NavLink>
+                  </div>
+                </NavLink>
+              </div>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <a
+                  href="https://terasology.org/AdventureSite/"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Explore
+                </a>
+              </NavLink>
+            </NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider
@@ -120,6 +129,11 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Container>
+      <GithubCorner
+        size={65}
+        bannerColor="#08a045"
+        href="https://github.com/MovingBlocks/Terasology"
+      />
     </Navbar>
   );
 };

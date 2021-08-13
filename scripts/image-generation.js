@@ -24,9 +24,14 @@ const generateTeraSaturdayImage = (
   title
 ) => {
   const canvas = createCanvas(c.width, c.height);
-  //   "-" + title.replace(/([^a-zA-z0-9]+)/g, "-");
-  console.log(date)
-  let blogName = date;
+
+  let blogName =
+    date +
+    "-" +
+    title
+      .replace(/[^a-zA-Z0-9 ]/g, "")
+      .replace(/\s/g, "-")
+      .toLowerCase();
 
   const ctx = canvas.getContext("2d");
   ctx.save();
@@ -103,8 +108,13 @@ const generateCustomLogoImage = (
   title
 ) => {
   const canvas = createCanvas(c.width, c.height);
-  //   + "-" + title.replace(/([^a-zA-z0-9]+)/g, "-");
-  let blogName = date;
+  let blogName =
+    date +
+    "-" +
+    title
+      .replace(/[^a-zA-Z0-9 ]/g, "")
+      .replace(/\s/g, "-")
+      .toLowerCase();
 
   const ctx = canvas.getContext("2d");
   const customImage = customLogo;

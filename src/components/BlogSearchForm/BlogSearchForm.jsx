@@ -30,7 +30,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
   return (
     <Form role="search" method="GET">
       <Row className="justify-content-center" id="search-form">
-        <Col md="8" className="p-3">
+        <Col md="8" className="pl-4 pt-3 pb-3 pr-0">
           <FormGroup>
             <Label for="searchQuery">
               <h6>Search & Filter</h6>
@@ -56,7 +56,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
             />
           </FormGroup>
         </Col>
-        <Col md="2" className="pt-3 pl-4">
+        <Col md="2" className="pt-3 pl-4 pr-2">
           <Button
             type="button"
             color="primary"
@@ -72,7 +72,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
       </Row>
       {showFilter == true ? (
         <div class="row justify-content-center">
-          <Col md="10" className="pt-0 align-item-center pb-0 input-col">
+          <Col md="10" className="pt-1 align-item-center pb-0 input-col">
             <div class="row mt-0 justify-content-center">
               <Col md="3" className="pt-1">
                 <FormGroup>

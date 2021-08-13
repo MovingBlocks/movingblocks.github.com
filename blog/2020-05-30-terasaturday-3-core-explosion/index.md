@@ -7,9 +7,9 @@ author: "Jordan H. (Qwertygiy)"
 ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["TeraSaturday"]
-imagetag: "TeraSaturday"
+imageTag: "TeraSaturday"
 postNumber: "#3"
-mainImage: "./static/images/12.png"
+mainImage: "./static/images/12.jpg"
 ---
 
 _Welcome to the return of TeraSaturday, a not-so-weekly update post about all the neat stuff that has been going on in 

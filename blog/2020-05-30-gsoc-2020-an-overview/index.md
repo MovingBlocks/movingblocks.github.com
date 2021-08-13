@@ -9,10 +9,13 @@ author: "Niruandaleth & Skaldarnar"
 ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["GSoC"]
+<<<<<<< HEAD:blog/2020-05-30/index.md
+=======
 imagetag: "Other"
 customLogo: "./static/logos/gsoc.png"
 mainImage: "./static/images/13.png"
 position: "end"
+>>>>>>> master:blog/2020-05-30-gsoc-2020-an-overview/index.md
 ---
 
 This year is the 5th year anniversary for Terasology participating in the Google Summer of Code (GSOC) 🎉

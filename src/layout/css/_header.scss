@@ -12,6 +12,10 @@ nav {
   font-size: 2em;
 }
 
+.navbar-light .navbar-toggler-icon {
+  background-image: url("../../../static/logos/collaspe.svg");
+}
+
 .nav-item {
   margin: 0.125em;
 }
@@ -77,8 +81,26 @@ nav {
   border-bottom: 4px solid $primary;
 }
 
-/* Dropdown Animation */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fdfdfd;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-top: 6px;
+  padding-bottom: 10px;
+  z-index: 1;
+  align-items: center;
+}
 
+.dropdown:hover .dropdown-content {
+  width: 100px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown Animation */
 @media (min-width: 992px) {
   .animate {
     animation-duration: 0.3s;
@@ -120,4 +142,8 @@ nav {
     -webkit-transform: translateY(1rem);
     -webkit-opacity: 0;
   }
+}
+
+.dropdown {
+  display: flex;
 }

@@ -68,4 +68,4 @@ for moduleDir in os.listdir(scrapeDataDir):
             with open(moduleReadme, mode="r") as readmeData:
                 indexMd.write(readmeData.read())
     except Exception as e:
-        print(e)
+        print(str(e))

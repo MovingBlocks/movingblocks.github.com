@@ -15,8 +15,8 @@ git config --global user.name "userName"
 git checkout -b module_gen
 git add .
 git commit -m "chore: update module information"
-git push https://${GIT_CREDS}@github.com/MovingBlocks/ModuleSite.git module_gen 
-curl -i -H "Authorization: token $GIT_CREDS" -X POST "https://api.github.com/repos/MovingBlocks/ModuleSite/pulls" -d '{ "title": "chore: automated update of module information",
+git push https://${GIT_TOKEN}@github.com/MovingBlocks/ModuleSite.git module_gen 
+curl -i -H "Authorization: token $GIT_TOKEN" -X POST "https://api.github.com/repos/MovingBlocks/ModuleSite/pulls" -d '{ "title": "chore: automated update of module information",
  "base": "master",
  "head": "module_gen",
  "body": "Module information collected and generated using Jenkins pipeline"}'

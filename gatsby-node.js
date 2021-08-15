@@ -108,7 +108,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 date
                 ddate
                 author
-                category
                 description
                 posttype
                 cover {
@@ -190,7 +189,6 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
-                category
                 date
                 posttype
                 cover {

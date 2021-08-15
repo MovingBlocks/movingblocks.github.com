@@ -30,7 +30,7 @@ for module in modules:
         with open(moduleDirSrc+"/module.txt", mode="a") as moduleFile:
             moduleFile.write(moduleContent)
     except Exception as e:
-        print("Repository is not a Module "+moduleName+":"+ e)
+        print("Repository is not a Module "+moduleName+":"+ str(e))
 
     # Fetch readme file
     try:
@@ -38,7 +38,7 @@ for module in modules:
         with open(moduleDirSrc+"/README.md", mode="a") as moduleReadmeFile:
             moduleReadmeFile.write(readmeContent)
     except Exception as e:
-        print("Couldn't fetch README.md"+moduleName+": "+e)
+        print("Couldn't fetch README.md"+moduleName+": "+ str(e))
         with open(moduleDirSrc+"/README.md", mode="a") as moduleDefaultReadme:
             moduleDefaultReadme.write(
                 "This is a module for Terasology. It is currently lacking a README.md for documenting its purpose, usage, and contribution to Terasology.")

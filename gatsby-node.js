@@ -222,7 +222,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
   const moduleJSON = JSON.stringify(moduleList, null, 2);
   fs.writeFileSync("./src/generated/module-result.json", moduleJSON);
-  const modulesPerPage = 6;
+  const modulesPerPage = 25;
   const moduleNumPages = Math.ceil(modules.length / modulesPerPage);
   Array.from({
     length: moduleNumPages

@@ -65,7 +65,6 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
-                category
                 date
                 posttype
                 cover {
@@ -108,7 +107,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 date
                 ddate
                 author
-                category
                 description
                 posttype
                 cover {
@@ -190,7 +188,6 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 tags
-                category
                 date
                 posttype
                 cover {
@@ -276,7 +273,6 @@ exports.createPages = async ({ graphql, actions }) => {
         component: modulesPage,
         context: {
           slug: edge.node.fields.slug,
-          category: edge.node.frontmatter.category
         }
       });
     } else {
@@ -285,8 +281,7 @@ exports.createPages = async ({ graphql, actions }) => {
         path: `/blog${edge.node.fields.slug}`,
         component: postPage,
         context: {
-          slug: edge.node.fields.slug,
-          category: edge.node.frontmatter.category
+          slug: edge.node.fields.slug
         }
       });
     }

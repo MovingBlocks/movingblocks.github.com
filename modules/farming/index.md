@@ -3,7 +3,6 @@ posttype: "module"
 title: "Farming"
 cover: "../../static/logos/cover.jpg"
 date: "01/01/2017"
-category: "tech"
 tags: ["Logic","Asset","Library"]
 ---
 

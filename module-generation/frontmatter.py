@@ -15,6 +15,7 @@ for moduleDir in os.listdir(scrapeDataDir):
     try:
         moduleName = module['id']
         moduleDescription = module['description']
+        moduleDescription = moduleDescription.replace('"', r'\"')
         os.mkdir(moduleDst+moduleName)
         with open(moduleDst+moduleName+"/index.md", mode="a+") as indexMd:
             indexMd.write('---\n')

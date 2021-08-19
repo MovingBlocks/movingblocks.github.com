@@ -21,6 +21,7 @@ for moduleDir in os.listdir(scrapeDataDir):
             indexMd.write('---\n')
             indexMd.write('posttype: "module" \n')
             indexMd.write('title: '+moduleName+'\n')
+            moduleDescription = moduleDescription.replace('"', r'\"')
             indexMd.write('description: "'+moduleDescription+'"\n')
 
             # get module cover image, write on index.md file and copy to paticular module folder

@@ -15,13 +15,12 @@ for moduleDir in os.listdir(scrapeDataDir):
     try:
         moduleName = module['id']
         moduleDescription = module['description']
-        moduleDescription = moduleDescription.replace('"', "'")
+        moduleDescription = moduleDescription.replace('"', r'\"')
         os.mkdir(moduleDst+moduleName)
         with open(moduleDst+moduleName+"/index.md", mode="a+") as indexMd:
             indexMd.write('---\n')
             indexMd.write('posttype: "module" \n')
             indexMd.write('title: '+moduleName+'\n')
-            moduleDescription = moduleDescription.replace('"', r'\"')
             indexMd.write('description: "'+moduleDescription+'"\n')
 
             # get module cover image, write on index.md file and copy to paticular module folder

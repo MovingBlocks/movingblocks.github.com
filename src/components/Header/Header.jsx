@@ -10,6 +10,11 @@ import {
   Nav,
   NavItem,
   NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText,
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
@@ -18,13 +23,15 @@ import navLogo from "../../../static/logos/nav_logo.png";
 const Header = () => {
   const [isOpen, toggle] = useState(false);
   return (
-    <Navbar light expand="md" sticky="top">
+    <Navbar color="light" light expand="md" sticky="top">
       <Container>
-        <NavbarToggler onClick={() => toggle(!isOpen)} />
-        <div href="/" className="navbar-brand mx-auto">
-          <img src={navLogo} alt="Terasology" width="225" />
-        </div>
-
+        <NavbarBrand href="/">
+          {" "}
+          <div>
+            <img src={navLogo} alt="Terasology" width="225" />
+          </div>
+        </NavbarBrand>
+        <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -45,66 +52,76 @@ const Header = () => {
                 </Link>
               </NavLink>
             </NavItem>
-            <NavItem>
-              <div className="dropdown">
-                <NavLink>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Terasology
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>
+                  <NavLink>
+                    <Link
+                      to="/game"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      The Game
+                    </Link>
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink>
+                    <Link
+                      to="/media"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Media
+                    </Link>
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink>
+                    <Link
+                      to="/modules"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Modules
+                    </Link>
+                  </NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Contribute
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>
+                 
                   <Link
-                    to="/game"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Terasology
-                  </Link>
-
-                  <div class="dropdown-content">
-                    <NavLink>
-                      <Link
-                        to="/media"
-                        className="text-color"
-                        activeClassName="active"
-                      >
-                        Media
-                      </Link>
-                    </NavLink>
-
-                    <NavLink>
-                      <Link
-                        to="/modules"
-                        className="text-color"
-                        activeClassName="active"
-                      >
-                        Modules
-                      </Link>
-                    </NavLink>
-                  </div>
-                </NavLink>
-              </div>
-            </NavItem>
-            <NavItem>
-              <div className="dropdown">
-                <NavLink>
-                  <Link
-                    to="/gsoc_tsoc"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    GSoC & TSoC
-                  </Link>
-
-                  <div class="dropdown-content">
-                    <NavLink>
-                      <Link
-                        to="/mentors"
-                        className="text-color"
-                        activeClassName="active"
-                      >
-                        Mentors
-                      </Link>
-                    </NavLink>
-                  </div>
-                </NavLink>
-              </div>
-            </NavItem>
+              to="/gsoc_tsoc"
+              className="text-color"
+              activeClassName="active"
+            >
+              SoC
+            </Link>
+                  
+                </DropdownItem>
+                <DropdownItem>
+               
+                <Link
+                  to="/mentors"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Mentors
+                </Link>
+             
+                </DropdownItem>
+                
+              </DropdownMenu>
+            </UncontrolledDropdown>
             <NavItem>
               <NavLink>
                 <a
@@ -129,11 +146,6 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Container>
-      <GithubCorner
-        size={65}
-        bannerColor="#08a045"
-        href="https://github.com/MovingBlocks/Terasology"
-      />
     </Navbar>
   );
 };

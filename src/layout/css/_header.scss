@@ -55,6 +55,7 @@ nav {
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  width: 120px;
 
   @media (min-width: 768px) {
     &:before {
@@ -142,8 +143,4 @@ nav {
     -webkit-transform: translateY(1rem);
     -webkit-opacity: 0;
   }
-}
-
-.dropdown {
-  display: flex;
 }

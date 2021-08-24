@@ -104,7 +104,7 @@ const Header = () => {
               className="text-color"
               activeClassName="active"
             >
-              SoC
+              Student programs
             </Link>
                   
                 </DropdownItem>

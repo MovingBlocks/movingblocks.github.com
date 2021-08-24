@@ -23,15 +23,12 @@ import navLogo from "../../../static/logos/nav_logo.png";
 const Header = () => {
   const [isOpen, toggle] = useState(false);
   return (
-    <Navbar color="light" light expand="md" sticky="top">
+    <Navbar color="light" light expand="lg" sticky="top">
       <Container>
-        <NavbarBrand href="/">
-          {" "}
-          <div>
-            <img src={navLogo} alt="Terasology" width="225" />
-          </div>
-        </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
+        <NavbarToggler onClick={() => toggle(!isOpen)} />
+        <div className="navbar-brand mx-auto">
+          <img src={navLogo} alt="Terasology" width="225" />
+        </div>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -98,28 +95,23 @@ const Header = () => {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
-                 
                   <Link
-              to="/gsoc_tsoc"
-              className="text-color"
-              activeClassName="active"
-            >
-              Student programs
-            </Link>
-                  
+                    to="/gsoc_tsoc"
+                    className="text-color"
+                    activeClassName="active"
+                  >
+                    Student Programs
+                  </Link>
                 </DropdownItem>
                 <DropdownItem>
-               
-                <Link
-                  to="/mentors"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  Mentors
-                </Link>
-             
+                  <Link
+                    to="/mentors"
+                    className="text-color"
+                    activeClassName="active"
+                  >
+                    Mentors
+                  </Link>
                 </DropdownItem>
-                
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
@@ -146,6 +138,11 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Container>
+      <GithubCorner
+        size={65}
+        bannerColor="#08a045"
+        href="https://github.com/MovingBlocks/Terasology"
+      />
     </Navbar>
   );
 };

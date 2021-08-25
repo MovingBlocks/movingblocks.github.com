@@ -16,9 +16,9 @@
 
 .modal {
   padding-top: 10px !important;
-}
-
-.modal::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+  
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 }

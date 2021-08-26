@@ -13,8 +13,7 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText,
+  DropdownItem
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
@@ -50,8 +49,8 @@ const Header = () => {
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Terasology
+              <DropdownToggle  nav caret >
+              <span className="text-color">Terasology</span> 
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
@@ -90,8 +89,8 @@ const Header = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Contribute
+              <DropdownToggle nav caret className="text-color">
+              <span className="text-color">Contribute</span>  
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>

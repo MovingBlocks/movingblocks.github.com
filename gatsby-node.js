@@ -143,6 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
     blogList.push({
       path: `/blog${edge.node.fields.slug}`,
       tags: edge.node.frontmatter.tags,
+      posttype: edge.node.frontmatter.posttype,
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
       excerpt: edge.node.excerpt,
@@ -218,6 +219,7 @@ exports.createPages = async ({ graphql, actions }) => {
       title: edge.node.frontmatter.title,
       date: edge.node.frontmatter.date,
       excerpt: edge.node.excerpt,
+      posttype: edge.node.frontmatter.posttype,
     });
   });
   const moduleJSON = JSON.stringify(moduleList, null, 2);

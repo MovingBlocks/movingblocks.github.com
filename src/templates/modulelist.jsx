@@ -15,7 +15,7 @@ const modulelist = (
   { data, pageContext: { moduleCurrentPage, moduleNumPages } },
   props
 ) => {
-  console.log(moduleNumPages)
+  console.log(moduleNumPages);
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
 
@@ -121,12 +121,13 @@ export const moduleQuery = graphql`
           fields {
             slug
           }
-          excerpt
+          excerpt(format: PLAIN, pruneLength: 80, truncate: true)
           timeToRead
           frontmatter {
             title
             tags
             date
+            posttype
             cover {
               publicURL
               childImageSharp {

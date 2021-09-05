@@ -94,22 +94,26 @@ const Header = () => {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
-                  <Link
-                    to="/gsoc_tsoc"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Student Programs
-                  </Link>
+                  <NavLink>
+                    <Link
+                      to="/gsoc_tsoc"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Student Programs
+                    </Link>
+                  </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <Link
-                    to="/mentors"
-                    className="text-color"
-                    activeClassName="active"
-                  >
-                    Mentors
-                  </Link>
+                  <NavLink>
+                    <Link
+                      to="/mentors"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Mentors
+                    </Link>
+                  </NavLink>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

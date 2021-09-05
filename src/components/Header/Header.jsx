@@ -25,9 +25,9 @@ const Header = () => {
     <Navbar color="light" light expand="lg" sticky="top">
       <Container>
         <NavbarToggler onClick={() => toggle(!isOpen)} />
-        <div className="navbar-brand mx-auto">
+        <NavbarBrand href="/" className="mx-auto">
           <img src={navLogo} alt="Terasology" width="225" />
-        </div>
+        </NavbarBrand>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>

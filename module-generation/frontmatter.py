@@ -15,6 +15,7 @@ for moduleDir in os.listdir(scrapeDataDir):
     try:
         moduleName = module['id']
         moduleDescription = module['description']
+        moduleDescription = moduleDescription.replace('"', r'\"')
         os.mkdir(moduleDst+moduleName)
         with open(moduleDst+moduleName+"/index.md", mode="a+") as indexMd:
             indexMd.write('---\n')
@@ -68,4 +69,4 @@ for moduleDir in os.listdir(scrapeDataDir):
             with open(moduleReadme, mode="r") as readmeData:
                 indexMd.write(readmeData.read())
     except Exception as e:
-        print(e)
+        print(str(e))

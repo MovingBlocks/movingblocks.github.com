@@ -8,11 +8,14 @@ import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/module-result.json";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { Row, Col } from "reactstrap";
 
 const modulelist = (
   { data, pageContext: { moduleCurrentPage, moduleNumPages } },
   props
 ) => {
+  console.log(moduleNumPages)
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
 
@@ -76,27 +79,42 @@ const modulelist = (
         )}
         {!isShown && <PostListing id="modules" postEdges={postEdges} />}
       </div>
-      {!isFirst && (
-        <Link to={`${prefix}${prevPage}`} rel="prev">
-          ← Previous Page
-        </Link>
-      )}
-      {!isLast && (
-        <Link to={`${prefix}${nextPage}`} rel="next">
-          Next Page →
-        </Link>
-      )}
+      <Row>
+        {!isFirst && results.length === 0 && (
+          <Col className="text-center m-4">
+            <Link
+              to={`${prefix}${prevPage}`}
+              rel="prev"
+              className="btn-primary"
+            >
+              <FiArrowLeft /> Previous Page
+            </Link>
+          </Col>
+        )}
+        {!isLast && results.length === 0 && (
+          <Col className="text-center m-4">
+            <Link
+              to={`${prefix}${nextPage}`}
+              rel="next"
+              className="btn-primary"
+            >
+              Next Page <FiArrowRight />
+            </Link>
+          </Col>
+        )}
+      </Row>
     </Layout>
   );
 };
 
 /* eslint no-undef: "off" */
 export const moduleQuery = graphql`
-  query moduleQuery {
+  query moduleQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      limit: 2000
       sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { posttype: { eq: "module" } } }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

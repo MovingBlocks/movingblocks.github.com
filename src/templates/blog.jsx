@@ -9,8 +9,7 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-
-import { Badge, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 const blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
@@ -35,21 +34,30 @@ const blog = (
     // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
-  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
-  var filterTag = new URLSearchParams(srcLocation).get("filter") || "";
+  let searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+  let filterTag = new URLSearchParams(srcLocation).get("tag") || "";
+  let filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
+  let filterdate = new URLSearchParams(srcLocation).get("date") || "";
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
   useEffect(() => {
-    if (searchQuery || filterTag) {
+    if (searchQuery || filterTag || filterAuthor || filterdate) {
       setResults(
         blogData.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          const matchedTag = blog.tags.filter(tag => tag != null).map(t => t.match(tagRgx))
+          const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
+          const dateRgx = new RegExp(escapeRegExp(filterdate), "gi");
+          const matchedTag = blog.tags
+            .filter((tag) => tag != null)
+            .map((t) => t.match(tagRgx));
           return (
-            matchedTag.toString().match(tagRgx) && blog.title.match(searchRgx)
+            (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
+            matchedTag.toString().match(tagRgx) &&
+            blog.author.match(authorRgx) &&
+            blog.date.match(dateRgx)
           );
         })
       );
@@ -65,19 +73,19 @@ const blog = (
       <div className="index-container">
         <Helmet title={`Blog | ${config.siteTitle}`} />
         <SEO />
-        <SearchForm query={searchQuery} filter={filterTag} />
+        <SearchForm
+          query={searchQuery}
+          tag={filterTag}
+          author={filterAuthor}
+          date={filterdate}
+        />
         {isShown && (
-          <SearchResults
-            id="src"
-            query={searchQuery}
-            filter={filterTag}
-            results={results}
-          />
+          <SearchResults id="src" query={searchQuery} results={results} />
         )}
         {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>
       <Row>
-        {!isFirst && (
+        {!isFirst && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}${prevPage}`}
@@ -88,7 +96,7 @@ const blog = (
             </Link>
           </Col>
         )}
-        {!isLast && (
+        {!isLast && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}${nextPage}`}
@@ -119,10 +127,13 @@ export const blogQuery = graphql`
             slug
             date
           }
-          excerpt(format: PLAIN, pruneLength: 150, truncate: true)
+          excerpt(format: PLAIN, pruneLength: 120, truncate: true)
           timeToRead
           frontmatter {
             title
+            date
+            author
+            ddate
             tags
             description
             cover {

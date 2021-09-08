@@ -3,10 +3,10 @@ import { Link } from "gatsby";
 import { Row, Col, Badge } from "reactstrap";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const Cards = ({ title, cover, tags, excerpt, path }) => {
+const Cards = ({ title, cover, tags, excerpt, path, author, ddate }) => {
   let tagCount = tags.length - 2;
   return (
-    <Col className="ml-4 mr-4 mt-2 mb-2 " lg="3" md="8" sm="12">
+    <Col className="ml-4 mr-4 pt-0 mt-2 mb-4 " lg="3" md="8" sm="12">
       <Row className="row_shadow h-100">
         <Col lg="12" md="12" className="p-0">
           <div className="card-img search-cards">
@@ -24,9 +24,24 @@ const Cards = ({ title, cover, tags, excerpt, path }) => {
           </div>
         </Col>
         <div className="d-flex flex-column ml-3">
-          <h5 className="mt-1">{title}</h5>
-          <div className="mt-auto mr-2" lang="en">
+          <h5 className="">{title}</h5>
+          <div className="mt-1 mr-2" lang="en">
             <p className="word-break">{excerpt}</p>
+
+            {author && ddate ? (
+              <div className="mt-auto">
+                <p style={{ fontSize: "14px" }}>
+                  <b>By: </b>
+                  {author}
+                </p>
+                <p style={{ fontSize: "14px" }}>
+                  <b>Posted on: </b>
+                  {ddate}
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className="mt-auto mb-4">
             <Link to={path} key={title} className="mt-auto btn-primary">

@@ -10,7 +10,7 @@ registerFont("./static/fonts/NotoSans-Bold.ttf", {
   family: "Noto Sans",
 });
 
-let c = {
+const c = {
   width: 1200,
   height: 700,
 };
@@ -25,13 +25,10 @@ const generateTeraSaturdayImage = (
 ) => {
   const canvas = createCanvas(c.width, c.height);
 
-  let blogName =
-    date +
-    "-" +
-    title
-      .replace(/[^a-zA-Z0-9 ]/g, "")
-      .replace(/\s/g, "-")
-      .toLowerCase();
+  const blogName = `${date}-${title
+    .replace(/[^a-zA-Z0-9 ]/g, "")
+    .replace(/\s/g, "-")
+    .toLowerCase()}`;
 
   console.log(blogName); // for classifying which blog image is generated
   const ctx = canvas.getContext("2d");
@@ -39,14 +36,14 @@ const generateTeraSaturdayImage = (
   loadImage(defaultImage).then((image) => {
     ctx.drawImage(image, 0, 0, c.width, c.height);
 
-    let tag = imageTag.slice(4);
+    const tag = imageTag.slice(4);
     let tagColor = "#8DE10D";
 
     if (tag === "Saturday") {
       tagColor = "#E8BE36";
     }
 
-    let postid = postNumber;
+    const postid = postNumber;
     ctx.font = '100px "Press Start 2P"';
     ctx.strokeStyle = "black";
     ctx.lineWidth = 18;
@@ -55,7 +52,6 @@ const generateTeraSaturdayImage = (
     ctx.fillStyle = "white";
     ctx.fillText("Tera", c.width / 2 - c.height / 2 - 150, c.height / 3);
 
-    spacer = ctx.measureText("Tera").width;
     ctx.globalAlpha = 0.5;
     ctx.font = '100px "Press Start 2P"';
     ctx.strokeStyle = "black";
@@ -82,7 +78,7 @@ const generateTeraSaturdayImage = (
     ctx.fillStyle = tagColor;
     ctx.fillText(tag, c.width / 2 - 20, c.height / 3);
 
-    let pst =
+    const pst =
       ctx.measureText("sology").width - ctx.measureText(postid).width + 70;
 
     ctx.restore();
@@ -95,8 +91,8 @@ const generateTeraSaturdayImage = (
     ctx.fillText(postid, pst + c.width / 2 + 60, c.height / 3 + 120);
     ctx.restore();
 
-    let buffer = canvas.toBuffer("image/png");
-    fs.writeFileSync("./blog/" + blogName + "/cover.jpg", buffer);
+    const buffer = canvas.toBuffer("image/png");
+    fs.writeFileSync(`./blog/${blogName}/cover.jpg`, buffer);
   });
 };
 
@@ -109,13 +105,10 @@ const generateCustomLogoImage = (
   title
 ) => {
   const canvas = createCanvas(c.width, c.height);
-  let blogName =
-    date +
-    "-" +
-    title
-      .replace(/[^a-zA-Z0-9 ]/g, "")
-      .replace(/\s/g, "-")
-      .toLowerCase();
+  const blogName = `${date}-${title
+    .replace(/[^a-zA-Z0-9 ]/g, "")
+    .replace(/\s/g, "-")
+    .toLowerCase()}`;
 
   console.log(blogName); // for classifying which blog image is generated
   const ctx = canvas.getContext("2d");
@@ -126,26 +119,26 @@ const generateCustomLogoImage = (
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, c.width, c.height);
 
-    loadImage(customImage).then((image) => {
-      if (position == "end" || position == "End") {
-        ctx.drawImage(image, c.width - 350, 50, 300, 300);
-      } else if (position == "start" || position == "Start") {
-        ctx.drawImage(image, 100, 50, 300, 300);
-      } else if (position == "center" || position == "Center") {
-        ctx.drawImage(image, c.width / 2, c.width / 2, 300, 300);
+    loadImage(customImage).then((logoImage) => {
+      if (position === "end" || position === "End") {
+        ctx.drawImage(logoImage, c.width - 350, 50, 300, 300);
+      } else if (position === "start" || position === "Start") {
+        ctx.drawImage(logoImage, 100, 50, 300, 300);
+      } else if (position === "center" || position === "Center") {
+        ctx.drawImage(logoImage, c.width / 2, c.width / 2, 300, 300);
       } else {
-        ctx.drawImage(image, c.width - 350, 50, 300, 300);
+        ctx.drawImage(logoImage, c.width - 350, 50, 300, 300);
       }
 
-      let buffer = canvas.toBuffer("image/png");
-      fs.writeFileSync("./blog/" + blogName + "/cover.jpg", buffer);
+      const buffer = canvas.toBuffer("image/png");
+      fs.writeFileSync(`./blog/${blogName}/cover.jpg`, buffer);
     });
   });
 };
 
 // Fetch data and generate image
 blogList.forEach((edge) => {
-  if (edge.imageTag == "TeraSaturday" || edge.imageTag == "TeraSpotlight") {
+  if (edge.imageTag === "TeraSaturday" || edge.imageTag === "TeraSpotlight") {
     generateTeraSaturdayImage(
       edge.date,
       edge.postNumber,
@@ -155,7 +148,7 @@ blogList.forEach((edge) => {
     );
   }
 
-  if (edge.imageTag == "other" || edge.imageTag == "Other") {
+  if (edge.imageTag === "other" || edge.imageTag === "Other") {
     generateCustomLogoImage(
       edge.date,
       edge.mainImage,

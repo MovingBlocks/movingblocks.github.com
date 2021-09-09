@@ -3,12 +3,14 @@ import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
 
 import Cards from "../Cards/Cards.jsx";
+import ModuleCards from "../ModuleCards/ModuleCards.jsx";
 
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {
     const postList = [];
     postEdges.forEach((postEdge) => {
       postList.push({
+        posttype: postEdge.node.frontmatter.posttype,
         path: postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
         cover: postEdge.node.frontmatter.cover,
@@ -28,17 +30,27 @@ const PostListing = ({ id, postEdges }) => {
     <Col lg="12" className="card-spacing">
       <Row className="justify-content-center">
         {/* Your post list here. */
-        postList.map((post) => (
-          <Cards
-            title={post.title}
-            path={`/${id}${post.path}`}
-            cover={post.cover.childImageSharp}
-            tags={post.tags}
-            excerpt={post.excerpt}
-            author={post.author}
-            ddate={post.ddate}
-          />
-        ))}
+        postList.map((post) => {
+          return post.posttype == "blog" ? (
+            <Cards
+              title={post.title}
+              path={`/${id}${post.path}`}
+              cover={post.cover.childImageSharp}
+              tags={post.tags}
+              excerpt={post.excerpt}
+              author={post.author}
+              ddate={post.ddate}
+            />
+          ) : (
+            <ModuleCards
+              title={post.title}
+              path={`/${id}${post.path}`}
+              cover={post.cover.childImageSharp}
+              tags={post.tags}
+              excerpt={post.excerpt}
+            />
+          );
+        })}
       </Row>
     </Col>
   );

@@ -135,6 +135,7 @@ export const blogQuery = graphql`
             author
             ddate
             tags
+            posttype
             description
             cover {
               childImageSharp {

@@ -1,12 +1,12 @@
 # How to write blog on ModuleSite
 
-Currently all the blogs are in `ModuleSite/blog` directory. A paticular blog inside `ModuleSite/blog` contains readme file i.e `index.md`
+Currently all the blogs are in `/blog` directory. A paticular blog inside `/blog` contains readme file i.e `index.md`
 and images related to it. There are some convention and few steps you can follow to write a blog
 
 ## Steps to Write a blog
 
 1. Fork and Clone ModuleSite
-2. Create a directory inside `ModuleSite/blog` followed by naming directory with date and blog title
+2. Create a directory inside `/blog` followed by naming directory with date and blog title
 3. create a file index.md inside you blog folder and import images that are require for blog
 
 Below is the simple blog template which is basically `index.md` file
@@ -70,6 +70,6 @@ position: "end"
 .`mainImage` is a path of a background in which blog writter want to overlay the logo. `position` can be start, center or end.
 
 After all the above setup for generating images it should be followed by command
-```yarn run generate-images``
+``yarn run generate-images`
 
 > **⚠️ NOTE:** For generating images development server should be running on different terimnal

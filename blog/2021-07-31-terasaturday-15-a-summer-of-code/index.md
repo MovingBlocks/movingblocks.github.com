@@ -7,6 +7,9 @@ author: "Niruandaleth"
 ddate: "July 31st, 2021"
 date: "2021-07-31"
 tags: ["TeraSaturday"]
+imageTag: "TeraSaturday"
+postNumber: "#15"
+mainImage: "./static/images/15.jpg"
 ---
 
 _Welcome to the return of TeraSaturday, a not-so-weekly update post about all the neat stuff that has been going on in

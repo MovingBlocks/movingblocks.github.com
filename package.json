@@ -5,6 +5,7 @@
   "author": "Ruben Harutyunyan <vagr9k@gmail.com>",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "canvas": "^2.8.0",
     "fs-extra": "^10.0.0",
     "gatsby": "^3.7.1",
     "gatsby-background-image": "^1.5.3",
@@ -88,7 +89,8 @@
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:md": "remark content/posts/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write"
+    "format:js": "prettier '**/*.{js,jsx}' --write",
+    "generate-images": "node ./scripts/image-generation.js"
   },
   "remarkConfig": {
     "plugins": [

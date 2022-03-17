@@ -51,7 +51,7 @@
     "react-twitter-widgets": "^1.7.1",
     "reactstrap": "^8.0.0",
     "remarkable": "^2.0.1",
-    "simple-git": "^1.124.0",
+    "simple-git": "^3.3.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

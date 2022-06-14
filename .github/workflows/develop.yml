@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # Template to test-deploy ModuleSite
-      - uses: jzweifel/gatsby-cli-github-action@v1.0.0
+      - uses: theWhiteWulfy/gatsby-cli-github-action@2.0.c
         with:
           # Arguments that get passed to gatsby CLI
           gatsby-args: develop

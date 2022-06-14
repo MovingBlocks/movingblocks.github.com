@@ -1,0 +1,21 @@
+name: Test-Build ModuleSite
+
+# Trigger the workflow on all pull requests
+on: pull_request
+
+jobs:
+  gatsby-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          # Globally caches yarn dependencies
+          cache: 'yarn'
+      - name: Install Project Dependencies
+        run: yarn install --frozen-lockfile --immutable
+      - name: Build ModuleSite
+        run: yarn run build:pp

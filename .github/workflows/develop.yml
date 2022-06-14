@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     # Templates for building and releasing ModuleSite
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Template to test-deploy ModuleSite
-      - uses: theWhiteWulfy/gatsby-cli-github-action@2.0.c
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          # Arguments that get passed to gatsby CLI
-          gatsby-args: develop
+          node-version: 14
+      - name: Install Gatsby CLI
+        run: npm install -g gatsby-cli@4.16.0
+      - name: Start Development Server
+        run: gatsby develop

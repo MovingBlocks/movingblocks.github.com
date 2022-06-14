@@ -3,7 +3,6 @@ import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
 
-
 const Download = () => {
   const isBrowser = typeof window !== "undefined";
   let srcNavigator;
@@ -69,7 +68,7 @@ const Download = () => {
               name="select"
               id="exampleSelect"
               style={{ height: "40px", fontSize: "15px" }}
-              onChange={(e) => {
+              onChange={e => {
                 const selectedos = e.target.value;
                 setPlatform(selectedos);
               }}

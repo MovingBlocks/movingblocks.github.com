@@ -146,7 +146,7 @@ const Index = () => {
               style={{
                 fontSize: "28px",
                 marginBottom: "4px",
-                marginLeft: "6px",
+                marginLeft: "6px"
               }}
             />
           </Link>

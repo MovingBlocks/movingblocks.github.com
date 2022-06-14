@@ -8,7 +8,7 @@ import ModuleCards from "../ModuleCards/ModuleCards.jsx";
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {
     const postList = [];
-    postEdges.forEach((postEdge) => {
+    postEdges.forEach(postEdge => {
       postList.push({
         posttype: postEdge.node.frontmatter.posttype,
         path: postEdge.node.fields.slug,
@@ -20,7 +20,7 @@ const PostListing = ({ id, postEdges }) => {
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead,
         ddate: postEdge.node.frontmatter.ddate,
-        author: postEdge.node.frontmatter.author,
+        author: postEdge.node.frontmatter.author
       });
     });
     return postList;
@@ -30,7 +30,7 @@ const PostListing = ({ id, postEdges }) => {
     <Col lg="12" className="card-spacing">
       <Row className="justify-content-center">
         {/* Your post list here. */
-        postList.map((post) => {
+        postList.map(post => {
           return post.posttype == "blog" ? (
             <Cards
               title={post.title}

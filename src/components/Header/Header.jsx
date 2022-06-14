@@ -49,8 +49,8 @@ const Header = () => {
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle  nav caret >
-              <span className="text-color">Terasology</span> 
+              <DropdownToggle nav caret>
+                <span className="text-color">Terasology</span>
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
@@ -90,7 +90,7 @@ const Header = () => {
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret className="text-color">
-              <span className="text-color">Contribute</span>  
+                <span className="text-color">Contribute</span>
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>

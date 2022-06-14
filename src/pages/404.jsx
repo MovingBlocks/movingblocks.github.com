@@ -15,4 +15,4 @@ const error404 = () => (
   </Layout>
 );
 
-export default  error404
+export default error404;

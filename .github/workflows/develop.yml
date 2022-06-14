@@ -17,5 +17,7 @@ jobs:
           node-version: 14
       - name: Install Project Dependencies
         run: yarn
+      - name: Install Gatsby CLI
+        run: yarn global add gatsby-cli@4.16.0
       - name: Start Development Server
         run: gatsby develop

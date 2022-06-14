@@ -9,7 +9,13 @@ jobs:
     steps:
       - name: Checkout PR
         uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          # Globally caches yarn dependencies
+          cache: 'yarn'
       - name: Install Project Dependencies
-        run: yarn
+        run: yarn install --frozen-lockfile --immutable
       - name: Validate JavaScript Formatting
         run: yarn run format-check:js

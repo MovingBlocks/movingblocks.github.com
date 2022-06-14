@@ -1,4 +1,4 @@
-name: Test-deploy ModuleSite
+name: Lint ModuleSite Code
 
 # Trigger the workflow on all pull requests
 on: pull_request

@@ -1,4 +1,4 @@
-name: Test-deploy ModuleSite
+name: Test-Build ModuleSite
 
 # Trigger the workflow on all pull requests
 on: pull_request

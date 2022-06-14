@@ -10,14 +10,7 @@ jobs:
     # Templates for building and releasing ModuleSite
     steps:
       - uses: actions/checkout@v3
-      # Template to test-deploy ModuleSite
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
       - name: Install Project Dependencies
         run: yarn
-      - name: Install Gatsby CLI
-        run: yarn global add gatsby-cli@4.16.0
       - name: Start Development Server
-        run: gatsby develop
+        run: yarn run  develop

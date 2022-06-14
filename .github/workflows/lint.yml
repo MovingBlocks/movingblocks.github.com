@@ -5,23 +5,35 @@ on: pull_request
 
 jobs:
   # Trigger job i.e. build and run on the latest version of ubuntu
-  build:
+  eslint:
     runs-on: ubuntu-latest
-    # Templates for building and releasing ModuleSite
     steps:
       - uses: actions/checkout@v3
-      # Template to test-deploy ModuleSite
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
       - name: Install Project Dependencies
         run: yarn
       - name: Lint JavaScript
         run: yarn run lint:js
+  remark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Project Dependencies
+        run: yarn
       - name: Lint MarkDown
         run: yarn run lint:md
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Project Dependencies
+        run: yarn
       - name: Validate JavaScript Formatting
         run: prettier '**/*.{js,jsx}' --check
+  write-good:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Project Dependencies
+        run: yarn
       - name: Validate Blog Text Style
         run: yarn run write-good

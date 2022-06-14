@@ -4,13 +4,12 @@ name: Test-Build ModuleSite
 on: pull_request
 
 jobs:
-  # Trigger job i.e. build and run on the latest version of ubuntu
-  build:
+  gatsby-build:
     runs-on: ubuntu-latest
-    # Templates for building and releasing ModuleSite
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout PR
+        uses: actions/checkout@v3
       - name: Install Project Dependencies
         run: yarn
       - name: Start Development Server
-        run: yarn run  develop
+        run: yarn run build:pp

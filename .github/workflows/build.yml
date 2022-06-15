@@ -13,8 +13,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Build ModuleSite
@@ -28,8 +26,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Build ModuleSite
@@ -43,8 +39,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
       - name: Install Project Dependencies
         run: yarn install
       - name: Build ModuleSite

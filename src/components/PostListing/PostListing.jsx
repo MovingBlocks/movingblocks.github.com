@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import { Badge, Row, Col } from "reactstrap";
 
 import Cards from "../Cards/Cards.jsx";
-import ModuleCards from "../ModuleCards/ModuleCards.jsx";
 
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {
@@ -42,7 +41,7 @@ const PostListing = ({ id, postEdges }) => {
               ddate={post.ddate}
             />
           ) : (
-            <ModuleCards
+            <Cards
               title={post.title}
               path={`/${id}${post.path}`}
               cover={post.cover.childImageSharp}

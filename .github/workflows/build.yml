@@ -12,7 +12,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Build ModuleSite
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Build ModuleSite
@@ -38,7 +38,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Install Project Dependencies
         run: yarn install
       - name: Build ModuleSite

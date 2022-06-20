@@ -35,7 +35,7 @@
     "gbimage-bridge": "^0.1.4",
     "gh-pages": "^2.0.1",
     "html-react-parser": "^1.2.7",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "moment": "^2.29.2",
     "moment-timezone": "^0.5.33",
     "prismjs": "^1.16.0",

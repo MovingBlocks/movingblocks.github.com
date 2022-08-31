@@ -37,7 +37,7 @@
     "html-react-parser": "^1.2.7",
     "lodash": "^4.17.21",
     "moment": "^2.29.2",
-    "moment-timezone": "^0.5.33",
+    "moment-timezone": "^0.5.35",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
     "react-disqus-comments": "^1.4.0",

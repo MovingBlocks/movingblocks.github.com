@@ -24,14 +24,15 @@ module.exports = {
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        defaultQuality: 90,
-      },
+        defaultQuality: 90
+      }
     },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [{
+        plugins: [
+          {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 768,
@@ -97,11 +98,13 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: "minimal-ui",
-        icons: [{
-          src: "/static/logos/logo.png",
-          sizes: "192x192",
-          type: "image/png"
-        }]
+        icons: [
+          {
+            src: "/static/logos/logo.png",
+            sizes: "192x192",
+            type: "image/png"
+          }
+        ]
       }
     },
     "gatsby-plugin-offline"

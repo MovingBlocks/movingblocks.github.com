@@ -8,4 +8,4 @@ const download = () => (
   </Layout>
 );
 
-export default download
+export default download;

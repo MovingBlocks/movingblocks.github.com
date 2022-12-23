@@ -50,7 +50,7 @@ const Mentor = () => {
       </div>
       <Row className="justify-content-center">
         {mentors &&
-          mentors.map((mentor) => {
+          mentors.map(mentor => {
             let flagURL =
               "https://www.countryflags.io/" +
               `${mentor.customFieldItems[0].value.text}` +
@@ -61,7 +61,7 @@ const Mentor = () => {
               .format("HH:mm [(GMT] Z[)]");
 
             let getcountryName = new Intl.DisplayNames(["en"], {
-              type: "region",
+              type: "region"
             });
             let countryName = getcountryName.of(
               `${mentor.customFieldItems[0].value.text}`
@@ -73,7 +73,7 @@ const Mentor = () => {
                     <Row className="justify-content-center">
                       <Col lg="5" md="12" className="text-center">
                         {mentor.attachments.length != 0 ? (
-                          mentor.attachments.map((image) => {
+                          mentor.attachments.map(image => {
                             return (
                               <img
                                 className="rounded-circle "

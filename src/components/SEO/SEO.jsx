@@ -40,7 +40,7 @@ const SEO = ({ postNode, postPath, postSEO }) => {
             position: 1,
             item: {
               "@id": postURL,
-              name: title,
+              name: title
             }
           }
         ]
@@ -88,4 +88,4 @@ const SEO = ({ postNode, postPath, postSEO }) => {
   );
 };
 
-export default SEO
+export default SEO;

@@ -53,11 +53,12 @@ const Blog = (
           const matchedTag = blog.tags
             .filter(tag => tag != null)
             .map(t => t.match(tagRgx));
+
           return (
-            (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
+            (blog.content?.match(searchRgx) || blog.title?.match(searchRgx)) &&
             matchedTag.toString().match(tagRgx) &&
-            blog.author.match(authorRgx) &&
-            blog.date.match(dateRgx)
+            blog.author?.match(authorRgx) &&
+            blog.date?.match(dateRgx)
           );
         })
       );

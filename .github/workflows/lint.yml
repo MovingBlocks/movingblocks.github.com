@@ -19,3 +19,18 @@ jobs:
         run: yarn install --frozen-lockfile --immutable
       - name: Lint JavaScript
         run: yarn run lint:js
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          # Globally caches yarn dependencies
+          cache: 'yarn'
+      - name: Install Project Dependencies
+        run: yarn install --frozen-lockfile --immutable
+      - name: Validate JavaScript Formatting
+        run: yarn run format-check:js

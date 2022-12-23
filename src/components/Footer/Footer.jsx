@@ -8,7 +8,7 @@ import {
   FaDiscord,
   FaYoutubeSquare,
   FaRedditSquare,
-  FaPatreon,
+  FaPatreon
 } from "react-icons/fa";
 
 const Footer = () => {

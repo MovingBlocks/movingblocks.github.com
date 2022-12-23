@@ -9,20 +9,20 @@ const GsocTsoc = () => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 5
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 3
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 2
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+      items: 1
+    }
   };
 
   const [readyProjects, setReadyprojects] = useState([]);
@@ -137,7 +137,7 @@ const GsocTsoc = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         className="card_project"
       >
-        {readyProjects.map((project) => {
+        {readyProjects.map(project => {
           return (
             <div className="col h-100 ">
               <div className="card h-100 row_shadow">
@@ -159,7 +159,7 @@ const GsocTsoc = () => {
                   <div className="d-flex">
                     <div className="md-tag tag_size">
                       {project &&
-                        project.labels.map((tag) => {
+                        project.labels.map(tag => {
                           return <Badge className="m-1">{tag.name}</Badge>;
                         })}
                     </div>
@@ -202,7 +202,7 @@ const GsocTsoc = () => {
           className="mt-4 card_project"
           removeArrowOnDeviceType={["tablet", "mobile"]}
         >
-          {ongoingProjects.map((project) => {
+          {ongoingProjects.map(project => {
             return (
               <div className="col  h-100 ">
                 <div className="card h-100 row_shadow">
@@ -225,7 +225,7 @@ const GsocTsoc = () => {
                     <div className="d-flex">
                       <div className="md-tag tag_size">
                         {project &&
-                          project.labels.map((tag) => {
+                          project.labels.map(tag => {
                             return <Badge className="m-1">{tag.name}</Badge>;
                           })}
                       </div>

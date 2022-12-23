@@ -11,7 +11,7 @@ import blogList from "../generated/blog-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Row, Col } from "reactstrap";
 
-const blog = (
+const Blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
   props
 ) => {
@@ -45,14 +45,14 @@ const blog = (
   useEffect(() => {
     if (searchQuery || filterTag || filterAuthor || filterdate) {
       setResults(
-        blogData.filter((blog) => {
+        blogData.filter(blog => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
           const dateRgx = new RegExp(escapeRegExp(filterdate), "gi");
           const matchedTag = blog.tags
-            .filter((tag) => tag != null)
-            .map((t) => t.match(tagRgx));
+            .filter(tag => tag != null)
+            .map(t => t.match(tagRgx));
           return (
             (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
             matchedTag.toString().match(tagRgx) &&
@@ -149,4 +149,4 @@ export const blogQuery = graphql`
   }
 `;
 
-export default blog;
+export default Blog;

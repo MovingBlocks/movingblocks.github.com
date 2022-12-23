@@ -34,7 +34,7 @@ export default class ModuleTemplate extends React.Component {
             />
             <h1>{post.title}</h1>
             <div className="d-flex mt-2 ml-2">
-              {post.tags.map((tag) => {
+              {post.tags.map(tag => {
                 return <PostTags tags={tag} type="modules" />;
               })}
             </div>

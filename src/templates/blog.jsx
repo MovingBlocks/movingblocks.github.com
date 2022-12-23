@@ -1,6 +1,10 @@
+/* eslint import/no-unresolved: [2, { ignore: ['\\.generated$'] }] */
+
 import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { Row, Col } from "reactstrap";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
@@ -8,8 +12,6 @@ import SearchForm from "../components/BlogSearchForm/BlogSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { Row, Col } from "reactstrap";
 
 const Blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
@@ -34,10 +36,10 @@ const Blog = (
     // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
-  let searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
-  let filterTag = new URLSearchParams(srcLocation).get("tag") || "";
-  let filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
-  let filterdate = new URLSearchParams(srcLocation).get("date") || "";
+  const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
+  const filterTag = new URLSearchParams(srcLocation).get("tag") || "";
+  const filterAuthor = new URLSearchParams(srcLocation).get("author") || "";
+  const filterdate = new URLSearchParams(srcLocation).get("date") || "";
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
@@ -45,19 +47,19 @@ const Blog = (
   useEffect(() => {
     if (searchQuery || filterTag || filterAuthor || filterdate) {
       setResults(
-        blogData.filter(blog => {
+        blogData.filter(blogPost => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
           const dateRgx = new RegExp(escapeRegExp(filterdate), "gi");
-          const matchedTag = blog.tags
+          const matchedTag = blogPost.tags
             .filter(tag => tag != null)
             .map(t => t.match(tagRgx));
           return (
-            (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
+            (blogPost.content.match(searchRgx) || blogPost.title.match(searchRgx)) &&
             matchedTag.toString().match(tagRgx) &&
-            blog.author.match(authorRgx) &&
-            blog.date.match(dateRgx)
+            blogPost.author.match(authorRgx) &&
+            blogPost.date.match(dateRgx)
           );
         })
       );
@@ -92,7 +94,8 @@ const Blog = (
               rel="prev"
               className="btn-primary"
             >
-              <FiArrowLeft /> Previous Page
+              <FiArrowLeft />
+              {` Previous Page`}
             </Link>
           </Col>
         )}
@@ -103,7 +106,8 @@ const Blog = (
               rel="next"
               className="btn-primary"
             >
-              Next Page <FiArrowRight />
+              {`Next Page `}
+              <FiArrowRight />
             </Link>
           </Col>
         )}

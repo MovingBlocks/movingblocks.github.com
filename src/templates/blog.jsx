@@ -51,13 +51,14 @@ const Blog = (
           const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
           const dateRgx = new RegExp(escapeRegExp(filterdate), "gi");
           const matchedTag = blog.tags
-            .filter(tag => tag != null)
-            .map(t => t.match(tagRgx));
+            .filter((tag) => tag != null)
+            .map((t) => t.match(tagRgx));
+
           return (
-            (blog.content.match(searchRgx) || blog.title.match(searchRgx)) &&
+            (blog.content?.match(searchRgx) || blog.title?.match(searchRgx)) &&
             matchedTag.toString().match(tagRgx) &&
-            blog.author.match(authorRgx) &&
-            blog.date.match(dateRgx)
+            blog.author?.match(authorRgx) &&
+            blog.date?.match(dateRgx)
           );
         })
       );

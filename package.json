@@ -6,7 +6,6 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "canvas": "^2.8.0",
-    "fs-extra": "^10.0.0",
     "gatsby": "^3.7.1",
     "gatsby-background-image": "^1.5.3",
     "gatsby-image": "^3.7.1",
@@ -49,7 +48,6 @@
     "react-twitter-widgets": "^1.7.1",
     "reactstrap": "^8.0.0",
     "remarkable": "^2.0.1",
-    "simple-git": "^3.5.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

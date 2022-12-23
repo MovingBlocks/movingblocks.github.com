@@ -11,7 +11,7 @@ import blogList from "../generated/blog-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Row, Col } from "reactstrap";
 
-const blog = (
+const Blog = (
   { data, pageContext: { blogCurrentPage, postsNumPages } },
   props
 ) => {
@@ -149,4 +149,4 @@ export const blogQuery = graphql`
   }
 `;
 
-export default blog;
+export default Blog;

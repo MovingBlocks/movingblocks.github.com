@@ -11,7 +11,7 @@ import moduleList from "../generated/module-result.json";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Row, Col } from "reactstrap";
 
-const modulelist = (
+const Modulelist = (
   { data, pageContext: { moduleCurrentPage, moduleNumPages } },
   props
 ) => {
@@ -141,4 +141,4 @@ export const moduleQuery = graphql`
   }
 `;
 
-export default modulelist;
+export default Modulelist;

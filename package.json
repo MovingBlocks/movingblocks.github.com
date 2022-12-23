@@ -90,7 +90,7 @@
     "lint:md": "remark content/posts/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write",
-    "format-check:js": "prettier '**/*.{js,jsx}' --check",
+    "format-check:js": "prettier '**/*.{js,jsx}' --check --ignore-path=.eslintignore",
     "generate-images": "node ./scripts/image-generation.js"
   },
   "remarkConfig": {

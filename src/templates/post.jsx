@@ -1,11 +1,11 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../layout";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 
 export default class PostTemplate extends React.Component {
@@ -28,15 +28,16 @@ export default class PostTemplate extends React.Component {
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
-            <div className={"title"}>
+            <div className="title">
               <h1>{post.title}</h1>
               <h6>
-                Posted by {post.author} on <span>{post.ddate}</span>
+                {`Posted by ${post.author} on `}
+                <span>{post.ddate}</span>
               </h6>
             </div>
             <br />
             <GatsbyImage
-              className={"post-cover"}
+              className="post-cover"
               image={post.cover.childImageSharp.gatsbyImageData}
             />
             <br />
@@ -47,7 +48,7 @@ export default class PostTemplate extends React.Component {
             />
             <hr />
             <div className="post-meta">
-              <SocialLinks postPath={"/blog" + slug} postNode={postNode} />
+              <SocialLinks postPath={`/blog${slug}`} postNode={postNode} />
             </div>
           </div>
         </div>

@@ -51,7 +51,8 @@ const Modulelist = (
             .filter(tag => tag != null)
             .map(t => t.match(tagRgx));
           return (
-            matchedTag.toString().match(tagRgx) && module.title?.match(searchRgx)
+            matchedTag.toString().match(tagRgx) &&
+            module.title?.match(searchRgx)
           );
         })
       );

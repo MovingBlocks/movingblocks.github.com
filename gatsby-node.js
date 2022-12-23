@@ -159,7 +159,7 @@ exports.createPages = async ({ graphql, actions }) => {
       postNumber: edge.node.frontmatter.postNumber,
       position: edge.node.frontmatter.position,
       mainImage: edge.node.frontmatter.mainImage,
-      content: edge.node.internal.content,
+      content: edge.node.internal.content
     });
   });
   const blogJSON = JSON.stringify(blogList, null, 2);

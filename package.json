@@ -33,7 +33,6 @@
     "gatsby-transformer-remark": "^4.4.1",
     "gatsby-transformer-sharp": "^3.7.1",
     "gbimage-bridge": "^0.1.4",
-    "gh-pages": "^2.0.1",
     "html-react-parser": "^1.2.7",
     "lodash": "^4.17.21",
     "moment": "^2.29.2",

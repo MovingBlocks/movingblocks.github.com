@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
-import { Badge, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 import Cards from "../Cards/Cards.jsx";
 
@@ -30,7 +29,7 @@ const PostListing = ({ id, postEdges }) => {
       <Row className="justify-content-center">
         {/* Your post list here. */
         postList.map(post => {
-          return post.posttype == "blog" ? (
+          return post.posttype === "blog" ? (
             <Cards
               title={post.title}
               path={`/${id}${post.path}`}

@@ -6,7 +6,6 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "canvas": "^2.8.0",
-    "fs-extra": "^10.0.0",
     "gatsby": "^3.7.1",
     "gatsby-background-image": "^1.5.3",
     "gatsby-image": "^3.7.1",
@@ -33,7 +32,6 @@
     "gatsby-transformer-remark": "^4.4.1",
     "gatsby-transformer-sharp": "^3.7.1",
     "gbimage-bridge": "^0.1.4",
-    "gh-pages": "^2.0.1",
     "html-react-parser": "^1.2.7",
     "lodash": "^4.17.21",
     "moment": "^2.29.2",
@@ -50,7 +48,6 @@
     "react-twitter-widgets": "^1.7.1",
     "reactstrap": "^8.0.0",
     "remarkable": "^2.0.1",
-    "simple-git": "^3.5.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {
@@ -78,18 +75,14 @@
   "main": "n/a",
   "scripts": {
     "develop": "gatsby develop",
-    "dev": "npm run develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "build:pp": "gatsby build --prefix-paths",
-    "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
-    "clean": "rm -rf public && rm -rf .cache",
-    "deploy": "gatsby build && node ./scripts/deploy-github",
-    "render": "node ./scripts/deploy-render && gatsby build",
+    "clean": "gatsby clean",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:md": "remark content/posts/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write",
+    "format:js": "prettier '**/*.{js,jsx}' --write --ignore-path=.eslintignore",
     "format-check:js": "prettier '**/*.{js,jsx}' --check --ignore-path=.eslintignore",
     "generate-images": "node ./scripts/image-generation.js"
   },

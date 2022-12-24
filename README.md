@@ -29,42 +29,52 @@ The module website development environment can be installed on macOS, Windows, a
 
 ---
 
-<h2 id="built-with">Built With</h2>
+## Prerequisites
 
-The following generator is built using the following software, you'll need them installed in your workspace to run properly. 
-* [Node](https://nodejs.org/en/)
-* [Gatsby](https://www.gatsbyjs.org/)
+This website is built with [Gatsby](https://www.gatsbyjs.org/).
+The following tools must be installed to build and serve the website locally:
+
+* [Node.js](https://nodejs.org/en/)
 * [Yarn](https://yarnpkg.com/en/)
 
 ---
 
-<h2 id="setup"> Setting Up Development Workspace </h2>
+## Development
 
-Start by cloning your fork of the ModuleSite repository and connecting the ModuleSite upstream repository:
+Make sure that you fulfill the [prerequisites](#prerequisites) for building the website locally
 
+To install all dependencies, run
+
+```sh
+yarn install
 ```
-git clone --config pull.rebase git@github.com:YOURUSERNAME/ModuleSite.git
-cd ModuleSite
-git remote add -f upstream git@github.com:MovingBlocks/ModuleSite.git
+
+You can then use the [Gatsby CLI commands](https://www.gatsbyjs.com/docs/reference/gatsby-cli/) `build`, `clean`, `develop` and `serve`.
+
+To build the website, run
+
+
+```sh
+yarn run build
 ```
 
-<h2> Manual Setup </h2>
+To serve the website from a previous build, run 
 
-<details>
-  <summary>Steps</summary>
+```sh
+yarn run serve
+``` 
 
-- Install the following dependencies on your system
-  - [Node](https://nodejs.org/en/)
-  - [Yarn](https://yarnpkg.com/en/)
-  - [Gatsby](https://www.gatsbyjs.org/)
+To compile and serve a preview of the website that reflects your source code changes in the browser in real time, run
 
-- '`cd`' into the directory
+```sh
+yarn run develop
+```
 
-- Run '`yarn`' inside the directory to install all the dependencies
+To clean up built assets and caches, run 
 
-- Once the dependencies are installed you can launch development server via '`yarn run develop`'
-
-</details>
+```sh
+yarn run clean
+```
 
 ---
 

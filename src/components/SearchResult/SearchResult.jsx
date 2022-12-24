@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Badge } from "reactstrap";
+import { Row } from "reactstrap";
 import Cards from "../Cards/Cards.jsx";
 
 const SearchResults = ({ query, results }) => (
@@ -10,8 +10,10 @@ const SearchResults = ({ query, results }) => (
         id="search-results-count"
         aria-live="assertive"
       >
-        Found {results.length} {results.length == 1 && "module matching with"}
-        {results.length > 1 && "modules matching with"} "{query}"
+        {`Found ${results.length} `}
+        {results.length === 1 && "module matching with"}
+        {results.length > 1 && "modules matching with"}
+        {` "${query}"`}
       </h4>
     )}
     <h4>{results.length < 1 && "Found nothing"}</h4>

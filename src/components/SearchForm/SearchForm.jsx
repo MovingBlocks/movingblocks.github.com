@@ -4,7 +4,7 @@ import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import moduleList from "../../generated/module-result.json";
 
 const SearchForm = ({ query, filter }) => {
-  let tagList = new Set();
+  const tagList = new Set();
   moduleList.forEach(module => {
     module.tags.forEach(tag => {
       tagList.add(tag);

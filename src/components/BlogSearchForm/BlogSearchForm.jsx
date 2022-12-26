@@ -103,7 +103,7 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {[...tagList.values()].map((blogTag, i) => {
+                    {[...tagList.values()].map((blogTag) => {
                       return <option value={blogTag}>{blogTag}</option>;
                     })}
                   </Input>
@@ -133,7 +133,7 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                     value={author}
                   >
                     <option value="">All</option>
-                    {[...authorList.values()].map((blogAuthor, i) => {
+                    {[...authorList.values()].map((blogAuthor) => {
                       return <option value={blogAuthor}>{blogAuthor}</option>;
                     })}
                   </Input>

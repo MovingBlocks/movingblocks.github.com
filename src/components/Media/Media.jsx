@@ -23,14 +23,14 @@ const Gallery = () => {
   `);
 
   let imgArray = [];
-  data.images.nodes.map(img => {
+  data.images.nodes.map((img) => {
     imgArray.push(img.childImageSharp.gatsbyImageData);
   });
 
   const [imageDisplay, setImageDisplay] = useState(false);
   const [imageToShow, setImageToShow] = useState(``);
 
-  const showImage = image => {
+  const showImage = (image) => {
     setImageToShow(image);
     setImageDisplay(true);
   };
@@ -39,7 +39,7 @@ const Gallery = () => {
     setImageDisplay(false);
   };
 
-  const showNext = e => {
+  const showNext = (e) => {
     e.stopPropagation();
     let currentIndex = imgArray.indexOf(imageToShow);
     if (currentIndex >= imgArray.length - 1) {
@@ -50,7 +50,7 @@ const Gallery = () => {
     }
   };
 
-  const showPrev = e => {
+  const showPrev = (e) => {
     e.stopPropagation();
     let currentIndex = imgArray.indexOf(imageToShow);
     if (currentIndex <= 0) {
@@ -66,7 +66,7 @@ const Gallery = () => {
   const indexOfLastImage = currentPage * imagePerPage;
   const indexOfFirstImage = indexOfLastImage - imagePerPage;
   const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
-  const paginate = pageNum => setCurrentPage(pageNum);
+  const paginate = (pageNum) => setCurrentPage(pageNum);
 
   return (
     <div>
@@ -79,14 +79,14 @@ const Gallery = () => {
 
       <div>
         <Row className="justify-content-center">
-          {currentImgArray.map(image => (
+          {currentImgArray.map((image) => (
             <Col lg="4" md="6" sm="6" xs="6" onClick={() => showImage(image)}>
               <div className="media-img">
                 {" "}
                 <GatsbyImage
                   image={image}
                   imgStyle={{
-                    transform: "none"
+                    transform: "none",
                   }}
                 />
               </div>

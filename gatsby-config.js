@@ -17,8 +17,8 @@ module.exports = {
         config.siteUrl,
         config.pathPrefix
       )}/logos/logo-512.png`,
-      copyright: config.copyright
-    }
+      copyright: config.copyright,
+    },
   },
   plugins: [
     "gatsby-plugin-image",
@@ -27,8 +27,8 @@ module.exports = {
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        defaultQuality: 90
-      }
+        defaultQuality: 90,
+      },
     },
     "gatsby-transformer-sharp",
     {
@@ -42,49 +42,49 @@ module.exports = {
               withWebp: true,
               linkImagesToOriginal: false,
               backgroundColor: `transparent`,
-              wrapperStyle: `left:0; width: 100%;`
-            }
+              wrapperStyle: `left:0; width: 100%;`,
+            },
           },
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers"
-        ]
-      }
+          "gatsby-remark-autolink-headers",
+        ],
+      },
     },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",
-        path: `${__dirname}/static/`
-      }
+        path: `${__dirname}/static/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
-        path: `${__dirname}/blog/`
-      }
+        path: `${__dirname}/blog/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "modules",
-        path: `${__dirname}/modules/`
-      }
+        path: `${__dirname}/modules/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: `${__dirname}/static/images`
-      }
+        path: `${__dirname}/static/images`,
+      },
     },
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
-        color: config.themeColor
-      }
+        color: config.themeColor,
+      },
     },
     "gatsby-plugin-catch-links",
     "gatsby-plugin-twitter",
@@ -103,11 +103,11 @@ module.exports = {
           {
             src: "/static/logos/logo.png",
             sizes: "192x192",
-            type: "image/png"
-          }
-        ]
-      }
+            type: "image/png",
+          },
+        ],
+      },
     },
-    "gatsby-plugin-offline"
-  ]
+    "gatsby-plugin-offline",
+  ],
 };

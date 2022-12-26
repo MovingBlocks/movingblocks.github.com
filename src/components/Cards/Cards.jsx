@@ -4,7 +4,7 @@ import { Row, Col, Badge } from "reactstrap";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 const Cards = ({ title, cover, tags, excerpt, path, author, ddate }) => {
-  let tagCount = tags.length - 2;
+  const tagCount = tags.length - 2;
   return (
     <Col className="ml-4 mr-4 pt-0 mt-2 mb-4 " lg="3" md="8" sm="12">
       <Row className="row_shadow h-100">
@@ -19,7 +19,8 @@ const Cards = ({ title, cover, tags, excerpt, path, author, ddate }) => {
               })}
             </div>
             <span className="card-people ml-2 mt-4 mr-4  h4">
-              {tagCount > 0 ? "+" + `${tagCount}` + " more" : ""}{" "}
+              {tagCount > 0 ? `+${tagCount} more` : ""}
+              {" "}
             </span>
           </div>
         </Col>

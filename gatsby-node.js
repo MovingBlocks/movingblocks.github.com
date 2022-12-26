@@ -139,7 +139,7 @@ exports.createPages = async ({ graphql, actions }) => {
     if (err) {
       return console.log(err);
     }
-    console.log("Directory created successfully!");
+    return console.log("Directory created successfully!");
   });
 
   const posts = blogQueryResult.data.allMarkdownRemark.edges;

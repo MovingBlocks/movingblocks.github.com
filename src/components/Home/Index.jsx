@@ -8,7 +8,7 @@ const Index = () => {
   const data = useStaticQuery(graphql`
     query homePageQuery {
       allMarkdownRemark(
-        sort: { fields: [fields___date], order: DESC }
+        sort: { fields: frontmatter___date, order: DESC }
         filter: { frontmatter: { posttype: { eq: "blog" } } }
         limit: 4
       ) {
@@ -23,6 +23,7 @@ const Index = () => {
             frontmatter {
               title
               author
+              date
               tags
               description
               cover {

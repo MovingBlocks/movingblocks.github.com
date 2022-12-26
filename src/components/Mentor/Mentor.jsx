@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Alert } from "reactstrap";
-import defaultprofile from "../../../static/logos/profile-placeholder.png";
 import moment from "moment-timezone";
+import defaultprofile from "../../../static/logos/profile-placeholder.png";
 import MentorModal from "../MentorModal/MentorModal.jsx";
 
 const Mentor = () => {
@@ -31,9 +31,9 @@ const Mentor = () => {
   return (
     <Col lg="12">
       <div>
-        <h1 className="text-center">Mentor's</h1>
+        <h1 className="text-center">Mentors</h1>
         <div className="container my-4">
-          <div className="home-underline"></div>
+          <div className="home-underline" />
         </div>
         <div className="container">
           <Alert
@@ -43,7 +43,7 @@ const Mentor = () => {
             toggle={onDismiss}
           >
             <span className="alert-box">
-              Problem fetching Mentor's Information .(Error Code: {status})
+              {`Problem fetching Mentor Information (Error Code: ${status})`}
             </span>
           </Alert>
         </div>
@@ -51,28 +51,28 @@ const Mentor = () => {
       <Row className="justify-content-center">
         {mentors &&
           mentors.map(mentor => {
-            let flagURL =
+            const flagURL =
               "https://www.countryflags.io/" +
               `${mentor.customFieldItems[0].value.text}` +
               "/flat/64.png";
 
-            let timeZone = moment
+            const timeZone = moment
               .tz(moment(), `${mentor.customFieldItems[1].value.text}`)
               .format("HH:mm [(GMT] Z[)]");
 
-            let getcountryName = new Intl.DisplayNames(["en"], {
+            const getcountryName = new Intl.DisplayNames(["en"], {
               type: "region"
             });
-            let countryName = getcountryName.of(
+            const countryName = getcountryName.of(
               `${mentor.customFieldItems[0].value.text}`
             );
             return (
               <Col className="ml-1 mr-1 mt-2 mb-2" lg="3" md="8" sm="12">
-                <div class="card border border-0 row_shadow">
-                  <div class="card-body">
+                <div className="card border border-0 row_shadow">
+                  <div className="card-body">
                     <Row className="justify-content-center">
                       <Col lg="5" md="12" className="text-center">
-                        {mentor.attachments.length != 0 ? (
+                        {mentor.attachments.length !== 0 ? (
                           mentor.attachments.map(image => {
                             return (
                               <img
@@ -98,7 +98,7 @@ const Mentor = () => {
                         <p className="font-weight-bold">{mentor.name}</p>
 
                         <div className="mt-2">
-                          <img src={flagURL} height="30px" width="30px"></img>
+                          <img src={flagURL} height="30px" width="30px" alt="THe flag of the mentor's home country" />
                           <span className="ml-3 font-weight-bold h4">
                             {countryName}
                           </span>
@@ -106,7 +106,8 @@ const Mentor = () => {
                         <div className="mt-3">
                           <span className=" font-weight-bold h5">
                             Local Time:
-                          </span>{" "}
+                          </span>
+                          {" "}
                           {timeZone}
                         </div>
                         <div>

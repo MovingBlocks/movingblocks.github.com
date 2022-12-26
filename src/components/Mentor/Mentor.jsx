@@ -51,21 +51,36 @@ const Mentor = () => {
       <Row className="justify-content-center">
         {mentors &&
           mentors.map(mentor => {
-            let flagURL =
-              "https://www.countryflags.io/" +
-              `${mentor.customFieldItems[0].value.text}` +
-              "/flat/64.png";
+            let mentorGitHubName = "";
+            let mentorCountry = "";
+            let mentorTimezone = "";
+            for (let i = 0; i < 3; i++) {
+              switch(mentor.customFieldItems[i].idCustomField) {
+                case "5eb71b3551de3a59ce8d9bd8":
+                  mentorGitHubName = mentor.customFieldItems[i].value.text;
+                  break;
+                case "5eb71b7081a67c3b58ea67ed":
+                  mentorCountry = mentor.customFieldItems[i].value.text;
+                  break;
+                case "5eb71b53f52d88487f550e83":
+                  mentorTimezone = mentor.customFieldItems[i].value.text;
+                  break;
+                default:
+                  break;
+              }
+            }
+            const flagURL =
+              "https://www.countryflagsapi.com/png/" + `${mentorCountry}`;
 
-            let timeZone = moment
-              .tz(moment(), `${mentor.customFieldItems[1].value.text}`)
+            const timeZone = moment
+              .tz(moment(), `${mentorTimezone}`)
               .format("HH:mm [(GMT] Z[)]");
 
             let getcountryName = new Intl.DisplayNames(["en"], {
               type: "region"
             });
-            let countryName = getcountryName.of(
-              `${mentor.customFieldItems[0].value.text}`
-            );
+            const countryName = getcountryName.of(`${mentorCountry}`);
+
             return (
               <Col className="ml-1 mr-1 mt-2 mb-2" lg="3" md="8" sm="12">
                 <div class="card border border-0 row_shadow">
@@ -98,7 +113,7 @@ const Mentor = () => {
                         <p className="font-weight-bold">{mentor.name}</p>
 
                         <div className="mt-2">
-                          <img src={flagURL} height="30px" width="30px"></img>
+                          <img src={flagURL} height="30px" width="30px" alt="The flag of the mentor's home country"></img>
                           <span className="ml-3 font-weight-bold h4">
                             {countryName}
                           </span>
@@ -114,7 +129,7 @@ const Mentor = () => {
                             name={mentor.name}
                             desc={mentor.desc}
                             tags={mentor.labels}
-                            customInfo={mentor.customFieldItems}
+                            githubName={mentorGitHubName}
                             timeZone={timeZone}
                             country={countryName}
                           />

@@ -10,7 +10,7 @@ moment.locale("en");
 
 const SearchForm = ({ query, tag, author, date }, props, location) => {
   const [showFilter, setShowFilter] = useState(false);
-  let {location: srcLocation} = props;
+  let { location: srcLocation } = props;
 
   if (typeof window !== `undefined`) {
     srcLocation = location.search;

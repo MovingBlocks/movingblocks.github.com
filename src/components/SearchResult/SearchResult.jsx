@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "reactstrap";
-import Cards from "../Cards/Cards.jsx";
+import Cards from "../Cards/Cards";
 
 const SearchResults = ({ query, results }) => (
   <div aria-label="Search results for all posts">

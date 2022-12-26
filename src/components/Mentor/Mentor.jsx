@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Alert } from "reactstrap";
 import moment from "moment-timezone";
 import defaultprofile from "../../../static/logos/profile-placeholder.png";
-import MentorModal from "../MentorModal/MentorModal.jsx";
+import MentorModal from "../MentorModal/MentorModal";
 
 const Mentor = () => {
   const [mentors, setmentors] = useState([]);

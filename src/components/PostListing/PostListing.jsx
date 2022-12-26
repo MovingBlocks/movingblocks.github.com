@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 
-import Cards from "../Cards/Cards.jsx";
+import Cards from "../Cards/Cards";
 
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {

@@ -1,90 +1,39 @@
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
 import React from "react";
-import Helmet from "react-helmet";
 import urljoin from "url-join";
-import config from "../../../data/SiteConfig";
 
-const SEO = ({ postNode, postPath, postSEO }) => {
-  let title;
-  let description;
-  let postURL;
-  if (postSEO) {
-    const postMeta = postNode.frontmatter;
-    ({ title } = postMeta);
-    description = postMeta.description
-      ? postMeta.description
-      : postNode.excerpt;
-    postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
-  } else {
-    title = config.siteTitle;
-    description = config.siteDescription;
-  }
+const SEO = ({ title, description, pathname, children }) => {
+  const {
+    title: defaultTitle,
+    description: defaultDescription,
+    siteUrl,
+    image,
+    twitterUsername,
+  } = useSiteMetadata();
 
-  const blogURL = urljoin(config.siteUrl, config.pathPrefix);
-  const schemaOrgJSONLD = [
-    {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      url: blogURL,
-      name: title,
-      alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
-    }
-  ];
-  if (postSEO) {
-    schemaOrgJSONLD.push(
-      {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            item: {
-              "@id": postURL,
-              name: title
-            }
-          }
-        ]
-      },
-      {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        url: blogURL,
-        name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
-        headline: title,
-        description
-      }
-    );
-  }
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+    url: urljoin(siteUrl, pathname || ""),
+    image: urljoin(siteUrl, image),
+    twitterUsername,
+  };
+
   return (
-    <Helmet>
-      {/* General tags */}
-      <meta name="description" content={description} />
-
-      {/* Schema.org tags */}
-      <script type="application/ld+json">
-        {JSON.stringify(schemaOrgJSONLD)}
-      </script>
-
-      {/* OpenGraph tags */}
-      <meta property="og:url" content={postSEO ? postURL : blogURL} />
-      {postSEO ? <meta property="og:type" content="article" /> : null}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta
-        property="fb:app_id"
-        content={config.siteFBAppID ? config.siteFBAppID : ""}
-      />
-
-      {/* Twitter Card tags */}
+    <>
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:creator"
-        content={config.userTwitter ? config.userTwitter : ""}
-      />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-    </Helmet>
+      <meta name="twitter:creator" content={seo.twitterUsername} />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.image} />
+      <meta name="twitter.url" content={seo.url} />
+      {children}
+    </>
   );
 };
 

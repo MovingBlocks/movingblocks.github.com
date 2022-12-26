@@ -1,7 +1,6 @@
 /* eslint import/no-unresolved: [2, { ignore: ['\\.generated$'] }] */
 
 import React, { useState, useEffect } from "react";
-import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Row, Col } from "reactstrap";
@@ -45,12 +44,12 @@ const Modulelist = (
   useEffect(() => {
     if (searchQuery || filterTag) {
       setResults(
-        moduleData.filter(module => {
+        moduleData.filter((module) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           const matchedTag = module.tags
-            .filter(tag => tag != null)
-            .map(t => t.match(tagRgx));
+            .filter((tag) => tag != null)
+            .map((t) => t.match(tagRgx));
           return (
             matchedTag.toString().match(tagRgx) &&
             module.title?.match(searchRgx)
@@ -67,8 +66,6 @@ const Modulelist = (
   return (
     <Layout>
       <div className="index-container">
-        <Helmet title={`Modules | ${config.siteTitle}`} />
-        <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
         {isShown && (
           <SearchResults
@@ -145,3 +142,5 @@ export const moduleQuery = graphql`
 `;
 
 export default Modulelist;
+
+export const Head = () => <SEO title={`Modules | ${config.siteTitle}`} />;

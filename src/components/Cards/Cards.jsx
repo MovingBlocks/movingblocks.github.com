@@ -14,7 +14,7 @@ const Cards = ({ title, cover, tags, excerpt, path, author, ddate }) => {
           </div>
           <div className="d-flex">
             <div className="md-tag mt-3 ml-3">
-              {tags.slice(0, 2).map(tag => {
+              {tags.slice(0, 2).map((tag) => {
                 return <Badge className="mr-2">{tag}</Badge>;
               })}
             </div>

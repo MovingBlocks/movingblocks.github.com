@@ -1,6 +1,5 @@
 const config = {
-  siteTitle: "Terasology Project", // Site title.
-  siteTitleShort: "Terasology", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitle: "Terasology", // Site title. Same as Short site title for home screen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "Terasology Project | An Open Source Voxel World", // Alternative site title for SEO.
   siteLogo: "/logos/logo.png", // Logo used for SEO and manifest.
   siteUrl: "https://terasology.org", // Domain of your website without pathPrefix.
@@ -8,14 +7,13 @@ const config = {
   siteDescription:
     "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
-  siteFBAppID: "", // FB Application ID for using app insights
   googleAnalyticsID: "", // GA tracking ID.
   postDefaultCategoryID: "Update", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
   copyright: "Copyright © 2019. Moving Blocks!", // Copyright string for the footer of the website and RSS feed.
   themeColor: "#c62828", // Used for setting manifest and progress theme colors.
-  backgroundColor: "#e0e0e0" // Used for setting manifest background color.
+  backgroundColor: "#e0e0e0", // Used for setting manifest background color.
 };
 
 // Validate

@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 import { graphql, useStaticQuery } from "gatsby";
 import { BgImage } from "gbimage-bridge";
 
-const About = () => {
+const About = (props) => {
   const data = useStaticQuery(graphql`
     query myImages {
       historyImg: file(relativePath: { eq: "images/3.jpg" }) {

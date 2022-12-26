@@ -5,14 +5,14 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   TelegramShareButton,
-  RedditShareButton
+  RedditShareButton,
 } from "react-share";
 import {
   FaReddit,
   FaTwitter,
   FaFacebook,
   FaLinkedin,
-  FaTelegram
+  FaTelegram,
 } from "react-icons/fa";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";

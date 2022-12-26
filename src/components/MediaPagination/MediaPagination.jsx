@@ -7,7 +7,7 @@ const MediaPagination = ({
   imagePerPage,
   totalImages,
   paginate,
-  currentSlider
+  currentSlider,
 }) => {
   const sildeNumber = [];
 
@@ -17,7 +17,7 @@ const MediaPagination = ({
 
   return (
     <div className="d-flex page-section">
-      {sildeNumber.map(number => {
+      {sildeNumber.map((number) => {
         return (
           <PaginationItem key={number} className="mt-3">
             <PaginationLink onClick={() => paginate(number)} href="#">

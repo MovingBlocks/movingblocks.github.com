@@ -5,8 +5,8 @@ import moduleList from "../../generated/module-result.json";
 
 const SearchForm = ({ query, filter }) => {
   const tagList = new Set();
-  moduleList.forEach(module => {
-    module.tags.forEach(tag => {
+  moduleList.forEach((module) => {
+    module.tags.forEach((tag) => {
       tagList.add(tag);
     });
   });
@@ -24,7 +24,7 @@ const SearchForm = ({ query, filter }) => {
               id="search-tag"
               bsSize="lg"
               aria-controls="search-results-count"
-              onChange={e =>
+              onChange={(e) =>
                 navigate(
                   `${
                     location.pathname
@@ -36,7 +36,7 @@ const SearchForm = ({ query, filter }) => {
               value={filter}
             >
               <option value="">All</option>
-              {[...tagList.values()].map(tag => {
+              {[...tagList.values()].map((tag) => {
                 return <option value={tag}>{tag}</option>;
               })}
             </Input>
@@ -53,7 +53,7 @@ const SearchForm = ({ query, filter }) => {
               name="keywords"
               bsSize="lg"
               aria-controls="search-results-count"
-              onChange={e =>
+              onChange={(e) =>
                 navigate(
                   `${location.pathname}?keywords=${encodeURIComponent(
                     e.target.value

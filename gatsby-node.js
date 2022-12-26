@@ -35,14 +35,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         createNodeField({
           node,
           name: "date",
-          value: date.toISOString()
+          value: date.toISOString(),
         });
       }
     }
     createNodeField({
       node,
       name: "slug",
-      value: slug
+      value: slug,
     });
   }
 };
@@ -135,7 +135,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw blogQueryResult.errors;
   }
 
-  fs.mkdir("src/generated", err => {
+  fs.mkdir("src/generated", (err) => {
     if (err) {
       return console.log(err);
     }
@@ -143,7 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   const posts = blogQueryResult.data.allMarkdownRemark.edges;
-  posts.forEach(edge => {
+  posts.forEach((edge) => {
     blogList.push({
       path: `/blog${edge.node.fields.slug}`,
       tags: edge.node.frontmatter.tags,
@@ -159,7 +159,7 @@ exports.createPages = async ({ graphql, actions }) => {
       postNumber: edge.node.frontmatter.postNumber,
       position: edge.node.frontmatter.position,
       mainImage: edge.node.frontmatter.mainImage,
-      content: edge.node.internal.content
+      content: edge.node.internal.content,
     });
   });
   const blogJSON = JSON.stringify(blogList, null, 2);
@@ -167,7 +167,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const postsPerPage = 27;
   const postsNumPages = Math.ceil(posts.length / postsPerPage);
   Array.from({
-    length: postsNumPages
+    length: postsNumPages,
     // eslint-disable-next-line no-shadow
   }).forEach((_, i) => {
     createPage({
@@ -177,8 +177,8 @@ exports.createPages = async ({ graphql, actions }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         postsNumPages,
-        blogCurrentPage: i + 1
-      }
+        blogCurrentPage: i + 1,
+      },
     });
   });
 
@@ -219,7 +219,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const modules = moduleQueryResult.data.allMarkdownRemark.edges;
-  modules.forEach(edge => {
+  modules.forEach((edge) => {
     moduleList.push({
       path: `/modules${edge.node.fields.slug}`,
       tags: edge.node.frontmatter.tags,
@@ -227,7 +227,7 @@ exports.createPages = async ({ graphql, actions }) => {
       title: edge.node.frontmatter.title,
       date: edge.node.frontmatter.date,
       excerpt: edge.node.excerpt,
-      posttype: edge.node.frontmatter.posttype
+      posttype: edge.node.frontmatter.posttype,
     });
   });
   const moduleJSON = JSON.stringify(moduleList, null, 2);
@@ -235,7 +235,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const modulesPerPage = 27;
   const moduleNumPages = Math.ceil(modules.length / modulesPerPage);
   Array.from({
-    length: moduleNumPages
+    length: moduleNumPages,
     // eslint-disable-next-line no-shadow
   }).forEach((_, i) => {
     createPage({
@@ -245,8 +245,8 @@ exports.createPages = async ({ graphql, actions }) => {
         limit: modulesPerPage,
         skip: i * modulesPerPage,
         moduleNumPages,
-        moduleCurrentPage: i + 1
-      }
+        moduleCurrentPage: i + 1,
+      },
     });
   });
 
@@ -282,8 +282,8 @@ exports.createPages = async ({ graphql, actions }) => {
         path: `/modules${edge.node.fields.slug}`,
         component: modulesPage,
         context: {
-          slug: edge.node.fields.slug
-        }
+          slug: edge.node.fields.slug,
+        },
       });
     } else {
       // blog post
@@ -291,8 +291,8 @@ exports.createPages = async ({ graphql, actions }) => {
         path: `/blog${edge.node.fields.slug}`,
         component: postPage,
         context: {
-          slug: edge.node.fields.slug
-        }
+          slug: edge.node.fields.slug,
+        },
       });
     }
   });

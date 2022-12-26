@@ -3,16 +3,16 @@ const fs = require("fs");
 const blogList = require("../src/generated/blog-result.json");
 
 registerFont("./static/fonts/PressStart2P-Regular.tff", {
-  family: "Press Start 2P"
+  family: "Press Start 2P",
 });
 
 registerFont("./static/fonts/NotoSans-Bold.ttf", {
-  family: "Noto Sans"
+  family: "Noto Sans",
 });
 
 const c = {
   width: 1200,
-  height: 700
+  height: 700,
 };
 
 // functions to generate TeraSaturday and TeraSpotlight image
@@ -32,7 +32,7 @@ const generateTeraSaturdayImage = (
 
   const ctx = canvas.getContext("2d");
   ctx.save();
-  loadImage(defaultImage).then(image => {
+  loadImage(defaultImage).then((image) => {
     ctx.drawImage(image, 0, 0, c.width, c.height);
 
     const tag = imageTag.slice(4);
@@ -112,12 +112,12 @@ const generateCustomLogoImage = (
   const ctx = canvas.getContext("2d");
   const customImage = customLogo;
 
-  loadImage(defaultImage).then(image => {
+  loadImage(defaultImage).then((image) => {
     ctx.drawImage(image, 0, 0, c.width, c.height);
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, c.width, c.height);
 
-    loadImage(customImage).then(logoImage => {
+    loadImage(customImage).then((logoImage) => {
       if (position === "end" || position === "End") {
         ctx.drawImage(logoImage, c.width - 350, 50, 300, 300);
       } else if (position === "start" || position === "Start") {
@@ -135,7 +135,7 @@ const generateCustomLogoImage = (
 };
 
 // Fetch data and generate image
-blogList.forEach(edge => {
+blogList.forEach((edge) => {
   if (edge.imageTag === "TeraSaturday" || edge.imageTag === "TeraSpotlight") {
     generateTeraSaturdayImage(
       edge.date,

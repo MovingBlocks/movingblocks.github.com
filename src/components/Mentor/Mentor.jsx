@@ -43,29 +43,43 @@ const Mentor = () => {
             toggle={onDismiss}
           >
             <span className="alert-box">
-              {`Problem fetching Mentor Information (Error Code: ${status})`}
+              {`Problem fetching mentor Information (Error Code: ${status})`}
             </span>
           </Alert>
         </div>
       </div>
       <Row className="justify-content-center">
         {mentors &&
-          mentors.map(mentor => {
-            const flagURL =
-              "https://www.countryflags.io/" +
-              `${mentor.customFieldItems[0].value.text}` +
-              "/flat/64.png";
+          mentors.map((mentor) => {
+            let mentorGitHubName = "";
+            let mentorCountry = "";
+            let mentorTimezone = "";
+            for (let i = 0; i < 3; i++) {
+              switch (mentor.customFieldItems[i].idCustomField) {
+                case "5eb71b3551de3a59ce8d9bd8":
+                  mentorGitHubName = mentor.customFieldItems[i].value.text;
+                  break;
+                case "5eb71b7081a67c3b58ea67ed":
+                  mentorCountry = mentor.customFieldItems[i].value.text;
+                  break;
+                case "5eb71b53f52d88487f550e83":
+                  mentorTimezone = mentor.customFieldItems[i].value.text;
+                  break;
+                default:
+                  break;
+              }
+            }
+            const flagURL = `https://flagcdn.com/w40/${mentorCountry.toLowerCase()}.png`;
 
             const timeZone = moment
-              .tz(moment(), `${mentor.customFieldItems[1].value.text}`)
+              .tz(moment(), `${mentorTimezone}`)
               .format("HH:mm [(GMT] Z[)]");
 
-            const getcountryName = new Intl.DisplayNames(["en"], {
-              type: "region"
+            let getcountryName = new Intl.DisplayNames(["en"], {
+              type: "region",
             });
-            const countryName = getcountryName.of(
-              `${mentor.customFieldItems[0].value.text}`
-            );
+            const countryName = getcountryName.of(`${mentorCountry}`);
+            
             return (
               <Col className="ml-1 mr-1 mt-2 mb-2" lg="3" md="8" sm="12">
                 <div className="card border border-0 row_shadow">
@@ -73,7 +87,7 @@ const Mentor = () => {
                     <Row className="justify-content-center">
                       <Col lg="5" md="12" className="text-center">
                         {mentor.attachments.length !== 0 ? (
-                          mentor.attachments.map(image => {
+                          mentor.attachments.map((image) => {
                             return (
                               <img
                                 className="rounded-circle "
@@ -100,10 +114,8 @@ const Mentor = () => {
                         <div className="mt-2">
                           <img
                             src={flagURL}
-                            height="30px"
-                            width="30px"
-                            alt="THe flag of the mentor's home country"
-                          />
+                            alt="The flag of the mentor's home country"
+                          ></img>
                           <span className="ml-3 font-weight-bold h4">
                             {countryName}
                           </span>
@@ -119,7 +131,7 @@ const Mentor = () => {
                             name={mentor.name}
                             desc={mentor.desc}
                             tags={mentor.labels}
-                            customInfo={mentor.customFieldItems}
+                            githubName={mentorGitHubName}
                             timeZone={timeZone}
                             country={countryName}
                           />

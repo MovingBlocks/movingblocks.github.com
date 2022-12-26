@@ -68,7 +68,7 @@ const Download = () => {
               name="select"
               id="exampleSelect"
               style={{ height: "40px", fontSize: "15px" }}
-              onChange={e => {
+              onChange={(e) => {
                 const selectedos = e.target.value;
                 setPlatform(selectedos);
               }}

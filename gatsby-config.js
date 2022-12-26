@@ -4,7 +4,10 @@ const config = require("./data/SiteConfig");
 module.exports = {
   pathPrefix: config.pathPrefix === "" ? "/ModuleSite" : config.pathPrefix,
   siteMetadata: {
+    title: config.siteTitle,
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
+    twitterUsername: "@Terasology",
+    image: config.siteLogo,
     rssMetadata: {
       site_url: urljoin(config.siteUrl, config.pathPrefix),
       feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
@@ -14,8 +17,8 @@ module.exports = {
         config.siteUrl,
         config.pathPrefix
       )}/logos/logo-512.png`,
-      copyright: config.copyright
-    }
+      copyright: config.copyright,
+    },
   },
   plugins: [
     "gatsby-plugin-image",
@@ -24,8 +27,8 @@ module.exports = {
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        defaultQuality: 90
-      }
+        defaultQuality: 90,
+      },
     },
     "gatsby-transformer-sharp",
     {
@@ -39,50 +42,49 @@ module.exports = {
               withWebp: true,
               linkImagesToOriginal: false,
               backgroundColor: `transparent`,
-              wrapperStyle: `left:0; width: 100%;`
-            }
+              wrapperStyle: `left:0; width: 100%;`,
+            },
           },
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers"
-        ]
-      }
+          "gatsby-remark-autolink-headers",
+        ],
+      },
     },
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",
-        path: `${__dirname}/static/`
-      }
+        path: `${__dirname}/static/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
-        path: `${__dirname}/blog/`
-      }
+        path: `${__dirname}/blog/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "modules",
-        path: `${__dirname}/modules/`
-      }
+        path: `${__dirname}/modules/`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: `${__dirname}/static/images`
-      }
+        path: `${__dirname}/static/images`,
+      },
     },
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
-        color: config.themeColor
-      }
+        color: config.themeColor,
+      },
     },
     "gatsby-plugin-catch-links",
     "gatsby-plugin-twitter",
@@ -91,7 +93,7 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: config.siteTitle,
-        short_name: config.siteTitleShort,
+        short_name: config.siteTitle,
         description: config.siteDescription,
         start_url: config.pathPrefix === "" ? "/" : config.pathPrefix,
         background_color: config.backgroundColor,
@@ -101,11 +103,11 @@ module.exports = {
           {
             src: "/static/logos/logo.png",
             sizes: "192x192",
-            type: "image/png"
-          }
-        ]
-      }
+            type: "image/png",
+          },
+        ],
+      },
     },
-    "gatsby-plugin-offline"
-  ]
+    "gatsby-plugin-offline",
+  ],
 };

@@ -13,7 +13,7 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";

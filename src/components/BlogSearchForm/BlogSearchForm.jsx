@@ -21,9 +21,9 @@ const SearchForm = ({ query, tag, author, date }, props) => {
   const authorList = new Set();
   const tagList = new Set();
 
-  blogList.forEach(blog => {
+  blogList.forEach((blog) => {
     authorList.add(blog.author);
-    blog.tags.forEach(blogTag => {
+    blog.tags.forEach((blogTag) => {
       tagList.add(blogTag);
     });
   });
@@ -43,7 +43,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
               bsSize="lg"
               className="form-control"
               aria-controls="search-results-count"
-              onChange={e =>
+              onChange={(e) =>
                 navigate(
                   `${location.pathname}?keywords=${encodeURIComponent(
                     e.target.value
@@ -89,7 +89,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     bsSize="lg"
                     aria-controls="search-results-count"
                     className="option-position"
-                    onChange={e =>
+                    onChange={(e) =>
                       navigate(
                         `${
                           location.pathname
@@ -103,7 +103,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {[...tagList.values()].map(blogTag => {
+                    {[...tagList.values()].map((blogTag) => {
                       return <option value={blogTag}>{blogTag}</option>;
                     })}
                   </Input>
@@ -121,7 +121,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     bsSize="lg"
                     aria-controls="search-results-count"
                     className="option-position"
-                    onChange={e =>
+                    onChange={(e) =>
                       navigate(
                         `${location.pathname}?keywords=${query}&tag=${
                           tag === undefined ? `${urlTag}` : `${tag}`
@@ -133,7 +133,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     value={author}
                   >
                     <option value="">All</option>
-                    {[...authorList.values()].map(blogAuthor => {
+                    {[...authorList.values()].map((blogAuthor) => {
                       return <option value={blogAuthor}>{blogAuthor}</option>;
                     })}
                   </Input>
@@ -151,7 +151,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     bsSize="lg"
                     aria-controls="search-results-count"
                     className="option-position"
-                    onChange={e =>
+                    onChange={(e) =>
                       navigate(
                         `${location.pathname}?keywords=${query}&tag=${
                           tag === undefined ? `${urlTag}` : `${tag}`
@@ -172,7 +172,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     color="primary"
                     size="lg"
                     id="search-btn"
-                    onClick={() => navigate(`${location.pathname}`)}
+                    onClick={(e) => navigate(`${location.pathname}`)}
                   >
                     Reset
                   </Button>

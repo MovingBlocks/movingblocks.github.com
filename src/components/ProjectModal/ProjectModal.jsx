@@ -30,7 +30,7 @@ const ProjectModal = ({ name, desc, tags }) => {
           <h6 className="mt-4 ml-2">Project Tags:</h6>
           <div className="d-flex overflow-auto ml-2 ">
             {tags &&
-              tags.map(tag => {
+              tags.map((tag) => {
                 return (
                   <div className="md-tag m-2">
                     <Badge>{tag.name}</Badge>

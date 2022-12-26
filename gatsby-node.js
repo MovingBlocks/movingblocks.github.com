@@ -103,6 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                author
                 tags
                 date
                 description
@@ -149,6 +150,7 @@ exports.createPages = async ({ graphql, actions }) => {
       posttype: edge.node.frontmatter.posttype,
       cover: edge.node.frontmatter.cover,
       title: edge.node.frontmatter.title,
+      author: edge.node.frontmatter.author,
       excerpt: edge.node.excerpt,
       date: edge.node.frontmatter.date,
       description: edge.node.frontmatter.description,
@@ -156,7 +158,8 @@ exports.createPages = async ({ graphql, actions }) => {
       customLogo: edge.node.frontmatter.customLogo,
       postNumber: edge.node.frontmatter.postNumber,
       position: edge.node.frontmatter.position,
-      mainImage: edge.node.frontmatter.mainImage
+      mainImage: edge.node.frontmatter.mainImage,
+      content: edge.node.internal.content
     });
   });
   const blogJSON = JSON.stringify(blogList, null, 2);

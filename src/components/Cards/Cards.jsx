@@ -19,8 +19,7 @@ const Cards = ({ title, cover, tags, excerpt, path, author, ddate }) => {
               })}
             </div>
             <span className="card-people ml-2 mt-4 mr-4  h4">
-              {tagCount > 0 ? `+${tagCount} more` : ""}
-              {" "}
+              {tagCount > 0 ? `+${tagCount} more` : ""}{" "}
             </span>
           </div>
         </Col>

@@ -57,7 +57,8 @@ const Blog = (
             .map(t => t.match(tagRgx));
 
           return (
-            (blogPost.content?.match(searchRgx) || blogPost.title?.match(searchRgx)) &&
+            (blogPost.content?.match(searchRgx) ||
+              blogPost.title?.match(searchRgx)) &&
             matchedTag.toString().match(tagRgx) &&
             blogPost.author?.match(authorRgx) &&
             blogPost.date?.match(dateRgx)

@@ -98,7 +98,12 @@ const Mentor = () => {
                         <p className="font-weight-bold">{mentor.name}</p>
 
                         <div className="mt-2">
-                          <img src={flagURL} height="30px" width="30px" alt="THe flag of the mentor's home country" />
+                          <img
+                            src={flagURL}
+                            height="30px"
+                            width="30px"
+                            alt="THe flag of the mentor's home country"
+                          />
                           <span className="ml-3 font-weight-bold h4">
                             {countryName}
                           </span>
@@ -106,8 +111,7 @@ const Mentor = () => {
                         <div className="mt-3">
                           <span className=" font-weight-bold h5">
                             Local Time:
-                          </span>
-                          {" "}
+                          </span>{" "}
                           {timeZone}
                         </div>
                         <div>

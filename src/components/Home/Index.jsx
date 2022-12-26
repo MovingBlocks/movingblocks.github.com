@@ -64,7 +64,10 @@ const Index = () => {
             artists, and musicians. We encourage others to join!
           </p>
           <div className="my-5">
-            <button type="button" className="font-weight-bold btn btn-lg btn-success home-btn">
+            <button
+              type="button"
+              className="font-weight-bold btn btn-lg btn-success home-btn"
+            >
               <Link to="/game" className="link-about">
                 Learn More
               </Link>

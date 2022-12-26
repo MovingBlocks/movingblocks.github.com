@@ -26,9 +26,9 @@ const MediaPagination = ({
               >
                 {(() => {
                   if (currentSlider === number) {
-                    return <GiPlainSquare />
+                    return <GiPlainSquare />;
                   }
-                  return <GiSquare />
+                  return <GiSquare />;
                 })()}
               </IconContext.Provider>
             </PaginationLink>

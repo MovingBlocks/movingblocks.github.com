@@ -150,8 +150,8 @@ const About = () => {
                       Discord
                     </a>
                     , or check out our IRC channel #terasology on Freenode. And
-                    don&apos;t worry about missing something by joining only one of
-                    those, as we have everything bridged.
+                    don&apos;t worry about missing something by joining only one
+                    of those, as we have everything bridged.
                   </p>
                 </Col>
               </div>

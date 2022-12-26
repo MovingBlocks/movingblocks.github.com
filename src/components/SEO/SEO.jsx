@@ -8,7 +8,7 @@ const SEO = ({ title, description, pathname, children }) => {
     description: defaultDescription,
     siteUrl,
     image,
-    twitterUsername
+    twitterUsername,
   } = useSiteMetadata();
 
   const seo = {
@@ -16,7 +16,7 @@ const SEO = ({ title, description, pathname, children }) => {
     description: description || defaultDescription,
     url: urljoin(siteUrl, pathname || ""),
     image: urljoin(siteUrl, image),
-    twitterUsername
+    twitterUsername,
   };
 
   return (

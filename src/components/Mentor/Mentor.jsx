@@ -50,7 +50,7 @@ const Mentor = () => {
       </div>
       <Row className="justify-content-center">
         {mentors &&
-          mentors.map(mentor => {
+          mentors.map((mentor) => {
             let mentorGitHubName = "";
             let mentorCountry = "";
             let mentorTimezone = "";
@@ -76,7 +76,7 @@ const Mentor = () => {
               .format("HH:mm [(GMT] Z[)]");
 
             let getcountryName = new Intl.DisplayNames(["en"], {
-              type: "region"
+              type: "region",
             });
             const countryName = getcountryName.of(`${mentorCountry}`);
 
@@ -87,7 +87,7 @@ const Mentor = () => {
                     <Row className="justify-content-center">
                       <Col lg="5" md="12" className="text-center">
                         {mentor.attachments.length != 0 ? (
-                          mentor.attachments.map(image => {
+                          mentor.attachments.map((image) => {
                             return (
                               <img
                                 className="rounded-circle "

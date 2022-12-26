@@ -43,12 +43,12 @@ const Modulelist = (
   useEffect(() => {
     if (searchQuery || filterTag) {
       setResults(
-        moduleData.filter(module => {
+        moduleData.filter((module) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           const matchedTag = module.tags
-            .filter(tag => tag != null)
-            .map(t => t.match(tagRgx));
+            .filter((tag) => tag != null)
+            .map((t) => t.match(tagRgx));
           return (
             matchedTag.toString().match(tagRgx) &&
             module.title?.match(searchRgx)

@@ -38,7 +38,7 @@ const MentorModal = ({ name, desc, tags, githubName, timeZone, country }) => {
           <h6 className="mt-4">Talk to this mentor about :</h6>
           <div className="d-flex overflow-auto ">
             {tags &&
-              tags.map(tag => {
+              tags.map((tag) => {
                 return (
                   <div className="md-tag m-2">
                     <Badge>{tag.name}</Badge>

@@ -4,7 +4,7 @@ import { Badge, Modal, ModalBody, ModalFooter } from "reactstrap";
 const MentorModal = ({ name, desc, tags, customInfo, timeZone, country }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  let githubURL =
+  const githubURL =
     "https://github.com/" + `${customInfo[2] && customInfo[2].value.text}`;
 
   return (
@@ -32,10 +32,12 @@ const MentorModal = ({ name, desc, tags, customInfo, timeZone, country }) => {
               </a>
             </span>
             <br />
-            <span className="ml-3 Modal-customFiled">Country: {country}</span>
+            <span className="ml-3 Modal-customFiled">
+              {`Country: ${country}`}
+            </span>
             <br />
             <span className="ml-3 Modal-customFiled">
-              Local Time: {timeZone}
+              {`Local Time: ${timeZone}`}
             </span>
           </div>
           <h6 className="mt-4">Talk to this mentor about :</h6>

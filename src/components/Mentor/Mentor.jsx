@@ -31,7 +31,7 @@ const Mentor = () => {
   return (
     <Col lg="12">
       <div>
-        <h1 className="text-center">Mentor's</h1>
+        <h1 className="text-center">Mentors</h1>
         <div className="container my-4">
           <div className="home-underline"></div>
         </div>
@@ -43,14 +43,14 @@ const Mentor = () => {
             toggle={onDismiss}
           >
             <span className="alert-box">
-              Problem fetching Mentor's Information .(Error Code: {status})
+              Problem fetching mentor information. (Error Code: {status})
             </span>
           </Alert>
         </div>
       </div>
       <Row className="justify-content-center">
         {mentors &&
-          mentors.map(mentor => {
+          mentors.map((mentor) => {
             let mentorGitHubName = "";
             let mentorCountry = "";
             let mentorTimezone = "";
@@ -76,7 +76,7 @@ const Mentor = () => {
               .format("HH:mm [(GMT] Z[)]");
 
             let getcountryName = new Intl.DisplayNames(["en"], {
-              type: "region"
+              type: "region",
             });
             const countryName = getcountryName.of(`${mentorCountry}`);
 
@@ -87,7 +87,7 @@ const Mentor = () => {
                     <Row className="justify-content-center">
                       <Col lg="5" md="12" className="text-center">
                         {mentor.attachments.length != 0 ? (
-                          mentor.attachments.map(image => {
+                          mentor.attachments.map((image) => {
                             return (
                               <img
                                 className="rounded-circle "

@@ -45,14 +45,14 @@ const Blog = (
   useEffect(() => {
     if (searchQuery || filterTag || filterAuthor || filterdate) {
       setResults(
-        blogData.filter(blog => {
+        blogData.filter((blog) => {
           const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
           const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
           const authorRgx = new RegExp(escapeRegExp(filterAuthor), "gi");
           const dateRgx = new RegExp(escapeRegExp(filterdate), "gi");
           const matchedTag = blog.tags
-            .filter(tag => tag != null)
-            .map(t => t.match(tagRgx));
+            .filter((tag) => tag != null)
+            .map((t) => t.match(tagRgx));
 
           return (
             (blog.content?.match(searchRgx) || blog.title?.match(searchRgx)) &&
@@ -72,8 +72,6 @@ const Blog = (
   return (
     <Layout>
       <div className="index-container">
-        <Helmet title={`Blog | ${config.siteTitle}`} />
-        <SEO />
         <SearchForm
           query={searchQuery}
           tag={filterTag}
@@ -151,3 +149,5 @@ export const blogQuery = graphql`
 `;
 
 export default Blog;
+
+export const Head = () => <SEO title={`Blog | ${config.siteTitle}`} />;

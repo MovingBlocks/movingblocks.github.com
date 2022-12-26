@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+const kebabCase = require("lodash.kebabcase");
 import { Link } from "gatsby";
 import { Button } from "reactstrap";
 
@@ -9,7 +9,7 @@ const PostTags = ({ tags, type }) => (
       <Link
         key={tags}
         style={{ textDecoration: "none" }}
-        to={`/${type}/?keywords=&filter=${_.kebabCase(tags)}`}
+        to={`/${type}/?keywords=&filter=${kebabCase(tags)}`}
       >
         <Button color="primary" size="lg">
           {tags}

@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layout";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
@@ -22,10 +21,6 @@ export default class PostTemplate extends React.Component {
     return (
       <Layout>
         <div>
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-          </Helmet>
-          <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <div className={"title"}>
               <h1>{post.title}</h1>
@@ -81,3 +76,10 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export const Head = ({ data, pageContext }) => (
+  <SEO
+    pathname={pageContext.slug}
+    title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
+  />
+);

@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layout";
 import PostTags from "../components/PostTags/PostTags";
@@ -23,10 +22,6 @@ export default class ModuleTemplate extends React.Component {
     return (
       <Layout>
         <div>
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-          </Helmet>
-          <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <GatsbyImage
               className={"post-cover"}
@@ -75,3 +70,10 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export const Head = ({ data, pageContext }) => (
+  <SEO
+    pathname={pageContext.slug}
+    title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
+  />
+);

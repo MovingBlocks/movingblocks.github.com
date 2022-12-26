@@ -31,7 +31,7 @@ const Mentor = () => {
   return (
     <Col lg="12">
       <div>
-        <h1 className="text-center">Mentor's</h1>
+        <h1 className="text-center">Mentors</h1>
         <div className="container my-4">
           <div className="home-underline"></div>
         </div>
@@ -43,7 +43,7 @@ const Mentor = () => {
             toggle={onDismiss}
           >
             <span className="alert-box">
-              Problem fetching Mentor's Information .(Error Code: {status})
+              Problem fetching mentor information. (Error Code: {status})
             </span>
           </Alert>
         </div>

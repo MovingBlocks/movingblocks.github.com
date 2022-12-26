@@ -42,6 +42,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: generated
+          path: src/generated
       - name: Lint JavaScript
         run: yarn run lint:js
   prettier:

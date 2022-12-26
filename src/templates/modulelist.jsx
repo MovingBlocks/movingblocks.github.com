@@ -115,7 +115,6 @@ const Modulelist = (
 export const moduleQuery = graphql`
   query moduleQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { posttype: { eq: "module" } } }
       limit: $limit
       skip: $skip

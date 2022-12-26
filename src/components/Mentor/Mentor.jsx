@@ -55,7 +55,7 @@ const Mentor = () => {
             let mentorCountry = "";
             let mentorTimezone = "";
             for (let i = 0; i < 3; i++) {
-              switch(mentor.customFieldItems[i].idCustomField) {
+              switch (mentor.customFieldItems[i].idCustomField) {
                 case "5eb71b3551de3a59ce8d9bd8":
                   mentorGitHubName = mentor.customFieldItems[i].value.text;
                   break;
@@ -113,7 +113,12 @@ const Mentor = () => {
                         <p className="font-weight-bold">{mentor.name}</p>
 
                         <div className="mt-2">
-                          <img src={flagURL} height="30px" width="30px" alt="The flag of the mentor's home country"></img>
+                          <img
+                            src={flagURL}
+                            height="30px"
+                            width="30px"
+                            alt="The flag of the mentor's home country"
+                          ></img>
                           <span className="ml-3 font-weight-bold h4">
                             {countryName}
                           </span>

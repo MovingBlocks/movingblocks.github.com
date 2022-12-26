@@ -23,7 +23,7 @@ const Gallery = () => {
   `);
 
   const imgArray = [];
-  data.images.nodes.array.forEach(img => {
+  data.images.nodes.array?.forEach(img => {
     imgArray.push(img.childImageSharp.gatsbyImageData);
   });
 

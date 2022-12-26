@@ -21,7 +21,6 @@ export default class PostTemplate extends React.Component {
     return (
       <Layout>
         <div>
-          <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <div className={"title"}>
               <h1>{post.title}</h1>
@@ -78,8 +77,9 @@ export const pageQuery = graphql`
   }
 `;
 
-export const Head = ({ data }) => (
-  <>
-    <title>{`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}</title>
-  </>
+export const Head = ({ data, pageContext }) => (
+  <SEO
+    pathname={pageContext.slug}
+    title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
+  />
 );

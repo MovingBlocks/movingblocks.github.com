@@ -65,7 +65,6 @@ const Modulelist = (
   return (
     <Layout>
       <div className="index-container">
-        <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
         {isShown && (
           <SearchResults
@@ -141,8 +140,4 @@ export const moduleQuery = graphql`
 
 export default Modulelist;
 
-export const Head = () => (
-  <>
-    <title>{`Modules | ${config.siteTitle}`}</title>
-  </>
-);
+export const Head = () => <SEO title={`Modules | ${config.siteTitle}`} />;

@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../layout";
-import config from "../../data/SiteConfig";
+import SEO from "../components/SEO/SEO";
 import Index from "../components/Home/Index";
 
 const index = () => (
@@ -13,8 +13,4 @@ const index = () => (
 
 export default index;
 
-export const Head = () => (
-  <>
-    <title>{`Home | ${config.siteTitle}`}</title>
-  </>
-);
+export const Head = () => <SEO />;

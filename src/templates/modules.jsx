@@ -22,7 +22,6 @@ export default class ModuleTemplate extends React.Component {
     return (
       <Layout>
         <div>
-          <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <GatsbyImage
               className={"post-cover"}
@@ -72,8 +71,9 @@ export const pageQuery = graphql`
   }
 `;
 
-export const Head = ({data}) => (
-  <>
-    <title>{`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}</title>
-  </>
+export const Head = ({ data, pageContext }) => (
+  <SEO
+    pathname={pageContext.slug}
+    title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
+  />
 );

@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../layout";
 import About from "../components/About/About";
 import config from "../../data/SiteConfig";
+import SEO from "../components/SEO/SEO";
 
 const game = () => (
   <Layout>
@@ -13,8 +14,4 @@ const game = () => (
 
 export default game;
 
-export const Head = () => (
-  <>
-    <title>{`The Game | ${config.siteTitle}`}</title>
-  </>
-);
+export const Head = () => <SEO title={`The Game | ${config.siteTitle}`} />;

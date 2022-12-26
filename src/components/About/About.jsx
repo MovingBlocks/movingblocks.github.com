@@ -32,7 +32,6 @@ const About = () => {
             <Col md="10" className="mt-5">
               <h1>Terasology</h1>
               <p className="mt-5">
-                {" "}
                 An open source voxel world born from a Minecraft-inspired tech
                 demo
                 <br />
@@ -88,8 +87,8 @@ const About = () => {
                       href="https://discordapp.com/invite/Terasology"
                     >
                       Discord
-                    </a>{" "}
-                    or IRC (#terasology on Freenode).
+                    </a>
+                    .
                   </p>
                 </Col>
               </div>
@@ -149,9 +148,7 @@ const About = () => {
                     >
                       Discord
                     </a>
-                    , or check out our IRC channel #terasology on Freenode. And
-                    don&apos;t worry about missing something by joining only one
-                    of those, as we have everything bridged.
+                    .
                   </p>
                 </Col>
               </div>

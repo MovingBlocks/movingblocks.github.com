@@ -81,23 +81,24 @@ const GsocTsoc = () => {
           <Row className="justify-content-center">
             <div className="col-md-10">
               <div className="text-center  gsoc_tsoc_content">
-                <b>Google Summer of Code (GSoC)</b>
+                <b>Google Summer of Code (GSoC) </b>
                 is a global program focused on bringing more student developers
                 into open source software development. Every year more than 1200
                 students are accepted. Accepted students work with a mentor and
                 become a part of the open source community. Many become lifetime
                 open source developers. Spend your summer break writing code and
                 learning about open source development while earning a stipend.
-                For more information visit${" "}
+                For more information visit{" "}
                 <a
                   className="text-success font-weight-bold"
                   href="https://summerofcode.withgoogle.com/"
                 >
-                  here
+                  Google Summer of Code
                 </a>
+                .
               </div>
               <div className="text-center mt-4 gsoc_tsoc_content">
-                <b>Terasology Summer of Code (TSoC)</b>
+                <b>Terasology Summer of Code (TSoC) </b>
                 is similar as Google Summer of Code (GSoC). It is sponsored by
                 Terasology with different timeline then GSoC, do half of work,
                 take a break for exams and other thing and then do second half
@@ -108,6 +109,7 @@ const GsocTsoc = () => {
                 >
                   Discord
                 </a>
+                .
               </div>
             </div>
           </Row>

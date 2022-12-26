@@ -110,8 +110,8 @@ const Mentor = () => {
                         </div>
                         <div className="mt-3">
                           <span className=" font-weight-bold h5">
-                            Local Time:
-                          </span>{" "}
+                            {`Local Time: `}
+                          </span>
                           {timeZone}
                         </div>
                         <div>

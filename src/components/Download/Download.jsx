@@ -156,7 +156,8 @@ const Download = () => {
                 <td>
                   Intel HD Graphics (Gen 5)
                   <br />
-                  GeForce 6xxx series or <br />
+                  GeForce 6xxx series or
+                  <br />
                   Radeon HD 2000 series
                   <br />
                   with OpenGL 2.1*

@@ -79,7 +79,7 @@ const Mentor = () => {
               type: "region",
             });
             const countryName = getcountryName.of(`${mentorCountry}`);
-            
+
             return (
               <Col className="ml-1 mr-1 mt-2 mb-2" lg="3" md="8" sm="12">
                 <div className="card border border-0 row_shadow">

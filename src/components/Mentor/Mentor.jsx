@@ -69,8 +69,7 @@ const Mentor = () => {
                   break;
               }
             }
-            const flagURL =
-              `https://flagcdn.com/w40/${mentorCountry.toLowerCase()}.png`;
+            const flagURL = `https://flagcdn.com/w40/${mentorCountry.toLowerCase()}.png`;
 
             const timeZone = moment
               .tz(moment(), `${mentorTimezone}`)

@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 import { graphql, useStaticQuery } from "gatsby";
 import { BgImage } from "gbimage-bridge";
 
-const About = props => {
+const About = () => {
   const data = useStaticQuery(graphql`
     query myImages {
       historyImg: file(relativePath: { eq: "images/3.jpg" }) {
@@ -53,7 +53,7 @@ const About = props => {
           <Col md="8">
             <h2 className="mb-5 text-center">About Us</h2>
             <div className=" my-4">
-              <div className="home-underline"></div>
+              <div className="home-underline" />
             </div>
 
             <p className="text-center">
@@ -73,7 +73,7 @@ const About = props => {
                 <Col md="5" className="p-4">
                   <h3 className="text-white">History</h3>
                   <p className="text-justify text-white ">
-                    Founded in 2011 by Benjamin "Begla" Glatzel while
+                    Founded in 2011 by Benjamin &quot;Begla&quot; Glatzel while
                     researching procedural terrain generation and effective
                     rendering techniques, He succeded in creating a minecraft
                     like demo From the ground up, Terasology was built to be a
@@ -99,12 +99,12 @@ const About = props => {
             <BgImage image={data.modding.childImageSharp.gatsbyImageData}>
               <div className="right-overlay_about_content">
                 <Row>
-                  <Col className="empty-about-content" md="7"></Col>
+                  <Col className="empty-about-content" md="7" />
                   <Col md="5" className="text-white float-right ">
                     <div className="ml-2 mr-4 ">
                       <h3 className="ml-2 mb-3 text-white">Modding API</h3>
                       <p className="ml-2 mr-3 text-justify ">
-                        Terasology's engine uses a whitelisting approach to
+                        Terasology&apos;s engine uses a whitelisting approach to
                         expose an API for modules using two primary methods and
                         a rarely needed third one:
                       </p>
@@ -150,7 +150,7 @@ const About = props => {
                       Discord
                     </a>
                     , or check out our IRC channel #terasology on Freenode. And
-                    don't worry about missing something by joining only one of
+                    don&apos;t worry about missing something by joining only one of
                     those, as we have everything bridged.
                   </p>
                 </Col>

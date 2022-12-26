@@ -30,7 +30,7 @@ const PostListing = ({ id, postEdges }) => {
         {
           /* Your post list here. */
           postList.map((post) => {
-            return post.posttype == "blog" ? (
+            return post.posttype === "blog" ? (
               <Cards
                 title={post.title}
                 path={`/${id}${post.path}`}

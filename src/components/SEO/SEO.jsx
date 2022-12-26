@@ -1,6 +1,6 @@
-import { useSiteMetadata } from "../../hooks/use-site-metadata";
 import React from "react";
 import urljoin from "url-join";
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
 const SEO = ({ title, description, pathname, children }) => {
   const {

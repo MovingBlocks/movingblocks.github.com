@@ -54,7 +54,7 @@ const Mentor = () => {
             let mentorGitHubName = "";
             let mentorCountry = "";
             let mentorTimezone = "";
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 3; i += 1) {
               switch (mentor.customFieldItems[i].idCustomField) {
                 case "5eb71b3551de3a59ce8d9bd8":
                   mentorGitHubName = mentor.customFieldItems[i].value.text;
@@ -75,7 +75,7 @@ const Mentor = () => {
               .tz(moment(), `${mentorTimezone}`)
               .format("HH:mm [(GMT] Z[)]");
 
-            let getcountryName = new Intl.DisplayNames(["en"], {
+            const getcountryName = new Intl.DisplayNames(["en"], {
               type: "region",
             });
             const countryName = getcountryName.of(`${mentorCountry}`);

@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
-import MediaPagination from "../MediaPagination/MediaPagination.jsx";
+import MediaPagination from "../MediaPagination/MediaPagination";
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`

@@ -1,7 +1,6 @@
 /* eslint import/no-unresolved: [2, { ignore: ['\\.generated$'] }] */
 
 import React, { useState, useEffect } from "react";
-import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Row, Col } from "reactstrap";

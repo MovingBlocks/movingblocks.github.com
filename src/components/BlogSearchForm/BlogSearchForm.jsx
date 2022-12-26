@@ -8,9 +8,9 @@ const moment = require("moment");
 
 moment.locale("en");
 
-const SearchForm = ({ query, tag, author, date }, props) => {
+const SearchForm = ({ query, tag, author, date }, props, location) => {
   const [showFilter, setShowFilter] = useState(false);
-  let srcLocation = props.location;
+  let {location: srcLocation} = props;
 
   if (typeof window !== `undefined`) {
     srcLocation = location.search;
@@ -172,7 +172,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     color="primary"
                     size="lg"
                     id="search-btn"
-                    onClick={(e) => navigate(`${location.pathname}`)}
+                    onClick={() => navigate(`${location.pathname}`)}
                   >
                     Reset
                   </Button>

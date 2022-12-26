@@ -71,17 +71,18 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "develop": "gatsby develop",
-    "serve": "gatsby serve",
-    "build": "gatsby build",
     "build:pp": "gatsby build --prefix-paths",
+    "build": "gatsby build",
     "clean": "gatsby clean",
+    "develop": "gatsby develop",
+    "format-check:js": "prettier '**/*.{js,jsx}' --check --ignore-path=.eslintignore",
+    "format:js": "prettier '**/*.{js,jsx}' --write --ignore-path=.eslintignore",
+    "generate-images": "node ./scripts/image-generation.js",
+    "lint:css": "stylelint --ignore-path --ignore-path=.eslintignore '**/*.{css,scss}'",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:md": "remark content/posts/",
-    "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write --ignore-path=.eslintignore",
-    "format-check:js": "prettier '**/*.{js,jsx}' --check --ignore-path=.eslintignore",
-    "generate-images": "node ./scripts/image-generation.js"
+    "serve": "gatsby serve",
+    "write-good": "write-good $(glob 'content/posts/**/*.md')"
   },
   "remarkConfig": {
     "plugins": [

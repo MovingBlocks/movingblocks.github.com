@@ -70,7 +70,7 @@ const Mentor = () => {
               }
             }
             const flagURL =
-              "https://www.countryflagsapi.com/png/" + `${mentorCountry}`;
+              `https://flagcdn.com/w40/${mentorCountry.toLowerCase()}.png`;
 
             const timeZone = moment
               .tz(moment(), `${mentorTimezone}`)
@@ -115,8 +115,6 @@ const Mentor = () => {
                         <div className="mt-2">
                           <img
                             src={flagURL}
-                            height="30px"
-                            width="30px"
                             alt="The flag of the mentor's home country"
                           ></img>
                           <span className="ml-3 font-weight-bold h4">

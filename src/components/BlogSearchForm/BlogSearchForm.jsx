@@ -104,7 +104,7 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                   >
                     <option value="">All</option>
                     {[...tagList.values()].map((blogTag, i) => {
-                      return <option value={blogTag} key={`tagOption${i}`}>{blogTag}</option>;
+                      return <option value={blogTag}>{blogTag}</option>;
                     })}
                   </Input>
                 </FormGroup>
@@ -134,7 +134,7 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                   >
                     <option value="">All</option>
                     {[...authorList.values()].map((blogAuthor, i) => {
-                      return <option value={blogAuthor} key={`authorOption${i}`}>{blogAuthor}</option>;
+                      return <option value={blogAuthor}>{blogAuthor}</option>;
                     })}
                   </Input>
                 </FormGroup>

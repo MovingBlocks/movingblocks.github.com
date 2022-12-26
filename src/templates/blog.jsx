@@ -1,5 +1,3 @@
-/* eslint import/no-unresolved: [2, { ignore: ['\\.generated$'] }] */
-
 import React, { useState, useEffect } from "react";
 import { Link, graphql } from "gatsby";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";

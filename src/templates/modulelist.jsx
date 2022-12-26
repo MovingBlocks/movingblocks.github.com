@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
@@ -66,7 +65,6 @@ const Modulelist = (
   return (
     <Layout>
       <div className="index-container">
-        <Helmet title={`Modules | ${config.siteTitle}`} />
         <SEO />
         <SearchForm query={searchQuery} filter={filterTag} />
         {isShown && (
@@ -142,3 +140,9 @@ export const moduleQuery = graphql`
 `;
 
 export default Modulelist;
+
+export const Head = () => (
+  <>
+    <title>{`Modules | ${config.siteTitle}`}</title>
+  </>
+);

@@ -72,7 +72,6 @@ const Blog = (
   return (
     <Layout>
       <div className="index-container">
-        <Helmet title={`Blog | ${config.siteTitle}`} />
         <SEO />
         <SearchForm
           query={searchQuery}
@@ -151,3 +150,9 @@ export const blogQuery = graphql`
 `;
 
 export default Blog;
+
+export const Head = () => (
+  <>
+    <title>{`Blog | ${config.siteTitle}`}</title>
+  </>
+);

@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { Container } from "reactstrap";
 import config from "../../data/SiteConfig";
 import Header from "../components/Header/Header";
@@ -12,10 +11,6 @@ import favicon from "../../static/logos/logo.png";
 // eslint-disable-next-line no-unused-vars
 const Layout = ({ children, location }) => (
   <body>
-    <Helmet>
-      <meta name="description" content={config.siteDescription} />
-      <link rel="icon shortcut" href={favicon} type="image/png" />
-    </Helmet>
     <Header />
     <Container className="main">{children}</Container>
     <Footer />
@@ -23,3 +18,10 @@ const Layout = ({ children, location }) => (
 );
 
 export default Layout;
+
+export const Head = () => (
+  <>
+    <meta name="description" content={config.siteDescription} />
+    <link rel="icon shortcut" href={favicon} type="image/png" />
+  </>
+);

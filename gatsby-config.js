@@ -4,7 +4,10 @@ const config = require("./data/SiteConfig");
 module.exports = {
   pathPrefix: config.pathPrefix === "" ? "/ModuleSite" : config.pathPrefix,
   siteMetadata: {
+    title: config.siteTitle,
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
+    twitterUsername: "@Terasology",
+    image: config.siteLogo,
     rssMetadata: {
       site_url: urljoin(config.siteUrl, config.pathPrefix),
       feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
@@ -48,7 +51,6 @@ module.exports = {
         ]
       }
     },
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
@@ -91,7 +93,7 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: config.siteTitle,
-        short_name: config.siteTitleShort,
+        short_name: config.siteTitle,
         description: config.siteDescription,
         start_url: config.pathPrefix === "" ? "/" : config.pathPrefix,
         background_color: config.backgroundColor,

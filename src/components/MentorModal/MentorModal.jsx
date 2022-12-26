@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Badge, Modal, ModalBody, ModalFooter } from "reactstrap";
 
-const MentorModal = ({ name, desc, tags, customInfo, timeZone, country }) => {
+const MentorModal = ({ name, desc, tags, githubName, timeZone, country }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  let githubURL =
-    "https://github.com/" + `${customInfo[2] && customInfo[2].value.text}`;
+  const githubURL = `https://github.com/${githubName}`;
 
   return (
     <div>
@@ -26,10 +25,8 @@ const MentorModal = ({ name, desc, tags, customInfo, timeZone, country }) => {
           <div className="h3">{desc}</div>
           <div className="mt-3 Modal-custominfo ">
             <span className="ml-3 Modal-customFiled">
-              Github:{" "}
-              <a href={githubURL}>
-                @{customInfo[2] && customInfo[2].value.text}
-              </a>
+              {`Github: `}
+              <a href={githubURL}>{`@${githubName}`}</a>
             </span>
             <br />
             <span className="ml-3 Modal-customFiled">Country: {country}</span>

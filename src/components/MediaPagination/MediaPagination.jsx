@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import React from "react";
+import { PaginationItem, PaginationLink } from "reactstrap";
 import { IconContext } from "react-icons";
 import { GiPlainSquare, GiSquare } from "react-icons/gi";
 
@@ -11,7 +11,7 @@ const MediaPagination = ({
 }) => {
   const sildeNumber = [];
 
-  for (let page = 1; page <= Math.ceil(totalImages / imagePerPage); page++) {
+  for (let page = 1; page <= Math.ceil(totalImages / imagePerPage); page += 1) {
     sildeNumber.push(page);
   }
 
@@ -21,25 +21,16 @@ const MediaPagination = ({
         return (
           <PaginationItem key={number} className="mt-3">
             <PaginationLink onClick={() => paginate(number)} href="#">
-              {(() => {
-                if (currentSlider == number) {
-                  return (
-                    <IconContext.Provider
-                      value={{ className: "pagination-icon", size: "1.5em" }}
-                    >
-                      <GiPlainSquare />
-                    </IconContext.Provider>
-                  );
-                } else {
-                  return (
-                    <IconContext.Provider
-                      value={{ className: "pagination-icon", size: "1.5em" }}
-                    >
-                      <GiSquare />
-                    </IconContext.Provider>
-                  );
-                }
-              })()}
+              <IconContext.Provider
+                value={{ className: "pagination-icon", size: "1.5em" }}
+              >
+                {(() => {
+                  if (currentSlider === number) {
+                    return <GiPlainSquare />
+                  }
+                  return <GiSquare />
+                })()}
+              </IconContext.Provider>
             </PaginationLink>
           </PaginationItem>
         );

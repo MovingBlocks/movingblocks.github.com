@@ -103,8 +103,8 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {[...tagList.values()].map((blogTag) => {
-                      return <option value={blogTag}>{blogTag}</option>;
+                    {[...tagList.values()].map((blogTag, i) => {
+                      return <option value={blogTag} key={`tagOption${i}`}>{blogTag}</option>;
                     })}
                   </Input>
                 </FormGroup>
@@ -133,8 +133,8 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                     value={author}
                   >
                     <option value="">All</option>
-                    {[...authorList.values()].map((blogAuthor) => {
-                      return <option value={blogAuthor}>{blogAuthor}</option>;
+                    {[...authorList.values()].map((blogAuthor, i) => {
+                      return <option value={blogAuthor} key={`authorOption${i}`}>{blogAuthor}</option>;
                     })}
                   </Input>
                 </FormGroup>
@@ -172,7 +172,7 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
                     color="primary"
                     size="lg"
                     id="search-btn"
-                    onClick={() => navigate(`${location.pathname}`)}
+                    onClick={navigate(`${location.pathname}`)}
                   >
                     Reset
                   </Button>

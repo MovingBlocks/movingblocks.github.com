@@ -37,13 +37,13 @@ const Download = () => {
       const data = await response.json();
       let downloadUrl;
 
-      if (platform == "Win32") {
+      if (platform === "Win32") {
         downloadUrl = data.assets && data.assets[3].browser_download_url;
         srcLoc.href = downloadUrl;
-      } else if (platform == "Linux x86_64") {
+      } else if (platform === "Linux x86_64") {
         downloadUrl = data.assets && data.assets[0].browser_download_url;
         srcLoc.href = downloadUrl;
-      } else if (platform == "MacIntel") {
+      } else if (platform === "MacIntel") {
         downloadUrl = data.assets && data.assets[1].browser_download_url;
         srcLoc.href = downloadUrl;
       }
@@ -56,7 +56,7 @@ const Download = () => {
   return (
     <div>
       <h2 className="text-center my-4">Download Terasology Launcher</h2>
-      <div className="download-underline"></div>
+      <div className="download-underline" />
       <div className="m-5">
         <Row className="justify-content-center">
           <Col lg="2" md="3" sm="4" xs="4">
@@ -75,19 +75,19 @@ const Download = () => {
             >
               <option
                 value="Win32"
-                selected={srcNavigator == "Win32" ? "selected" : ""}
+                selected={srcNavigator === "Win32" ? "selected" : ""}
               >
                 Windows (64-bit)
               </option>
               <option
                 value="Linux x86_64"
-                selected={srcNavigator == "Linux x86_64" ? "selected" : ""}
+                selected={srcNavigator === "Linux x86_64" ? "selected" : ""}
               >
                 Linux (64-bit)
               </option>
               <option
                 value="MacIntel"
-                selected={srcNavigator == "MacIntel" ? "selected" : ""}
+                selected={srcNavigator === "MacIntel" ? "selected" : ""}
               >
                 macOS
               </option>
@@ -100,7 +100,7 @@ const Download = () => {
               toggle={onDismiss}
             >
               <span className="alert-box">
-                Problem fetching download link.(Error Code: {status})
+                {`Problem fetching download link.(Error Code: ${status})`}
               </span>
             </Alert>
           </Col>
@@ -119,7 +119,7 @@ const Download = () => {
         </Row>
       </div>
 
-      <div className="download-underline"></div>
+      <div className="download-underline" />
       <div className="my-5 ">
         <h2 className=" m-3 download-system-requirement">
           System Requirements
@@ -128,7 +128,7 @@ const Download = () => {
           <Table className="download-table my-4" borderless>
             <thead>
               <tr>
-                <th></th>
+                <th />
                 <th>Minimum Requirements</th>
                 <th>Recommended Requirements</th>
               </tr>
@@ -136,9 +136,8 @@ const Download = () => {
             <tbody>
               <tr>
                 <th scope="row">System (OS)</th>
-
                 <td>Windows, MacOS, Linux (64 bit)</td>
-                <td></td>
+                <td />
               </tr>
               <tr>
                 <th scope="row">Processor (CPU)</th>
@@ -155,18 +154,27 @@ const Download = () => {
               <tr>
                 <th scope="row">Graphics (GPU)</th>
                 <td>
-                  Intel HD Graphics (Gen 5)<br></br>GeForce 6xxx series or{" "}
-                  <br></br>Radeon HD 2000 series <br></br>with OpenGL 2.1*
+                  Intel HD Graphics (Gen 5)
+                  <br />
+                  GeForce 6xxx series or
+                  {" "}
+                  <br />
+                  Radeon HD 2000 series
+                  <br />
+                  with OpenGL 2.1*
                 </td>
                 <td>
-                  GeForce 8xxx series (or higher) or <br></br>Radeon HD 2000
-                  series (or higher) <br></br> with OpenGL 3.x
+                  GeForce 8xxx series (or higher) or
+                  <br />
+                  Radeon HD 2000 series (or higher)
+                  <br />
+                  with OpenGL 3.x
                 </td>
               </tr>
               <tr>
                 <th scope="row">Storage (HDD)</th>
                 <td>1 GB</td>
-                <td></td>
+                <td />
               </tr>
             </tbody>
           </Table>

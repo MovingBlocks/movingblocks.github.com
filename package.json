@@ -52,7 +52,7 @@
     "cli-glob": "^0.1.0",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",

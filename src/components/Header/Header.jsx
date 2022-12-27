@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { IconContext } from "react-icons";
 import GithubCorner from "react-github-corner";
 import {
@@ -21,6 +21,7 @@ import navLogo from "../../../static/logos/nav_logo.png";
 
 function Header() {
   const [isOpen, toggle] = useState(false);
+  const downloadIconAttributes = useMemo(() => ({ size: "1em", className: "download" }), [])
   return (
     <Navbar color="light" light expand="lg" sticky="top">
       <Container>
@@ -130,7 +131,7 @@ function Header() {
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
                 <IconContext.Provider
-                  value={{ size: "1em", className: "download" }}
+                  value={downloadIconAttributes}
                 >
                   <FaDownload />
                 </IconContext.Provider>

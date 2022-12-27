@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from "reactstrap";
 import { useStaticQuery, graphql } from "gatsby";
@@ -68,6 +68,9 @@ function Gallery() {
   const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
   const paginate = (pageNum) => setCurrentPage(pageNum);
 
+  const prevIconAttributes = useMemo(() => ({ size: "2em", className: "mr-1" }), [])
+  const nextIconAttributes = useMemo(() => ({ size: "2em", className: "ml-1" }), [])
+  const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), [])
   return (
     <div>
       <div>
@@ -104,7 +107,7 @@ function Gallery() {
                   >
                     {" "}
                     <IconContext.Provider
-                      value={{ size: "2em", className: "mr-1" }}
+                      value={prevIconAttributes}
                     >
                       <FaCaretLeft />
                     </IconContext.Provider>
@@ -118,7 +121,7 @@ function Gallery() {
                       className="btn btn-lg btn-primary rounded-circle media-button-cancel"
                       onClick={hideImage}
                     >
-                      <IconContext.Provider value={{ size: "1.5em" }}>
+                      <IconContext.Provider value={closeIconAttributes}>
                         <ImCross />
                       </IconContext.Provider>
                     </button>
@@ -142,7 +145,7 @@ function Gallery() {
                     onClick={showNext}
                   >
                     <IconContext.Provider
-                      value={{ size: "2em", className: "ml-1" }}
+                      value={nextIconAttributes}
                     >
                       <FaCaretRight />
                     </IconContext.Provider>

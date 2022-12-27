@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
@@ -53,6 +53,7 @@ function Download() {
     }
   };
 
+  const downloadIconAttributes = useMemo(() => ({ size: "1em", className: "download" }), [])
   return (
     <div>
       <h2 className="text-center my-4">Download Terasology Launcher</h2>
@@ -108,7 +109,7 @@ function Download() {
             <div className="text-center font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" onClick={() => download()}>
                 <IconContext.Provider
-                  value={{ size: "1em", className: "download" }}
+                  value={downloadIconAttributes}
                 >
                   <FaDownload />
                 </IconContext.Provider>

@@ -19,7 +19,7 @@ import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
 import navLogo from "../../../static/logos/nav_logo.png";
 
-const Header = () => {
+function Header() {
   const [isOpen, toggle] = useState(false);
   return (
     <Navbar color="light" light expand="lg" sticky="top">
@@ -147,6 +147,6 @@ const Header = () => {
       />
     </Navbar>
   );
-};
+}
 
 export default Header;

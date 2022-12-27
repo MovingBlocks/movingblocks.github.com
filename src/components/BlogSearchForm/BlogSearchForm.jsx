@@ -8,7 +8,7 @@ const moment = require("moment");
 
 moment.locale("en");
 
-const SearchForm = ({ query, tag, author, date, location }) => {
+function SearchForm({ query, tag, author, date, location }) {
   const [showFilter, setShowFilter] = useState(false);
   let srcLocation = location;
 
@@ -103,9 +103,7 @@ const SearchForm = ({ query, tag, author, date, location }) => {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {[...tagList.values()].map((blogTag) => {
-                      return <option value={blogTag}>{blogTag}</option>;
-                    })}
+                    {[...tagList.values()].map((blogTag) => <option value={blogTag}>{blogTag}</option>)}
                   </Input>
                 </FormGroup>
               </Col>
@@ -133,9 +131,7 @@ const SearchForm = ({ query, tag, author, date, location }) => {
                     value={author}
                   >
                     <option value="">All</option>
-                    {[...authorList.values()].map((blogAuthor) => {
-                      return <option value={blogAuthor}>{blogAuthor}</option>;
-                    })}
+                    {[...authorList.values()].map((blogAuthor) => <option value={blogAuthor}>{blogAuthor}</option>)}
                   </Input>
                 </FormGroup>
               </Col>
@@ -186,6 +182,6 @@ const SearchForm = ({ query, tag, author, date, location }) => {
       )}
     </Form>
   );
-};
+}
 
 export default SearchForm;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Badge, Modal, ModalBody, ModalFooter } from "reactstrap";
 
-const MentorModal = ({ name, desc, tags, githubName, timeZone, country }) => {
+function MentorModal({ name, desc, tags, githubName, timeZone, country }) {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const githubURL = `https://github.com/${githubName}`;
@@ -40,13 +40,11 @@ const MentorModal = ({ name, desc, tags, githubName, timeZone, country }) => {
           <h6 className="mt-4">Talk to this mentor about :</h6>
           <div className="d-flex overflow-auto ">
             {tags &&
-              tags.map((tag) => {
-                return (
+              tags.map((tag) => (
                   <div className="md-tag m-2">
                     <Badge>{tag.name}</Badge>
                   </div>
-                );
-              })}
+                ))}
           </div>
         </ModalBody>
         <ModalFooter>
@@ -61,6 +59,6 @@ const MentorModal = ({ name, desc, tags, githubName, timeZone, country }) => {
       </Modal>
     </div>
   );
-};
+}
 
 export default MentorModal;

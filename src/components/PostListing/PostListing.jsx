@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 
 import Cards from "../Cards/Cards";
 
-const PostListing = ({ id, postEdges }) => {
+function PostListing({ id, postEdges }) {
   const getPostList = () => {
     const postList = [];
     postEdges.forEach((postEdge) => {
@@ -29,8 +29,7 @@ const PostListing = ({ id, postEdges }) => {
       <Row className="justify-content-center">
         {
           /* Your post list here. */
-          postList.map((post) => {
-            return post.posttype === "blog" ? (
+          postList.map((post) => post.posttype === "blog" ? (
               <Cards
                 title={post.title}
                 path={`/${id}${post.path}`}
@@ -48,12 +47,11 @@ const PostListing = ({ id, postEdges }) => {
                 tags={post.tags}
                 excerpt={post.excerpt}
               />
-            );
-          })
+            ))
         }
       </Row>
     </Col>
   );
-};
+}
 
 export default PostListing;

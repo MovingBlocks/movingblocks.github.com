@@ -3,7 +3,7 @@ import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
 
-const Download = () => {
+function Download() {
   const isBrowser = typeof window !== "undefined";
   let srcNavigator;
   let srcLoc;
@@ -181,6 +181,6 @@ const Download = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Download;

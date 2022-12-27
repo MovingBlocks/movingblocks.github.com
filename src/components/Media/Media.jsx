@@ -7,7 +7,7 @@ import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
 import MediaPagination from "../MediaPagination/MediaPagination";
 
-const Gallery = () => {
+function Gallery() {
   const data = useStaticQuery(graphql`
     query Images {
       images: allFile(filter: { relativeDirectory: { eq: "images" } }) {
@@ -163,6 +163,6 @@ const Gallery = () => {
       />
     </div>
   );
-};
+}
 
 export default Gallery;

@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import moduleList from "../../generated/module-result.json";
 
-const SearchForm = ({ query, filter, location }) => {
+function SearchForm({ query, filter, location }) {
   const tagList = new Set();
   moduleList.forEach((module) => {
     module.tags.forEach((tag) => {
@@ -36,9 +36,7 @@ const SearchForm = ({ query, filter, location }) => {
               value={filter}
             >
               <option value="">All</option>
-              {[...tagList.values()].map((tag) => {
-                return <option value={tag}>{tag}</option>;
-              })}
+              {[...tagList.values()].map((tag) => <option value={tag}>{tag}</option>)}
             </Input>
           </FormGroup>
         </Col>
@@ -73,6 +71,6 @@ const SearchForm = ({ query, filter, location }) => {
       </Row>
     </Form>
   );
-};
+}
 
 export default SearchForm;

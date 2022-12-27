@@ -3,7 +3,7 @@ import { Badge, Modal, ModalFooter } from "reactstrap";
 import { Remarkable } from "remarkable";
 import parse from "html-react-parser";
 
-const ProjectModal = ({ name, desc, tags }) => {
+function ProjectModal({ name, desc, tags }) {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const md = new Remarkable();
@@ -30,13 +30,11 @@ const ProjectModal = ({ name, desc, tags }) => {
           <h6 className="mt-4 ml-2">Project Tags:</h6>
           <div className="d-flex overflow-auto ml-2 ">
             {tags &&
-              tags.map((tag) => {
-                return (
+              tags.map((tag) => (
                   <div className="md-tag m-2">
                     <Badge>{tag.name}</Badge>
                   </div>
-                );
-              })}
+                ))}
           </div>
         </div>
         <ModalFooter>
@@ -51,6 +49,6 @@ const ProjectModal = ({ name, desc, tags }) => {
       </Modal>
     </div>
   );
-};
+}
 
 export default ProjectModal;

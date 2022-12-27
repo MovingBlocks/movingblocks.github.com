@@ -10,7 +10,7 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
 
-const Blog = ({ data, pageContext, location }) => {
+function Blog({ data, pageContext, location }) {
   const { blogCurrentPage, postsNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
   const blogData = blogList;
@@ -108,7 +108,7 @@ const Blog = ({ data, pageContext, location }) => {
       </Row>
     </Layout>
   );
-};
+}
 
 /* eslint no-undef: "off" */
 export const blogQuery = graphql`
@@ -149,4 +149,6 @@ export const blogQuery = graphql`
 
 export default Blog;
 
-export const Head = () => <SEO title={`Blog | ${config.siteTitle}`} />;
+export function Head() {
+  return <SEO title={`Blog | ${config.siteTitle}`} />
+}

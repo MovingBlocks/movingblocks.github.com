@@ -13,4 +13,6 @@ const index = () => (
 
 export default index;
 
-export const Head = () => <SEO />;
+export function Head() {
+  return <SEO />
+}

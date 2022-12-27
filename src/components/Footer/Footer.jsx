@@ -11,7 +11,7 @@ import {
   FaPatreon,
 } from "react-icons/fa";
 
-const Footer = () => {
+function Footer() {
   const footerIconSize = "2.5em";
   return (
     <footer className="mt-auto">
@@ -114,6 +114,6 @@ const Footer = () => {
       </Container>
     </footer>
   );
-};
+}
 
 export default Footer;

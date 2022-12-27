@@ -4,8 +4,8 @@ import { Button } from "reactstrap";
 
 const kebabCase = require("lodash.kebabcase");
 
-const PostTags = ({ tags, type }) => (
-  <div className="post-tag-container">
+function PostTags({ tags, type }) {
+  return <div className="post-tag-container">
     {tags && (
       <Link
         key={tags}
@@ -18,6 +18,6 @@ const PostTags = ({ tags, type }) => (
       </Link>
     )}
   </div>
-);
+}
 
 export default PostTags;

@@ -2,8 +2,8 @@ import React from "react";
 import { Row } from "reactstrap";
 import Cards from "../Cards/Cards";
 
-const SearchResults = ({ query, results }) => (
-  <div aria-label="Search results for all posts">
+function SearchResults({ query, results }) {
+  return <div aria-label="Search results for all posts">
     {!!results.length && query && (
       <h4
         className="search-results-count text-center"
@@ -33,6 +33,6 @@ const SearchResults = ({ query, results }) => (
       </Row>
     )}
   </div>
-);
+}
 
 export default SearchResults;

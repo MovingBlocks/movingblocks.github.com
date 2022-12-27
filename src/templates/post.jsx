@@ -78,9 +78,9 @@ export const pageQuery = graphql`
   }
 `;
 
-export const Head = ({ data, pageContext }) => (
-  <SEO
+export function Head({ data, pageContext }) {
+  return <SEO
     pathname={pageContext.slug}
     title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
   />
-);
+}

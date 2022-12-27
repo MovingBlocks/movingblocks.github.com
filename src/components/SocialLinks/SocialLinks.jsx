@@ -17,7 +17,7 @@ import {
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
-const SocialLinks = ({ postNode, postPath, mobile }) => {
+function SocialLinks({ postNode, postPath, mobile }) {
   const post = postNode.frontmatter;
   const url = urljoin(config.siteUrl, config.pathPrefix, postPath);
   const iconSize = mobile ? 36 : 48;
@@ -65,6 +65,6 @@ const SocialLinks = ({ postNode, postPath, mobile }) => {
       </TelegramShareButton>
     </div>
   );
-};
+}
 
 export default SocialLinks;

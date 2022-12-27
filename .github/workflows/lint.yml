@@ -1,7 +1,6 @@
 name: Lint ModuleSite Code
 
-# Trigger the workflow on all pull requests, merges
-# and once a day at 1:35 UTC (to check for security events)
+# Trigger the workflow on all pull requests with base branch 'master' and commits to 'master'.
 on:
   pull_request:
     branches: [ "master" ]

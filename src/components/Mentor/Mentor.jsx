@@ -54,7 +54,7 @@ const Mentor = () => {
             let mentorGitHubName = "";
             let mentorCountry = "";
             let mentorTimezone = "";
-            for (let i = 0; i < 3; i += 1) {
+            for (let i = 0; i < 3; i++) {
               switch (mentor.customFieldItems[i].idCustomField) {
                 case "5eb71b3551de3a59ce8d9bd8":
                   mentorGitHubName = mentor.customFieldItems[i].value.text;

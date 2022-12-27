@@ -11,7 +11,7 @@ const MediaPagination = ({
 }) => {
   const sildeNumber = [];
 
-  for (let page = 1; page <= Math.ceil(totalImages / imagePerPage); page += 1) {
+  for (let page = 1; page <= Math.ceil(totalImages / imagePerPage); page++) {
     sildeNumber.push(page);
   }
 

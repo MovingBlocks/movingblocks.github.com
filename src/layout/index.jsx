@@ -22,6 +22,6 @@ export default Layout;
 export function Head() {
   return <>
     <meta name="description" content={config.siteDescription} />
-    <link rel="icon shortcut" href={favicon} type="image/png" />
+    <link rel="shortcut icon" href={favicon} type="image/png" />
   </>
 }

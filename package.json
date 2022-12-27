@@ -49,6 +49,7 @@
     "url-join": "^4.0.0"
   },
   "devDependencies": {
+    "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "cli-glob": "^0.1.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -65,8 +66,8 @@
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-standard-scss": "^6.1.0"
   },
-  "engines" : {
-    "node" : "^18.0.0"
+  "engines": {
+    "node": "^18.0.0"
   },
   "keywords": [
     "gatsby"

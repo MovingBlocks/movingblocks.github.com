@@ -66,7 +66,12 @@ const SearchForm = ({ query, filter, location }) => {
           </FormGroup>
         </Col>
         <Col md="2">
-          <Button type="submit" color="primary" size="lg" className="search-btn">
+          <Button
+            type="submit"
+            color="primary"
+            size="lg"
+            className="search-btn"
+          >
             Search
           </Button>
         </Col>

@@ -4,13 +4,13 @@ import GsocTsoc from "../components/GsocTsoc/GsocTsoc";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
-const gsoc_tsoc = () => (
+const gsocTsoc = () => (
   <Layout>
     <GsocTsoc />
   </Layout>
 );
 
-export default gsoc_tsoc;
+export default gsocTsoc;
 
 export const Head = () => (
   <SEO title={`Student Programs | ${config.siteTitle}`} />

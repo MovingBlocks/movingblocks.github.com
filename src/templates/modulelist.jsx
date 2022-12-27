@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, graphql } from "gatsby";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { Row, Col } from "reactstrap";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
@@ -7,14 +9,9 @@ import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/module-result.json";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { Row, Col } from "reactstrap";
 
-const Modulelist = (
-  { data, pageContext: { moduleCurrentPage, moduleNumPages } },
-  props
-) => {
-  console.log(moduleNumPages);
+const Modulelist = ({ data, pageContext, location }) => {
+  const { moduleCurrentPage, moduleNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
 
@@ -28,14 +25,12 @@ const Modulelist = (
   const [isShown, setIsShown] = useState(false);
 
   const [results, setResults] = useState([]);
-  // eslint-disable-next-line react/destructuring-assignment
-  let srcLocation = props.location;
+  let srcLocation = location;
   if (typeof window !== `undefined`) {
-    // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
-  var filterTag = new URLSearchParams(srcLocation).get("filter") || "";
+  const filterTag = new URLSearchParams(srcLocation).get("filter") || "";
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
@@ -65,7 +60,11 @@ const Modulelist = (
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm query={searchQuery} filter={filterTag} />
+        <SearchForm
+          query={searchQuery}
+          filter={filterTag}
+          location={location}
+        />
         {isShown && (
           <SearchResults
             id="src"
@@ -85,7 +84,8 @@ const Modulelist = (
               rel="prev"
               className="btn-primary"
             >
-              <FiArrowLeft /> Previous Page
+              <FiArrowLeft />
+              {` Previous Page`}
             </Link>
           </Col>
         )}
@@ -96,7 +96,8 @@ const Modulelist = (
               rel="next"
               className="btn-primary"
             >
-              Next Page <FiArrowRight />
+              {`Next Page `}
+              <FiArrowRight />
             </Link>
           </Col>
         )}

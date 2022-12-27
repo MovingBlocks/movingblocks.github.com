@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
-import { Badge, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
-import Cards from "../Cards/Cards.jsx";
+import Cards from "../Cards/Cards";
 
 const PostListing = ({ id, postEdges }) => {
   const getPostList = () => {
@@ -31,7 +30,7 @@ const PostListing = ({ id, postEdges }) => {
         {
           /* Your post list here. */
           postList.map((post) => {
-            return post.posttype == "blog" ? (
+            return post.posttype === "blog" ? (
               <Cards
                 title={post.title}
                 path={`/${id}${post.path}`}

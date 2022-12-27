@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import { Link } from "gatsby";
-import { graphql, useStaticQuery } from "gatsby";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
@@ -47,7 +46,7 @@ const Index = () => {
           <div>
             <h1 className="text-center">Welcome to Terasology</h1>
             <div className="container my-4">
-              <div className="home-underline"></div>
+              <div className="home-underline" />
             </div>
           </div>
         </Col>
@@ -66,7 +65,10 @@ const Index = () => {
             artists, and musicians. We encourage others to join!
           </p>
           <div className="my-5">
-            <button className="font-weight-bold btn btn-lg btn-success home-btn">
+            <button
+              type="button"
+              className="font-weight-bold btn btn-lg btn-success home-btn"
+            >
               <Link to="/game" className="link-about">
                 Learn More
               </Link>
@@ -91,7 +93,7 @@ const Index = () => {
         <Col md="12">
           <h1 className="text-center">Recent News</h1>
           <div className="container my-4">
-            <div className="home-underline"></div>
+            <div className="home-underline" />
           </div>
         </Col>
       </Row>
@@ -113,7 +115,7 @@ const Index = () => {
                   <h4 className="mt-auto">{node.frontmatter.title}</h4>
                   <div>
                     <p className="mt-auto font-weight-bold author">
-                      By: {node.frontmatter.author}
+                      {`By: ${node.frontmatter.author}`}
                     </p>
                   </div>
                   <p className="mt-auto my-4 mr-1">{node.excerpt}</p>

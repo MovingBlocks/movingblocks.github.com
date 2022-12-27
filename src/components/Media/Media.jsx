@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from "reactstrap";
 import { useStaticQuery, graphql } from "gatsby";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
-import MediaPagination from "../MediaPagination/MediaPagination.jsx";
+import MediaPagination from "../MediaPagination/MediaPagination";
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`
@@ -22,8 +22,8 @@ const Gallery = () => {
     }
   `);
 
-  let imgArray = [];
-  data.images.nodes.map((img) => {
+  const imgArray = [];
+  data.images.nodes.array?.forEach((img) => {
     imgArray.push(img.childImageSharp.gatsbyImageData);
   });
 
@@ -41,28 +41,28 @@ const Gallery = () => {
 
   const showNext = (e) => {
     e.stopPropagation();
-    let currentIndex = imgArray.indexOf(imageToShow);
+    const currentIndex = imgArray.indexOf(imageToShow);
     if (currentIndex >= imgArray.length - 1) {
       setImageDisplay(false);
     } else {
-      let nextImage = imgArray[currentIndex + 1];
+      const nextImage = imgArray[currentIndex + 1];
       setImageToShow(nextImage);
     }
   };
 
   const showPrev = (e) => {
     e.stopPropagation();
-    let currentIndex = imgArray.indexOf(imageToShow);
+    const currentIndex = imgArray.indexOf(imageToShow);
     if (currentIndex <= 0) {
       setImageDisplay(false);
     } else {
-      let nextImage = imgArray[currentIndex - 1];
+      const nextImage = imgArray[currentIndex - 1];
       setImageToShow(nextImage);
     }
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [imagePerPage, setImagePerPage] = useState(9);
+  const [imagePerPage] = useState(9);
   const indexOfLastImage = currentPage * imagePerPage;
   const indexOfFirstImage = indexOfLastImage - imagePerPage;
   const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
@@ -73,7 +73,7 @@ const Gallery = () => {
       <div>
         <h1 className="text-center">Screenshots</h1>
         <div className="container my-4">
-          <div className="home-underline"></div>
+          <div className="home-underline" />
         </div>
       </div>
 
@@ -98,6 +98,7 @@ const Gallery = () => {
               <div className="lightbox">
                 <div>
                   <button
+                    type="button"
                     className="btn btn-lg btn-primary font-weigth-bolder rounded-circle media-button"
                     onClick={showPrev}
                   >
@@ -113,6 +114,7 @@ const Gallery = () => {
                 <div className="align-items-center">
                   <Col className="d-flex justify-content-end">
                     <button
+                      type="button"
                       className="btn btn-lg btn-primary rounded-circle media-button-cancel"
                       onClick={hideImage}
                     >
@@ -135,6 +137,7 @@ const Gallery = () => {
 
                 <div className="">
                   <button
+                    type="button"
                     className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
                     onClick={showNext}
                   >

@@ -17,3 +17,5 @@ export const useSiteMetadata = () => {
 
   return data.site.siteMetadata;
 };
+
+export default useSiteMetadata;

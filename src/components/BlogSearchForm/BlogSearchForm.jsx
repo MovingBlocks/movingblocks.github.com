@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import { navigate } from "gatsby";
 import { Col, Form, FormGroup, Input, Label, Button, Row } from "reactstrap";
-import { IconContext } from "react-icons";
 import { FaFilter } from "react-icons/fa";
 import blogList from "../../generated/blog-result.json";
+
 const moment = require("moment");
+
 moment.locale("en");
 
-const SearchForm = ({ query, tag, author, date }, props) => {
+const SearchForm = ({ query, tag, author, date, location }) => {
   const [showFilter, setShowFilter] = useState(false);
-  let srcLocation = props.location;
+  let srcLocation = location;
 
   if (typeof window !== `undefined`) {
     srcLocation = location.search;
   }
-  let urlTag = new URLSearchParams(srcLocation).get("tag") || "";
-  let urlAuthor = new URLSearchParams(srcLocation).get("author") || "";
-  let urldate = new URLSearchParams(srcLocation).get("date") || "";
-  let authorList = new Set();
-  let tagList = new Set();
+  const urlTag = new URLSearchParams(srcLocation).get("tag") || "";
+  const urlAuthor = new URLSearchParams(srcLocation).get("author") || "";
+  const urldate = new URLSearchParams(srcLocation).get("date") || "";
+  const authorList = new Set();
+  const tagList = new Set();
 
   blogList.forEach((blog) => {
     authorList.add(blog.author);
-    blog.tags.forEach((tag) => {
-      tagList.add(tag);
+    blog.tags.forEach((blogTag) => {
+      tagList.add(blogTag);
     });
   });
 
@@ -66,14 +67,15 @@ const SearchForm = ({ query, tag, author, date }, props) => {
             size="lg"
             id="search-btn"
           >
-            <FaFilter /> Filter
+            <FaFilter />
+            Filter
           </Button>
         </Col>
       </Row>
-      {showFilter == true ? (
-        <div class="row justify-content-center">
+      {showFilter ? (
+        <div className="row justify-content-center">
           <Col md="10" className="pt-1 align-item-center pb-0 input-col">
-            <div class="row mt-0 justify-content-center">
+            <div className="row mt-0 justify-content-center">
               <Col md="3" className="pt-1">
                 <FormGroup>
                   <Label for="searchQuery">
@@ -101,8 +103,8 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {[...tagList.values()].map((tag) => {
-                      return <option value={tag}>{tag}</option>;
+                    {[...tagList.values()].map((blogTag) => {
+                      return <option value={blogTag}>{blogTag}</option>;
                     })}
                   </Input>
                 </FormGroup>
@@ -131,8 +133,8 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     value={author}
                   >
                     <option value="">All</option>
-                    {[...authorList.values()].map((author) => {
-                      return <option value={author}>{author}</option>;
+                    {[...authorList.values()].map((blogAuthor) => {
+                      return <option value={blogAuthor}>{blogAuthor}</option>;
                     })}
                   </Input>
                 </FormGroup>
@@ -159,7 +161,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                       )
                     }
                     value={date}
-                  ></Input>
+                  />
                 </FormGroup>
               </Col>
 
@@ -170,7 +172,7 @@ const SearchForm = ({ query, tag, author, date }, props) => {
                     color="primary"
                     size="lg"
                     id="search-btn"
-                    onClick={(e) => navigate(`${location.pathname}`)}
+                    onClick={navigate(`${location.pathname}`)}
                   >
                     Reset
                   </Button>

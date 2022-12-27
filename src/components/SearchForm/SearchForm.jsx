@@ -21,8 +21,8 @@ function SearchForm({ query, filter, location }) {
             <Input
               type="select"
               name="filter"
-              id="search-tag"
               bsSize="lg"
+              className="search-filter"
               aria-controls="search-results-count"
               onChange={(e) =>
                 navigate(
@@ -49,7 +49,7 @@ function SearchForm({ query, filter, location }) {
             </Label>
             <Input
               type="search"
-              id="search-input"
+              className="search-input"
               name="keywords"
               bsSize="lg"
               aria-controls="search-results-count"
@@ -66,7 +66,12 @@ function SearchForm({ query, filter, location }) {
           </FormGroup>
         </Col>
         <Col md="2">
-          <Button type="submit" color="primary" size="lg" id="search-btn">
+          <Button
+            type="submit"
+            color="primary"
+            size="lg"
+            className="search-btn"
+          >
             Search
           </Button>
         </Col>

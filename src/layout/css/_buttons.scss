@@ -42,7 +42,7 @@ a.btn-primary {
   border-radius: 5px;
 }
 
-#search-btn {
+.search-btn {
   margin-top: 31px;
   font-size: 1.75rem;
   width: 100%;
@@ -59,7 +59,7 @@ a.btn-primary {
 }
 
 @media screen and (max-width: 768px) {
-  #search-btn {
+  .search-btn {
     margin-top: 10px;
   }
 }

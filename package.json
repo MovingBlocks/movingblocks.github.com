@@ -49,6 +49,7 @@
     "url-join": "^4.0.0"
   },
   "devDependencies": {
+    "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "cli-glob": "^0.1.0",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "^19.0.4",

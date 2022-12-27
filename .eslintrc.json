@@ -16,6 +16,11 @@
         "aspects": ["noHref", "invalidHref", "preferButton"]
       }
     ],
+    "jsx-a11y/control-has-associated-label": [ 2, {
+      "ignoreElements": [
+        "th"
+      ]
+    }],
     "no-plusplus": [
       "error",
       {

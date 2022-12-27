@@ -36,7 +36,9 @@ function SearchForm({ query, filter, location }) {
               value={filter}
             >
               <option value="">All</option>
-              {[...tagList.values()].map((tag) => <option value={tag}>{tag}</option>)}
+              {[...tagList.values()].map((tag) => (
+                <option value={tag}>{tag}</option>
+              ))}
             </Input>
           </FormGroup>
         </Col>

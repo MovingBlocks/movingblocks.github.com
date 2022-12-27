@@ -21,7 +21,7 @@ function SocialLinks({ postNode, postPath, mobile }) {
   const post = postNode.frontmatter;
   const url = urljoin(config.siteUrl, config.pathPrefix, postPath);
 
-  const iconSize = useMemo(() => ({ size: mobile ? 36 : 48 }), [mobile])
+  const iconSize = useMemo(() => ({ size: mobile ? 36 : 48 }), [mobile]);
   return (
     <div className="social-links">
       <RedditShareButton url={url} title={post.title}>

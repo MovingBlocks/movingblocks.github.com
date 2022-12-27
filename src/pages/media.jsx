@@ -15,5 +15,5 @@ const media = () => (
 export default media;
 
 export function Head() {
-  return <SEO title={`Media | ${config.siteTitle}`} />
+  return <SEO title={`Media | ${config.siteTitle}`} />;
 }

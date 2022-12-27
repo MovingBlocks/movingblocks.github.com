@@ -15,5 +15,5 @@ const game = () => (
 export default game;
 
 export function Head() {
-  return <SEO title={`The Game | ${config.siteTitle}`} />
+  return <SEO title={`The Game | ${config.siteTitle}`} />;
 }

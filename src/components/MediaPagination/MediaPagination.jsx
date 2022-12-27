@@ -15,25 +15,26 @@ function MediaPagination({
     sildeNumber.push(page);
   }
 
-  const paginationIconAttributes = useMemo(() => ({ className: "pagination-icon", size: "1.5em" }), [])
+  const paginationIconAttributes = useMemo(
+    () => ({ className: "pagination-icon", size: "1.5em" }),
+    []
+  );
   return (
     <div className="d-flex page-section">
       {sildeNumber.map((number) => (
-          <PaginationItem key={number} className="mt-3">
-            <PaginationLink onClick={() => paginate(number)} href="#">
-              <IconContext.Provider
-                value={paginationIconAttributes}
-              >
-                {(() => {
-                  if (currentSlider === number) {
-                    return <GiPlainSquare />;
-                  }
-                  return <GiSquare />;
-                })()}
-              </IconContext.Provider>
-            </PaginationLink>
-          </PaginationItem>
-        ))}
+        <PaginationItem key={number} className="mt-3">
+          <PaginationLink onClick={() => paginate(number)} href="#">
+            <IconContext.Provider value={paginationIconAttributes}>
+              {(() => {
+                if (currentSlider === number) {
+                  return <GiPlainSquare />;
+                }
+                return <GiSquare />;
+              })()}
+            </IconContext.Provider>
+          </PaginationLink>
+        </PaginationItem>
+      ))}
     </div>
   );
 }

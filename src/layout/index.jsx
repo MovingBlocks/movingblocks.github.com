@@ -10,18 +10,22 @@ import favicon from "../../static/logos/logo.png";
 
 // eslint-disable-next-line no-unused-vars
 function Layout({ children, location }) {
-  return <body>
-    <Header />
-    <Container className="main">{children}</Container>
-    <Footer />
-  </body>
+  return (
+    <body>
+      <Header />
+      <Container className="main">{children}</Container>
+      <Footer />
+    </body>
+  );
 }
 
 export default Layout;
 
 export function Head() {
-  return <>
-    <meta name="description" content={config.siteDescription} />
-    <link rel="shortcut icon" href={favicon} type="image/png" />
-  </>
+  return (
+    <>
+      <meta name="description" content={config.siteDescription} />
+      <link rel="shortcut icon" href={favicon} type="image/png" />
+    </>
+  );
 }

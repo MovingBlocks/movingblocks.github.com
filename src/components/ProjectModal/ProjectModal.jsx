@@ -31,10 +31,10 @@ function ProjectModal({ name, desc, tags }) {
           <div className="d-flex overflow-auto ml-2 ">
             {tags &&
               tags.map((tag) => (
-                  <div className="md-tag m-2">
-                    <Badge>{tag.name}</Badge>
-                  </div>
-                ))}
+                <div className="md-tag m-2">
+                  <Badge>{tag.name}</Badge>
+                </div>
+              ))}
           </div>
         </div>
         <ModalFooter>

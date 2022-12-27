@@ -150,5 +150,5 @@ export const blogQuery = graphql`
 export default Blog;
 
 export function Head() {
-  return <SEO title={`Blog | ${config.siteTitle}`} />
+  return <SEO title={`Blog | ${config.siteTitle}`} />;
 }

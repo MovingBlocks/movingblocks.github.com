@@ -14,5 +14,5 @@ const index = () => (
 export default index;
 
 export function Head() {
-  return <SEO />
+  return <SEO />;
 }

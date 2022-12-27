@@ -29,7 +29,8 @@ function PostListing({ id, postEdges }) {
       <Row className="justify-content-center">
         {
           /* Your post list here. */
-          postList.map((post) => post.posttype === "blog" ? (
+          postList.map((post) =>
+            post.posttype === "blog" ? (
               <Cards
                 title={post.title}
                 path={`/${id}${post.path}`}
@@ -47,7 +48,8 @@ function PostListing({ id, postEdges }) {
                 tags={post.tags}
                 excerpt={post.excerpt}
               />
-            ))
+            )
+          )
         }
       </Row>
     </Col>

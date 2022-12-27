@@ -53,7 +53,10 @@ function Download() {
     }
   };
 
-  const downloadIconAttributes = useMemo(() => ({ size: "1em", className: "download" }), [])
+  const downloadIconAttributes = useMemo(
+    () => ({ size: "1em", className: "download" }),
+    []
+  );
   return (
     <div>
       <h2 className="text-center my-4">Download Terasology Launcher</h2>
@@ -108,9 +111,7 @@ function Download() {
           <Col lg="3" md="9">
             <div className="text-center font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" onClick={() => download()}>
-                <IconContext.Provider
-                  value={downloadIconAttributes}
-                >
+                <IconContext.Provider value={downloadIconAttributes}>
                   <FaDownload />
                 </IconContext.Provider>
                 Download

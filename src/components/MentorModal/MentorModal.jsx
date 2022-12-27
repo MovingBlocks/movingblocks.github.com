@@ -41,10 +41,10 @@ function MentorModal({ name, desc, tags, githubName, timeZone, country }) {
           <div className="d-flex overflow-auto ">
             {tags &&
               tags.map((tag) => (
-                  <div className="md-tag m-2">
-                    <Badge>{tag.name}</Badge>
-                  </div>
-                ))}
+                <div className="md-tag m-2">
+                  <Badge>{tag.name}</Badge>
+                </div>
+              ))}
           </div>
         </ModalBody>
         <ModalFooter>

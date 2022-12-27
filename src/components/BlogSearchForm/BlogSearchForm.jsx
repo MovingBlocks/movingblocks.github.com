@@ -103,7 +103,9 @@ function SearchForm({ query, tag, author, date, location }) {
                     value={tag}
                   >
                     <option value="">All</option>
-                    {[...tagList.values()].map((blogTag) => <option value={blogTag}>{blogTag}</option>)}
+                    {[...tagList.values()].map((blogTag) => (
+                      <option value={blogTag}>{blogTag}</option>
+                    ))}
                   </Input>
                 </FormGroup>
               </Col>
@@ -131,7 +133,9 @@ function SearchForm({ query, tag, author, date, location }) {
                     value={author}
                   >
                     <option value="">All</option>
-                    {[...authorList.values()].map((blogAuthor) => <option value={blogAuthor}>{blogAuthor}</option>)}
+                    {[...authorList.values()].map((blogAuthor) => (
+                      <option value={blogAuthor}>{blogAuthor}</option>
+                    ))}
                   </Input>
                 </FormGroup>
               </Col>

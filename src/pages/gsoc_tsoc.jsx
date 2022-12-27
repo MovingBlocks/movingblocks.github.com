@@ -13,5 +13,5 @@ const gsocTsoc = () => (
 export default gsocTsoc;
 
 export function Head() {
-  return <SEO title={`Student Programs | ${config.siteTitle}`} />
+  return <SEO title={`Student Programs | ${config.siteTitle}`} />;
 }

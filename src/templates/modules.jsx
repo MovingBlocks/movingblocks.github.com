@@ -29,7 +29,9 @@ export default class ModuleTemplate extends React.Component {
             />
             <h1>{post.title}</h1>
             <div className="d-flex mt-2 ml-2">
-              {post.tags.map((tag) => <PostTags tags={tag} type="modules" />)}
+              {post.tags.map((tag) => (
+                <PostTags tags={tag} type="modules" />
+              ))}
             </div>
             <hr />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
@@ -70,8 +72,10 @@ export const pageQuery = graphql`
 `;
 
 export function Head({ data, pageContext }) {
-  return <SEO
-    pathname={pageContext.slug}
-    title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
-  />
+  return (
+    <SEO
+      pathname={pageContext.slug}
+      title={`${data.markdownRemark.frontmatter.title} | ${config.siteTitle}`}
+    />
+  );
 }

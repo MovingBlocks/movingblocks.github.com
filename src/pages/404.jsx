@@ -15,5 +15,5 @@ const error404 = () => (
 export default error404;
 
 export function Head() {
-  return <title>{`Not Found | ${config.siteTitle}`}</title>
+  return <title>{`Not Found | ${config.siteTitle}`}</title>;
 }

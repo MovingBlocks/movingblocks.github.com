@@ -142,5 +142,5 @@ export const moduleQuery = graphql`
 export default Modulelist;
 
 export function Head() {
-  return <SEO title={`Modules | ${config.siteTitle}`} />
+  return <SEO title={`Modules | ${config.siteTitle}`} />;
 }

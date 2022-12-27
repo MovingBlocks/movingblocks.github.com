@@ -21,7 +21,10 @@ import navLogo from "../../../static/logos/nav_logo.png";
 
 function Header() {
   const [isOpen, toggle] = useState(false);
-  const downloadIconAttributes = useMemo(() => ({ size: "1em", className: "download" }), [])
+  const downloadIconAttributes = useMemo(
+    () => ({ size: "1em", className: "download" }),
+    []
+  );
   return (
     <Navbar color="light" light expand="lg" sticky="top">
       <Container>
@@ -130,9 +133,7 @@ function Header() {
             </NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" href="/downloads">
-                <IconContext.Provider
-                  value={downloadIconAttributes}
-                >
+                <IconContext.Provider value={downloadIconAttributes}>
                   <FaDownload />
                 </IconContext.Provider>
                 Download

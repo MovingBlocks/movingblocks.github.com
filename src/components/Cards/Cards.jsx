@@ -14,7 +14,9 @@ function Cards({ title, cover, tags, excerpt, path, author, ddate }) {
           </div>
           <div className="d-flex">
             <div className="md-tag mt-3 ml-3">
-              {tags.slice(0, 2).map((tag) => <Badge className="mr-2">{tag}</Badge>)}
+              {tags.slice(0, 2).map((tag) => (
+                <Badge className="mr-2">{tag}</Badge>
+              ))}
             </div>
             <span className="card-people ml-2 mt-4 mr-4  h4">
               {tagCount > 0 ? `+${tagCount} more` : ""}{" "}

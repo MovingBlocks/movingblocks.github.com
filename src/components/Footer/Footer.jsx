@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 
 function Footer() {
-  const footerIconSize = useMemo(() => ({ size: "2.5em" }), [])
+  const footerIconSize = useMemo(() => ({ size: "2.5em" }), []);
   return (
     <footer className="mt-auto">
       <Container className="footer">

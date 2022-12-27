@@ -68,9 +68,15 @@ function Gallery() {
   const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
   const paginate = (pageNum) => setCurrentPage(pageNum);
 
-  const prevIconAttributes = useMemo(() => ({ size: "2em", className: "mr-1" }), [])
-  const nextIconAttributes = useMemo(() => ({ size: "2em", className: "ml-1" }), [])
-  const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), [])
+  const prevIconAttributes = useMemo(
+    () => ({ size: "2em", className: "mr-1" }),
+    []
+  );
+  const nextIconAttributes = useMemo(
+    () => ({ size: "2em", className: "ml-1" }),
+    []
+  );
+  const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), []);
   return (
     <div>
       <div>
@@ -106,9 +112,7 @@ function Gallery() {
                     onClick={showPrev}
                   >
                     {" "}
-                    <IconContext.Provider
-                      value={prevIconAttributes}
-                    >
+                    <IconContext.Provider value={prevIconAttributes}>
                       <FaCaretLeft />
                     </IconContext.Provider>
                   </button>
@@ -144,9 +148,7 @@ function Gallery() {
                     className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
                     onClick={showNext}
                   >
-                    <IconContext.Provider
-                      value={nextIconAttributes}
-                    >
+                    <IconContext.Provider value={nextIconAttributes}>
                       <FaCaretRight />
                     </IconContext.Provider>
                   </button>

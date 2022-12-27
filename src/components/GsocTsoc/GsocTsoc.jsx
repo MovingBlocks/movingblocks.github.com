@@ -73,7 +73,7 @@ const GsocTsoc = () => {
     <div>
       <div>
         <h4 className="text-center">
-          {`About Google summer of code & Terasology summer of code${" "}`}
+          {`About Google summer of code & Terasology summer of code`}
         </h4>
         <div className="container my-4">
           <div className="home-underline" />

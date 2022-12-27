@@ -72,7 +72,7 @@ const About = () => {
                 <Col md="5" className="p-4">
                   <h3 className="text-white">History</h3>
                   <p className="text-justify text-white ">
-                    Founded in 2011 by Benjamin &quot;Begla&quot; Glatzel while
+                    Founded in 2011 by {`Benjamin "Begla" Glatzel`} while
                     researching procedural terrain generation and effective
                     rendering techniques, He succeded in creating a minecraft
                     like demo From the ground up, Terasology was built to be a
@@ -103,7 +103,7 @@ const About = () => {
                     <div className="ml-2 mr-4 ">
                       <h3 className="ml-2 mb-3 text-white">Modding API</h3>
                       <p className="ml-2 mr-3 text-justify ">
-                        Terasology&apos;s engine uses a whitelisting approach to
+                        {`Terasology's`} engine uses a whitelisting approach to
                         expose an API for modules using two primary methods and
                         a rarely needed third one:
                       </p>

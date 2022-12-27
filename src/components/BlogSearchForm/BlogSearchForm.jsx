@@ -72,7 +72,7 @@ const SearchForm = ({ query, tag, author, date }, props, location) => {
           </Button>
         </Col>
       </Row>
-      {showFilter === true ? (
+      {showFilter ? (
         <div className="row justify-content-center">
           <Col md="10" className="pt-1 align-item-center pb-0 input-col">
             <div className="row mt-0 justify-content-center">

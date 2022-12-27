@@ -44,7 +44,12 @@ jobs:
           name: generated
           path: src/generated
       - name: Lint JavaScript
-        run: yarn run lint:js
+        run: yarn run lint:js --output-file eslint-results.sarif
+      - name: Upload analysis results to GItHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: eslint-results.sarif
+          wait-for-processing: true
   prettier:
     runs-on: ubuntu-latest
     steps:

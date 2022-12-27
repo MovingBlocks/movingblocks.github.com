@@ -118,11 +118,10 @@ const Header = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
-              <NavLink>
+              <NavLink activeClassName="active">
                 <a
                   href="https://terasology.org/AdventureSite/"
                   className="text-color"
-                  activeClassName="active"
                 >
                   Explore
                 </a>

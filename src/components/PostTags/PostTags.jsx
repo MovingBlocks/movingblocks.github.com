@@ -1,7 +1,8 @@
 import React from "react";
-const kebabCase = require("lodash.kebabcase");
 import { Link } from "gatsby";
 import { Button } from "reactstrap";
+
+const kebabCase = require("lodash.kebabcase");
 
 const PostTags = ({ tags, type }) => (
   <div className="post-tag-container">

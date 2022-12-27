@@ -3,8 +3,8 @@ import { navigate } from "gatsby";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import moduleList from "../../generated/module-result.json";
 
-const SearchForm = ({ query, filter }) => {
-  let tagList = new Set();
+const SearchForm = ({ query, filter, location }) => {
+  const tagList = new Set();
   moduleList.forEach((module) => {
     module.tags.forEach((tag) => {
       tagList.add(tag);

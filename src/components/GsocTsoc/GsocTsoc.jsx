@@ -73,41 +73,43 @@ const GsocTsoc = () => {
     <div>
       <div>
         <h4 className="text-center">
-          About Google summer of code & Terasology summer of code{" "}
+          About Google summer of code & Terasology summer of code
         </h4>
         <div className="container my-4">
-          <div className="home-underline"></div>
+          <div className="home-underline" />
 
           <Row className="justify-content-center">
             <div className="col-md-10">
               <div className="text-center  gsoc_tsoc_content">
-                <b>Google Summer of Code (GSoC)</b> is a global program focused
-                on bringing more student developers into open source software
-                development. Every year more than 1200 students are accepted.
-                Accepted students work with a mentor and become a part of the
-                open source community. Many become lifetime open source
-                developers. Spend your summer break writing code and learning
-                about open source development while earning a stipend. For more
-                information visit{" "}
+                <b>Google Summer of Code (GSoC) </b>
+                is a global program focused on bringing more student developers
+                into open source software development. Every year more than 1200
+                students are accepted. Accepted students work with a mentor and
+                become a part of the open source community. Many become lifetime
+                open source developers. Spend your summer break writing code and
+                learning about open source development while earning a stipend.
+                For more information visit{" "}
                 <a
                   className="text-success font-weight-bold"
                   href="https://summerofcode.withgoogle.com/"
                 >
-                  here
+                  Google Summer of Code
                 </a>
+                .
               </div>
               <div className="text-center mt-4 gsoc_tsoc_content">
-                <b>Terasology Summer of Code (TSoC)</b> is similar as Google
-                Summer of Code (GSoC). It is sponsored by Terasology with
-                different timeline then GSoC, do half of work, take a break for
-                exams and other thing and then do second half work. Lower
-                stipend then GSoC. For more information join our{" "}
+                <b>Terasology Summer of Code (TSoC) </b>
+                is similar as Google Summer of Code (GSoC). It is sponsored by
+                Terasology with different timeline then GSoC, do half of work,
+                take a break for exams and other thing and then do second half
+                work. Lower stipend than GSoC. For more information join our{" "}
                 <a
                   className="text-success font-weight-bold"
                   href="https://discordapp.com/invite/Terasology"
                 >
                   Discord
                 </a>
+                .
               </div>
             </div>
           </Row>
@@ -117,7 +119,7 @@ const GsocTsoc = () => {
       <div>
         <h4 className="text-center">Available Projects</h4>
         <div className="container my-4">
-          <div className="home-underline"></div>
+          <div className="home-underline" />
         </div>
       </div>
       <div className="container">
@@ -128,7 +130,7 @@ const GsocTsoc = () => {
           toggle={AvailabeProjectDismiss}
         >
           <span className="alert-box">
-            Problem fetching projects .(Error Code: {availableProjectStatus})
+            {`Problem fetching projects. (Error Code: ${availableProjectStatus})`}
           </span>
         </Alert>
       </div>
@@ -141,16 +143,16 @@ const GsocTsoc = () => {
           return (
             <div className="col h-100 ">
               <div className="card h-100 row_shadow">
-                {project.cover.scaled != undefined ? (
+                {project.cover.scaled !== undefined ? (
                   <img
                     src={project.cover.scaled[4].url}
-                    class="card-img-top"
+                    className="card-img-top"
                     alt={project.name}
                   />
                 ) : (
                   <img
                     src={defaultCardImg}
-                    class="card-img-top"
+                    className="card-img-top"
                     alt={project.name}
                   />
                 )}
@@ -181,7 +183,7 @@ const GsocTsoc = () => {
         <div>
           <h4 className="text-center">Ongoing Projects</h4>
           <div className="container my-4">
-            <div className="home-underline"></div>
+            <div className="home-underline" />
           </div>
         </div>
         <div className="container">
@@ -192,7 +194,7 @@ const GsocTsoc = () => {
             toggle={ongoingProjectDismiss}
           >
             <span className="alert-box">
-              Problem fetching projects .(Error Code: {ongoingProjectStatus})
+              {`Problem fetching projects. (Error Code: ${ongoingProjectStatus})`}
             </span>
           </Alert>
         </div>
@@ -206,16 +208,16 @@ const GsocTsoc = () => {
             return (
               <div className="col  h-100 ">
                 <div className="card h-100 row_shadow">
-                  {project.cover.scaled != undefined ? (
+                  {project.cover.scaled !== undefined ? (
                     <img
                       src={project.cover.scaled[4].url}
-                      class="card-img-top"
+                      className="card-img-top"
                       alt={project.name}
                     />
                   ) : (
                     <img
                       src={defaultCardImg}
-                      class="card-img-top"
+                      className="card-img-top"
                       alt={project.name}
                     />
                   )}

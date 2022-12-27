@@ -22,7 +22,7 @@ const Footer = () => {
               <span> The Terasology Foundation</span>
             </h5>
             <h6 className="text-muted">
-              Licensed under: {"  "}
+              {`Licensed under: `}
               <a
                 className="text-success"
                 href="https://www.apache.org/licenses/LICENSE-2.0"

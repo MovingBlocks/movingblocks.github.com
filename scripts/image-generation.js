@@ -30,7 +30,6 @@ const generateTeraSaturdayImage = (
     .replace(/\s/g, "-")
     .toLowerCase()}`;
 
-  console.log(blogName); // for classifying which blog image is generated
   const ctx = canvas.getContext("2d");
   ctx.save();
   loadImage(defaultImage).then((image) => {
@@ -110,7 +109,6 @@ const generateCustomLogoImage = (
     .replace(/\s/g, "-")
     .toLowerCase()}`;
 
-  console.log(blogName); // for classifying which blog image is generated
   const ctx = canvas.getContext("2d");
   const customImage = customLogo;
 

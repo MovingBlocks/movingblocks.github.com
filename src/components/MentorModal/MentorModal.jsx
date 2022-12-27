@@ -29,10 +29,12 @@ const MentorModal = ({ name, desc, tags, githubName, timeZone, country }) => {
               <a href={githubURL}>{`@${githubName}`}</a>
             </span>
             <br />
-            <span className="ml-3 Modal-customFiled">Country: {country}</span>
+            <span className="ml-3 Modal-customFiled">
+              {`Country: ${country}`}
+            </span>
             <br />
             <span className="ml-3 Modal-customFiled">
-              Local Time: {timeZone}
+              {`Local Time: ${timeZone}`}
             </span>
           </div>
           <h6 className="mt-4">Talk to this mentor about :</h6>

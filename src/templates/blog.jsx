@@ -63,7 +63,7 @@ function Blog({ data, pageContext, location }) {
       setResults([]);
       setIsShown(false);
     }
-  }, [srcLocation]);
+  }, [blogData, filterAuthor, filterTag, filterdate, searchQuery]);
 
   return (
     <Layout>

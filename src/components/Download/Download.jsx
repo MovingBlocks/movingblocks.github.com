@@ -26,7 +26,7 @@ function Download() {
     } else {
       setPlatform("Win32");
     }
-  }, []);
+  }, [srcNavigator]);
 
   const download = async () => {
     const url =

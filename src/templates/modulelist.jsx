@@ -55,7 +55,7 @@ function Modulelist({ data, pageContext, location }) {
       setResults([]);
       setIsShown(false);
     }
-  }, [srcLocation]);
+  }, [filterTag, moduleData, searchQuery]);
 
   return (
     <Layout>

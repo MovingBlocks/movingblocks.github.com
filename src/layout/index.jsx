@@ -9,7 +9,7 @@ import "./css/style.scss";
 import favicon from "../../static/logos/logo.png";
 
 // eslint-disable-next-line no-unused-vars
-function Layout({ children, location }) {
+function Layout({ children }) {
   return (
     <body>
       <Header />

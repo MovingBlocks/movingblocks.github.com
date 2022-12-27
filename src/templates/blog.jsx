@@ -10,10 +10,8 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
 
-const Blog = (
-  { data, pageContext: { blogCurrentPage, postsNumPages } },
-  props
-) => {
+const Blog = ({ data, pageContext, location }) => {
+  const { blogCurrentPage, postsNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
   const blogData = blogList;
 
@@ -27,10 +25,8 @@ const Blog = (
   const [isShown, setIsShown] = useState(false);
 
   const [results, setResults] = useState([]);
-  // eslint-disable-next-line react/destructuring-assignment
-  let srcLocation = props.location;
+  let srcLocation = location;
   if (typeof window !== `undefined`) {
-    // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
@@ -77,6 +73,7 @@ const Blog = (
           tag={filterTag}
           author={filterAuthor}
           date={filterdate}
+          location={location}
         />
         {isShown && (
           <SearchResults id="src" query={searchQuery} results={results} />

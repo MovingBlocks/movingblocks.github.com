@@ -10,10 +10,8 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/module-result.json";
 
-const Modulelist = (
-  { data, pageContext: { moduleCurrentPage, moduleNumPages } },
-  props
-) => {
+const Modulelist = ({ data, pageContext, location }) => {
+  const { moduleCurrentPage, moduleNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
 
@@ -27,10 +25,8 @@ const Modulelist = (
   const [isShown, setIsShown] = useState(false);
 
   const [results, setResults] = useState([]);
-  // eslint-disable-next-line react/destructuring-assignment
-  let srcLocation = props.location;
+  let srcLocation = location;
   if (typeof window !== `undefined`) {
-    // eslint-disable-next-line no-restricted-globals
     srcLocation = location.search;
   }
   const searchQuery = new URLSearchParams(srcLocation).get("keywords") || "";
@@ -64,7 +60,11 @@ const Modulelist = (
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm query={searchQuery} filter={filterTag} />
+        <SearchForm
+          query={searchQuery}
+          filter={filterTag}
+          location={location}
+        />
         {isShown && (
           <SearchResults
             id="src"

@@ -8,9 +8,9 @@ const moment = require("moment");
 
 moment.locale("en");
 
-const SearchForm = ({ query, tag, author, date }, props, location) => {
+const SearchForm = ({ query, tag, author, date, location }) => {
   const [showFilter, setShowFilter] = useState(false);
-  let { location: srcLocation } = props;
+  let srcLocation = location;
 
   if (typeof window !== `undefined`) {
     srcLocation = location.search;

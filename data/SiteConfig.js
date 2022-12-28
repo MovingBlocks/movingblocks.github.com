@@ -16,12 +16,16 @@ const config = {
 
 // Config Validation Checks
 
-// Make sure pathPrefix is empty if not needed
-if (config.pathPrefix === "/") {
-  config.pathPrefix = "";
-} else {
-  // Make sure pathPrefix only contains the first forward slash
-  config.pathPrefix = `/${config.pathPrefix.replace(/^\/|\/$/g, "")}`;
+if (config.siteUrl !== "") {
+  let url;
+  try {
+    // remove trailing slashes
+    config.siteUrl = `${config.siteUrl.replace(/[\/]+$/g, "")}`;
+    // check that siteUrl is a valid URL
+    url = new URL(config.siteUrl);
+  } catch (e) {
+    console.error("Configured siteUrl '" + config.siteUrl + "' is not a valid URL: " + e);
+  }
 }
 
 if (config.pathPrefix !== "") {

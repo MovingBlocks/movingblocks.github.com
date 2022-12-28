@@ -3,7 +3,7 @@ const config = {
   siteTitleAlt: "Terasology Project | An Open Source Voxel World", // Alternative site title for SEO.
   siteLogo: "/logos/logo.png", // Logo used for SEO and manifest.
   siteUrl: "https://terasology.org", // Domain of your website without pathPrefix.
-  pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
+  pathPrefix: "/ModuleSite", // Prefixes all links. Currently used to deploy ModuleSite as sub-site of current Terasology website.
   siteDescription:
     "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for RSS feeds/meta description tag.
   postDefaultCategoryID: "Update", // Default category for posts.
@@ -14,7 +14,7 @@ const config = {
   backgroundColor: "#e0e0e0", // Used for setting manifest background color.
 };
 
-// Validate
+// Config Validation Checks
 
 // Make sure pathPrefix is empty if not needed
 if (config.pathPrefix === "/") {
@@ -24,8 +24,11 @@ if (config.pathPrefix === "/") {
   config.pathPrefix = `/${config.pathPrefix.replace(/^\/|\/$/g, "")}`;
 }
 
-// Make sure siteUrl doesn't have an ending forward slash
-if (config.siteUrl.substr(-1) === "/")
-  config.siteUrl = config.siteUrl.slice(0, -1);
+if (config.pathPrefix !== "") {
+  // remove all leading and trailing slashes and prepend single slash
+  config.pathPrefix = `/${config.pathPrefix.replace(/^[\/]+|[\/]+$/g, "")}`;
+  // validate that pathPrefix is a valid path with single leading and no trailing slashes
+  /^(\/[a-z0-9\s_@\-^!#$%&+={}\[\]]+)+$/i.test(config.pathPrefix)
+}
 
 module.exports = config;

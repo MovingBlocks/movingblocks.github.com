@@ -5,7 +5,7 @@ cover: "./cover.jpg"
 description: "The idea of extreme view distances with LOD chunks is nearly as old as this project, and now it's finally a dream come true."
 author: "Skaldarnar"
 ddate: "Feb 07th, 2021"
-date: "2021-02-7"
+date: "2021-02-07"
 tags: ["TeraSpotlight"]
 ---
 

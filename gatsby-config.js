@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: config.siteTitle,
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
-    twitterUsername: "@Terasology",
+    twitterUsername: config.twitterUsername,
     image: config.siteLogo,
   },
   plugins: [

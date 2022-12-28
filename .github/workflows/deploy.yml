@@ -4,7 +4,8 @@ on:
   # Trigger the workflow on push only for master branch
   push:
     branches:
-      - "master"
+      - master
+      - ci/fix-deployment
 
   # Allows to run workflow manually from Actions tab
   workflow_dispatch:

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { IconContext } from "react-icons";
 import { Container, Row, Col } from "reactstrap";
 import {
@@ -11,8 +11,8 @@ import {
   FaPatreon,
 } from "react-icons/fa";
 
-const Footer = () => {
-  const footerIconSize = "2.5em";
+function Footer() {
+  const footerIconSize = useMemo(() => ({ size: "2.5em" }), []);
   return (
     <footer className="mt-auto">
       <Container className="footer">
@@ -39,7 +39,7 @@ const Footer = () => {
                 </a>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="github-icon-color"
                     href="https://github.com/MovingBlocks/Terasology"
@@ -49,7 +49,7 @@ const Footer = () => {
                 </IconContext.Provider>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="facebook-icon-color"
                     href="https://www.facebook.com/Terasology"
@@ -59,7 +59,7 @@ const Footer = () => {
                 </IconContext.Provider>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="twitter-icon-color"
                     href="https://twitter.com/terasology"
@@ -69,7 +69,7 @@ const Footer = () => {
                 </IconContext.Provider>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="discord-icon-color"
                     href="https://discord.gg/terasology"
@@ -79,7 +79,7 @@ const Footer = () => {
                 </IconContext.Provider>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="youtube-icon-color footericon"
                     href="https://www.youtube.com/user/blockmaniaTV"
@@ -89,7 +89,7 @@ const Footer = () => {
                 </IconContext.Provider>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="reddit-icon-color "
                     href="https://reddit.com/r/Terasology"
@@ -99,7 +99,7 @@ const Footer = () => {
                 </IconContext.Provider>
               </div>
               <div>
-                <IconContext.Provider value={{ size: footerIconSize }}>
+                <IconContext.Provider value={footerIconSize}>
                   <a
                     className="ml-2  mt-2 patreon-icon-color"
                     href="https://www.patreon.com/Terasology"
@@ -114,6 +114,6 @@ const Footer = () => {
       </Container>
     </footer>
   );
-};
+}
 
 export default Footer;

@@ -270,14 +270,7 @@ exports.createPages = async ({ graphql, actions }) => {
     return 0;
   });
 
-  postsEdges.forEach((edge, index) => {
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    // eslint-disable-next-line no-unused-vars
-    const nextEdge = postsEdges[nextID];
-    // eslint-disable-next-line no-unused-vars
-    const prevEdge = postsEdges[prevID];
-
+  postsEdges.forEach((edge) => {
     if (edge.node.frontmatter.posttype === "module") {
       createPage({
         path: `/modules${edge.node.fields.slug}`,

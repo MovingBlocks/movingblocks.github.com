@@ -9,19 +9,23 @@ import "./css/style.scss";
 import favicon from "../../static/logos/logo.png";
 
 // eslint-disable-next-line no-unused-vars
-const Layout = ({ children, location }) => (
-  <body>
-    <Header />
-    <Container className="main">{children}</Container>
-    <Footer />
-  </body>
-);
+function Layout({ children }) {
+  return (
+    <body>
+      <Header />
+      <Container className="main">{children}</Container>
+      <Footer />
+    </body>
+  );
+}
 
 export default Layout;
 
-export const Head = () => (
-  <>
-    <meta name="description" content={config.siteDescription} />
-    <link rel="icon shortcut" href={favicon} type="image/png" />
-  </>
-);
+export function Head() {
+  return (
+    <>
+      <meta name="description" content={config.siteDescription} />
+      <link rel="shortcut icon" href={favicon} type="image/png" />
+    </>
+  );
+}

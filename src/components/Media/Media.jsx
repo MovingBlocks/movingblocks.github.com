@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Row, Col } from "reactstrap";
 import { useStaticQuery, graphql } from "gatsby";
@@ -7,7 +7,7 @@ import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
 import MediaPagination from "../MediaPagination/MediaPagination";
 
-const Gallery = () => {
+function Gallery() {
   const data = useStaticQuery(graphql`
     query Images {
       images: allFile(filter: { relativeDirectory: { eq: "images" } }) {
@@ -68,6 +68,15 @@ const Gallery = () => {
   const currentImgArray = imgArray.slice(indexOfFirstImage, indexOfLastImage);
   const paginate = (pageNum) => setCurrentPage(pageNum);
 
+  const prevIconAttributes = useMemo(
+    () => ({ size: "2em", className: "mr-1" }),
+    []
+  );
+  const nextIconAttributes = useMemo(
+    () => ({ size: "2em", className: "ml-1" }),
+    []
+  );
+  const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), []);
   return (
     <div>
       <div>
@@ -103,9 +112,7 @@ const Gallery = () => {
                     onClick={showPrev}
                   >
                     {" "}
-                    <IconContext.Provider
-                      value={{ size: "2em", className: "mr-1" }}
-                    >
+                    <IconContext.Provider value={prevIconAttributes}>
                       <FaCaretLeft />
                     </IconContext.Provider>
                   </button>
@@ -118,7 +125,7 @@ const Gallery = () => {
                       className="btn btn-lg btn-primary rounded-circle media-button-cancel"
                       onClick={hideImage}
                     >
-                      <IconContext.Provider value={{ size: "1.5em" }}>
+                      <IconContext.Provider value={closeIconAttributes}>
                         <ImCross />
                       </IconContext.Provider>
                     </button>
@@ -141,9 +148,7 @@ const Gallery = () => {
                     className="btn btn-lg btn-primary ml-3 font-weigth-bolder rounded-circle media-button"
                     onClick={showNext}
                   >
-                    <IconContext.Provider
-                      value={{ size: "2em", className: "ml-1" }}
-                    >
+                    <IconContext.Provider value={nextIconAttributes}>
                       <FaCaretRight />
                     </IconContext.Provider>
                   </button>
@@ -163,6 +168,6 @@ const Gallery = () => {
       />
     </div>
   );
-};
+}
 
 export default Gallery;

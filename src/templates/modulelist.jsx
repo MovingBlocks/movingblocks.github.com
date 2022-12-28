@@ -10,7 +10,7 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/module-result.json";
 
-const Modulelist = ({ data, pageContext, location }) => {
+function Modulelist({ data, pageContext, location }) {
   const { moduleCurrentPage, moduleNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
@@ -55,7 +55,7 @@ const Modulelist = ({ data, pageContext, location }) => {
       setResults([]);
       setIsShown(false);
     }
-  }, [srcLocation]);
+  }, [filterTag, moduleData, searchQuery]);
 
   return (
     <Layout>
@@ -104,7 +104,7 @@ const Modulelist = ({ data, pageContext, location }) => {
       </Row>
     </Layout>
   );
-};
+}
 
 /* eslint no-undef: "off" */
 export const moduleQuery = graphql`
@@ -141,4 +141,6 @@ export const moduleQuery = graphql`
 
 export default Modulelist;
 
-export const Head = () => <SEO title={`Modules | ${config.siteTitle}`} />;
+export function Head() {
+  return <SEO title={`Modules | ${config.siteTitle}`} />;
+}

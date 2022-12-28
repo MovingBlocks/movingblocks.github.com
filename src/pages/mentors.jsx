@@ -12,4 +12,6 @@ const mentors = () => (
 
 export default mentors;
 
-export const Head = () => <SEO title={`Mentors | ${config.siteTitle}`} />;
+export function Head() {
+  return <SEO title={`Mentors | ${config.siteTitle}`} />;
+}

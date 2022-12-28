@@ -38,10 +38,9 @@ const SearchForm = ({ query, tag, author, date, location }) => {
             </Label>
             <Input
               type="search"
-              id="search-input"
               name="keywords"
               bsSize="lg"
-              className="form-control"
+              className="search-input form-control"
               aria-controls="search-results-count"
               onChange={(e) =>
                 navigate(
@@ -61,11 +60,11 @@ const SearchForm = ({ query, tag, author, date, location }) => {
           <Button
             type="button"
             color="primary"
+            className="search-btn"
+            size="lg"
             onClick={() => {
               setShowFilter(!showFilter);
             }}
-            size="lg"
-            id="search-btn"
           >
             <FaFilter />
             Filter
@@ -84,11 +83,10 @@ const SearchForm = ({ query, tag, author, date, location }) => {
 
                   <Input
                     type="select"
-                    name="author"
-                    id="search-tag"
+                    name="tags"
                     bsSize="lg"
                     aria-controls="search-results-count"
-                    className="option-position"
+                    className="search-filter option-position"
                     onChange={(e) =>
                       navigate(
                         `${
@@ -117,10 +115,9 @@ const SearchForm = ({ query, tag, author, date, location }) => {
                   <Input
                     type="select"
                     name="author"
-                    id="search-tag"
                     bsSize="lg"
                     aria-controls="search-results-count"
-                    className="option-position"
+                    className="search-filter option-position"
                     onChange={(e) =>
                       navigate(
                         `${location.pathname}?keywords=${query}&tag=${
@@ -146,11 +143,10 @@ const SearchForm = ({ query, tag, author, date, location }) => {
                   </Label>
                   <Input
                     type="date"
-                    name="author"
-                    id="search-tag"
+                    name="date"
                     bsSize="lg"
                     aria-controls="search-results-count"
-                    className="option-position"
+                    className="search-filter option-position"
                     onChange={(e) =>
                       navigate(
                         `${location.pathname}?keywords=${query}&tag=${
@@ -171,8 +167,8 @@ const SearchForm = ({ query, tag, author, date, location }) => {
                     type="button"
                     color="primary"
                     size="lg"
-                    id="search-btn"
-                    onClick={navigate(`${location.pathname}`)}
+                    className="search-btn"
+                    onClick={() => navigate(`${location.pathname}`)}
                   >
                     Reset
                   </Button>

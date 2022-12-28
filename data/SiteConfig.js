@@ -6,8 +6,6 @@ const config = {
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:
     "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for RSS feeds/meta description tag.
-  siteRss: "/rss.xml", // Path to the RSS file.
-  googleAnalyticsID: "", // GA tracking ID.
   postDefaultCategoryID: "Update", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
@@ -29,9 +27,5 @@ if (config.pathPrefix === "/") {
 // Make sure siteUrl doesn't have an ending forward slash
 if (config.siteUrl.substr(-1) === "/")
   config.siteUrl = config.siteUrl.slice(0, -1);
-
-// Make sure siteRss has a starting forward slash
-if (config.siteRss && config.siteRss[0] !== "/")
-  config.siteRss = `/${config.siteRss}`;
 
 module.exports = config;

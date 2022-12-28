@@ -8,7 +8,7 @@ const moment = require("moment");
 
 moment.locale("en");
 
-function SearchForm({ query, tag, author, date, location }) {
+function SearchForm({ query, tag, author, date, location, prefix }) {
   const [showFilter, setShowFilter] = useState(false);
   let srcLocation = location;
 
@@ -44,7 +44,7 @@ function SearchForm({ query, tag, author, date, location }) {
               aria-controls="search-results-count"
               onChange={(e) =>
                 navigate(
-                  `${location.pathname}?keywords=${encodeURIComponent(
+                  `${prefix}?keywords=${encodeURIComponent(
                     e.target.value
                   )}&tag=${tag === undefined ? `${urlTag}` : `${tag}`}&author=${
                     author === undefined ? `${urlAuthor}` : `${author}`
@@ -89,9 +89,7 @@ function SearchForm({ query, tag, author, date, location }) {
                     className="search-filter option-position"
                     onChange={(e) =>
                       navigate(
-                        `${
-                          location.pathname
-                        }?keywords=${query}&tag=${encodeURIComponent(
+                        `${prefix}?keywords=${query}&tag=${encodeURIComponent(
                           e.target.value
                         )}&author=${
                           author === undefined ? `${urlAuthor}` : `${author}`
@@ -120,7 +118,7 @@ function SearchForm({ query, tag, author, date, location }) {
                     className="search-filter option-position"
                     onChange={(e) =>
                       navigate(
-                        `${location.pathname}?keywords=${query}&tag=${
+                        `${prefix}?keywords=${query}&tag=${
                           tag === undefined ? `${urlTag}` : `${tag}`
                         }&author=${encodeURIComponent(e.target.value)}&date=${
                           date === undefined ? `${urldate}` : `${date}`
@@ -149,7 +147,7 @@ function SearchForm({ query, tag, author, date, location }) {
                     className="search-filter option-position"
                     onChange={(e) =>
                       navigate(
-                        `${location.pathname}?keywords=${query}&tag=${
+                        `${prefix}?keywords=${query}&tag=${
                           tag === undefined ? `${urlTag}` : `${tag}`
                         }&author=${
                           author === undefined ? `${urlAuthor}` : `${author}`
@@ -168,7 +166,7 @@ function SearchForm({ query, tag, author, date, location }) {
                     color="primary"
                     size="lg"
                     className="search-btn"
-                    onClick={() => navigate(`${location.pathname}`)}
+                    onClick={() => navigate(`${prefix}`)}
                   >
                     Reset
                   </Button>

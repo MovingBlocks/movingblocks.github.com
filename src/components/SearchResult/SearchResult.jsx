@@ -1,9 +1,10 @@
 import React from "react";
 import { Row } from "reactstrap";
 import moment from "moment";
+import urljoin from "url-join";
 import Cards from "../Cards/Cards";
 
-function SearchResults({ query, results }) {
+function SearchResults({ query, results, prefix }) {
   return (
     <div aria-label="Search results for all posts">
       {!!results.length && query && (
@@ -22,17 +23,20 @@ function SearchResults({ query, results }) {
       {!!results.length && (
         <Row className="justify-content-center">
           {results.map(
-            ({ title, path, cover, tags, excerpt, date, author }) => (
+            (entry) => {
+              console.log(JSON.stringify(entry, null, 2))
+              const { title, slug, cover, tags, excerpt, date, author } = entry; 
+              return (
               <Cards
                 title={title}
-                path={path}
+                path={urljoin(prefix, slug)}
                 cover={cover.childImageSharp}
                 tags={tags}
                 excerpt={excerpt}
                 date={moment(date).format("MMMM DD, YYYY")}
                 author={author}
               />
-            )
+            )}
           )}
         </Row>
       )}

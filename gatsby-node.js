@@ -160,14 +160,21 @@ exports.createPages = async ({ graphql, actions }) => {
           ) {
             edges {
               node {
+                excerpt
                 fields {
                   slug
+                  date(formatString: "MMMM DD, YYYY")
                 }
                 frontmatter {
                   author
                   date
                   tags
                   title
+                  cover {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
                 }
                 internal {
                   content
@@ -180,18 +187,22 @@ exports.createPages = async ({ graphql, actions }) => {
     );
     const index = blogSearchIndexQueryResult.data.allMarkdownRemark.edges.map(
       (edge) => {
-        const { fields, frontmatter, internal } = edge.node;
-        const { slug } = fields;
-        const { title, tags, author, date } = frontmatter;
+        const { excerpt, fields, frontmatter, internal } = edge.node;
+        const { slug, date: ddate } = fields;
+        const { title, tags, author, date, cover } = frontmatter;
         const { content } = internal;
 
         return {
           author,
+          excerpt,
           content,
-          date,
+          cover,
+          date,      
+          ddate,    
           slug,
           tags,
           title,
+          posttype: "blog"
         };
       }
     );

@@ -9,7 +9,7 @@ const config = {
   postDefaultCategoryID: "Update", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
-  copyright: "Copyright © 2019. Moving Blocks!", // Copyright string for the footer of the website and RSS feed.
+  copyright: "Copyright © 2022. Moving Blocks!", // Copyright string for the footer of the website.
   themeColor: "#c62828", // Used for setting manifest and progress theme colors.
   backgroundColor: "#e0e0e0", // Used for setting manifest background color.
 };

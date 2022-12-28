@@ -3,7 +3,8 @@ name: Publish ModuleSite on gh-pages
 on:
   # Trigger the workflow on push only for master branch
   push:
-    branches: ["master"]
+    branches:
+      - "master"
 
   # Allows to run workflow manually from Actions tab
   workflow_dispatch:
@@ -36,32 +37,24 @@ jobs:
           node-version: '18'
           # Globally caches yarn dependencies
           cache: 'yarn'
-      # TODO: do we really need this?
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v2
-        with:
-          # Automatically inject pathPrefix in your Gatsby configuration file.
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: gatsby
-      # TODO: do we really need this?
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            public
-            .cache
-          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-build-
+      # TODO: include pages setup action (actions/configure-pages@v2)
+      #       when/after cleaning up path prefix weirdness
+      # - name: Setup Pages
+      #   id: pages
+      #   uses: 
+      #   with:
+      #     # Automatically inject pathPrefix in your Gatsby configuration file.
+      #     static_site_generator: gatsby
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Build ModuleSite
         run: yarn run build:pp
       - name: Upload artifact
+        # packaging static assets and uploading artifact that can be deployed to GitHub Pages
+        # https://github.com/actions/upload-pages-artifact
         uses: actions/upload-pages-artifact@v1
         with:
+          # path to static assets that will be packaged and uploaded
           path: ./public
   deploy:
     needs: build
@@ -72,4 +65,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        # action expects artifact named `github-pages` to have been created prior to execution
+        # this is done automatically using `actions/upload-pages-artifact`
+        # https://github.com/actions/deploy-pages
         uses: actions/deploy-pages@v1

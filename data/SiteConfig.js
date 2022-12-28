@@ -23,7 +23,7 @@ if (config.siteUrl !== "") {
   let url;
   try {
     // check that siteUrl does not have trailing slashes
-    if (/\/+$/.test(config.siteUrl)) {
+    if (/\/$/.test(config.siteUrl)) {
       console.error(
         `{Configured siteUrl '${config.siteUrl}' has trailing slashes}`
       );
@@ -45,7 +45,7 @@ if (config.siteUrl !== "") {
 
 if (config.pathPrefix !== "") {
   // check that pathPrefix does not have trailing slashes
-  if (/\/+$/.test(config.pathPrefix)) {
+  if (/\/$/.test(config.pathPrefix)) {
     console.error(
       `{Configured pathPrefix '${config.pathPrefix}' has trailing slashes}`
     );

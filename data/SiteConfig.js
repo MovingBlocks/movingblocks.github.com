@@ -2,8 +2,10 @@ const config = {
   siteTitle: "Terasology", // Site title. Same as Short site title for home screen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "Terasology Project | An Open Source Voxel World", // Alternative site title for SEO.
   siteLogo: "/logos/logo.png", // Logo used for SEO and manifest.
-  siteUrl: "https://terasology.org", // Domain of your website without pathPrefix.
-  pathPrefix: "/ModuleSite", // Prefixes all links. Currently used to deploy ModuleSite as sub-site of current Terasology website.
+  siteUrl: "https://terasology.org", // Domain of your website without pathPrefix. Should not have trailing slashes.
+  // Prefixes all links. Should not have trailing slashes. Should have only a single leading slash.
+  // Currently used to deploy ModuleSite as sub-site of current Terasology website.
+  pathPrefix: "/ModuleSite",
   siteDescription:
     "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for meta description tag.
   postDefaultCategoryID: "Update", // Default category for posts.
@@ -12,7 +14,7 @@ const config = {
   copyright: "Copyright © 2022. Moving Blocks!", // Copyright string for the footer of the website.
   themeColor: "#c62828", // Used for setting manifest and progress theme colors.
   backgroundColor: "#e0e0e0", // Used for setting manifest background color.
-  twitterUsername: "@Terasology", // used in site metadata
+  twitterUsername: "@Terasology", // Used in site metadata
 };
 
 // Config Validation Checks

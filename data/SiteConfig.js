@@ -22,20 +22,40 @@ const config = {
 if (config.siteUrl !== "") {
   let url;
   try {
-    // remove trailing slashes
-    config.siteUrl = `${config.siteUrl.replace(/[\/]+$/g, "")}`;
+    // check that siteUrl does not have trailing slashes
+    if (/\/+$/.test(config.siteUrl)) {
+      console.error(
+        `{Configured siteUrl '${config.siteUrl}' has trailing slashes}`
+      );
+    }
     // check that siteUrl is a valid URL
     url = new URL(config.siteUrl);
+    // check that siteUrl does not have a path (should be configured as pathPrefix instead)
+    if (url.pathname !== "/") {
+      console.error(
+        `{Configured siteUrl '${config.siteUrl}' has undesired path '${url.pathname}', please use 'pathPrefix' configuration instead}`
+      );
+    }
   } catch (e) {
-    console.error("Configured siteUrl '" + config.siteUrl + "' is not a valid URL: " + e);
+    console.error(
+      `{Configured siteUrl '${config.siteUrl}' is not a valid URL: ${e}}`
+    );
   }
 }
 
 if (config.pathPrefix !== "") {
-  // remove all leading and trailing slashes and prepend single slash
-  config.pathPrefix = `/${config.pathPrefix.replace(/^[\/]+|[\/]+$/g, "")}`;
-  // validate that pathPrefix is a valid path with single leading and no trailing slashes
-  /^(\/[a-z0-9\s_@\-^!#$%&+={}\[\]]+)+$/i.test(config.pathPrefix)
+  // check that pathPrefix does not have trailing slashes
+  if (/\/+$/.test(config.pathPrefix)) {
+    console.error(
+      `{Configured pathPrefix '${config.pathPrefix}' has trailing slashes}`
+    );
+  }
+  // validate that pathPrefix is a valid path (with single leading and no trailing slashes)
+  if (!/^(\/[a-z0-9\s_@\-^!#$%&+={}[\]]+)+$/i.test(config.pathPrefix)) {
+    console.error(
+      `{Configured pathPrefix "${config.pathPrefix}" is not a valid path or has multiple leading slashes}`
+    );
+  }
 }
 
 module.exports = config;

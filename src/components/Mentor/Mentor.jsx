@@ -4,7 +4,7 @@ import moment from "moment-timezone";
 import defaultprofile from "../../../static/logos/profile-placeholder.png";
 import MentorModal from "../MentorModal/MentorModal";
 
-const Mentor = () => {
+function Mentor() {
   const [mentors, setmentors] = useState([]);
   const [visible, setVisible] = useState(false);
   const [status, setStatus] = useState("");
@@ -87,17 +87,15 @@ const Mentor = () => {
                     <Row className="justify-content-center">
                       <Col lg="5" md="12" className="text-center">
                         {mentor.attachments.length !== 0 ? (
-                          mentor.attachments.map((image) => {
-                            return (
-                              <img
-                                className="rounded-circle "
-                                src={image.url}
-                                height="80px"
-                                width="80px"
-                                alt={mentor.name}
-                              />
-                            );
-                          })
+                          mentor.attachments.map((image) => (
+                            <img
+                              className="rounded-circle "
+                              src={image.url}
+                              height="80px"
+                              width="80px"
+                              alt={mentor.name}
+                            />
+                          ))
                         ) : (
                           <img
                             className="rounded-circle"
@@ -115,7 +113,7 @@ const Mentor = () => {
                           <img
                             src={flagURL}
                             alt="The flag of the mentor's home country"
-                          ></img>
+                          />
                           <span className="ml-3 font-weight-bold h4">
                             {countryName}
                           </span>
@@ -146,6 +144,6 @@ const Mentor = () => {
       </Row>
     </Col>
   );
-};
+}
 
 export default Mentor;

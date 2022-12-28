@@ -4,7 +4,7 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
-const Index = () => {
+function Index() {
   const data = useStaticQuery(graphql`
     query homePageQuery {
       allMarkdownRemark(
@@ -157,6 +157,6 @@ const Index = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Index;

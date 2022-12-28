@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
 
-const Download = () => {
+function Download() {
   const isBrowser = typeof window !== "undefined";
   let srcNavigator;
   let srcLoc;
@@ -26,7 +26,7 @@ const Download = () => {
     } else {
       setPlatform("Win32");
     }
-  }, []);
+  }, [srcNavigator]);
 
   const download = async () => {
     const url =
@@ -53,6 +53,10 @@ const Download = () => {
     }
   };
 
+  const downloadIconAttributes = useMemo(
+    () => ({ size: "1em", className: "download" }),
+    []
+  );
   return (
     <div>
       <h2 className="text-center my-4">Download Terasology Launcher</h2>
@@ -107,9 +111,7 @@ const Download = () => {
           <Col lg="3" md="9">
             <div className="text-center font-weight-bold btn-primary download-btn">
               <NavLink className="text-white" onClick={() => download()}>
-                <IconContext.Provider
-                  value={{ size: "1em", className: "download" }}
-                >
+                <IconContext.Provider value={downloadIconAttributes}>
                   <FaDownload />
                 </IconContext.Provider>
                 Download
@@ -181,6 +183,6 @@ const Download = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Download;

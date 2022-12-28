@@ -12,4 +12,6 @@ const download = () => (
 
 export default download;
 
-export const Head = () => <SEO title={`Download | ${config.siteTitle}`} />;
+export function Head() {
+  return <SEO title={`Download | ${config.siteTitle}`} />;
+}

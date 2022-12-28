@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
 import defaultCardImg from "../../../static/logos/defaultCardcover.jpg";
 
-const GsocTsoc = () => {
+function GsocTsoc() {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -139,45 +139,43 @@ const GsocTsoc = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         className="card_project"
       >
-        {readyProjects.map((project) => {
-          return (
-            <div className="col h-100 ">
-              <div className="card h-100 row_shadow">
-                {project.cover.scaled !== undefined ? (
-                  <img
-                    src={project.cover.scaled[4].url}
-                    className="card-img-top"
-                    alt={project.name}
-                  />
-                ) : (
-                  <img
-                    src={defaultCardImg}
-                    className="card-img-top"
-                    alt={project.name}
-                  />
-                )}
-                <div className="card-body h-25 mt-2">
-                  <p className="font-weight-bolder">{project.name}</p>
-                  <div className="d-flex">
-                    <div className="md-tag tag_size">
-                      {project &&
-                        project.labels.map((tag) => {
-                          return <Badge className="m-1">{tag.name}</Badge>;
-                        })}
-                    </div>
+        {readyProjects.map((project) => (
+          <div className="col h-100 ">
+            <div className="card h-100 row_shadow">
+              {project.cover.scaled !== undefined ? (
+                <img
+                  src={project.cover.scaled[4].url}
+                  className="card-img-top"
+                  alt={project.name}
+                />
+              ) : (
+                <img
+                  src={defaultCardImg}
+                  className="card-img-top"
+                  alt={project.name}
+                />
+              )}
+              <div className="card-body h-25 mt-2">
+                <p className="font-weight-bolder">{project.name}</p>
+                <div className="d-flex">
+                  <div className="md-tag tag_size">
+                    {project &&
+                      project.labels.map((tag) => (
+                        <Badge className="m-1">{tag.name}</Badge>
+                      ))}
                   </div>
                 </div>
-                <div className="ml-4 mb-4">
-                  <ProjectModal
-                    name={project.name}
-                    desc={project.desc}
-                    tags={project.labels}
-                  />
-                </div>
+              </div>
+              <div className="ml-4 mb-4">
+                <ProjectModal
+                  name={project.name}
+                  desc={project.desc}
+                  tags={project.labels}
+                />
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </Carousel>
       <div>
         <div>
@@ -204,50 +202,48 @@ const GsocTsoc = () => {
           className="mt-4 card_project"
           removeArrowOnDeviceType={["tablet", "mobile"]}
         >
-          {ongoingProjects.map((project) => {
-            return (
-              <div className="col  h-100 ">
-                <div className="card h-100 row_shadow">
-                  {project.cover.scaled !== undefined ? (
-                    <img
-                      src={project.cover.scaled[4].url}
-                      className="card-img-top"
-                      alt={project.name}
-                    />
-                  ) : (
-                    <img
-                      src={defaultCardImg}
-                      className="card-img-top"
-                      alt={project.name}
-                    />
-                  )}
+          {ongoingProjects.map((project) => (
+            <div className="col  h-100 ">
+              <div className="card h-100 row_shadow">
+                {project.cover.scaled !== undefined ? (
+                  <img
+                    src={project.cover.scaled[4].url}
+                    className="card-img-top"
+                    alt={project.name}
+                  />
+                ) : (
+                  <img
+                    src={defaultCardImg}
+                    className="card-img-top"
+                    alt={project.name}
+                  />
+                )}
 
-                  <div className="card-body  mt-2">
-                    <p className="font-weight-bolder">{project.name}</p>
-                    <div className="d-flex">
-                      <div className="md-tag tag_size">
-                        {project &&
-                          project.labels.map((tag) => {
-                            return <Badge className="m-1">{tag.name}</Badge>;
-                          })}
-                      </div>
+                <div className="card-body  mt-2">
+                  <p className="font-weight-bolder">{project.name}</p>
+                  <div className="d-flex">
+                    <div className="md-tag tag_size">
+                      {project &&
+                        project.labels.map((tag) => (
+                          <Badge className="m-1">{tag.name}</Badge>
+                        ))}
                     </div>
                   </div>
+                </div>
 
-                  <div className="ml-4 mb-4">
-                    <ProjectModal
-                      name={project.name}
-                      desc={project.desc}
-                      tags={project.labels}
-                    />
-                  </div>
+                <div className="ml-4 mb-4">
+                  <ProjectModal
+                    name={project.name}
+                    desc={project.desc}
+                    tags={project.labels}
+                  />
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </Carousel>
       </div>
     </div>
   );
-};
+}
 export default GsocTsoc;

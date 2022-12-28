@@ -114,7 +114,7 @@ function Blog({ data, pageContext, location }) {
 export const blogQuery = graphql`
   query blogQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { posttype: { eq: "blog" } } }
       limit: $limit
       skip: $skip

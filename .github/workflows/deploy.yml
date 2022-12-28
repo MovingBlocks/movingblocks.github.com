@@ -6,19 +6,66 @@ on:
     branches:
       - master
 
+  # Allows to run workflow manually from Actions tab
+  workflow_dispatch:
+
+# Sets permissions of GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  # Trigger job i.e. build and run on the latest version of ubuntu
   build:
     runs-on: ubuntu-latest
-    # Templates for building and releasing ModuleSite
     steps:
-      # Template that allows deploy.yml file to access github project when running on its own environment
-      - uses: actions/checkout@v2
-      # Template to build and release ModuleSite
-      - uses: enriikke/gatsby-gh-pages-action@v2.2.0
+      - name: Checkout PR
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          access-token: ${{ secrets.MODULESITE_DEPLOY_TOKEN }}
-          # Output after building the ModuleSite will be pushed on deploy branch
-          deploy-branch: deploy
-          # Additional arguments that get passed to gatsby build 
-          gatsby-args: --prefix-paths
+          node-version: '18'
+          # Globally caches yarn dependencies
+          cache: 'yarn'
+      # TODO: include pages setup action (actions/configure-pages@v2)
+      #       when/after cleaning up path prefix weirdness
+      # - name: Setup Pages
+      #   id: pages
+      #   uses: 
+      #   with:
+      #     # Automatically inject pathPrefix in your Gatsby configuration file.
+      #     static_site_generator: gatsby
+      - name: Install Project Dependencies
+        run: yarn install --frozen-lockfile --immutable
+      - name: Build ModuleSite
+        run: yarn run build:pp
+      - name: Upload artifact
+        # packaging static assets and uploading artifact that can be deployed to GitHub Pages
+        # https://github.com/actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # path to static assets that will be packaged and uploaded
+          path: ./public
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        # action expects artifact named `github-pages` to have been created prior to execution
+        # this is done automatically using `actions/upload-pages-artifact`
+        # https://github.com/actions/deploy-pages
+        uses: actions/deploy-pages@v1

@@ -1,6 +1,8 @@
 const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
 
+const { moduleQuery } = require("./src/hooks/github-query");
+
 module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
@@ -87,6 +89,11 @@ module.exports = {
         board_id: "5eb7158715e9136e6a4ef285",
         include_custom_fields: true,
       },
+    },
+    {
+      resolve: "gatsby-source-github-api",
+      token: process.env.GITHUB_ACCESS_TOKEN,
+      graphQLQuery: moduleQuery,
     },
     {
       resolve: "gatsby-plugin-nprogress",

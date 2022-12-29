@@ -1,5 +1,6 @@
 import React from "react";
 import { Row } from "reactstrap";
+import moment from "../../../node_modules/moment/moment";
 import Cards from "../Cards/Cards";
 
 function SearchResults({ query, results }) {
@@ -21,14 +22,14 @@ function SearchResults({ query, results }) {
       {!!results.length && (
         <Row className="justify-content-center">
           {results.map(
-            ({ title, path, cover, tags, excerpt, ddate, author }) => (
+            ({ title, path, cover, tags, excerpt, date, author }) => (
               <Cards
                 title={title}
                 path={path}
                 cover={cover.childImageSharp}
                 tags={tags}
                 excerpt={excerpt}
-                ddate={ddate}
+                date={moment(date).format("MMMM DD, YYYY")}
                 author={author}
               />
             )

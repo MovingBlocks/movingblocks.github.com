@@ -5,11 +5,12 @@ import Layout from "../layout";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
+import moment from "../../node_modules/moment/moment";
 
 export default class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
-    const { slug } = pageContext;
+    const { slug, date } = pageContext;
     const postNode = data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -26,7 +27,7 @@ export default class PostTemplate extends React.Component {
               <h1>{post.title}</h1>
               <h6>
                 {`Posted by ${post.author} on `}
-                <span>{post.ddate}</span>
+                <span>{moment(date).format("MMMM DD, YYYY")}</span>
               </h6>
             </div>
             <br />
@@ -60,7 +61,6 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        ddate
         tags
         author
         cover {

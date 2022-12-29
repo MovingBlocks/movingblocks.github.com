@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { Row, Col, Badge } from "reactstrap";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-function Cards({ title, cover, tags, excerpt, path, author, ddate }) {
+function Cards({ title, cover, tags, excerpt, path, author, date }) {
   const tagCount = tags.length - 2;
   return (
     <Col className="ml-4 mr-4 pt-0 mt-2 mb-4 " lg="3" md="8" sm="12">
@@ -28,7 +28,7 @@ function Cards({ title, cover, tags, excerpt, path, author, ddate }) {
           <div className="mt-1 mr-2" lang="en">
             <p className="word-break">{excerpt}</p>
 
-            {author && ddate ? (
+            {author && date ? (
               <div className="mt-auto">
                 <p style={{ fontSize: "14px" }}>
                   <b>By: </b>
@@ -36,7 +36,7 @@ function Cards({ title, cover, tags, excerpt, path, author, ddate }) {
                 </p>
                 <p style={{ fontSize: "14px" }}>
                   <b>Posted on: </b>
-                  {ddate}
+                  {date}
                 </p>
               </div>
             ) : (

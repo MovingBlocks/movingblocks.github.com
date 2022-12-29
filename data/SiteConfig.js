@@ -20,7 +20,6 @@ const config = {
 // Config Validation Checks
 
 if (config.siteUrl !== "") {
-  let url;
   try {
     // check that siteUrl does not have trailing slashes
     if (/\/$/.test(config.siteUrl)) {
@@ -29,7 +28,7 @@ if (config.siteUrl !== "") {
       );
     }
     // check that siteUrl is a valid URL
-    url = new URL(config.siteUrl);
+    const url = new URL(config.siteUrl);
     // check that siteUrl does not have a path (should be configured as pathPrefix instead)
     if (url.pathname !== "/") {
       console.error(

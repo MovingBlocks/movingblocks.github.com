@@ -10,7 +10,7 @@ import config from "../../data/SiteConfig";
 export default class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
-    const { slug, date } = pageContext;
+    const { slug } = pageContext;
     const postNode = data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -19,6 +19,7 @@ export default class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
+    const date = postNode.fields.date
     return (
       <Layout>
         <div>

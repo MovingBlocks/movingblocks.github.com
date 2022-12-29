@@ -4,7 +4,6 @@ title: "TeraSaturday #5: Do All The Changes!"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Skaldarnar"
-ddate: "Nov 21st, 2020"
 date: "2020-11-21"
 tags: ["TeraSaturday"]
 imageTag: "TeraSaturday"

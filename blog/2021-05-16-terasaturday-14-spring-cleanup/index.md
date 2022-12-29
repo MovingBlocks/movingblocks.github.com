@@ -4,7 +4,6 @@ title: "TeraSaturday #14: Spring Cleanup"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Skaldarnar"
-ddate: "May 16th, 2021"
 date: "2021-05-16"
 tags: ["TeraSaturday"]
 ---

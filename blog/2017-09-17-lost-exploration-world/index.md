@@ -4,7 +4,6 @@ title: "Lost Exploration World"
 cover: "./cover.jpg"
 description: "It all started with one hot sleepless night in October. I stumbled upon the Terasology project and hopped on to the org's IRC."
 author: "nihal111"
-ddate: "September 09th, 2017"
 date: "2017-09-17"
 tags: ["Project"]
 ---

@@ -4,7 +4,6 @@ title: "Google Code-In with Tiled"
 cover: "./cover.jpg"
 description: "MovingBlocks is once again participating in Google Code-In this year. Google Code-In is a program aimed at getting younger students..."
 author: "Thorbjørn Lindeijer"
-ddate: "November 28th, 2017"
 date: "2017-11-28"
 tags: ["Update"]
 ---

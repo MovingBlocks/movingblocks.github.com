@@ -4,7 +4,6 @@ title: "TeraSpotlight: GSOC 2021 Projects"
 cover: "./cover.jpg"
 description: "In this post we are presenting the student projects we accepted for this year's edition of Google Summer of Code (GSOC)."
 author: "Niruandaleth & Skaldarnar"
-ddate: "June 01st, 2021"
 date: "2021-06-01"
 tags: ["TeraSpotlight"]
 ---

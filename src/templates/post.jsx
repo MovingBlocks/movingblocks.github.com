@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import moment from "moment";
 import Layout from "../layout";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import moment from "../../node_modules/moment/moment";
 
 export default class PostTemplate extends React.Component {
   render() {

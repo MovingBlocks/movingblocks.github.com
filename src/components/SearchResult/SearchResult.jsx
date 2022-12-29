@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "reactstrap";
-import moment from "../../../node_modules/moment/moment";
+import moment from "moment";
 import Cards from "../Cards/Cards";
 
 function SearchResults({ query, results }) {

@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: "GSOC 2019 - An Overview"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "It’s that time of the year again - Google Summer of Code (GSOC) is ahead of us. For the 4th year running we welcome students to become part of our community and join efforts with mentors..."
 author: "Niruandaleth & Skaldarnar"
 ddate: "May 29th, 2019"
@@ -42,7 +42,7 @@ Metal Renegades is another brilliant idea born out of the imagination of our Lor
 Set in a futuristic and steampunky western world populated by robots, another faction conflict arises.
 By gathering resources, building mechanical systems and interacting with NPCs, the player can influence this open world.
 
-![MetalRenegades](./mr_good-bad-gooey.png)
+![MetalRenegades](./mr_good-bad-gooey.jpg)
 
 _AndyTechGuy_ will make this idea come to life in an initial world implementation including [basic world] generation with settlements and outposts themed to this setting.
 Another deliverable will be NPCs and their interaction with the player.
@@ -87,7 +87,7 @@ This [showcase] website will increase discoverability by allowing to filter and 
 Our launcher has gone through multiple changes up to now and there’s another one waiting right ahead: _Priydarshi Raj_ will not only modernize the UI, but also integrate server and game management.
 Furthermore, the launcher will be self-contained in the future without the need to download and set-up additional software such as Java.
 
-![Launcher 4.0](./launcher-4.0-mockup.png)
+![Launcher 4.0](./launcher-4.0-mockup.jpg)
 
 # Technology
 

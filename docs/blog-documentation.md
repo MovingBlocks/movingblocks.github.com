@@ -17,7 +17,7 @@ Below is the simple blog template which is basically `index.md` file
 ---
 posttype: blog
 title: "<Blog Name>"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "<This blog is about Terasology in GSoC>"
 author: "<Blog writter>"
 ddate: "July 14th, 2017"

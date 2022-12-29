@@ -35,13 +35,13 @@ Jellysnake separated [Inventory] from Core, and Adrijaned pulled out Biomes. [He
 
 This was _bigger._
 
-![just a small part of the changes!](https://cdn.discordapp.com/attachments/696830442065625118/712674385391255562/unknown.png)
+![just a small part of the changes!](https://cdn.discordapp.com/attachments/696830442065625118/712674385391255562/unknown.jpg)
 
 Taking the extraction to its logical conclusion, Skaldarnar and Niruandaleth have completely removed the Core module. 
 CoreBlocks has been blown up, too. In their place, a new network of modules stretches across the workspace, each 
 providing a specific subset of functionality for the Core Gameplay preset.
 
-<img src="https://i.imgur.com/qBHbynr.png" alt="New Core Module Diagram" style="width:800px;padding:8px">
+<img src="./core-dependencies.jpg" alt="New Core Module Diagram" style="width:800px;padding:8px">
 
 The old Inventory and LootPools modules, used to keep track of items, have been mixed together and separated again, 
 forming a refreshed [Inventory] module and a new [Drops] module.

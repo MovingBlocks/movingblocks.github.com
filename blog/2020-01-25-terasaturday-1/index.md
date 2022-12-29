@@ -26,7 +26,7 @@ plugin. It's not compatible with the current version of Blender, it's tricky to 
 properly can be messy. Like making a banana smoothie without a lid. And so you'll probably be glad to hear that Pollend 
 and I have released the first beta version of a brand new [Blender Block Shape Plugin] for Blender 2.8. 
 
-![The plugin in action](blender_block_plugin.png)
+![The plugin in action](blender_block_plugin.jpg)
 
 * It can be installed normally from Blender's addon menu, it can import and export all the basic engine shapes without 
 getting confused about which way is up, and it is 100% laser-shark-free, guaranteed. There is no such guarantee about 
@@ -35,7 +35,7 @@ issue] in the GitHub repo. We're more likely to hear you that way.)_
 
 ---
 
-![Fancy trees and stuff](grass_color.png)
+![Fancy trees and stuff](grass_color.jpg)
 
 * Leaves and grass have looked a little sad and dead since the BiomesAPI update last May removed block colorization. 
 It was an unfortunate side-effect of progress; since biomes were no longer part of the engine, the engine could not
@@ -44,7 +44,7 @@ returned, relying upon the humidity and temperature directly instead of the biom
 
 ---
 
-![Cotton](cotton.png)
+![Cotton](cotton.jpg)
 
 * That is not the only way in which the basic flora has improved this week. [Cotton] textures in CoreAssets have been
 replaced with brand new art from TheStygianHawk.
@@ -52,8 +52,7 @@ replaced with brand new art from TheStygianHawk.
 ---
 
 
-
-<img src="https://user-images.githubusercontent.com/17286005/72514970-de110d80-389a-11ea-83c4-1376126fdfbb.png" alt="An example of torches generated with askneller's work" style="width:80%">
+![An example of torches generated with askneller's work](./screenshot-1.jpg)
 
 * New contributor askneller is working on better cave generation; as an intermediary step, world generating rasterizers
  (the systems that place the specific blocks) [can depend on another rasterizer][MovingBlocks/Terasology#3825] which 
@@ -64,7 +63,7 @@ replaced with brand new art from TheStygianHawk.
 
 ## Bugfixes and Optimizations (The Nerdy Stuff)
 
-![0 stars do not recommend these snacks](soap_mint.png)
+![0 stars do not recommend these snacks](soap_mint.jpg)
 
 * Adrijaned has made improvements to the [asset loading system][MovingBlocks/Terasology#3589], including lots of 
 documentation in an area that definitely needed more of it. Even for clever devs like _(ahem)_ yours truly, figuring out

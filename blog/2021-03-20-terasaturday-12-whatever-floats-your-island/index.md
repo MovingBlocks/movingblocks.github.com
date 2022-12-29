@@ -65,7 +65,7 @@ On the tracks of _[Gulliver's Travels](https://en.wikipedia.org/wiki/Laputa)_ we
 > </div>
 
   <div align="center" class="mb-4">
-      <img src="./laputa-adamant-aseprite.png" alt="Working on Lapuata Adamant block texture in aseprite"/>
+      <img src="./laputa-adamant-aseprite.jpg" alt="Working on Lapuata Adamant block texture in aseprite"/>
   </div>
 
 ### ✔️ Writing Actionable Action Items
@@ -123,7 +123,7 @@ Special thanks to _@casals_ and _@Niruandaleth_ for helping with cleaning things
 Let's end this post with a teaser for a TeraSpotlight post about our recent community pulse-check workshop that will (hopefully) come up soon™️: Have you ever thought about what animal Terasology might be? - We neither 😁 But then we decided to try... here's what we came up with ... 🥚 🐑 🐮 🐽
 
 <p align="center">
-<img src="./terasology-animal.png" alt="What animal should Terasology become?"/>
+<img src="./terasology-animal.jpg" alt="What animal should Terasology become?"/>
 </p>
 
 <!-- References -->

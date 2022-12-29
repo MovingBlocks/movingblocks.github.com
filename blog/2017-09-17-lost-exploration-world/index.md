@@ -132,7 +132,7 @@ This was arguably the most involved and fun part of my GSoC project. The explora
 
 There have been a total of 72 PRs and quite a few independent commits in the new modules I’ve created. With over 19,000 lines of code, this summer has boosted my Github stats to a whole new level.
 
-![](http://nihal111.github.io/img/GSoCStreak.png)
+![](http://nihal111.github.io/img/GSoCStreak.jpg)
 
 All's not done. There are a few follow-ups. Some bonus items have been completed but several have barely been touched. The main timeline was followed almost as planned. There were several blockers in the way, some of which required extensive work on the Engine too.
 

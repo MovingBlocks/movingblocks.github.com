@@ -1,7 +1,7 @@
 const config = {
   siteTitle: "Terasology", // Site title. Same as Short site title for home screen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "Terasology Project | An Open Source Voxel World", // Alternative site title for SEO.
-  siteLogo: "/logos/logo.png", // Logo used for SEO and manifest.
+  siteLogo: "/logos/logo.jpg", // Logo used for SEO and manifest.
   siteUrl: "https://terasology.org", // Domain of your website without pathPrefix. Should not have trailing slashes.
   // Prefixes all links. Should not have trailing slashes. Should have only a single leading slash.
   // Currently used to deploy ModuleSite as sub-site of current Terasology website.

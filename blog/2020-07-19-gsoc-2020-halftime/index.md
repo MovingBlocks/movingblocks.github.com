@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: "GSOC 2020 - Halftime"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "Students are mid-way through Google Summer of Code 2020 🎉 
   A lot of progress already visible.
   Read on to get a brief overview of the progress of all projects during the first half."
@@ -30,12 +30,12 @@ To refine the "Metal Renegades" gameplay, Andy revisited it and all its issues.
 The first bunch to defect from the defective side were performance issues, swayed by reducing buffer outflow and city growth rate.
 Next, filling your thirst was made more realitic by receiving a water cup from the marketplace to use it on a well instead of getting it from the well itself. Futhermore, wells are now no longer a infinite resource, but can dry out.
 
-![Empty and Full Well](mr-wells.png)
+![Empty and Full Well](mr-wells.jpg)
 
 To improve the chances of the player surviving this rough place called the old west, the cities now include small patches of farming ground with fruit and vegetables growing on them.
 These fruit and vegetables can fill (depending on the sort) either hunger, or thirst, or both.
 
-![Farms](mr-farms.png)
+![Farms](mr-farms.jpg)
 
 After dealing with the player's needs, the non-player characters got a tad more personality with their randomized names and different sizes.
 And to enable even more players to fall in love with these gooey creatures, Andy is currently working on fixing a bunch of multiplayer issues 🛠
@@ -64,7 +64,7 @@ To only name a few examples for such items: Sand slippers to avoid heat burn and
 Along the way, ktksan also found, fixed or implemented several related, but theoretically out-of-scope issues and showed their motivation to contribute to Terasology beyond their project's scope.
 One good example for these efforts is adding a filling bar to fluid containers to improve the user experience when working with different fluid levels:
 
-![Filling Bar for Fluid Containers](biome-effects_fluid-filling-bar.png)
+![Filling Bar for Fluid Containers](biome-effects_fluid-filling-bar.jpg)
 
 
 # Genome Expansion
@@ -97,13 +97,13 @@ Stefania's project is all about improving the user interface (UI) and user exper
 To get more accustomed to how Terasology HUD elements work and can be altered, Stefania took the task selection screen of Terasology's "Master of Oreon" (MOO) and gave it a whole new look:
 
 
-<img src="moo-before.png"  class="gatsby-img-attributes" alt="MOO Task Selection Before" style="width:300px;padding:20px">
-<img src="moo-after.png"  class="gatsby-img-attributes" alt="MOO Task Selection After" style="width:300px;padding:20px">
+<img src="moo-before.jpg"  class="gatsby-img-attributes" alt="MOO Task Selection Before" style="width:300px;padding:20px">
+<img src="moo-after.jpg"  class="gatsby-img-attributes" alt="MOO Task Selection After" style="width:300px;padding:20px">
 
 
 Although there's currently only the default blueprint image shown in the task selection screen, Stefania created a bunch more, to be [integrated by any interested party](https://github.com/Terasology/MasterOfOreon/issues/73).
 
-![MOO Task Selection Blueprints](moo-blueprints.png)
+![MOO Task Selection Blueprints](moo-blueprints.jpg)
 
 After this first familiarization task, the focus went to Terasology's Capture-the-Flag gameplay "Light And Shadow" (LAS).
 Here again, Stefania showed a lot of creativity with mock-ups for the different gameplay-specific screens.

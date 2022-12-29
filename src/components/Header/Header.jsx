@@ -17,7 +17,7 @@ import {
 } from "reactstrap";
 import { FaDownload } from "react-icons/fa";
 import { Link } from "gatsby";
-import navLogo from "../../../static/logos/nav_logo.png";
+import navLogo from "../../../static/logos/nav_logo.jpg";
 
 function Header() {
   const [isOpen, toggle] = useState(false);

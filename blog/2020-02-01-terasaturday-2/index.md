@@ -27,7 +27,7 @@ art of Hamachi), you'll be able to play Terasology without any complicated port 
 ---
 
 
-<img src="https://cdn.discordapp.com/attachments/270264625419911192/672118776258363392/unknown.png" alt="Fancy block shape stuff" style="width:700px;padding:8px" >
+<img src="https://cdn.discordapp.com/attachments/270264625419911192/672118776258363392/unknown.jpg" alt="Fancy block shape stuff" style="width:700px;padding:8px" >
 
 * Progress continues on our Blender block shape integration. There are some quirks to work out with converting Blender's
 data structures to Terasology's block shape structure; since Blender stores all the UV and normal data per *face* instead
@@ -37,7 +37,7 @@ to CoreBlocks!)_ and new .shape files will be able to handle multiple UV locatio
 that means we'll be able to have more advanced textures and lighting for blocks with complex shapes. Shiny shiny.)_
 
 ---
-<img src="https://cdn.discordapp.com/attachments/270264625419911192/666236136057733150/unknown.png" alt="Inferno!" style="width:800px;padding:8px" >
+<img src="https://cdn.discordapp.com/attachments/270264625419911192/666236136057733150/unknown.jpg" alt="Inferno!" style="width:800px;padding:8px" >
 
 
 * Pardon me for being blunt... but if you download this module update, you can go to hell. No, really -- it's once again

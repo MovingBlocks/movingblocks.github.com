@@ -52,10 +52,10 @@ In other news, we split the stages of our build pipeline to allow for a bit more
 These and other minor efforts were coordinated in our weekly Org Meeting (every Saturday, 4PM UTC on our [Discord](https://discord.gg/terasology)) using our [Org Meeting Trello Board](https://trello.com/b/4cw7Q1BJ/org-meeting-board){:target="\_blank"}. Feel free to come join us and help make Terasology better and better 😉
 
   <div class="row">
-    <div class="col-md-3"> <img src="./org-board-done-1.png" width="20%" /> </div>
-    <div class="col-md-3"> <img src="./org-board-done-2.png" width="20%" /> </div>
-    <div class="col-md-3"> <img src="./org-board-done-3.png" width="20%" /> </div>
-    <div class="col-md-3">  <img src="./org-board-done-4.png" width="20%" /></div>
+    <div class="col-md-3"> <img src="./org-board-done-1.jpg" width="20%" /> </div>
+    <div class="col-md-3"> <img src="./org-board-done-2.jpg" width="20%" /> </div>
+    <div class="col-md-3"> <img src="./org-board-done-3.jpg" width="20%" /> </div>
+    <div class="col-md-3">  <img src="./org-board-done-4.jpg" width="20%" /></div>
   </div>
   <br />
 
@@ -71,9 +71,9 @@ We are happy to announce that all five students passed their halftime evaluation
 Check out [TeraSpotlight: GSOC 2021 Halftime Show & Tell] to find out about the students' achievements over the past few weeks. Below are some canapés:
 
   <div class="row">
-   <div class="col-md-4"> <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/las_pregame-phase-countdown.png"  /> </div>
-   <div class="col-md-4">  <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/js_sheep-shearing-before.png"  /></div>
-   <div class="col-md-4">  <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/mr_mesas.png"  /></div>
+   <div class="col-md-4"> <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/las_pregame-phase-countdown.jpg"  /> </div>
+   <div class="col-md-4">  <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/js_sheep-shearing-before.jpg"  /></div>
+   <div class="col-md-4">  <img src="../2021-07-24-teraspotlight-gsoc-2021-halftime-show-tell/mr_mesas.jpg"  /></div>
   </div>
 
 The students will continue to contribute to different areas of our wide ecosystem, ranging from modernizing our web presence over world generation both, in space and on earth, to improvements in various gameplays.

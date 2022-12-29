@@ -84,7 +84,7 @@ Using similar effects like the `GooeyDefense` tower effectors, this hopefully tu
 The project will be mentored by _@Niruandaleth_ and _@Skaldarnar_.
 
   <div align="center">
-    <img src="./las-items.png" width="60%" />
+    <img src="./las-items.jpg" width="60%" />
     <figcaption>Weapons, Traps and Defensive Mechanisms for Light & Shadow</figcaption>
   </div>
 
@@ -111,7 +111,7 @@ The first part will bring a more pacifist way of collecting wool to craft a nice
 The main focus for this is achieving a smooth transition between the two sheep models (unshorn and shorn) in the events of shearing and hair regrowth, providing an immersive user experience using audio and visual feedback as well as proper documentation and testing.
 
   <div align="center">
-    <img src="./sheep.png" width="50%" />
+    <img src="./sheep.jpg" width="50%" />
     <figcaption>Unshorn and shorn sheep</figcaption>
   </div>
 
@@ -175,7 +175,7 @@ In addition to that, the module site build and deployment pipeline needs to be r
 Documenting both pipelines for our fellow contributors shall make it easy for interested parties to join the effort in the future.
 
   <div align="center">
-    <img src="./module-site.png" width="60%" />
+    <img src="./module-site.jpg" width="60%" />
     <figcaption>Exemplary module overview on the module site</figcaption>
   </div>
 
@@ -224,7 +224,7 @@ This will serve as the foundation for more interesting generators, allowing for 
 The project will be mentored by _@Nicholas Bates_ and _@Cervator_, with additional support from last year's student _@Isaac L_.
 
   <div align="center">
-    <img src="./dest-sol-worldgen.png" />
+    <img src="./dest-sol-worldgen.jpg" />
     <figcaption>Planned world generation flow for Destination: Sol.</figcaption>
   </div>
 

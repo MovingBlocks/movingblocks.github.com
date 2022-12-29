@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import moduleList from "../../generated/module-result.json";
 
-function SearchForm({ query, filter, location }) {
+function SearchForm({ query, filter, prefix }) {
   const tagList = new Set();
   moduleList.forEach((module) => {
     module.tags.forEach((tag) => {
@@ -26,9 +26,7 @@ function SearchForm({ query, filter, location }) {
               aria-controls="search-results-count"
               onChange={(e) =>
                 navigate(
-                  `${
-                    location.pathname
-                  }?keywords=${query}&filter=${encodeURIComponent(
+                  `${prefix}?keywords=${query}&filter=${encodeURIComponent(
                     e.target.value
                   )}`
                 )
@@ -55,7 +53,7 @@ function SearchForm({ query, filter, location }) {
               aria-controls="search-results-count"
               onChange={(e) =>
                 navigate(
-                  `${location.pathname}?keywords=${encodeURIComponent(
+                  `${prefix}?keywords=${encodeURIComponent(
                     e.target.value
                   )}&filter=${filter}`
                 )

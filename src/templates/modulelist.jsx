@@ -15,7 +15,7 @@ function Modulelist({ data, pageContext, location }) {
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
 
-  const prefix = "/modules/";
+  const prefix = "/modules";
   const isFirst = moduleCurrentPage === 1;
   const isLast = moduleCurrentPage === moduleNumPages;
   const prevPage =
@@ -60,11 +60,7 @@ function Modulelist({ data, pageContext, location }) {
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm
-          query={searchQuery}
-          filter={filterTag}
-          location={location}
-        />
+        <SearchForm query={searchQuery} filter={filterTag} prefix={prefix} />
         {isShown && (
           <SearchResults
             id="src"
@@ -80,7 +76,7 @@ function Modulelist({ data, pageContext, location }) {
         {!isFirst && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
-              to={`${prefix}${prevPage}`}
+              to={`${prefix}/${prevPage}`}
               rel="prev"
               className="btn-primary"
             >
@@ -92,7 +88,7 @@ function Modulelist({ data, pageContext, location }) {
         {!isLast && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
-              to={`${prefix}${nextPage}`}
+              to={`${prefix}/${nextPage}`}
               rel="next"
               className="btn-primary"
             >

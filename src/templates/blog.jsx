@@ -15,7 +15,7 @@ function Blog({ data, pageContext, location }) {
   const postEdges = data.allMarkdownRemark.edges;
   const blogData = blogList;
 
-  const prefix = "/blog/";
+  const prefix = "/blog";
   const isFirst = blogCurrentPage === 1;
   const isLast = blogCurrentPage === postsNumPages;
   const prevPage =
@@ -74,6 +74,7 @@ function Blog({ data, pageContext, location }) {
           author={filterAuthor}
           date={filterdate}
           location={location}
+          prefix={prefix}
         />
         {isShown && (
           <SearchResults id="src" query={searchQuery} results={results} />
@@ -84,7 +85,7 @@ function Blog({ data, pageContext, location }) {
         {!isFirst && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
-              to={`${prefix}${prevPage}`}
+              to={`${prefix}/${prevPage}`}
               rel="prev"
               className="btn-primary"
             >
@@ -96,7 +97,7 @@ function Blog({ data, pageContext, location }) {
         {!isLast && results.length === 0 && (
           <Col className="text-center m-4">
             <Link
-              to={`${prefix}${nextPage}`}
+              to={`${prefix}/${nextPage}`}
               rel="next"
               className="btn-primary"
             >

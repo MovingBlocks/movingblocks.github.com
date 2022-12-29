@@ -4,7 +4,6 @@ title: "TeraSaturday #1"
 cover: "./cover.jpg"
 description: "A summary of what has been going on in the past week of Terasology, from January 17 through 24, 2020."
 author: "Jordan H. (Qwertygiy)"
-ddate: "Jan 25th, 2020"
 date: "2020-01-25"
 tags: ["TeraSaturday"]
 ---

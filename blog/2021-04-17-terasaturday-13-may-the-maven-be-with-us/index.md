@@ -4,7 +4,6 @@ title: "TeraSaturday #13: May the Maven be with us"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth"
-ddate: "Apr 17th, 2021"
 date: "2021-04-17"
 tags: ["TeraSaturday"]
 ---

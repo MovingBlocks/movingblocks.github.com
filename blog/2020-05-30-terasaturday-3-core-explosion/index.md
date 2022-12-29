@@ -4,7 +4,6 @@ title: "TeraSaturday #3: Core Explosion"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Jordan H. (Qwertygiy)"
-ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["TeraSaturday"]
 imageTag: "TeraSaturday"

@@ -6,7 +6,6 @@ description: "5th year anniversary for Terasology participating in Google Summer
   A warm welcome to all six of our students this year!
   Read on to get a brief overview of all projects for the upcoming summer."
 author: "Niruandaleth & Skaldarnar"
-ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["GSoC"]
 imagetag: "Other"

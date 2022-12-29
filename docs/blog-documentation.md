@@ -20,7 +20,6 @@ title: "<Blog Name>"
 cover: "./cover.png"
 description: "<This blog is about Terasology in GSoC>"
 author: "<Blog writter>"
-ddate: "July 14th, 2017"
 date: "2017-07-14
 tags: ["GSoC", "Update"]
 ---

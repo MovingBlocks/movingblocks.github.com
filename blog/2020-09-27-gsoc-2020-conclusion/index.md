@@ -6,7 +6,6 @@ description: "Google Summer of Code 2020 is over 🏁
   The students' projects are done and they had some time to recover.
   Read on to get a brief overview of the achievements of our GSoC students."
 author: "Niruandaleth"
-ddate: "Sept 27th, 2020"
 date: "2020-09-27"
 tags: ["GSoC"]
 ---

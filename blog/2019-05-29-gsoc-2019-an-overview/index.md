@@ -4,7 +4,6 @@ title: "GSOC 2019 - An Overview"
 cover: "./cover.png"
 description: "It’s that time of the year again - Google Summer of Code (GSOC) is ahead of us. For the 4th year running we welcome students to become part of our community and join efforts with mentors..."
 author: "Niruandaleth & Skaldarnar"
-ddate: "May 29th, 2019"
 date: "2019-05-29"
 tags: ["GSoC"]
 ---

@@ -4,7 +4,6 @@ title: "Happy 7th birthday Terasology!!"
 cover: "./cover.png"
 description: "For this year I'm proposing a bit of a week-long celebration of sorts, starting slow with some preparations this weekend (in 12ish hours) and building over the week to a big multiplayer event with several concurrently hosted servers running some of our different game play templates for the next entire weekend."
 author: "Cervator"
-ddate: "September 28th, 2018"
 date: "2018-09-28"
 tags: ["Update"]
 ---

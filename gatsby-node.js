@@ -197,12 +197,12 @@ exports.createPages = async ({ graphql, actions }) => {
           excerpt,
           content,
           cover,
-          date,      
-          ddate,    
+          date,
+          ddate,
           slug,
           tags,
           title,
-          posttype: "blog"
+          posttype: "blog",
         };
       }
     );

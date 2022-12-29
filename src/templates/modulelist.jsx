@@ -68,7 +68,6 @@ function Modulelist({ data, pageContext, location }) {
             filter={filterTag}
             results={results}
             postEdges={postEdges}
-            prefix={prefix}
           />
         )}
         {!isShown && <PostListing id="modules" postEdges={postEdges} />}

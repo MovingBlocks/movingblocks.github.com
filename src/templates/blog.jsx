@@ -77,7 +77,7 @@ function Blog({ data, pageContext, location }) {
           prefix={prefix}
         />
         {isShown && (
-          <SearchResults id="src" query={searchQuery} results={results} prefix={prefix} />
+          <SearchResults id="src" query={searchQuery} results={results} />
         )}
         {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>

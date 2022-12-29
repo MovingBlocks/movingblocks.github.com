@@ -90,7 +90,7 @@ const generateTeraSaturdayImage = (
     ctx.fillText(postid, pst + c.width / 2 + 60, c.height / 3 + 120);
     ctx.restore();
 
-    const buffer = canvas.toBuffer("image/png");
+    const buffer = canvas.toBuffer("image/jpg");
     fs.writeFileSync(`./blog/${blogName}/cover.jpg`, buffer);
   });
 };
@@ -128,7 +128,7 @@ const generateCustomLogoImage = (
         ctx.drawImage(logoImage, c.width - 350, 50, 300, 300);
       }
 
-      const buffer = canvas.toBuffer("image/png");
+      const buffer = canvas.toBuffer("image/jpg");
       fs.writeFileSync(`./blog/${blogName}/cover.jpg`, buffer);
     });
   });

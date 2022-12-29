@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: "GSOC 2020 - Conclusion"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "Google Summer of Code 2020 is over 🏁 
   The students' projects are done and they had some time to recover.
   Read on to get a brief overview of the achievements of our GSoC students."
@@ -29,7 +29,7 @@ Let's take a look what the final results of each project looks like 🔍
 This GSoC, our second year student _AndyTechGuy_ polished the technical backbone implemented last year into an improved gameplay mode called "Metal Renegades".
 The main aspects of this year's work included adding new gameplay features to the module, refining already existing features, and fixing bugs that negatively impact the core experience.
 
-![Metal Renegades](MR_compilation.png)
+![Metal Renegades](MR_compilation.jpg)
 
 Newly introduced features included discoverable places where the player may find food, tools or valuables and nighttime enemies the players must fight or avoid by busing themselves in town.
 Improvements and fixes on the other hand targeted the market and trading system and its multiplayer capabilities, performance issues especially induced by city growth, and balancing the survival possibilities by making wells dry out after several uses and adding more food sources.
@@ -43,7 +43,7 @@ Improvements and fixes on the other hand targeted the market and trading system 
 In their GSoC project, our student _ktksan_ introduced biome-specific content for biomes with extreme climatic conditions such as the desert and snow biomes.
 To keep the gameplay balance, this content included negative effects on the player as well as ways to overcome these obstacles.
 
-![Biome-specific Content](JS_compilation.png)
+![Biome-specific Content](JS_compilation.jpg)
 
 The negative effects affect the player based on their body temperature: if the player gets too cold they will show symptoms of hypothermia, e.g. movement reductions or frostbite damage; if the player gets too warm they will show symptoms of hyperthermia, e.g. increased thirst and heat stroke weakness in the form of reduced maximum health.
 To lessen or overcome these effects the players can protect themselves with warming or cooling clothes, such as a woolen vest or an arabic thawb and carry additional water resources with a waterskin.
@@ -58,7 +58,7 @@ Additionally, players are motivated to face these extreme climate conditions by 
 Over the course of this year's GSoC, our student _Vedant Shroff_ revived the "Genomes" module in order to bring it up to date and add missing key features that allow any easy integration with other modules such as "WildAnimals" or "SimpleFarming".
 Further, their focus was on breeding and more variety for example in seeds.
 
-![Genome Expansion](Genomes_compilation.png)
+![Genome Expansion](Genomes_compilation.jpg)
 
 The integration with "SimpleFarming" includes seeds having genes (persisted across multiple generations of harvest/plant cycles) that define their traits, for instance their color, how fast they grow and how well they sate the player.
 Breeding is now provided for both seeds and animals with the overhauled breeding mechanism supporting individual breeding algorithms for the individual traits to be affected.
@@ -72,7 +72,7 @@ Breeding is now provided for both seeds and animals with the overhauled breeding
 Our student _Stefania Mak_ started out learning the Terasology UI ropes by overhauling the task selection screen in "MasterofOreon".
 Afterwards, they focused mainly on improving the optics and user experience for our capture-the-flag gameplay "LightAndShadow" (LAS).
 
-![LAS UI/UX Overhaul](LAS_compilation.png)
+![LAS UI/UX Overhaul](LAS_compilation.jpg)
 
 The optical improvements included a LAS-style loading screen, the modernization of the dialogue with the fool, an update for the game over screen with player stats along with multiple smaller design improvements for the score and inventory bar.
 The user experience was improved by bringing the (apart from the flag of course) most important in-game player asset - their health - more in focus and by reworking the inventory bar from the minecraft-default horizontal bar to a scroll-through vertical version.
@@ -86,7 +86,7 @@ The user experience was improved by bringing the (apart from the flag of course)
 In their GSoC project, our student _Pratham Sahasrabhojane_ developed a web app providing Terasology's various documentation resources to new contributors in a conversational form.
 This "Tutorial Journey" or "Adventure Site" supports new contributors to find suitable resources based on their contribution interests.
 
-![Adventure Site: Mockup vs. Final App](Outreach_compilation.png)
+![Adventure Site: Mockup vs. Final App](Outreach_compilation.jpg)
 
 During the GSoC period, the student started out by creating mockups and learn about the various contribution paths available for Terasology.
 Afterwards, they created the data backend and front end components including animations and transitions.
@@ -100,7 +100,7 @@ Afterwards, they created the data backend and front end components including ani
 In this year's GSoC, our student _Isaac lichter_ brought the side-project of the Terasology Foundation, "Destination Sol", closer to our main project, Terasology, by transferring it to the Entity-Component-System (ECS) architecture used in Terasology.
 Terasology uses the ECS library "Gestalt" that aloowed the student to create basic systems, small features, refactorings, bug fixes and proof-of-concepts on how to make further use of this new architecture.
 
-![Destination Sol](DS_compilation.png)
+![Destination Sol](DS_compilation.jpg)
 
 The basic systems that were created include health, force and contact handling, entity removal, physics, graphics and projectile handling.
 Introduced features were rubble creation, stasis and money-dropping and a proof-of-concept for asteroids.

@@ -37,7 +37,7 @@ allow access to Terasology functionalities for players and server admins alike. 
 teleporting players, changing game properties, adjusting game time, or loading a save game become available through
 those protocols - according to user permissions.
 
-![Sending chat messages from the web client to the running game instance](./client-console.png)
+![Sending chat messages from the web client to the running game instance](./client-console.jpg)
 _Sending chat messages from the web client to the running game instance._
 
 Up to now, the server exposes some basic resources through HTTP and Websocket, and there is a web client that can
@@ -107,7 +107,7 @@ Furthermore, more _feedback_ from users is also needed: What are their systems? 
 PCs? What is the users' favorite module? Collecting this data can help Terasology make the decision of what kind of
 optimization could be applied as well as help Terasology provide more fun for users.
 
-![](https://gabrielxia.github.io/img/telemetry/launch.png)
+![](https://gabrielxia.github.io/img/telemetry/launch.jpg)
 
 Therefore, Gabriel is implementing automatic metric & error reporting.
 Exceptions and errors, i.e., abnormal behavior of the game, are tracked locally and may be send to a server to collect

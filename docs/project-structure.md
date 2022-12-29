@@ -29,7 +29,7 @@
 
 This is how a page generates or a relationship looks,
 
-![Page Relations](./images/00-page-relations.png)
+![Page Relations](./images/00-page-relations.jpg)
 
 ---
 

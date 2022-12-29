@@ -24,7 +24,7 @@ A basic set of ground rules was given as a start, encouraging everybody to speak
 Based on this, the first part of our workshop concentrated on developing code of conduct for the workshop that we all feel comfortable with and agree on, by asking ourselves, what we expect to make this a "meaningful & pleasant workshop"
 
 <div align="center">
-    <img src="./workshop-code-of-conduct.png" alt="Workshop Code of Conduct" width="50%"/>
+    <img src="./workshop-code-of-conduct.jpg" alt="Workshop Code of Conduct" width="50%"/>
 </div>
 
 The responses made it pretty clear, that we wanted this workshop to be fun, but still talk very honestly and openly about what we value and want for Terasology.
@@ -38,7 +38,7 @@ With the content-wise thoughts on what would make this a "meaningful workshop", 
 The planned workshop time allowed us to cover two of the three prepared modules and with "vision" being set, we decided to in addition talk about "motivation".
 
 <div align="center">
-    <img src="./workshop-module-interest.png" alt="Workshop Module Vote" width="30%"/>
+    <img src="./workshop-module-interest.jpg" alt="Workshop Module Vote" width="30%"/>
 </div>
 
 With these interactive conduct and agenda alignments done, both modules followed a very similar structure.
@@ -68,7 +68,7 @@ Some even do both, being rather casual for a while and then bursting out in acti
 At the same time, some of us like to produce fancy, visible features and show them off, while others concentrate on "eating" bugs or work behind the scenes to keep the community going.
 
 <div align="center">
-    <img src="./contributor-spirit-animals.png" alt="Which animal do I feel like when contributing to Terasology?" width="50%"/>
+    <img src="./contributor-spirit-animals.jpg" alt="Which animal do I feel like when contributing to Terasology?" width="50%"/>
 </div>
 
 ### 🔍 Project Requirements
@@ -179,7 +179,7 @@ The most present associated attributes were an attractive and recognizable ident
 Further, maturity and the transition required to get there was an important topic, too.
 
 <div align="center">
-    <img src="./terasology-spirit-animals.png" alt="Which animal describes what you would like Terasology to become?" width="50%"/>
+    <img src="./terasology-spirit-animals.jpg" alt="Which animal describes what you would like Terasology to become?" width="50%"/>
 </div>
 
 ### 💸 Selling Point

@@ -18,7 +18,7 @@ Being already in the work period, most of the relevant GSoC dates are already pa
 However, let's take a quick look at what's left for this year's Google Summer of Code.
 
 <div align="center">
-  <img src="./gsoc-2021-timeline.png" width="60%" />
+  <img src="./gsoc-2021-timeline.jpg" width="60%" />
 </div>
 
 Seven of the eleven weeks of working are already behind us, including the halftime evaluations.
@@ -57,8 +57,8 @@ This phase should allow players to join teams and prepare themselves for the gam
 Thus, players that join earlier do not have an unfair advantage.
 
   <div class="row">
-  <div class="col-md-6">  <img src="./las_pregame-phase.png"  /> </div>
-    <div class="col-md-6"> <img src="./las_pregame-phase-countdown.png" /> </div>
+  <div class="col-md-6">  <img src="./las_pregame-phase.jpg"  /> </div>
+    <div class="col-md-6"> <img src="./las_pregame-phase-countdown.jpg" /> </div>
     
   </div>
 
@@ -94,8 +94,8 @@ The sheep hair regrows after a few minutes, changing the sheep's appearance back
 The mechanism was implemented in adherence with our event-based Entity-Component-System architecture including documentation and tests.
 
   <div class="row">
-  <div class="col-md-6">  <img src="./js_sheep-shearing-before.png"  /> </div>
-    <div class="col-md-6"> <img src="./js_sheep-shearing-after.png" /> </div>
+  <div class="col-md-6">  <img src="./js_sheep-shearing-before.jpg"  /> </div>
+    <div class="col-md-6"> <img src="./js_sheep-shearing-after.jpg" /> </div>
   </div>
 
 Make sure to test out the current state by selecting "Josharias' Survival" when starting a game!
@@ -123,10 +123,10 @@ _@Lorxu_ (aka _@tolziplohu_) completed the expansion of the Metal Renegades worl
 fertile river beds, additional biomes for scrubland, steppe, and rocky terrain, strata and mesas.
 
   <div class="row">
-    <div class="col-md-3"><img src="./mr_river-beds.png" /></div>
-     <div class="col-md-3"><img src="./mr_biomes.png" /></div>
-      <div class="col-md-3"><img src="./mr_strata.png" /></div>
-       <div class="col-md-3"><img src="./mr_mesas.png"/></div>
+    <div class="col-md-3"><img src="./mr_river-beds.jpg" /></div>
+     <div class="col-md-3"><img src="./mr_biomes.jpg" /></div>
+      <div class="col-md-3"><img src="./mr_strata.jpg" /></div>
+       <div class="col-md-3"><img src="./mr_mesas.jpg"/></div>
   </div>
 
 Additionally, Lorxu fixed a multitude of bugs related to world generation, helped to improve chunk generation performance and updated the [world generation tutorial](https://github.com/Terasology/tutorialworldgeneration).
@@ -157,8 +157,8 @@ Yash (aka _@ryuk156_) completed the automation efforts for the generation of mod
 In addition, the site was successfully migrated to SCSS and most of the website pages were migrated and the underlying technical features overhauled.
 
   <div class="row">
-     <div class="col-md-6"><img src="./module-site_gsoc-tsoc-page.png"/></div>
-     <div class="col-md-6"> <img src="./module-site_mentors-page.png"/></div>   
+     <div class="col-md-6"><img src="./module-site_gsoc-tsoc-page.jpg"/></div>
+     <div class="col-md-6"> <img src="./module-site_mentors-page.jpg"/></div>   
   </div>
 
 The preview image generation feature is currently still in progress.

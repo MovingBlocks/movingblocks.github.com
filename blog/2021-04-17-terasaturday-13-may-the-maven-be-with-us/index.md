@@ -56,7 +56,7 @@ Have a look at the fancy new docs of our first migration candidate [`Health`](ht
 While in the artistic zone due to creating neat module banner images, _@skaldarnar_ also for our [module/repository archive](https://github.com/Terasology-Archived/).
 
 <div align="center">
-    <img src="./terasology-archived-logo.png" alt="Visualizations in Kibana based on Log Data" width="50%"/>
+    <img src="./terasology-archived-logo.jpg" alt="Visualizations in Kibana based on Log Data" width="50%"/>
 </div>
 
 ### ✒️ Breaking Down Proposals and Feature Tasks
@@ -73,7 +73,7 @@ The student applied for a project targeting log data analysis to help us gain in
 With DPP and GDPR, there's two more big topics to work out before we can move to a consent-based default log collection.
 
 <div align="center">
-    <img src="./kibana-dashboard.png" alt="Visualizations in Kibana based on Log Data" width="100%"/>
+    <img src="./kibana-dashboard.jpg" alt="Visualizations in Kibana based on Log Data" width="100%"/>
 </div>
 
 <!-- References -->

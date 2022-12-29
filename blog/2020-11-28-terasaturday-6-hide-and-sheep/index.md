@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: "TeraSaturday #6: Hide and Sheep"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Skaldarnar"
 date: "2020-11-28"
@@ -37,7 +37,7 @@ Overall, we again merged more than **60 PRs** on [the engine](https://github.com
 
 _@Niruandaleth_ and _@Skaldarnar_ took this as an opportunity to address some of those bugs. They tweaked the brightness at night, adjusted the player height and model scale, pushed the name tags back into place, and got rid of some bugs which crashed the game. Health regeneration was also fixed, so no more blocks regaining their health faster than you can hit 'em. _@DarkWeird_ also contributed here, investigating some networking issues to make the "Join Game" work smoothly again.
 
-![Brightness at Night](./night-brightness.png)
+![Brightness at Night](./night-brightness.jpg)
 
 ## 🚀 Module/Feature Highlights
 

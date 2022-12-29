@@ -60,11 +60,7 @@ function Modulelist({ data, pageContext, location }) {
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm
-          query={searchQuery}
-          filter={filterTag}
-          prefix={prefix}
-        />
+        <SearchForm query={searchQuery} filter={filterTag} prefix={prefix} />
         {isShown && (
           <SearchResults
             id="src"

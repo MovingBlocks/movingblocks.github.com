@@ -28,7 +28,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
         slug = `/${kebabCase(node.frontmatter.slug)}`;
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
+        const date = moment.utc(node.frontmatter.date);
         if (!date.isValid)
           console.warn(`WARNING: Invalid date.`, node.frontmatter);
 

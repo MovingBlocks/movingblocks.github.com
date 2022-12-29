@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import moment from "moment";
 
 import Cards from "../Cards/Cards";
 
@@ -17,7 +18,6 @@ function PostListing({ id, postEdges }) {
         desc: postEdge.node.frontmatter.description,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead,
-        ddate: postEdge.node.frontmatter.ddate,
         author: postEdge.node.frontmatter.author,
       });
     });
@@ -38,7 +38,7 @@ function PostListing({ id, postEdges }) {
                 tags={post.tags}
                 excerpt={post.excerpt}
                 author={post.author}
-                ddate={post.ddate}
+                date={moment(post.date).format("MMMM DD, YYYY")}
               />
             ) : (
               <Cards

@@ -4,7 +4,6 @@ title: "TeraSaturday #4: The Gradle Will Rock"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development"
 author: "Jordan H. (Qwertygiy)"
-ddate: "June 6th, 2020"
 date: "2020-06-06"
 tags: ["TeraSaturday"]
 ---

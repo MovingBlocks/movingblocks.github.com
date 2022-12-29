@@ -9,7 +9,6 @@ const config = {
   siteDescription:
     "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for meta description tag.
   postDefaultCategoryID: "Update", // Default category for posts.
-  dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
   copyright: "Copyright © 2022. Moving Blocks!", // Copyright string for the footer of the website.
   themeColor: "#c62828", // Used for setting manifest and progress theme colors.

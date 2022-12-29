@@ -20,7 +20,6 @@ title: "<Blog Name>"
 cover: "./cover.jpg"
 description: "<This blog is about Terasology in GSoC>"
 author: "<Blog writter>"
-ddate: "July 14th, 2017"
 date: "2017-07-14
 tags: ["GSoC", "Update"]
 ---
@@ -31,8 +30,12 @@ tags: ["GSoC", "Update"]
 
 > **⚠️ NOTE:** All the argument in the frontmatter are required.
 
-`posttype` should be blog only. `title` involves blog name. `tags` should always be an array and their can be multiple tags.
-`description` is short one or two line summary of blog. `ddate` is date in words followed by month,day,year. `date` is date in number followed by YY-MM-DD. `cover` is path of the image banner image in your blog.
+- `posttype` should be blog only. 
+- `title` involves blog name. 
+- `tags` should always be an array and their can be multiple tags.
+- `description` is short one or two line summary of blog. 
+- `date` is the date of the blog post in ISO form: YYYY-MM-DD. 
+- `cover` is path of the image banner image in your blog.
 
 ## Some conventions to follow while writing blog
 

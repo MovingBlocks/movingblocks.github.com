@@ -2,11 +2,11 @@ const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
 
 module.exports = {
-  pathPrefix: config.pathPrefix === "" ? "/ModuleSite" : config.pathPrefix,
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
     title: config.siteTitle,
     siteUrl: urljoin(config.siteUrl, config.pathPrefix),
-    twitterUsername: "@Terasology",
+    twitterUsername: config.twitterUsername,
     image: config.siteLogo,
   },
   plugins: [
@@ -84,7 +84,7 @@ module.exports = {
         name: config.siteTitle,
         short_name: config.siteTitle,
         description: config.siteDescription,
-        start_url: config.pathPrefix === "" ? "/" : config.pathPrefix,
+        start_url: `{${config.pathPrefix}/}`,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: "minimal-ui",

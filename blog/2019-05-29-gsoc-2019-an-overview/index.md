@@ -30,7 +30,7 @@ Game modes bundle these modules together enabling players to immerse themselves 
 
 The idea for the [Light and Shadow] game mode dates back to 2013 when SuperSnark came up with neat artworks backed by elaborate lore of quarreling factions and way too many ideas for a single person to implement.
 
-![LightAndShadow](./las_red-keep.jpg)
+![LightAndShadow](./las_red-keep.png)
 
 We are happy that _darshan3_ takes on the task to develop this idea into a fast-paced Capture-the-Flag mode set in a fantasy world.
 He can build on present board-game-like model designs and animations provided by glasz and others, such as poker chip trees and fighting chess pieces.

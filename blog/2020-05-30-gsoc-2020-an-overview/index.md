@@ -10,7 +10,7 @@ ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["GSoC"]
 imagetag: "Other"
-customLogo: "./static/logos/gsoc.jpg"
+customLogo: "./static/logos/gsoc.png"
 mainImage: "./static/images/14.jpg"
 position: "end"
 ---
@@ -100,7 +100,7 @@ We're very happy to also have a GSOC project this year that targets _Destination
 In 2015, _The Terasology Foundation_ (at that time "MovingBlocks") offered infrastructure and maintenance to original author Milosh Petrov.
 Since then, there have been many contributions to DestSol, but it never made use of the foundation's [_Gestalt_ library] - until now.
 
-![DestSol](2020_gsoc_dest-sol.jpg)
+![DestSol](2020_gsoc_dest-sol.png)
 
 _Isaac lichter_ will [incorporate the _Entity-Component-System_ (ECS) provided by _Gestalt_] by refactoring central aspects of the game.
 To enable other contributors to join the efforts of porting the whole game to ECS, the student will furthermore write a portation guide on how to integrate with Gestalt's ECS.

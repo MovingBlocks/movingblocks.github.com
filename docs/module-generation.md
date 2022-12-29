@@ -16,7 +16,7 @@ The pipeline will be run periodically as a cron job, so that the ModuleSite is u
 
 ### Module Generation Diagram
 
-<img src="./images/module-generation.jpg" width="450" height="500">
+<img src="./images/module-generation.png" width="450" height="500">
 
 ## Collecting Data
 

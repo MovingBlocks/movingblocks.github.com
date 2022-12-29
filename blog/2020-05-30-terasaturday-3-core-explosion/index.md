@@ -41,7 +41,7 @@ Taking the extraction to its logical conclusion, Skaldarnar and Niruandaleth hav
 CoreBlocks has been blown up, too. In their place, a new network of modules stretches across the workspace, each 
 providing a specific subset of functionality for the Core Gameplay preset.
 
-<img src="https://i.imgur.com/qBHbynr.jpg" alt="New Core Module Diagram" style="width:800px;padding:8px">
+<img src="./core-dependencies.jpg" alt="New Core Module Diagram" style="width:800px;padding:8px">
 
 The old Inventory and LootPools modules, used to keep track of items, have been mixed together and separated again, 
 forming a refreshed [Inventory] module and a new [Drops] module.

@@ -6,7 +6,7 @@ import Footer from "../components/Footer/Footer";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/style.scss";
-import favicon from "../../static/logos/logo.jpg";
+import favicon from "../../static/logos/logo.png";
 
 // eslint-disable-next-line no-unused-vars
 function Layout({ children }) {
@@ -25,7 +25,7 @@ export function Head() {
   return (
     <>
       <meta name="description" content={config.siteDescription} />
-      <link rel="shortcut icon" href={favicon} type="image/jpg" />
+      <link rel="shortcut icon" href={favicon} type="image/png" />
     </>
   );
 }

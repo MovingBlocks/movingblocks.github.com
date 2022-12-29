@@ -52,8 +52,7 @@ replaced with brand new art from TheStygianHawk.
 ---
 
 
-
-<img src="https://user-images.githubusercontent.com/17286005/72514970-de110d80-389a-11ea-83c4-1376126fdfbb.jpg" alt="An example of torches generated with askneller's work" style="width:80%">
+![An example of torches generated with askneller's work](./screenshot-1.jpg)
 
 * New contributor askneller is working on better cave generation; as an intermediary step, world generating rasterizers
  (the systems that place the specific blocks) [can depend on another rasterizer][MovingBlocks/Terasology#3825] which 

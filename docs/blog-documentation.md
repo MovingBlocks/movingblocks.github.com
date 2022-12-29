@@ -61,7 +61,7 @@ For custom logo on image
 
 ```
 imagetag: "Other"
-customLogo: "./static/logos/gsoc.jpg"
+customLogo: "./static/logos/gsoc.png"
 mainImage: "./static/images/14.jpg"
 position: "end"
 ```

@@ -29,7 +29,7 @@ While we keep tracking technical discussion on Github, the org meeting allows fo
 
 <div align="center">
     <a href="https://trello.com/b/4cw7Q1BJ/org-meeting-board" target="_blank" alt="Trello Org Meeting Board">
-    <img src="./trello_done_cards.jpg" alt="Weekly list of completed Trello cards." width="100%"/>
+    <img src="./trello_done_cards.png" alt="Weekly list of completed Trello cards." width="100%"/>
     </a>
 </div>
 
@@ -52,7 +52,7 @@ It supports `aliases` to update existing labels instead of creating new ones and
 
 <div align="center">
     <a href="https://github.com/MovingBlocks/Terasology/labels" target="_blank" alt="Github labels of MovingBlocks/Terasology">
-    <img src="./github_labels.jpg" alt="Excerpt of our overhauled Github labels." width="80%"/>
+    <img src="./github_labels.png" alt="Excerpt of our overhauled Github labels." width="80%"/>
     </a>
 </div>
 

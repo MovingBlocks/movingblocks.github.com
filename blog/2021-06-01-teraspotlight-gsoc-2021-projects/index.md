@@ -111,7 +111,7 @@ The first part will bring a more pacifist way of collecting wool to craft a nice
 The main focus for this is achieving a smooth transition between the two sheep models (unshorn and shorn) in the events of shearing and hair regrowth, providing an immersive user experience using audio and visual feedback as well as proper documentation and testing.
 
   <div align="center">
-    <img src="./sheep.jpg" width="50%" />
+    <img src="./sheep.png" width="50%" />
     <figcaption>Unshorn and shorn sheep</figcaption>
   </div>
 
@@ -224,7 +224,7 @@ This will serve as the foundation for more interesting generators, allowing for 
 The project will be mentored by _@Nicholas Bates_ and _@Cervator_, with additional support from last year's student _@Isaac L_.
 
   <div align="center">
-    <img src="./dest-sol-worldgen.jpg" />
+    <img src="./dest-sol-worldgen.png" />
     <figcaption>Planned world generation flow for Destination: Sol.</figcaption>
   </div>
 

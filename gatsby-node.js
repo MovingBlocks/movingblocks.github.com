@@ -225,6 +225,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 frontmatter {
                   tags
                   title
+                  cover {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
                 }
               }
             }
@@ -235,13 +240,14 @@ exports.createPages = async ({ graphql, actions }) => {
     const index = result.data.allMarkdownRemark.edges.map((edge) => {
       const { excerpt, fields, frontmatter } = edge.node;
       const { slug } = fields;
-      const { tags, title } = frontmatter;
+      const { tags, title, cover } = frontmatter;
 
       return {
         excerpt,
         slug,
         tags,
         title,
+        cover,
       };
     });
 

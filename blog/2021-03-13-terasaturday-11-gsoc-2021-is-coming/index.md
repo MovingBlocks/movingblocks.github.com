@@ -4,7 +4,6 @@ title: "TeraSaturday #11: GSOC 2021 is Coming"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth & Skaldarnar"
-ddate: "Mar 13th, 2021"
 date: "2021-03-13"
 tags: ["TeraSaturday"]
 ---

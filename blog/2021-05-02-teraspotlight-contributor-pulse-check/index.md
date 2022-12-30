@@ -4,7 +4,6 @@ title: "TeraSpotlight: Contributor Pulse Check"
 cover: "./cover.jpg"
 description: "A short spotlight on the results of our first community workshop targeting what motivates us and what we envision for Terasology's future."
 author: "Niruandaleth"
-ddate: "May 02nd, 2021"
 date: "2021-05-02"
 tags: ["TeraSpotlight"]
 ---

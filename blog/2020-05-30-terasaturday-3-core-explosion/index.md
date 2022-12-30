@@ -4,7 +4,6 @@ title: "TeraSaturday #3: Core Explosion"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Jordan H. (Qwertygiy)"
-ddate: "May 30th, 2020"
 date: "2020-05-30"
 tags: ["TeraSaturday"]
 imageTag: "TeraSaturday"
@@ -35,7 +34,7 @@ Jellysnake separated [Inventory] from Core, and Adrijaned pulled out Biomes. [He
 
 This was _bigger._
 
-![just a small part of the changes!](https://cdn.discordapp.com/attachments/696830442065625118/712674385391255562/unknown.jpg)
+![just a small part of the changes!](./updates.jpg)
 
 Taking the extraction to its logical conclusion, Skaldarnar and Niruandaleth have completely removed the Core module. 
 CoreBlocks has been blown up, too. In their place, a new network of modules stretches across the workspace, each 

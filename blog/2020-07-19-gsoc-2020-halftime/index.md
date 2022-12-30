@@ -6,7 +6,6 @@ description: "Students are mid-way through Google Summer of Code 2020 🎉
   A lot of progress already visible.
   Read on to get a brief overview of the progress of all projects during the first half."
 author: "Niruandaleth & Skaldarnar"
-ddate: "July 19th, 2020"
 date: "2020-07-19"
 tags: ["GSoC"]
 ---

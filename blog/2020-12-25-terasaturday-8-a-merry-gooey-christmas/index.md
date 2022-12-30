@@ -4,7 +4,6 @@ title: "TeraSaturday #8: A Merry, Gooey Christmas!"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth"
-ddate: "Dec 25th, 2020"
 date: "2020-12-25"
 tags: ["TeraSaturday"]
 ---

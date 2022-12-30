@@ -4,7 +4,6 @@ title: "Looking back at GSOC 2019"
 cover: "./cover.jpg"
 description: "Another summer full of coding and fun is finally over, and now it's time to recap on what happened in the last three months.Read on to get a brief overview of the students' achievements and contributions."
 author: "Niruandaleth & Skaldarnar"
-ddate: "Sept 27th, 2019"
 date: "2019-09-27"
 tags: ["GSoC"]
 ---

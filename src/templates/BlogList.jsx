@@ -85,9 +85,9 @@ function BlogList({ data, pageContext, location }) {
         />
         {isShown && (
           <SearchResults
-            id="src"
             query={searchQuery}
             results={results}
+            prefix={prefix}
             type="blog"
           />
         )}

@@ -12,7 +12,7 @@ function ModuleSearchForm({ query, filter, prefix }) {
   });
   return (
     <Form role="search" method="GET">
-      <Row form className="justify-content-center" d="search-form">
+      <Row form className="justify-content-center" id="search-form">
         <Col md="2">
           <FormGroup>
             <Label for="searchFilter">

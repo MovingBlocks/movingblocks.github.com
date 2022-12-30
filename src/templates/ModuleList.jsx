@@ -74,11 +74,9 @@ function ModuleList({ data, pageContext, location }) {
         />
         {isShown && (
           <SearchResults
-            id="src"
             query={searchQuery}
-            filter={filterTag}
             results={results}
-            postEdges={postEdges}
+            prefix={prefix}
             type="module"
           />
         )}

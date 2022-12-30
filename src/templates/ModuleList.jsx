@@ -8,12 +8,11 @@ import SEO from "../components/SEO/SEO";
 import SearchForm from "../components/SearchForm/SearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
-import moduleList from "../generated/module-result.json";
+import moduleData from "../generated/module-result.json";
 
 function ModuleList({ data, pageContext, location }) {
   const { moduleCurrentPage, moduleNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
-  const moduleData = moduleList;
 
   const prefix = "/modules";
   const isFirst = moduleCurrentPage === 1;
@@ -57,6 +56,13 @@ function ModuleList({ data, pageContext, location }) {
     }
   }, [filterTag, moduleData, searchQuery]);
 
+  const moduleList = postEdges.map(({ node }) => {
+    const { frontmatter, fields, excerpt } = node;
+    const { posttype, tags, cover, title, author } = frontmatter;
+    const { slug, date } = fields;
+    return { posttype, excerpt, title, path: slug, cover, tags, excerpt, date, author }
+  });
+
   return (
     <Layout>
       <div className="index-container">
@@ -71,7 +77,7 @@ function ModuleList({ data, pageContext, location }) {
             type="module"
           />
         )}
-        {!isShown && <PostListing id="modules" postEdges={postEdges} />}
+        {!isShown && <PostListing prefix={prefix} postList={moduleList} />}
       </div>
       <Row>
         {!isFirst && results.length === 0 && (

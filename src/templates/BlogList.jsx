@@ -65,6 +65,13 @@ function BlogList({ data, pageContext, location }) {
     }
   }, [blogData, filterAuthor, filterTag, filterdate, searchQuery]);
 
+  const postList = postEdges.map(({ node }) => {
+    const { frontmatter, fields, excerpt } = node;
+    const { posttype, tags, cover, title, author } = frontmatter;
+    const { slug, date } = fields;
+    return { posttype, excerpt, title, path: slug, cover, tags, excerpt, date, author }
+  });
+
   return (
     <Layout>
       <div className="index-container">
@@ -84,7 +91,7 @@ function BlogList({ data, pageContext, location }) {
             type="blog"
           />
         )}
-        {!isShown && <PostListing id="blog" postEdges={postEdges} />}
+        {!isShown && <PostListing prefix={prefix} postList={postList} />}
       </div>
       <Row>
         {!isFirst && results.length === 0 && (

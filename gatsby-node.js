@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-const kebabCase = require("lodash.kebabcase");
 const fs = require("fs");
+const kebabCase = require("lodash.kebabcase");
 const moment = require("moment");
 const path = require("path");
-const siteConfig = require("./data/SiteConfig");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -49,245 +48,219 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const postPage = path.resolve("src/templates/post.jsx");
-  const modulesPage = path.resolve("src/templates/modules.jsx");
 
-  const markdownQueryResult = await graphql(
-    `
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              excerpt
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-                date
-                posttype
-                cover {
-                  publicURL
-                  childImageSharp {
-                    gatsbyImageData
-                  }
+  async function createBlogPages() {
+    const blogPostTemplate = path.resolve("src/templates/post.jsx");
+    const blogQueryResult = await graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { frontmatter: { posttype: { eq: "blog" } } }
+          ) {
+            edges {
+              node {
+                fields {
+                  slug
                 }
               }
             }
           }
         }
-      }
-    `
-  );
-
-  if (markdownQueryResult.errors) {
-    console.error(markdownQueryResult.errors);
-    throw markdownQueryResult.errors;
-  }
-
-  const blogList = [];
-  const moduleList = [];
-
-  const blogQueryResult = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          filter: { frontmatter: { posttype: { eq: "blog" } } }
-        ) {
-          edges {
-            node {
-              excerpt
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                author
-                tags
-                date
-                description
-                posttype
-                imageTag
-                customLogo
-                postNumber
-                position
-                mainImage
-                cover {
-                  publicURL
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-              internal {
-                content
-              }
-            }
-          }
-        }
-      }
-    `
-  );
-
-  if (blogQueryResult.errors) {
-    console.error(blogQueryResult.errors);
-    throw blogQueryResult.errors;
-  }
-
-  fs.mkdir("src/generated", (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Directory created successfully!");
-    }
-  });
-
-  const posts = blogQueryResult.data.allMarkdownRemark.edges;
-  posts.forEach((edge) => {
-    blogList.push({
-      path: `/blog${edge.node.fields.slug}`,
-      tags: edge.node.frontmatter.tags,
-      posttype: edge.node.frontmatter.posttype,
-      cover: edge.node.frontmatter.cover,
-      title: edge.node.frontmatter.title,
-      author: edge.node.frontmatter.author,
-      excerpt: edge.node.excerpt,
-      date: edge.node.frontmatter.date,
-      description: edge.node.frontmatter.description,
-      imageTag: edge.node.frontmatter.imageTag,
-      customLogo: edge.node.frontmatter.customLogo,
-      postNumber: edge.node.frontmatter.postNumber,
-      position: edge.node.frontmatter.position,
-      mainImage: edge.node.frontmatter.mainImage,
-      content: edge.node.internal.content,
-    });
-  });
-  const blogJSON = JSON.stringify(blogList, null, 2);
-  fs.writeFileSync("./src/generated/blog-result.json", blogJSON);
-  const postsPerPage = 27;
-  const postsNumPages = Math.ceil(posts.length / postsPerPage);
-  Array.from({
-    length: postsNumPages,
-    // eslint-disable-next-line no-shadow
-  }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-      component: path.resolve("./src/templates/blog.jsx"),
-      context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        postsNumPages,
-        blogCurrentPage: i + 1,
-      },
-    });
-  });
-
-  const moduleQueryResult = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          filter: { frontmatter: { posttype: { eq: "module" } } }
-        ) {
-          edges {
-            node {
-              excerpt
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-                date
-                posttype
-                cover {
-                  publicURL
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-  );
-
-  if (moduleQueryResult.errors) {
-    console.error(moduleQueryResult.errors);
-    throw moduleQueryResult.errors;
-  }
-
-  const modules = moduleQueryResult.data.allMarkdownRemark.edges;
-  modules.forEach((edge) => {
-    moduleList.push({
-      path: `/modules${edge.node.fields.slug}`,
-      tags: edge.node.frontmatter.tags,
-      cover: edge.node.frontmatter.cover,
-      title: edge.node.frontmatter.title,
-      date: edge.node.frontmatter.date,
-      excerpt: edge.node.excerpt,
-      posttype: edge.node.frontmatter.posttype,
-    });
-  });
-  const moduleJSON = JSON.stringify(moduleList, null, 2);
-  fs.writeFileSync("./src/generated/module-result.json", moduleJSON);
-  const modulesPerPage = 27;
-  const moduleNumPages = Math.ceil(modules.length / modulesPerPage);
-  Array.from({
-    length: moduleNumPages,
-    // eslint-disable-next-line no-shadow
-  }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/modules` : `/modules/${i + 1}`,
-      component: path.resolve("./src/templates/modulelist.jsx"),
-      context: {
-        limit: modulesPerPage,
-        skip: i * modulesPerPage,
-        moduleNumPages,
-        moduleCurrentPage: i + 1,
-      },
-    });
-  });
-
-  const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
-
-  postsEdges.sort((postA, postB) => {
-    const dateA = moment(
-      postA.node.frontmatter.date,
-      siteConfig.dateFromFormat
+      `
     );
-
-    const dateB = moment(
-      postB.node.frontmatter.date,
-      siteConfig.dateFromFormat
-    );
-
-    if (dateA.isBefore(dateB)) return 1;
-    if (dateB.isBefore(dateA)) return -1;
-
-    return 0;
-  });
-
-  postsEdges.forEach((edge) => {
-    if (edge.node.frontmatter.posttype === "module") {
-      createPage({
-        path: `/modules${edge.node.fields.slug}`,
-        component: modulesPage,
-        context: {
-          slug: edge.node.fields.slug,
-        },
-      });
-    } else {
-      // blog post
+    const posts = blogQueryResult.data.allMarkdownRemark.edges;
+    posts.forEach((edge) => {
       createPage({
         path: `/blog${edge.node.fields.slug}`,
-        component: postPage,
+        component: blogPostTemplate,
         context: {
           slug: edge.node.fields.slug,
         },
       });
-    }
-  });
+    });
+
+    const blogListTemplate = path.resolve("./src/templates/blog.jsx");
+    const blogsPerPage = 27;
+    const numBlogPages = Math.ceil(posts.length / blogsPerPage);
+    Array.from({ length: numBlogPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+        component: blogListTemplate,
+        context: {
+          limit: blogsPerPage,
+          skip: i * blogsPerPage,
+          postsNumPages: numBlogPages,
+          blogCurrentPage: i + 1,
+        },
+      });
+    });
+  }
+
+  async function createModulePages() {
+    const modulePageTemplate = path.resolve("src/templates/modules.jsx");
+    const moduleQueryResult = await graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { frontmatter: { posttype: { eq: "module" } } }
+          ) {
+            edges {
+              node {
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+        }
+      `
+    );
+
+    const modules = moduleQueryResult.data.allMarkdownRemark.edges;
+    modules.forEach((edge) => {
+      createPage({
+        path: `/modules${edge.node.fields.slug}`,
+        component: modulePageTemplate,
+        context: {
+          slug: edge.node.fields.slug,
+        },
+      });
+    });
+
+    const moduleListTemplate = path.resolve("./src/templates/modulelist.jsx");
+    const modulesPerPage = 27;
+    const numModulePages = Math.ceil(modules.length / modulesPerPage);
+    Array.from({ length: numModulePages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/modules` : `/modules/${i + 1}`,
+        component: moduleListTemplate,
+        context: {
+          limit: modulesPerPage,
+          skip: i * modulesPerPage,
+          moduleNumPages: numModulePages,
+          moduleCurrentPage: i + 1,
+        },
+      });
+    });
+  }
+
+  await createBlogPages();
+  await createModulePages();
+
+  // TODO: replace below with proper search index generation, see
+  //          https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-search/
+
+  async function buildBlogSearchIndex() {
+    const blogSearchIndexQueryResult = await graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { frontmatter: { posttype: { eq: "blog" } } }
+          ) {
+            edges {
+              node {
+                excerpt
+                fields {
+                  slug
+                  date(formatString: "MMMM DD, YYYY")
+                }
+                frontmatter {
+                  author
+                  date
+                  tags
+                  title
+                  cover {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+                internal {
+                  content
+                }
+              }
+            }
+          }
+        }
+      `
+    );
+    const index = blogSearchIndexQueryResult.data.allMarkdownRemark.edges.map(
+      (edge) => {
+        const { excerpt, fields, frontmatter, internal } = edge.node;
+        const { slug, date: ddate } = fields;
+        const { title, tags, author, date, cover } = frontmatter;
+        const { content } = internal;
+
+        return {
+          author,
+          excerpt,
+          content,
+          cover,
+          date,
+          ddate,
+          slug,
+          tags,
+          title,
+          posttype: "blog",
+        };
+      }
+    );
+
+    return index;
+  }
+
+  async function buildModulesSearchIndex() {
+    const result = await graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { frontmatter: { posttype: { eq: "module" } } }
+          ) {
+            edges {
+              node {
+                excerpt
+                fields {
+                  slug
+                }
+                frontmatter {
+                  tags
+                  title
+                }
+              }
+            }
+          }
+        }
+      `
+    );
+    const index = result.data.allMarkdownRemark.edges.map((edge) => {
+      const { excerpt, fields, frontmatter } = edge.node;
+      const { slug } = fields;
+      const { tags, title } = frontmatter;
+
+      return {
+        excerpt,
+        slug,
+        tags,
+        title,
+      };
+    });
+
+    return index;
+  }
+
+  const blogIndex = await buildBlogSearchIndex();
+  const moduleIndex = await buildModulesSearchIndex();
+
+  if (!fs.existsSync("src/generated")) {
+    fs.mkdirSync("src/generated");
+  }
+
+  fs.writeFileSync(
+    "./src/generated/blog-result.json",
+    JSON.stringify(blogIndex, null, 2)
+  );
+  fs.writeFileSync(
+    "./src/generated/module-result.json",
+    JSON.stringify(moduleIndex, null, 2)
+  );
 };

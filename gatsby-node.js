@@ -248,6 +248,7 @@ exports.createPages = async ({ graphql, actions }) => {
         tags,
         title,
         cover,
+        posttype: "module",
       };
     });
 

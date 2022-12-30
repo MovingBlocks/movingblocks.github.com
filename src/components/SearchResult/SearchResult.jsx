@@ -3,7 +3,7 @@ import { Row } from "reactstrap";
 import moment from "moment";
 import Cards from "../Cards/Cards";
 
-function SearchResults({ query, results }) {
+function SearchResults({ query, results, type }) {
   return (
     <div aria-label="Search results for all posts">
       {!!results.length && query && (
@@ -31,6 +31,7 @@ function SearchResults({ query, results }) {
                 excerpt={excerpt}
                 date={moment(date).format("MMMM DD, YYYY")}
                 author={author}
+                type={type}
               />
             )
           )}

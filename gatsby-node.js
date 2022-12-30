@@ -50,7 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   async function createBlogPages() {
-    const blogPostTemplate = path.resolve("src/templates/post.jsx");
+    const blogPostTemplate = path.resolve("src/templates/Blog.jsx");
     const blogQueryResult = await graphql(
       `
         {
@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   async function createModulePages() {
-    const modulePageTemplate = path.resolve("src/templates/modules.jsx");
+    const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `
         {

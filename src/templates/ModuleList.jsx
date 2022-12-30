@@ -5,7 +5,7 @@ import { Row, Col } from "reactstrap";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import SearchForm from "../components/SearchForm/SearchForm";
+import ModuleSearchForm from "../components/ModuleSearchForm/ModuleSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleData from "../generated/module-result.json";
@@ -66,7 +66,7 @@ function ModuleList({ data, pageContext, location }) {
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm query={searchQuery} filter={filterTag} prefix={prefix} />
+        <ModuleSearchForm query={searchQuery} filter={filterTag} prefix={prefix} />
         {isShown && (
           <SearchResults
             id="src"

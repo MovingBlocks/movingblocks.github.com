@@ -8,7 +8,7 @@ const moment = require("moment");
 
 moment.locale("en");
 
-function SearchForm({ query, tag, author, date, location, prefix }) {
+function BlogSearchForm({ query, tag, author, date, location, prefix }) {
   const [showFilter, setShowFilter] = useState(false);
   let srcLocation = location;
 
@@ -182,4 +182,4 @@ function SearchForm({ query, tag, author, date, location, prefix }) {
   );
 }
 
-export default SearchForm;
+export default BlogSearchForm;

@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import moduleList from "../../generated/module-result.json";
 
-function SearchForm({ query, filter, prefix }) {
+function ModuleSearchForm({ query, filter, prefix }) {
   const tagList = new Set();
   moduleList.forEach((module) => {
     module.tags.forEach((tag) => {
@@ -78,4 +78,4 @@ function SearchForm({ query, filter, prefix }) {
   );
 }
 
-export default SearchForm;
+export default ModuleSearchForm;

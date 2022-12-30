@@ -5,7 +5,7 @@ import { Row, Col } from "reactstrap";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import SearchForm from "../components/BlogSearchForm/BlogSearchForm";
+import BlogSearchForm from "../components/BlogSearchForm/BlogSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
@@ -75,7 +75,7 @@ function BlogList({ data, pageContext, location }) {
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm
+        <BlogSearchForm
           query={searchQuery}
           tag={filterTag}
           author={filterAuthor}

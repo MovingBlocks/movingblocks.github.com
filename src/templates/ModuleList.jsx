@@ -8,11 +8,12 @@ import SEO from "../components/SEO/SEO";
 import ModuleSearchForm from "../components/ModuleSearchForm/ModuleSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
-import moduleData from "../generated/module-result.json";
+import moduleResultData from "../generated/module-result.json";
 
 function ModuleList({ data, pageContext, location }) {
   const { moduleCurrentPage, moduleNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
+  const moduleData = moduleResultData;
 
   const prefix = "/modules";
   const isFirst = moduleCurrentPage === 1;
@@ -60,13 +61,17 @@ function ModuleList({ data, pageContext, location }) {
     const { frontmatter, fields, excerpt } = node;
     const { posttype, tags, cover, title, author } = frontmatter;
     const { slug, date } = fields;
-    return { posttype, excerpt, title, path: slug, cover, tags, excerpt, date, author }
+    return { posttype, title, path: slug, cover, tags, excerpt, date, author };
   });
 
   return (
     <Layout>
       <div className="index-container">
-        <ModuleSearchForm query={searchQuery} filter={filterTag} prefix={prefix} />
+        <ModuleSearchForm
+          query={searchQuery}
+          filter={filterTag}
+          prefix={prefix}
+        />
         {isShown && (
           <SearchResults
             id="src"

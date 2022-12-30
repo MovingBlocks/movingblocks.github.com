@@ -79,7 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-    const blogListTemplate = path.resolve("./src/templates/blog.jsx");
+    const blogListTemplate = path.resolve("./src/templates/BlogList.jsx");
     const blogsPerPage = 27;
     const numBlogPages = Math.ceil(posts.length / blogsPerPage);
     Array.from({ length: numBlogPages }).forEach((_, i) => {
@@ -127,7 +127,7 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-    const moduleListTemplate = path.resolve("./src/templates/modulelist.jsx");
+    const moduleListTemplate = path.resolve("./src/templates/ModuleList.jsx");
     const modulesPerPage = 27;
     const numModulePages = Math.ceil(modules.length / modulesPerPage);
     Array.from({ length: numModulePages }).forEach((_, i) => {

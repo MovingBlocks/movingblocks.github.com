@@ -10,7 +10,7 @@ import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import moduleList from "../generated/module-result.json";
 
-function Modulelist({ data, pageContext, location }) {
+function ModuleList({ data, pageContext, location }) {
   const { moduleCurrentPage, moduleNumPages } = pageContext;
   const postEdges = data.allMarkdownRemark.edges;
   const moduleData = moduleList;
@@ -135,7 +135,7 @@ export const moduleQuery = graphql`
   }
 `;
 
-export default Modulelist;
+export default ModuleList;
 
 export function Head() {
   return <SEO title={`Modules | ${config.siteTitle}`} />;

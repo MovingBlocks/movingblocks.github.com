@@ -5,7 +5,7 @@ const config = {
   siteUrl: "https://terasology.org", // Domain of your website without pathPrefix. Should not have trailing slashes.
   // Prefixes all links. Should not have trailing slashes. Should have only a single leading slash.
   // Currently used to deploy ModuleSite as sub-site of current Terasology website.
-  pathPrefix: "/ModuleSite",
+  pathPrefix: "/preview",
   siteDescription:
     "Terasology is a super extensible open source voxel-based game. Born from a Minecraft-inspired tech demo, it is gradually becoming a stable platform for all sorts of gameplay settings in a voxel world.", // Website description used for meta description tag.
   postDefaultCategoryID: "Update", // Default category for posts.

@@ -3,26 +3,6 @@ import { Row, Col } from "reactstrap";
 import { graphql, useStaticQuery } from "gatsby";
 
 function About() {
-  const data = useStaticQuery(graphql`
-    query myImages {
-      historyImg: file(relativePath: { eq: "images/3.jpg" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      modding: file(relativePath: { eq: "images/9.jpg" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      community: file(relativePath: { eq: "images/8.jpg" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-  `);
-
   return (
     <div className="about">
       <div className="about_bg">

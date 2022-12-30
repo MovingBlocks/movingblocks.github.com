@@ -52,7 +52,7 @@ function Index() {
         </Col>
       </Row>
       <Row>
-        <Col md="7">
+        <Col md="6">
           <h3>What is Terasology?</h3>
           <p className="p-title">
             An open source voxel world - imagine the possibilities!
@@ -75,16 +75,16 @@ function Index() {
             </button>
           </div>
         </Col>
-        <Col md="5">
+        <Col md="6">
           <div className="index">
             <iframe
               src="https://www.youtube.com/embed/Wpa2aiadwE8"
               title="Terasology trailer"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              frameBorder="0"
               webkitallowfullscreen="true"
               mozallowfullscreen="true"
               allowFullScreen
+              style={{ border: "0px" }}
             />
           </div>
         </Col>

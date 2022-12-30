@@ -14,7 +14,7 @@ function Layout({ title, children }) {
     <body>
       <Header />
       <Container className="main">
-        <div>
+        <div className="mb-4">
           <h1 className="text-center">{title}</h1>
           <div className="title-underline" />
         </div>

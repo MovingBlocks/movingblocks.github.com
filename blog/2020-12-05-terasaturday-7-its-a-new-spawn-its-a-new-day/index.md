@@ -35,5 +35,5 @@ In addition, a few blocks and items got a display name or description added wher
 All this is hopefully just the start of improving the in-game help features offered in our gameplays, making Terasology more accessible for new players 🕹
 
 <p align="center">
-<img src="./ingame-help.png" alt="Sorted in-game help"/>
+<img src="./ingame-help.jpg" alt="Sorted in-game help"/>
 </p>

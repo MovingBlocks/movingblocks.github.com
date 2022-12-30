@@ -47,11 +47,11 @@ for module in modules:
     bannerImage = "https://raw.githubusercontent.com/Terasology/"+moduleName+"/develop/docs/_media/banner.png"
     response = requests.get(bannerImage)
     if(response.ok):
-        with open(moduleDirSrc+"/cover.png", mode="wb") as imageFile:
+        with open(moduleDirSrc+"/cover.jpg", mode="wb") as imageFile:
             imageFile.write(response.content)
     else:
         print("Couldn't fetch cover image on " + moduleName +", error code: "+ str(response.status_code) + ", resolving with default cover image")
-        with open("./module-generation/defaultBanner.png", mode="rb+") as sourceImage:
+        with open("./module-generation/defaultBanner.jpg", mode="rb+") as sourceImage:
             readSourceImage = sourceImage.read()
-            with open(moduleDirSrc+"/cover.png", mode="wb") as defaultImageFile:
+            with open(moduleDirSrc+"/cover.jpg", mode="wb") as defaultImageFile:
                 defaultImageFile.write(readSourceImage)

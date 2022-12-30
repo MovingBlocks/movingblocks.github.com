@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: "Happy 7th birthday Terasology!!"
-cover: "./cover.png"
+cover: "./cover.jpg"
 description: "For this year I'm proposing a bit of a week-long celebration of sorts, starting slow with some preparations this weekend (in 12ish hours) and building over the week to a big multiplayer event with several concurrently hosted servers running some of our different game play templates for the next entire weekend."
 author: "Cervator"
 date: "2018-09-28"

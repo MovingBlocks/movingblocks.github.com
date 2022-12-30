@@ -83,7 +83,7 @@ Using similar effects like the `GooeyDefense` tower effectors, this hopefully tu
 The project will be mentored by _@Niruandaleth_ and _@Skaldarnar_.
 
   <div align="center">
-    <img src="./las-items.png" width="60%" />
+    <img src="./las-items.jpg" width="60%" />
     <figcaption>Weapons, Traps and Defensive Mechanisms for Light & Shadow</figcaption>
   </div>
 
@@ -174,7 +174,7 @@ In addition to that, the module site build and deployment pipeline needs to be r
 Documenting both pipelines for our fellow contributors shall make it easy for interested parties to join the effort in the future.
 
   <div align="center">
-    <img src="./module-site.png" width="60%" />
+    <img src="./module-site.jpg" width="60%" />
     <figcaption>Exemplary module overview on the module site</figcaption>
   </div>
 

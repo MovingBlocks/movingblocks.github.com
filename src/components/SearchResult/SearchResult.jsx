@@ -31,6 +31,7 @@ function SearchResults({ query, results }) {
                 excerpt={excerpt}
                 date={moment(date).format("MMMM DD, YYYY")}
                 author={author}
+                  type={type}
               />
             )
           )}

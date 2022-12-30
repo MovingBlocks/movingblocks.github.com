@@ -1,55 +1,61 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Row, Col, Badge } from "reactstrap";
+import {
+  Badge,
+  Card,
+  CardBody,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+  Col,
+} from "reactstrap";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-function Cards({ title, cover, tags, excerpt, path, author, date }) {
-  const tagCount = tags.length - 2;
-  return (
-    <Col className="ml-4 mr-4 pt-0 mt-2 mb-4 " lg="3" md="8" sm="12">
-      <Row className="row_shadow h-100">
-        <Col lg="12" md="12" className="p-0">
-          <div className="card-img search-cards">
-            <GatsbyImage image={cover.gatsbyImageData} />
-          </div>
-          <div className="d-flex">
-            <div className="md-tag mt-3 ml-3">
-              {tags.slice(0, 2).map((tag) => (
-                <Badge className="mr-2">{tag}</Badge>
-              ))}
-            </div>
-            <span className="card-people ml-2 mt-4 mr-4  h4">
-              {tagCount > 0 ? `+${tagCount} more` : ""}{" "}
-            </span>
-          </div>
-        </Col>
-        <div className="d-flex flex-column ml-3">
-          <h5 className="">{title}</h5>
-          <div className="mt-1 mr-2" lang="en">
-            <p className="word-break">{excerpt}</p>
+function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
+  // we use cover images with different aspect ratios for modules and blogs
+  // the respective aspect ratio is encoded in the type-specific css class
+  const imgClass = type ? `card-img-${type}` : "";
 
-            {author && date ? (
-              <div className="mt-auto">
-                <p style={{ fontSize: "14px" }}>
-                  <b>By: </b>
-                  {author}
-                </p>
-                <p style={{ fontSize: "14px" }}>
-                  <b>Posted on: </b>
-                  {date}
-                </p>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="mt-auto mb-4">
-            <Link to={path} key={title} className="mt-auto btn-primary">
-              Read More
-            </Link>
-          </div>
-        </div>
-      </Row>
+  return (
+    <Col className="pt-0 mt-2 mb-4" lg="4" md="8" sm="12">
+      <Card className="row_shadow h-100">
+        <GatsbyImage
+          image={cover.gatsbyImageData}
+          className={`card-img-top ${imgClass}`}
+        />
+        <CardBody>
+          <CardSubtitle tag="h7">
+            {tags.map((tag) => (
+              <Badge className="mr-2">{tag}</Badge>
+            ))}
+          </CardSubtitle>
+          <CardTitle tag="h5" className="mt-3">
+            {title}
+          </CardTitle>
+          <CardText>{excerpt}</CardText>
+          {author ? (
+            <CardSubtitle className="text-muted">
+              <b>By:</b> {author}
+            </CardSubtitle>
+          ) : (
+            ""
+          )}
+          {date ? (
+            <CardSubtitle className="text-muted">
+              <b>Posted on:</b> {date}
+            </CardSubtitle>
+          ) : (
+            ""
+          )}
+        </CardBody>
+        <Link
+          to={path}
+          key={title}
+          className="mt-auto m-4 btn-primary text-center"
+        >
+          Read More
+        </Link>
+      </Card>
     </Col>
   );
 }

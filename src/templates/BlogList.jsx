@@ -77,7 +77,12 @@ function BlogList({ data, pageContext, location }) {
           prefix={prefix}
         />
         {isShown && (
-          <SearchResults id="src" query={searchQuery} results={results} />
+          <SearchResults
+            id="src"
+            query={searchQuery}
+            results={results}
+            type="blog"
+          />
         )}
         {!isShown && <PostListing id="blog" postEdges={postEdges} />}
       </div>

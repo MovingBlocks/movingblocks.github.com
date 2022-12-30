@@ -39,6 +39,7 @@ function PostListing({ id, postEdges }) {
                 excerpt={post.excerpt}
                 author={post.author}
                 date={moment(post.date).format("MMMM DD, YYYY")}
+                type={post.posttype}
               />
             ) : (
               <Cards
@@ -47,6 +48,7 @@ function PostListing({ id, postEdges }) {
                 cover={post.cover.childImageSharp}
                 tags={post.tags}
                 excerpt={post.excerpt}
+                type={post.posttype}
               />
             )
           )

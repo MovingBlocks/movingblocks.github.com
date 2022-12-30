@@ -25,9 +25,12 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
         />
         <CardBody>
           <CardSubtitle tag="h7">
-            {tags.map((tag) => (
-              <Badge className="mr-2">{tag}</Badge>
-            ))}
+            {tags.length === 0 ? (
+              // invisible dummy badge to keep the space for tags
+              <Badge className="mr-2 invisible"> </Badge>
+            ) : (
+              tags.map((tag) => <Badge className="mr-2">{tag}</Badge>)
+            )}
           </CardSubtitle>
           <CardTitle tag="h5" className="mt-3">
             {title}

@@ -50,7 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   async function createBlogPages() {
-    const blogPostTemplate = path.resolve("src/templates/post.jsx");
+    const blogPostTemplate = path.resolve("src/templates/Blog.jsx");
     const blogQueryResult = await graphql(
       `
         {
@@ -79,7 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-    const blogListTemplate = path.resolve("./src/templates/blog.jsx");
+    const blogListTemplate = path.resolve("./src/templates/BlogList.jsx");
     const blogsPerPage = 27;
     const numBlogPages = Math.ceil(posts.length / blogsPerPage);
     Array.from({ length: numBlogPages }).forEach((_, i) => {
@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   async function createModulePages() {
-    const modulePageTemplate = path.resolve("src/templates/modules.jsx");
+    const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `
         {
@@ -127,7 +127,7 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-    const moduleListTemplate = path.resolve("./src/templates/modulelist.jsx");
+    const moduleListTemplate = path.resolve("./src/templates/ModuleList.jsx");
     const modulesPerPage = 27;
     const numModulePages = Math.ceil(modules.length / modulesPerPage);
     Array.from({ length: numModulePages }).forEach((_, i) => {
@@ -225,6 +225,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 frontmatter {
                   tags
                   title
+                  cover {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
                 }
               }
             }
@@ -235,13 +240,14 @@ exports.createPages = async ({ graphql, actions }) => {
     const index = result.data.allMarkdownRemark.edges.map((edge) => {
       const { excerpt, fields, frontmatter } = edge.node;
       const { slug } = fields;
-      const { tags, title } = frontmatter;
+      const { tags, title, cover } = frontmatter;
 
       return {
         excerpt,
         slug,
         tags,
         title,
+        cover,
       };
     });
 

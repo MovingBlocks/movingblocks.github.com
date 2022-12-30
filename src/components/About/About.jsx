@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 import { graphql, useStaticQuery } from "gatsby";
-import { BgImage } from "gbimage-bridge";
 
 function About() {
   const data = useStaticQuery(graphql`
@@ -67,7 +66,7 @@ function About() {
 
         <Row>
           <Col md="12">
-            <BgImage image={data.historyImg.childImageSharp.gatsbyImageData}>
+            <div className="with-bg-image" style={{ backgroundImage: "url('/images/3.jpg')" }}>
               <div className="left-overlay_about_content">
                 <Col md="5" className="p-4">
                   <h3 className="text-white">History</h3>
@@ -92,10 +91,10 @@ function About() {
                   </p>
                 </Col>
               </div>
-            </BgImage>
+            </div>
           </Col>
           <Col md="12">
-            <BgImage image={data.modding.childImageSharp.gatsbyImageData}>
+            <div className="with-bg-image" style={{ backgroundImage: "url('/images/9.jpg')" }}>
               <div className="right-overlay_about_content">
                 <Row>
                   <Col className="empty-about-content" md="7" />
@@ -127,10 +126,10 @@ function About() {
                   </Col>
                 </Row>
               </div>
-            </BgImage>
+            </div>
           </Col>
           <Col md="12">
-            <BgImage image={data.community.childImageSharp.gatsbyImageData}>
+            <div className="with-bg-image" style={{ backgroundImage: "url('/images/8.jpg')" }}>
               <div className="left-overlay_about_content">
                 <Col md="5" className="text-white p-4">
                   <h3 className="mb-3  mr-4">Terasology Community</h3>
@@ -152,7 +151,7 @@ function About() {
                   </p>
                 </Col>
               </div>
-            </BgImage>
+            </div>
           </Col>
         </Row>
       </section>

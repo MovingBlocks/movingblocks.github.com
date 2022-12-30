@@ -65,7 +65,7 @@ function ModuleList({ data, pageContext, location }) {
   });
 
   return (
-    <Layout>
+    <Layout title="Modules">
       <div className="index-container">
         <ModuleSearchForm
           query={searchQuery}

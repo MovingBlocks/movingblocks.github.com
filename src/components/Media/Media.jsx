@@ -80,13 +80,6 @@ function Gallery() {
   return (
     <div>
       <div>
-        <h1 className="text-center">Screenshots</h1>
-        <div className="container my-4">
-          <div className="home-underline" />
-        </div>
-      </div>
-
-      <div>
         <Row className="justify-content-center">
           {currentImgArray.map((image) => (
             <Col lg="4" md="6" sm="6" xs="6" onClick={() => showImage(image)}>

@@ -21,11 +21,10 @@ export default class Blog extends React.Component {
     }
     const { date } = postNode.fields;
     return (
-      <Layout>
+      <Layout title={post.title}>
         <div>
           <div>
             <div className="title">
-              <h1>{post.title}</h1>
               <h6>
                 {`Posted by ${post.author} on `}
                 <span>{moment(date).format("MMMM DD, YYYY")}</span>

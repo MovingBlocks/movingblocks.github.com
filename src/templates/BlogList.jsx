@@ -73,7 +73,7 @@ function BlogList({ data, pageContext, location }) {
   });
 
   return (
-    <Layout>
+    <Layout title="Blog">
       <div className="index-container">
         <BlogSearchForm
           query={searchQuery}

@@ -58,9 +58,7 @@ function Download() {
     []
   );
   return (
-    <div>
-      <h2 className="text-center my-4">Download Terasology Launcher</h2>
-      <div className="download-underline" />
+    <div>      
       <div className="m-5">
         <Row className="justify-content-center">
           <Col lg="2" md="3" sm="4" xs="4">

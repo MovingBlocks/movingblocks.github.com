@@ -30,11 +30,7 @@ function Mentor() {
 
   return (
     <Col lg="12">
-      <div>
-        <h1 className="text-center">Mentors</h1>
-        <div className="container my-4">
-          <div className="home-underline" />
-        </div>
+      <div>        
         <div className="container">
           <Alert
             className="my-2 alert-box"

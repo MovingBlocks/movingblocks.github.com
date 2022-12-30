@@ -9,11 +9,17 @@ import "./css/style.scss";
 import favicon from "../../static/logos/logo.png";
 
 // eslint-disable-next-line no-unused-vars
-function Layout({ children }) {
+function Layout({ title, children }) {
   return (
     <body>
       <Header />
-      <Container className="main">{children}</Container>
+      <Container className="main">
+        <div>
+          <h1 className="text-center">{title}</h1>
+          <div className="title-underline" />
+        </div>
+        {children}
+      </Container>
       <Footer />
     </body>
   );

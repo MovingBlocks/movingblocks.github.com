@@ -4,7 +4,7 @@ import SEO from "../components/SEO/SEO";
 import Index from "../components/Home/Index";
 
 const index = () => (
-  <Layout>
+  <Layout title="Welcome to Terasology">
     <div className="about-container">
       <Index />
     </div>

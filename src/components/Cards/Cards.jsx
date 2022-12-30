@@ -25,7 +25,7 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
         />
         <CardBody>
           <CardSubtitle tag="h7">
-            {!tags.length ? (
+            {tags.length === 0 ? (
               // invisible dummy badge to keep the space for tags
               <Badge className="mr-2 invisible"> </Badge>
             ) : (

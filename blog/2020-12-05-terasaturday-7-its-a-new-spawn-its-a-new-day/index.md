@@ -4,7 +4,6 @@ title: "TeraSaturday #7: It's a new spawn, it's a new day"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Skaldarnar"
-ddate: "Dec 05th, 2020"
 date: "2020-12-05"
 tags: ["TeraSaturday"]
 ---

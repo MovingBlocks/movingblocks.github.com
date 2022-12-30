@@ -4,7 +4,6 @@ title: "TeraSaturday #9: Happy New Year"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth & Skaldarnar"
-ddate: "Jan 30th, 2021"
 date: "2021-01-30"
 tags: ["TeraSaturday"]
 ---

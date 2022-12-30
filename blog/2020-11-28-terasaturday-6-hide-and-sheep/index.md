@@ -4,7 +4,6 @@ title: "TeraSaturday #6: Hide and Sheep"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Skaldarnar"
-ddate: "Nov 28th, 2020"
 date: "2020-11-28"
 tags: ["TeraSaturday"]
 ---

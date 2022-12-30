@@ -4,7 +4,6 @@ title: "TeraSaturday #10: Consider us JOML-ified"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth"
-ddate: "Feb 27th, 2021"
 date: "2021-02-27"
 tags: ["TeraSaturday"]
 ---

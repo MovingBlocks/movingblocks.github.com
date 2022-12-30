@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import moment from "moment";
 import Layout from "../layout";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
@@ -18,6 +19,7 @@ export default class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID;
     }
+    const { date } = postNode.fields;
     return (
       <Layout>
         <div>
@@ -26,7 +28,7 @@ export default class PostTemplate extends React.Component {
               <h1>{post.title}</h1>
               <h6>
                 {`Posted by ${post.author} on `}
-                <span>{post.ddate}</span>
+                <span>{moment(date).format("MMMM DD, YYYY")}</span>
               </h6>
             </div>
             <br />
@@ -60,7 +62,6 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        ddate
         tags
         author
         cover {

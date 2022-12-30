@@ -4,7 +4,6 @@ title: "TeraSaturday #15: A Summer of Code"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth"
-ddate: "July 31st, 2021"
 date: "2021-07-31"
 tags: ["TeraSaturday"]
 imageTag: "TeraSaturday"

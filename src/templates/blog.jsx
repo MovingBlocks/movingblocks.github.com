@@ -132,7 +132,6 @@ export const blogQuery = graphql`
             title
             date
             author
-            ddate
             tags
             posttype
             description

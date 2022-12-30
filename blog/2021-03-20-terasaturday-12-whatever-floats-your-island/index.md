@@ -4,7 +4,6 @@ title: "TeraSaturday #12: Whatever floats your Island"
 cover: "./cover.jpg"
 description: "An exploration of recent events in Terasology development."
 author: "Niruandaleth & Skaldarnar"
-ddate: "Mar 20th, 2021"
 date: "2021-03-20"
 tags: ["TeraSaturday"]
 ---

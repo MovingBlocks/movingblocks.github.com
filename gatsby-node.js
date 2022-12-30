@@ -3,7 +3,6 @@ const fs = require("fs");
 const kebabCase = require("lodash.kebabcase");
 const moment = require("moment");
 const path = require("path");
-const siteConfig = require("./data/SiteConfig");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;

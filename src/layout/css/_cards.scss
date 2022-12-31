@@ -29,6 +29,19 @@ section {
   color: $gray-2;
 }
 
+.card-img-top {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-img-module {
+  aspect-ratio: 17/5;
+}
+
+.card-img-blog {
+  aspect-ratio: 12/7;
+}
+
 .details-card {
   background: $white;
 }
@@ -100,6 +113,10 @@ section {
   margin: 0px;
   margin-bottom: 20px;
   padding: 0;
+}
+
+.card-subtitle {
+  font-size: 1.3rem;
 }
 
 .word-break {

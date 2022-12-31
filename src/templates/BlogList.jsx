@@ -5,7 +5,7 @@ import { Row, Col } from "reactstrap";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import SearchForm from "../components/BlogSearchForm/BlogSearchForm";
+import BlogSearchForm from "../components/BlogSearchForm/BlogSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
 import blogList from "../generated/blog-result.json";
@@ -65,10 +65,17 @@ function BlogList({ data, pageContext, location }) {
     }
   }, [blogData, filterAuthor, filterTag, filterdate, searchQuery]);
 
+  const postList = postEdges.map(({ node }) => {
+    const { frontmatter, fields, excerpt } = node;
+    const { posttype, tags, cover, title, author } = frontmatter;
+    const { slug, date } = fields;
+    return { posttype, title, path: slug, cover, tags, excerpt, date, author };
+  });
+
   return (
     <Layout>
       <div className="index-container">
-        <SearchForm
+        <BlogSearchForm
           query={searchQuery}
           tag={filterTag}
           author={filterAuthor}
@@ -77,9 +84,14 @@ function BlogList({ data, pageContext, location }) {
           prefix={prefix}
         />
         {isShown && (
-          <SearchResults id="src" query={searchQuery} results={results} />
+          <SearchResults
+            query={searchQuery}
+            results={results}
+            prefix={prefix}
+            type="blog"
+          />
         )}
-        {!isShown && <PostListing id="blog" postEdges={postEdges} />}
+        {!isShown && <PostListing prefix={prefix} postList={postList} />}
       </div>
       <Row>
         {!isFirst && results.length === 0 && (

@@ -8,7 +8,7 @@ const moment = require("moment");
 
 moment.locale("en");
 
-function SearchForm({ query, tag, author, date, location, prefix }) {
+function BlogSearchForm({ query, tag, author, date, location, prefix }) {
   const [showFilter, setShowFilter] = useState(false);
   let srcLocation = location;
 
@@ -30,8 +30,8 @@ function SearchForm({ query, tag, author, date, location, prefix }) {
 
   return (
     <Form role="search" method="GET">
-      <Row className="justify-content-center" id="search-form">
-        <Col md="8" className="pl-4 pt-3 pb-3 pr-0">
+      <Row form className="justify-content-center" id="search-form">
+        <Col md="10" className="pl-4 pt-3 pb-3 pr-0">
           <FormGroup>
             <Label for="searchQuery">
               <h6>Search & Filter</h6>
@@ -182,4 +182,4 @@ function SearchForm({ query, tag, author, date, location, prefix }) {
   );
 }
 
-export default SearchForm;
+export default BlogSearchForm;

@@ -29,8 +29,10 @@ function Header() {
     <Navbar color="light" light expand="lg" sticky="top">
       <Container>
         <NavbarToggler onClick={() => toggle(!isOpen)} />
-        <NavbarBrand href="/" className="mx-auto">
-          <img src={navLogo} alt="Terasology" width="225" />
+        <NavbarBrand className="mx-auto">
+          <Link to="/">
+            <img src={navLogo} alt="Terasology" width="225" />
+          </Link>
         </NavbarBrand>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -121,22 +123,14 @@ function Header() {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
-              <NavLink activeClassName="active">
-                <a
-                  href="https://terasology.org/AdventureSite/"
-                  className="text-color"
-                >
-                  Explore
-                </a>
-              </NavLink>
-            </NavItem>
             <NavItem className="font-weight-bold btn-primary download-btn">
-              <NavLink className="text-white" href="/downloads">
-                <IconContext.Provider value={downloadIconAttributes}>
-                  <FaDownload />
-                </IconContext.Provider>
-                Download
+              <NavLink>
+                <Link to="/downloads" className="text-white">
+                  <IconContext.Provider value={downloadIconAttributes}>
+                    <FaDownload />
+                  </IconContext.Provider>
+                  Download
+                </Link>
               </NavLink>
             </NavItem>
           </Nav>

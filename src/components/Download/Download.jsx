@@ -58,7 +58,7 @@ function Download() {
     []
   );
   return (
-    <div>      
+    <div>
       <div className="m-5">
         <Row className="justify-content-center">
           <Col lg="2" md="3" sm="4" xs="4">

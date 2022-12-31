@@ -30,7 +30,7 @@ function Mentor() {
 
   return (
     <Col lg="12">
-      <div>        
+      <div>
         <div className="container">
           <Alert
             className="my-2 alert-box"

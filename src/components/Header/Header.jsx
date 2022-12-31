@@ -102,7 +102,7 @@ function Header() {
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/gsoc_tsoc"
+                      to="/students"
                       className="text-color"
                       activeClassName="active"
                     >

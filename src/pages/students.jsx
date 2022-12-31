@@ -1,16 +1,16 @@
 import React from "react";
 import Layout from "../layout";
-import GsocTsoc from "../components/GsocTsoc/GsocTsoc";
+import StudentPrograms from "../components/StudentPrograms";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
-const gsocTsoc = () => (
+const studentPrograms = () => (
   <Layout title="Student Programs">
-    <GsocTsoc />
+    <StudentPrograms />
   </Layout>
 );
 
-export default gsocTsoc;
+export default studentPrograms;
 
 export function Head() {
   return <SEO title={`Student Programs | ${config.siteTitle}`} />;

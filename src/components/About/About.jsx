@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 import Section from "../Section";
+import { withPrefix } from "gatsby";
 
 function About() {
   return (
@@ -47,7 +48,7 @@ function About() {
           <Col md="12">
             <div
               className="with-bg-image"
-              style={{ backgroundImage: "url('/images/3.jpg')" }}
+              style={{ backgroundImage: `url(${withPrefix("/images/3.jpg")})` }}
             >
               <div className="left-overlay_about_content">
                 <Col md="5" className="p-4">
@@ -78,7 +79,7 @@ function About() {
           <Col md="12">
             <div
               className="with-bg-image"
-              style={{ backgroundImage: "url('/images/9.jpg')" }}
+              style={{ backgroundImage: `url(${withPrefix("/images/9.jpg")})` }}
             >
               <div className="right-overlay_about_content">
                 <Row>
@@ -116,7 +117,7 @@ function About() {
           <Col md="12">
             <div
               className="with-bg-image"
-              style={{ backgroundImage: "url('/images/8.jpg')" }}
+              style={{ backgroundImage: `url(${withPrefix("/images/8.jpg")})` }}
             >
               <div className="left-overlay_about_content">
                 <Col md="5" className="text-white p-4">

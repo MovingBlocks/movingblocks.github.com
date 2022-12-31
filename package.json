@@ -79,6 +79,7 @@
     "lint:css": "stylelint --ignore-path --ignore-path=.eslintignore '**/*.{css,scss}'",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:md": "remark blog/ docs/",
+    "serve:pp": "gatsby serve --prefix-paths",
     "serve": "gatsby serve"
   },
   "remarkConfig": {

@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
 import defaultCardImg from "../../../static/logos/defaultCardcover.jpg";
+import Section from "./../Section";
 
 function GsocTsoc() {
   const responsive = {
@@ -29,12 +30,7 @@ function GsocTsoc() {
   const [ongoingProjects, setOngoingprojects] = useState([]);
 
   const [availableProjectVisible, setAvailableProjectVisible] = useState(false);
-  const [availableProjectStatus, setAvailableProjectStatus] = useState("");
-  const AvailabeProjectDismiss = () => setAvailableProjectVisible(false);
-
   const [ongoingProjectVisible, setOngoingProjectVisible] = useState(false);
-  const [ongoingProjectStatus, setOngoingProjectStatus] = useState("");
-  const ongoingProjectDismiss = () => setOngoingProjectVisible(false);
 
   const readyIdeas = async () => {
     const url =
@@ -44,9 +40,7 @@ function GsocTsoc() {
     if (response.ok) {
       const data = await response.json();
       setReadyprojects(data);
-    } else {
       setAvailableProjectVisible(true);
-      setAvailableProjectStatus(response.status);
     }
   };
 
@@ -58,9 +52,7 @@ function GsocTsoc() {
     if (response.ok) {
       const data = await response.json();
       setOngoingprojects(data);
-    } else {
       setOngoingProjectVisible(true);
-      setOngoingProjectStatus(response.status);
     }
   };
 
@@ -70,180 +62,148 @@ function GsocTsoc() {
   }, []);
 
   return (
-    <div>
-      <div>
-        <h4 className="text-center">
-          About Google Summer of Code & Terasology Summer of Code
-        </h4>
-        <div className="container my-4">
-          <div className="title-underline" />
-
-          <Row className="justify-content-center">
-            <div className="col-md-10">
-              <div className="text-center  gsoc_tsoc_content">
-                <b>Google Summer of Code (GSoC) </b>
-                is a global program focused on bringing more student developers
-                into open source software development. Every year more than 1200
-                students are accepted. Accepted students work with a mentor and
-                become a part of the open source community. Many become lifetime
-                open source developers. Spend your summer break writing code and
-                learning about open source development while earning a stipend.
-                For more information visit{" "}
-                <a
-                  className="text-success font-weight-bold"
-                  href="https://summerofcode.withgoogle.com/"
-                >
-                  Google Summer of Code
-                </a>
-                .
-              </div>
-              <div className="text-center mt-4 gsoc_tsoc_content">
-                <b>Terasology Summer of Code (TSoC) </b>
-                is similar as Google Summer of Code (GSoC). It is sponsored by
-                Terasology with different timeline then GSoC, do half of work,
-                take a break for exams and other thing and then do second half
-                work. Lower stipend than GSoC. For more information join our{" "}
-                <a
-                  className="text-success font-weight-bold"
-                  href="https://discordapp.com/invite/Terasology"
-                >
-                  Discord
-                </a>
-                .
-              </div>
-            </div>
-          </Row>
-        </div>
-      </div>
-
-      <div>
-        <h4 className="text-center">Available Projects</h4>
-        <div className="container my-4">
-          <div className="title-underline" />
-        </div>
-      </div>
-      <div className="container">
-        <Alert
-          className="my-2 alert-box"
-          color="danger"
-          isOpen={availableProjectVisible}
-          toggle={AvailabeProjectDismiss}
-        >
-          <span className="alert-box">
-            {`Problem fetching projects. (Error Code: ${availableProjectStatus})`}
-          </span>
-        </Alert>
-      </div>
-      <Carousel
-        responsive={responsive}
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        className="card_project"
+    <>
+      <Section
+        tag="h3"
+        title="About Google Summer of Code & Terasology Summer of Code"
       >
-        {readyProjects.map((project) => (
-          <div className="col h-100 ">
-            <div className="card h-100 row_shadow">
-              {project.cover.scaled !== undefined ? (
-                <img
-                  src={project.cover.scaled[4].url}
-                  className="card-img-top"
-                  alt={project.name}
-                />
-              ) : (
-                <img
-                  src={defaultCardImg}
-                  className="card-img-top"
-                  alt={project.name}
-                />
-              )}
-              <div className="card-body h-25 mt-2">
-                <p className="font-weight-bolder">{project.name}</p>
-                <div className="d-flex">
-                  <div className="md-tag tag_size">
-                    {project &&
-                      project.labels.map((tag) => (
-                        <Badge className="m-1">{tag.name}</Badge>
-                      ))}
-                  </div>
-                </div>
-              </div>
-              <div className="ml-4 mb-4">
-                <ProjectModal
-                  name={project.name}
-                  desc={project.desc}
-                  tags={project.labels}
-                />
-              </div>
+        <Row className="justify-content-center">
+          <div className="col-md-10">
+            <div className="text-center  gsoc_tsoc_content">
+              <b>Google Summer of Code (GSoC) </b>
+              is a global program focused on bringing more student developers
+              into open source software development. Every year more than 1200
+              students are accepted. Accepted students work with a mentor and
+              become a part of the open source community. Many become lifetime
+              open source developers. Spend your summer break writing code and
+              learning about open source development while earning a stipend.
+              For more information visit{" "}
+              <a
+                className="text-success font-weight-bold"
+                href="https://summerofcode.withgoogle.com/"
+              >
+                Google Summer of Code
+              </a>
+              .
+            </div>
+            <div className="text-center mt-4 gsoc_tsoc_content">
+              <b>Terasology Summer of Code (TSoC) </b>
+              is similar as Google Summer of Code (GSoC). It is sponsored by
+              Terasology with different timeline then GSoC, do half of work,
+              take a break for exams and other thing and then do second half
+              work. Lower stipend than GSoC. For more information join our{" "}
+              <a
+                className="text-success font-weight-bold"
+                href="https://discordapp.com/invite/Terasology"
+              >
+                Discord
+              </a>
+              .
             </div>
           </div>
-        ))}
-      </Carousel>
-      <div>
-        <div>
-          <h4 className="text-center">Ongoing Projects</h4>
-          <div className="container my-4">
-            <div className="title-underline" />
-          </div>
-        </div>
-        <div className="container">
-          <Alert
-            className="my-2 alert-box"
-            color="danger"
-            isOpen={ongoingProjectVisible}
-            toggle={ongoingProjectDismiss}
+        </Row>
+      </Section>
+      {availableProjectVisible ? (
+        <Section tag="h3" title="Available Projects">
+          <Carousel
+            responsive={responsive}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            className="card_project"
           >
-            <span className="alert-box">
-              {`Problem fetching projects. (Error Code: ${ongoingProjectStatus})`}
-            </span>
-          </Alert>
-        </div>
-
-        <Carousel
-          responsive={responsive}
-          className="mt-4 card_project"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-        >
-          {ongoingProjects.map((project) => (
-            <div className="col  h-100 ">
-              <div className="card h-100 row_shadow">
-                {project.cover.scaled !== undefined ? (
-                  <img
-                    src={project.cover.scaled[4].url}
-                    className="card-img-top"
-                    alt={project.name}
-                  />
-                ) : (
-                  <img
-                    src={defaultCardImg}
-                    className="card-img-top"
-                    alt={project.name}
-                  />
-                )}
-
-                <div className="card-body  mt-2">
-                  <p className="font-weight-bolder">{project.name}</p>
-                  <div className="d-flex">
-                    <div className="md-tag tag_size">
-                      {project &&
-                        project.labels.map((tag) => (
-                          <Badge className="m-1">{tag.name}</Badge>
-                        ))}
+            {readyProjects.map((project) => (
+              <div className="col h-100 ">
+                <div className="card h-100 row_shadow">
+                  {project.cover.scaled !== undefined ? (
+                    <img
+                      src={project.cover.scaled[4].url}
+                      className="card-img-top"
+                      alt={project.name}
+                    />
+                  ) : (
+                    <img
+                      src={defaultCardImg}
+                      className="card-img-top"
+                      alt={project.name}
+                    />
+                  )}
+                  <div className="card-body h-25 mt-2">
+                    <p className="font-weight-bolder">{project.name}</p>
+                    <div className="d-flex">
+                      <div className="md-tag tag_size">
+                        {project &&
+                          project.labels.map((tag) => (
+                            <Badge className="m-1">{tag.name}</Badge>
+                          ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="ml-4 mb-4">
-                  <ProjectModal
-                    name={project.name}
-                    desc={project.desc}
-                    tags={project.labels}
-                  />
+                  <div className="ml-4 mb-4">
+                    <ProjectModal
+                      name={project.name}
+                      desc={project.desc}
+                      tags={project.labels}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </Carousel>
-      </div>
-    </div>
+            ))}
+          </Carousel>
+        </Section>
+      ) : (
+        ""
+      )}
+      {ongoingProjectVisible ? (
+        <Section tag="h3" title="Ongoing Projects">
+          <Carousel
+            responsive={responsive}
+            className="mt-4 card_project"
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+          >
+            {ongoingProjects.map((project) => (
+              <div className="col  h-100 ">
+                <div className="card h-100 row_shadow">
+                  {project.cover.scaled !== undefined ? (
+                    <img
+                      src={project.cover.scaled[4].url}
+                      className="card-img-top"
+                      alt={project.name}
+                    />
+                  ) : (
+                    <img
+                      src={defaultCardImg}
+                      className="card-img-top"
+                      alt={project.name}
+                    />
+                  )}
+
+                  <div className="card-body  mt-2">
+                    <p className="font-weight-bolder">{project.name}</p>
+                    <div className="d-flex">
+                      <div className="md-tag tag_size">
+                        {project &&
+                          project.labels.map((tag) => (
+                            <Badge className="m-1">{tag.name}</Badge>
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="ml-4 mb-4">
+                    <ProjectModal
+                      name={project.name}
+                      desc={project.desc}
+                      tags={project.labels}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </Section>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
 export default GsocTsoc;

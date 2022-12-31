@@ -3,6 +3,7 @@ import { Row, Col } from "reactstrap";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import Section from "./../Section";
 
 function Index() {
   const data = useStaticQuery(graphql`
@@ -79,72 +80,66 @@ function Index() {
           </div>
         </Col>
       </Row>
-      <Row>
-        <Col md="12">
-          <h1 className="text-center">Recent News</h1>
-          <div className="container my-4">
-            <div className="title-underline" />
-          </div>
-        </Col>
-      </Row>
 
-      <Col lg="12">
-        <Row className="justify-content-center ">
-          {RecentPost.map(({ node }) => (
-            <Col className="m-4" lg="5" md="8" sm="12">
-              <Row className="row_shadow h-100">
-                <Col lg="12" md="12" className="p-0">
-                  <GatsbyImage
-                    image={
-                      node.frontmatter.cover.childImageSharp.gatsbyImageData
-                    }
-                    className="home-img"
-                  />
-                </Col>
-                <div className="d-flex flex-column my-4 ml-4">
-                  <h4 className="mt-auto">{node.frontmatter.title}</h4>
-                  <div>
-                    <p className="mt-auto font-weight-bold author">
-                      {`By: ${node.frontmatter.author}`}
-                    </p>
-                  </div>
-                  <p className="mt-auto my-4 mr-1">{node.excerpt}</p>
+      <Section title="Recent News">
+        <Col lg="12">
+          <Row className="justify-content-center ">
+            {RecentPost.map(({ node }) => (
+              <Col className="m-4" lg="5" md="8" sm="12">
+                <Row className="row_shadow h-100">
+                  <Col lg="12" md="12" className="p-0">
+                    <GatsbyImage
+                      image={
+                        node.frontmatter.cover.childImageSharp.gatsbyImageData
+                      }
+                      className="home-img"
+                    />
+                  </Col>
+                  <div className="d-flex flex-column my-4 ml-4">
+                    <h4 className="mt-auto">{node.frontmatter.title}</h4>
+                    <div>
+                      <p className="mt-auto font-weight-bold author">
+                        {`By: ${node.frontmatter.author}`}
+                      </p>
+                    </div>
+                    <p className="mt-auto my-4 mr-1">{node.excerpt}</p>
 
-                  <div className="mt-auto mb-4">
-                    <div className="align-self-end">
-                      <Link
-                        to={`/${`blog`}${node.fields.slug}`}
-                        key={node.frontmatter.title}
-                        className="btn-primary"
-                      >
-                        Read More
-                      </Link>
+                    <div className="mt-auto mb-4">
+                      <div className="align-self-end">
+                        <Link
+                          to={`/${`blog`}${node.fields.slug}`}
+                          key={node.frontmatter.title}
+                          className="btn-primary"
+                        >
+                          Read More
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Row>
-            </Col>
-          ))}
-        </Row>
-      </Col>
+                </Row>
+              </Col>
+            ))}
+          </Row>
+        </Col>
 
-      <div className="d-flex justify-content-center mb-4">
-        <div>
-          <Link
-            to="/blog"
-            className="btn-primary home-btn-read-more-blog font-weight-bold"
-          >
-            Read More Blogs
-            <FaRegArrowAltCircleRight
-              style={{
-                fontSize: "28px",
-                marginBottom: "4px",
-                marginLeft: "6px",
-              }}
-            />
-          </Link>
+        <div className="d-flex justify-content-center mb-4">
+          <div>
+            <Link
+              to="/blog"
+              className="btn-primary home-btn-read-more-blog font-weight-bold"
+            >
+              Read More Blogs
+              <FaRegArrowAltCircleRight
+                style={{
+                  fontSize: "28px",
+                  marginBottom: "4px",
+                  marginLeft: "6px",
+                }}
+              />
+            </Link>
+          </div>
         </div>
-      </div>
+      </Section>
     </section>
   );
 }

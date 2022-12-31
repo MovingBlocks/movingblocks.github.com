@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import Section from "./../Section";
 
 function About() {
   return (
@@ -15,8 +16,10 @@ function About() {
                 <br />
                 Imagine the possibilities!
               </p>
+
               <a
-                href="https://github.com/Terasology/terasology.github.io"
+                href="https://github.com/MovingBlocks/Terasology"
+                target="_blank"
                 className="btn btn-light btn-lg mt-5 px-5 font-weight-bold "
               >
                 Find out More
@@ -25,21 +28,18 @@ function About() {
           </Row>
         </div>
       </div>
-      <section className="about__details py-5 mt-6e">
+      <section className="py-5 mt-6">
         <Row className="justify-content-center">
           <Col md="8">
-            <h2 className="mb-5 text-center">About Us</h2>
-            <div className=" my-4">
-              <div className="title-underline" />
-            </div>
-
-            <p className="text-center">
-              The Terasology project was and is becoming a stable platform for
-              various types of gameplay settings in a voxel world. The creators
-              and maintainers are a diverse mix of software developers,
-              designers, game testers, graphic artists, and musicians. We
-              encourage others to join
-            </p>
+            <Section title="About Us">
+              <p className="text-center">
+                The Terasology project was and is becoming a stable platform for
+                various types of gameplay settings in a voxel world. The
+                creators and maintainers are a diverse mix of software
+                developers, designers, game testers, graphic artists, and
+                musicians. We encourage others to join
+              </p>
+            </Section>
           </Col>
         </Row>
 

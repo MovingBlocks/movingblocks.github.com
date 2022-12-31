@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Row, Badge } from "reactstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import ProjectModal from "../ProjectModal/ProjectModal";
-import defaultCardImg from "../../../static/logos/defaultCardcover.jpg";
-import Section from "../Section";
+import ProjectModal from "./ProjectModal/ProjectModal";
+import defaultCardImg from "../../static/logos/defaultCardcover.jpg";
+import Section from "./Section";
 
-function GsocTsoc() {
+function StudentPrograms() {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -69,7 +69,7 @@ function GsocTsoc() {
       >
         <Row className="justify-content-center">
           <div className="col-md-10">
-            <div className="text-center  gsoc_tsoc_content">
+            <div className="text-center  student-programs-content">
               <b>Google Summer of Code (GSoC) </b>
               is a global program focused on bringing more student developers
               into open source software development. Every year more than 1200
@@ -86,7 +86,7 @@ function GsocTsoc() {
               </a>
               .
             </div>
-            <div className="text-center mt-4 gsoc_tsoc_content">
+            <div className="text-center mt-4 student-programs-content">
               <b>Terasology Summer of Code (TSoC) </b>
               is similar as Google Summer of Code (GSoC). It is sponsored by
               Terasology with different timeline then GSoC, do half of work,
@@ -206,4 +206,4 @@ function GsocTsoc() {
     </>
   );
 }
-export default GsocTsoc;
+export default StudentPrograms;

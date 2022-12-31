@@ -11,8 +11,8 @@ const config = {
   postDefaultCategoryID: "Update", // Default category for posts.
   dateFormat: "DD/MM/YYYY", // Date format for display.
   copyright: "Copyright © 2022. Moving Blocks!", // Copyright string for the footer of the website.
-  themeColor: "#c62828", // Used for setting manifest and progress theme colors.
-  backgroundColor: "#e0e0e0", // Used for setting manifest background color.
+  themeColor: "#08a045", // Used for setting manifest and progress theme colors.
+  backgroundColor: "#f8f8f8", // Used for setting manifest background color.
   twitterUsername: "@Terasology", // Used in site metadata
 };
 

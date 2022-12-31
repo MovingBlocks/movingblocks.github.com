@@ -5,7 +5,7 @@ import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
 const download = () => (
-  <Layout>
+  <Layout title="Download">
     <Download />
   </Layout>
 );

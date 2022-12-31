@@ -42,16 +42,6 @@ function Index() {
   return (
     <section className="sect-home">
       <Row>
-        <Col md="12">
-          <div>
-            <h1 className="text-center">Welcome to Terasology</h1>
-            <div className="container my-4">
-              <div className="home-underline" />
-            </div>
-          </div>
-        </Col>
-      </Row>
-      <Row>
         <Col md="6">
           <h3>What is Terasology?</h3>
           <p className="p-title">
@@ -93,7 +83,7 @@ function Index() {
         <Col md="12">
           <h1 className="text-center">Recent News</h1>
           <div className="container my-4">
-            <div className="home-underline" />
+            <div className="title-underline" />
           </div>
         </Col>
       </Row>

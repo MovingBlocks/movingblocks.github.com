@@ -30,7 +30,7 @@ function About() {
           <Col md="8">
             <h2 className="mb-5 text-center">About Us</h2>
             <div className=" my-4">
-              <div className="home-underline" />
+              <div className="title-underline" />
             </div>
 
             <p className="text-center">

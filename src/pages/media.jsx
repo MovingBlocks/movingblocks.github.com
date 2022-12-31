@@ -5,7 +5,7 @@ import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
 const media = () => (
-  <Layout>
+  <Layout title="Gallery">
     <div className="media-container">
       <Media />
     </div>

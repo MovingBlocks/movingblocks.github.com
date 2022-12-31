@@ -73,10 +73,10 @@ function GsocTsoc() {
     <div>
       <div>
         <h4 className="text-center">
-          About Google summer of code & Terasology summer of code
+          About Google Summer of Code & Terasology Summer of Code
         </h4>
         <div className="container my-4">
-          <div className="home-underline" />
+          <div className="title-underline" />
 
           <Row className="justify-content-center">
             <div className="col-md-10">
@@ -119,7 +119,7 @@ function GsocTsoc() {
       <div>
         <h4 className="text-center">Available Projects</h4>
         <div className="container my-4">
-          <div className="home-underline" />
+          <div className="title-underline" />
         </div>
       </div>
       <div className="container">
@@ -181,7 +181,7 @@ function GsocTsoc() {
         <div>
           <h4 className="text-center">Ongoing Projects</h4>
           <div className="container my-4">
-            <div className="home-underline" />
+            <div className="title-underline" />
           </div>
         </div>
         <div className="container">

@@ -27,13 +27,13 @@ export default class Module extends React.Component {
               className="post-cover"
               image={post.cover.childImageSharp.gatsbyImageData}
             />
-            <h1>{post.title}</h1>
+            <h1 className="text-center">{post.title}</h1>
+            <div className="title-underline" />
             <div className="d-flex mt-2 ml-2">
               {post.tags.map((tag) => (
                 <PostTags tags={tag} type="modules" />
               ))}
             </div>
-            <hr />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
               <SocialLinks postPath={`/modules${slug}`} postNode={postNode} />

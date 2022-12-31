@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import Section from "./../Section";
+import Section from "../Section";
 
 function Index() {
   const data = useStaticQuery(graphql`

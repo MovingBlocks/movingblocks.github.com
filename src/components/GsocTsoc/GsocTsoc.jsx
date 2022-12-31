@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row, Alert, Badge } from "reactstrap";
+import { Row, Badge } from "reactstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProjectModal from "../ProjectModal/ProjectModal";
 import defaultCardImg from "../../../static/logos/defaultCardcover.jpg";
-import Section from "./../Section";
+import Section from "../Section";
 
 function GsocTsoc() {
   const responsive = {

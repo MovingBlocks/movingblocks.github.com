@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import Section from "./../Section";
+import Section from "../Section";
 
 function About() {
   return (
@@ -20,7 +20,7 @@ function About() {
               <a
                 href="https://github.com/MovingBlocks/Terasology"
                 target="_blank"
-                className="btn btn-light btn-lg mt-5 px-5 font-weight-bold "
+                className="btn btn-light btn-lg mt-5 px-5 font-weight-bold " rel="noreferrer"
               >
                 Find out More
               </a>

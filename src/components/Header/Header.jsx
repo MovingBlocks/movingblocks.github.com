@@ -123,16 +123,16 @@ function Header() {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem className="font-weight-bold btn-primary download-btn">
-              <NavLink>
-                <Link to="/downloads" className="text-white">
+            <Link to="/downloads">
+              <NavItem className="font-weight-bold btn-primary download-btn">
+                <NavLink className="text-white">
                   <IconContext.Provider value={downloadIconAttributes}>
                     <FaDownload />
                   </IconContext.Provider>
                   Download
-                </Link>
-              </NavLink>
-            </NavItem>
+                </NavLink>
+              </NavItem>
+            </Link>
           </Nav>
         </Collapse>
       </Container>

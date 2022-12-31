@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
+import Section from "../Section";
 
 function Download() {
   const isBrowser = typeof window !== "undefined";
@@ -119,66 +120,46 @@ function Download() {
         </Row>
       </div>
 
-      <div className="download-underline" />
-      <div className="my-5 ">
-        <h2 className=" m-3 download-system-requirement">
-          System Requirements
-        </h2>
-        <div className="my-5">
+      <Section title="System Requirements">
           <Table className="download-table my-4" borderless>
             <thead>
               <tr>
                 <th />
                 <th>Minimum Requirements</th>
-                <th>Recommended Requirements</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">System (OS)</th>
                 <td>Windows, MacOS, Linux (64 bit)</td>
-                <td />
               </tr>
               <tr>
                 <th scope="row">Processor (CPU)</th>
                 <td>dual-core CPU</td>
-                <td>quad-core CPU</td>
               </tr>
               <tr>
                 <th scope="row">Memory (RAM)</th>
-
                 <td>2 GB</td>
-                <td>8 GB</td>
               </tr>
-
               <tr>
                 <th scope="row">Graphics (GPU)</th>
                 <td>
-                  Intel HD Graphics (Gen 5)
+                  Intel HD Graphics (Gen 7) or
                   <br />
-                  GeForce 6xxx series or
-                  <br />
-                  Radeon HD 2000 series
-                  <br />
-                  with OpenGL 2.1*
-                </td>
-                <td>
                   GeForce 8xxx series (or higher) or
                   <br />
                   Radeon HD 2000 series (or higher)
                   <br />
-                  with OpenGL 3.x
+                  with OpenGL 3.3
                 </td>
               </tr>
               <tr>
                 <th scope="row">Storage (HDD)</th>
                 <td>1 GB</td>
-                <td />
               </tr>
             </tbody>
           </Table>
-        </div>
-      </div>
+      </Section>
     </div>
   );
 }

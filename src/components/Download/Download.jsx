@@ -121,44 +121,44 @@ function Download() {
       </div>
 
       <Section title="System Requirements">
-          <Table className="download-table my-4" borderless>
-            <thead>
-              <tr>
-                <th />
-                <th>Minimum Requirements</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">System (OS)</th>
-                <td>Windows, MacOS, Linux (64 bit)</td>
-              </tr>
-              <tr>
-                <th scope="row">Processor (CPU)</th>
-                <td>dual-core CPU</td>
-              </tr>
-              <tr>
-                <th scope="row">Memory (RAM)</th>
-                <td>2 GB</td>
-              </tr>
-              <tr>
-                <th scope="row">Graphics (GPU)</th>
-                <td>
-                  Intel HD Graphics (Gen 7) or
-                  <br />
-                  GeForce 8xxx series (or higher) or
-                  <br />
-                  Radeon HD 2000 series (or higher)
-                  <br />
-                  with OpenGL 3.3
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Storage (HDD)</th>
-                <td>1 GB</td>
-              </tr>
-            </tbody>
-          </Table>
+        <Table className="download-table my-4" borderless>
+          <thead>
+            <tr>
+              <th />
+              <th>Minimum Requirements</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">System (OS)</th>
+              <td>Windows, MacOS, Linux (64 bit)</td>
+            </tr>
+            <tr>
+              <th scope="row">Processor (CPU)</th>
+              <td>dual-core CPU</td>
+            </tr>
+            <tr>
+              <th scope="row">Memory (RAM)</th>
+              <td>2 GB</td>
+            </tr>
+            <tr>
+              <th scope="row">Graphics (GPU)</th>
+              <td>
+                Intel HD Graphics (Gen 7) or
+                <br />
+                GeForce 8xxx series (or higher) or
+                <br />
+                Radeon HD 2000 series (or higher)
+                <br />
+                with OpenGL 3.3
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Storage (HDD)</th>
+              <td>1 GB</td>
+            </tr>
+          </tbody>
+        </Table>
       </Section>
     </div>
   );

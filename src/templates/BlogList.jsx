@@ -69,7 +69,16 @@ function BlogList({ data, pageContext, location }) {
     const { frontmatter, fields, excerpt } = node;
     const { posttype, tags, cover, title, author } = frontmatter;
     const { slug, date } = fields;
-    return { posttype, title, path: `${prefix}${slug}`, cover, tags, excerpt, date, author };
+    return {
+      posttype,
+      title,
+      path: `${prefix}${slug}`,
+      cover,
+      tags,
+      excerpt,
+      date,
+      author,
+    };
   });
 
   return (
@@ -84,14 +93,9 @@ function BlogList({ data, pageContext, location }) {
           prefix={prefix}
         />
         {isShown && (
-          <SearchResults
-            query={searchQuery}
-            results={results}
-            prefix={prefix}
-            type="blog"
-          />
+          <SearchResults query={searchQuery} results={results} type="blog" />
         )}
-        {!isShown && <PostListing prefix={prefix} postList={postList} />}
+        {!isShown && <PostListing postList={postList} />}
       </div>
       <Row>
         {!isFirst && results.length === 0 && (

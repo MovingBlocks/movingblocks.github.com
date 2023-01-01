@@ -61,7 +61,7 @@ function ModuleList({ data, pageContext, location }) {
     const { frontmatter, fields, excerpt } = node;
     const { posttype, tags, cover, title, author } = frontmatter;
     const { slug, date } = fields;
-    return { posttype, title, path: slug, cover, tags, excerpt, date, author };
+    return { posttype, title, path: `${prefix}${slug}`, cover, tags, excerpt, date, author };
   });
 
   return (

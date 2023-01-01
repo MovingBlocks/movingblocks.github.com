@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { FaTrello } from "react-icons/fa";
 import Layout from "../layout";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import { FaTrello } from "react-icons/fa";
 
 export default class Project extends React.Component {
   render() {
@@ -17,7 +17,7 @@ export default class Project extends React.Component {
       <Layout title={name}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <div className="post-meta">
-          <a href={url} target="_blank">
+          <a href={url} target="_blank" rel="noreferrer">
             {" "}
             <FaTrello />
             View on Trello.

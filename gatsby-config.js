@@ -73,7 +73,7 @@ module.exports = {
       resolve: "gatsby-source-trello",
       options: {
         cache_expiration: "15 minutes",
-        //TODO: add link to board for easier reference
+        // https://trello.com/b/5QQGHuTt/gsoc-gsod-ideas
         board_id: "5c3aaac60b229715c199b69e",
       },
     },

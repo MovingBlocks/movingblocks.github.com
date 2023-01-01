@@ -16,7 +16,7 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
   // the respective aspect ratio is encoded in the type-specific css class
   const imgClass = type ? `card-img-${type}` : "";
 
-  let coverImage = <></>;
+  let coverImage = <> </>;
   if (cover !== undefined && cover !== null) {
     const image = getImage(cover);
     coverImage = (

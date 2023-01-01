@@ -1,32 +1,31 @@
 const axios = require("axios");
 const { DateTime, Duration } = require("luxon");
 
-async function fetchCards({ key = "", token = "", board_id }) {
+async function fetchCards({ key = "", token = "", board_id: boardId }) {
   const params = `?fields=name,labels,desc,url,idBoard,idList`;
 
-  //TODO: fetch attachments and cover images? fetch custom fields? fetch checklists?
-  //      https://developer.atlassian.com/cloud/trello/guides/rest-api/object-definitions/#card-object
+  // TODO: fetch attachments and cover images? fetch custom fields? fetch checklists?
+  //       https://developer.atlassian.com/cloud/trello/guides/rest-api/object-definitions/#card-object
 
-  const url = `https://api.trello.com/1/boards/${board_id}/cards${params}&key=${key}&token=${token}`;
+  const trelloUrl = `https://api.trello.com/1/boards/${boardId}/cards${params}&key=${key}&token=${token}`;
 
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(trelloUrl);
 
-    return data.map(({ id, name, labels, desc, url, idBoard, idList }) => {
-      return {
-        id,
-        name,
-        labels,
-        content: desc,
-        url,
-        board_id: idBoard,
-        list_id: idList,
-      };
-    });
+    return data.map(({ id, name, labels, desc, url, idBoard, idList }) => ({
+      id,
+      name,
+      labels,
+      content: desc,
+      url,
+      board_id: idBoard,
+      list_id: idList,
+    }));
   } catch (error) {
     console.error(`ERROR while fetching cards from Trello: ${error}`);
-    //console.log(JSON.stringify(error, null, 2))
   }
+
+  return [];
 }
 
 function toNode(card, { createNodeId, createContentDigest }) {
@@ -71,8 +70,6 @@ exports.sourceNodes = async (
   data.forEach((card) => {
     createNode(toNode(card, { createNodeId, createContentDigest }));
   });
-
-  return;
 };
 
 exports.onPreInit = () => console.log("Loaded gatsby-source-trello");

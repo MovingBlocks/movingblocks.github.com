@@ -156,7 +156,7 @@ exports.createPages = async ({ graphql, actions }) => {
             edges {
               node {
                 id
-                slug
+                list_id
               }
             }
           }
@@ -165,11 +165,9 @@ exports.createPages = async ({ graphql, actions }) => {
     );
 
     const projects = projectQueryResult.data.allTrelloCard.edges;
-    projects.filter((edge) => {
-      edge.node.list_id === "5c3aab0bd640fe19e4069de5" || edge.node.list_id === "60ddd7cf64da4b3ee8c5a2e9"
-    }).forEach((edge) => {
+    projects.filter((edge) => edge.node.list_id === "5c3aab0bd640fe19e4069de5" || edge.node.list_id === "60ddd7cf64da4b3ee8c5a2e9" ).forEach((edge) => {
       createPage({
-        path: `/projects/${edge.node.slug}`,
+        path: `/projects/${edge.node.id}`,
         component: projectPageTemplate,
         context: {
           id: edge.node.id,

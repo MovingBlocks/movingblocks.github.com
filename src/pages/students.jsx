@@ -12,19 +12,17 @@ function StudentPrograms({ data }) {
   const prefix = "/projects";
   const projectEdges = data.allTrelloCard.edges;
 
-  const availableProjects = projectEdges.filter((node) => {
-    node.list_id === "5c3aab0bd640fe19e4069de5"
-  }).map((node) => {
+  const availableProjects = projectEdges.filter((node) => { node.list_id === "5c3aab0bd640fe19e4069de5" }).map((node) => {
     console.log(projectEdges)
-    const { name, childrenMarkdownRemark } = node;
+    const { id, name, childrenMarkdownRemark } = node;
     const { excerpt } = childrenMarkdownRemark;
     const posttype = "project";
-    return { posttype, title: name, excerpt };
+    return { posttype, title: name, path: id, excerpt };
   });
   const ongoingProjects = projectEdges.filter((node) => {
     node.list_id === "60ddd7cf64da4b3ee8c5a2e9"
   }).map((node) => {
-    const { name, childrenMarkdownRemark } = node;
+    const { id, name, childrenMarkdownRemark } = node;
     const { excerpt } = childrenMarkdownRemark;
     const posttype = "project";
     return { posttype, title: name, excerpt };
@@ -89,6 +87,7 @@ export const pageQuery = graphql`
     allTrelloCard {
       edges {
         node {
+          id
           name
           childrenMarkdownRemark {
             html

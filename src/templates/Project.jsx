@@ -8,13 +8,15 @@ import config from "../../data/SiteConfig";
 export default class Project extends React.Component {
   render() {
     const { data, pageContext } = this.props;
-    const { id, slug } = pageContext;
+    const { id } = pageContext;
     const project = data.trelloCard;
+    const { name, childrenMarkdownRemark } = project;
+    const { html, excerpt } = childrenMarkdownRemark;
     return (
-      <Layout title={project.name}>
-        <div dangerouslySetInnerHTML={{ __html: project.childrenMarkdownRemark.html }} />
+      <Layout title={ name }>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
         <div className="post-meta">
-          <SocialLinks postPath={`/projects${slug}`} postNode={project} />
+          <SocialLinks title={ name } excerpt={ excerpt } path={`/projects/${id}`} />
         </div>
       </Layout>
     );
@@ -23,11 +25,12 @@ export default class Project extends React.Component {
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query ProjectsBySlug($id: String!) {
+  query ProjectsById($id: String!) {
     trelloCard(id: { eq: $id }) {
       name
       childrenMarkdownRemark {
         html
+        excerpt
       }
     }
   }
@@ -36,7 +39,7 @@ export const pageQuery = graphql`
 export function Head({ data, pageContext }) {
   return (
     <SEO
-      pathname={pageContext.slug}
+      pathname={pageContext.id}
       title={`${data.trelloCard.name} | ${config.siteTitle}`}
     />
   );

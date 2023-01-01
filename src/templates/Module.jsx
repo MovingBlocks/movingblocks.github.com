@@ -36,7 +36,7 @@ export default class Module extends React.Component {
             </div>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
-              <SocialLinks postPath={`/modules${slug}`} postNode={postNode} />
+              <SocialLinks title={post.title} excerpt={post.excerpt} path={`/modules${slug}`} />
             </div>
           </div>
         </div>

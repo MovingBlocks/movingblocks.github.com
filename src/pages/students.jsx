@@ -4,29 +4,30 @@ import { graphql } from "gatsby";
 import Section from "../components/Section";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
 import Layout from "../layout";
 
+function toCardData(trelloCard, defaultCover) {
+  const { id, name: title, labels, childMarkdownRemark } = trelloCard;
+  const { excerpt } = childMarkdownRemark;
+  const posttype = "project";
+  const tags = labels.map(l => l.name)
+  const cover = defaultCover;
+  return { posttype, title, path: `/${id}`, excerpt, tags, cover };
+}
+
 function StudentPrograms({ data }) {
+
+  const defaultCover = data.file;
+
   const prefix = "/projects";
   const projectEdges = data.allTrelloCard.edges;
 
   const availableProjects = projectEdges
     .filter(({node}) => node.list_id === "5c3aab0bd640fe19e4069de5")
-    .map(({node}) => {
-      const { id, name, childrenMarkdownRemark } = node;
-      const { excerpt } = childrenMarkdownRemark;
-      const posttype = "project";
-      return { posttype, title: name, path: id, excerpt, tags: [] };
-    });
+    .map(({node}) => toCardData(node, defaultCover));
   const ongoingProjects = projectEdges
     .filter(({node}) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
-    .map(({node}) => {
-      const { id, name, childrenMarkdownRemark } = node;
-      const { excerpt } = childrenMarkdownRemark;
-      const posttype = "project";
-      return { posttype, title: name, path: id, excerpt, tags:[] };
-    });
+    .map(({node}) => toCardData(node, defaultCover));
 
   return (
     <Layout title="Student Programs">
@@ -87,15 +88,28 @@ export const pageQuery = graphql`
           id
           list_id
           name
-          childrenMarkdownRemark {
-            html
+          labels {
+            name
+          }
+          childMarkdownRemark {
+            excerpt
           }
         }
+      }
+    }
+    file(name: {eq: "defaultCardcover"}, ext: {eq: ".jpg"}) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }
 `;
 
-export function Head() {
-  return <SEO title={`Student Programs | ${config.siteTitle}`} />;
+export function Head({data}) {
+  return <SEO title={`Student Programs | ${data.site.siteMetadata.title}`} />;
 }

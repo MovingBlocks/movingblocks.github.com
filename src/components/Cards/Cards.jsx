@@ -27,7 +27,6 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
         ) : (
           ""
         )}
-        ;
         <CardBody>
           <CardSubtitle tag="h7">
             {tags.length === 0 ? (

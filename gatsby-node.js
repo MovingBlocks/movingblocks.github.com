@@ -297,7 +297,7 @@ exports.createPages = async ({ graphql, actions }) => {
         {
           allTrelloCard(
             filter: { list_name: { eq: "********** Ready Ideas **********" } }
-            sort: { fields: [index], order: ASC }
+            sort: { index: ASC }
           ) {
             edges {
               node {
@@ -336,7 +336,7 @@ exports.createPages = async ({ graphql, actions }) => {
         {
           allTrelloCard(
             filter: { list_name: { eq: "Taken (ongoing) Projects" } }
-            sort: { fields: [index], order: ASC }
+            sort: { index: ASC }
           ) {
             edges {
               node {

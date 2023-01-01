@@ -43,38 +43,38 @@ section p {
   font-size: 15px;
 }
 
-.left-overlay_about_content {
+.ts-gradient-background-start {
   background: linear-gradient(
-    270deg,
-    rgba(17, 191, 86, 0.2) 43%,
-    rgba(5, 173, 73, 0.9) 65%
+    0deg,
+    rgba(17, 191, 86, 0.1) 0%,
+    rgba(5, 173, 73, 0.9) 0%
   );
 }
 
-.right-overlay_about_content {
+.ts-gradient-background-end {
   background: linear-gradient(
     90deg,
-    rgba(17, 191, 86, 0.2) 43%,
-    rgba(5, 173, 73, 0.9) 65%
+    rgba(17, 191, 86, 0.1) 0%,
+    rgba(5, 173, 73, 0.9) 0%
   );
 }
 
-@media (max-width: 750px) {
-  .left-overlay_about_content {
+// Align with Bootstrap's responsive breakpoints, 
+//    https://getbootstrap.com/docs/4.6/layout/overview/#responsive-breakpoints
+@media (min-width: 768px) {
+  .ts-gradient-background-start {
     background: linear-gradient(
-      0deg,
-      rgba(17, 191, 86, 0.1) 0%,
-      rgba(5, 173, 73, 0.9) 0%
+      270deg,
+      rgba(17, 191, 86, 0.2) 43%,
+      rgba(5, 173, 73, 0.9) 65%
     );
   }
-  .empty-about-content {
-    display: none;
-  }
-  .right-overlay_about_content {
+
+  .ts-gradient-background-end {
     background: linear-gradient(
       90deg,
-      rgba(17, 191, 86, 0.1) 0%,
-      rgba(5, 173, 73, 0.9) 0%
+      rgba(17, 191, 86, 0.2) 43%,
+      rgba(5, 173, 73, 0.9) 65%
     );
   }
 }

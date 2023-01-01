@@ -9,18 +9,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug;
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
-    ) {
-      slug = `/${kebabCase(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
+    const { relativePath } = fileNode;
+    if (relativePath) {
+      const parsedFilePath = path.parse(fileNode.relativePath);
+      if (
+        Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+        Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      ) {
+        slug = `/${kebabCase(node.frontmatter.title)}`;
+      } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+      } else if (parsedFilePath.dir === "") {
+        slug = `/${parsedFilePath.name}/`;
+      } else {
+        slug = `/${parsedFilePath.dir}/`;
+      }
     }
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
@@ -144,8 +147,44 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   }
 
+  async function createProjectPages() {
+    const projectPageTemplate = path.resolve("src/templates/Project.jsx");
+    const projectQueryResult = await graphql(
+      `
+        {
+          allTrelloCard {
+            edges {
+              node {
+                id
+                list_id
+              }
+            }
+          }
+        }
+      `
+    );
+
+    const projects = projectQueryResult.data.allTrelloCard.edges;
+    projects
+      .filter(
+        (edge) =>
+          edge.node.list_id === "5c3aab0bd640fe19e4069de5" ||
+          edge.node.list_id === "60ddd7cf64da4b3ee8c5a2e9"
+      )
+      .forEach((edge) => {
+        createPage({
+          path: `/projects/${edge.node.id}`,
+          component: projectPageTemplate,
+          context: {
+            id: edge.node.id,
+          },
+        });
+      });
+  }
+
   await createBlogPages();
   await createModulePages();
+  await createProjectPages();
 
   // TODO: replace below with proper search index generation, see
   //          https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-search/

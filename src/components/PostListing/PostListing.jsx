@@ -12,7 +12,7 @@ function PostListing({ prefix, postList }) {
           <Cards
             title={post.title}
             path={`${prefix}${post.path}`}
-            cover={post.cover.childImageSharp}
+            cover={post.cover}
             tags={post.tags}
             excerpt={post.excerpt}
             author={post.author}

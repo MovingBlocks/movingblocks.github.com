@@ -1079,10 +1079,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@eslint/eslintrc@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.4.0.tgz#8ec64e0df3e7a1971ee1ff5158da87389f167a63"
-  integrity sha512-7yfvXy6MWLgWSFsLhz5yH3iQ52St8cdUY6FoGieKkRDVxuxmrNuUetIuu6cmjNWwniUHiWXjxCr5tTXDrbYS5A==
+"@eslint/eslintrc@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.4.1.tgz#af58772019a2d271b7e2d4c23ff4ddcba3ccfb3e"
+  integrity sha512-XXrH9Uarn0stsyldqDYq8r++mROmWRI1xKMXa640Bb//SY1+ECYX6VzT6Lcx5frD0V30XieqJ0oX9I2Xj5aoMA==
   dependencies:
     ajv "^6.12.4"
     debug "^4.3.2"
@@ -2308,9 +2308,9 @@
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
 "@types/sharp@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.31.0.tgz#c4af03a7e1d126f0d428a265e126fabd86ab6d0f"
-  integrity sha512-nwivOU101fYInCwdDcH/0/Ru6yIRXOpORx25ynEOc6/IakuCmjOAGpaO5VfUl4QkDtUC6hj+Z2eCQvgXOioknw==
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.31.1.tgz#db768461455dbcf9ff11d69277fd70564483c4df"
+  integrity sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==
   dependencies:
     "@types/node" "*"
 
@@ -2945,6 +2945,15 @@ axios@^0.21.1:
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
     follow-redirects "^1.14.0"
+
+axios@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.2.tgz#72681724c6e6a43a9fea860fc558127dbe32f9f1"
+  integrity sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==
+  dependencies:
+    follow-redirects "^1.15.0"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -5019,11 +5028,11 @@ eslint@^7.32.0:
     v8-compile-cache "^2.0.3"
 
 eslint@^8.30.0, eslint@^8.9.0:
-  version "8.30.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.30.0.tgz#83a506125d089eef7c5b5910eeea824273a33f50"
-  integrity sha512-MGADB39QqYuzEGov+F/qb18r4i7DohCDOfatHaxI2iGlPuC65bwG2gxgO+7DkyL38dRFaRH7RaRAgU6JKL9rMQ==
+  version "8.31.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.31.0.tgz#75028e77cbcff102a9feae1d718135931532d524"
+  integrity sha512-0tQQEVdmPZ1UtUKXjX7EMm9BlgJ08G90IhWh0PKDCb3ZLsgAOHI8fYSIzYVZej92zsgq+ft0FGsxhJ3xo2tbuA==
   dependencies:
-    "@eslint/eslintrc" "^1.4.0"
+    "@eslint/eslintrc" "^1.4.1"
     "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
@@ -5440,7 +5449,7 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-follow-redirects@^1.14.0:
+follow-redirects@^1.14.0, follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -5473,6 +5482,15 @@ form-data@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-3.0.1.tgz#ebd53791b78356a99af9a300d4282c4d5eb9755f"
   integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.8"
+    mime-types "^2.1.12"
+
+form-data@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
+  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   dependencies:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
@@ -5941,6 +5959,14 @@ gatsby-source-filesystem@^5.3.1:
     pretty-bytes "^5.6.0"
     valid-url "^1.0.9"
     xstate "^4.34.0"
+
+"gatsby-source-trello-board@https://github.com/skaldarnar/gatsby-source-trello-board/#2.0.0-rc.1":
+  version "2.0.0-rc.1"
+  resolved "https://github.com/skaldarnar/gatsby-source-trello-board/#bf4f0748532219c1970aa26330a87e82f4987a52"
+  dependencies:
+    axios "^1.2.2"
+    gatsby-source-filesystem "^5.3.1"
+    slugify "^1.6.5"
 
 gatsby-telemetry@^4.3.1:
   version "4.3.1"
@@ -7399,9 +7425,9 @@ json5@^1.0.1:
     minimist "^1.2.0"
 
 json5@^2.0.0, json5@^2.1.2, json5@^2.2.0, json5@^2.2.1:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.2.tgz#64471c5bdcc564c18f7c1d4df2e2297f2457c5ab"
-  integrity sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
+  integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -9721,6 +9747,11 @@ proxy-addr@~2.0.7:
     forwarded "0.2.0"
     ipaddr.js "1.9.1"
 
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
+
 pseudomap@^1.0.1, pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -10970,7 +11001,7 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-slugify@^1.6.1:
+slugify@^1.6.1, slugify@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.6.5.tgz#c8f5c072bf2135b80703589b39a3d41451fbe8c8"
   integrity sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==

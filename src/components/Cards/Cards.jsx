@@ -9,7 +9,7 @@ import {
   CardTitle,
   Col,
 } from "reactstrap";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
   // we use cover images with different aspect ratios for modules and blogs
@@ -19,10 +19,14 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
   return (
     <Col className="pt-0 mt-2 mb-4" lg="4" md="8" sm="12">
       <Card className="row_shadow h-100">
-        <GatsbyImage
-          image={cover.gatsbyImageData}
-          className={`card-img-top ${imgClass}`}
-        />
+        {cover ? (
+          <GatsbyImage
+            image={getImage(cover)}
+            className={`card-img-top ${imgClass}`}
+          />
+        ) : (
+          ""
+        )}
         <CardBody>
           <CardSubtitle tag="h7">
             {tags.length === 0 ? (

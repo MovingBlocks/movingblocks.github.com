@@ -17,39 +17,34 @@ import {
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
-function SocialLinks({ postNode, postPath, mobile }) {
-  const post = postNode.frontmatter;
-  const url = urljoin(config.siteUrl, config.pathPrefix, postPath);
+function SocialLinks({ title, excerpt, path, mobile }) {
+  const url = urljoin(config.siteUrl, config.pathPrefix, path);
 
   const iconSize = useMemo(() => ({ size: mobile ? 36 : 48 }), [mobile]);
   return (
     <div className="social-links">
-      <RedditShareButton url={url} title={post.title}>
+      <RedditShareButton url={url} title={title}>
         <IconContext.Provider value={iconSize}>
           <div className="reddit-icon-color">
             <FaReddit />
           </div>
         </IconContext.Provider>
       </RedditShareButton>
-      <TwitterShareButton url={url} title={post.title}>
+      <TwitterShareButton url={url} title={title}>
         <IconContext.Provider value={iconSize}>
           <div className="twitter-icon-color">
             <FaTwitter />
           </div>
         </IconContext.Provider>
       </TwitterShareButton>
-      <FacebookShareButton url={url} quote={postNode.excerpt}>
+      <FacebookShareButton url={url} quote={excerpt}>
         <IconContext.Provider value={iconSize}>
           <div className="facebook-icon-color">
             <FaFacebook />
           </div>
         </IconContext.Provider>
       </FacebookShareButton>
-      <LinkedinShareButton
-        url={url}
-        title={post.title}
-        description={postNode.excerpt}
-      >
+      <LinkedinShareButton url={url} title={title} description={excerpt}>
         <IconContext.Provider value={iconSize}>
           <div className="linkedin-icon-color">
             <FaLinkedin />

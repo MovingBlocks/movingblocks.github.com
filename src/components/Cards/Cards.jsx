@@ -16,18 +16,17 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
   // the respective aspect ratio is encoded in the type-specific css class
   const imgClass = type ? `card-img-${type}` : "";
 
-  let coverImage = <> </>;
-  if (cover !== undefined && cover !== null) {
-    const image = getImage(cover);
-    coverImage = (
-      <GatsbyImage image={image} className={`card-img-top ${imgClass}`} />
-    );
-  }
-
   return (
     <Col className="pt-0 mt-2 mb-4" lg="4" md="8" sm="12">
       <Card className="row_shadow h-100">
-        {coverImage}
+        {cover ? (
+          <GatsbyImage
+            image={getImage(cover)}
+            className={`card-img-top ${imgClass}`}
+          />
+        ) : (
+          ""
+        )}
         <CardBody>
           <CardSubtitle tag="h7">
             {tags.length === 0 ? (

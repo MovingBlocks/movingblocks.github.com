@@ -74,7 +74,7 @@ module.exports = {
       options: {
         token: "",
         key: "",
-        //cache_expiration: "15 minutes",
+        // cache_expiration: "15 minutes",
         // https://trello.com/b/5QQGHuTt/gsoc-gsod-ideas
         board_id: "5c3aaac60b229715c199b69e",
       },

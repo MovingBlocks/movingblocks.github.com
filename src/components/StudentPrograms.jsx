@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Row, Badge } from "reactstrap";
-import Carousel from "react-multi-carousel";
+import { Row } from "reactstrap";
 import "react-multi-carousel/lib/styles.css";
-import ProjectModal from "./ProjectModal/ProjectModal";
-import defaultCardImg from "../../static/logos/defaultCardcover.jpg";
 import Section from "./Section";
+import PostListing from "./PostListing/PostListing";
 
 function StudentPrograms() {
   const responsive = {
@@ -39,7 +37,13 @@ function StudentPrograms() {
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      setReadyprojects(data);
+      const availableProjectsList = data.map((project) => {
+        const { cover: projectCover, name, labels, desc } = project;
+        const tags = labels.map((label) => label.name);
+        const posttype = "project";
+        return { posttype, title: name, cover: projectCover, tags, excerpt: desc };
+      });
+      setReadyprojects(availableProjectsList);
       setAvailableProjectVisible(true);
     }
   };
@@ -51,7 +55,13 @@ function StudentPrograms() {
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      setOngoingprojects(data);
+      const ongoingProjectsList = data.map((project) => {
+        const { cover: projectCover, name, labels, desc } = project;
+        const tags = labels.map((label) => label.name);
+        const posttype = "project";
+        return { posttype, title: name, cover: projectCover, tags, excerpt: desc };
+      });
+      setOngoingprojects(ongoingProjectsList);
       setOngoingProjectVisible(true);
     }
   };
@@ -65,7 +75,7 @@ function StudentPrograms() {
     <>
       <Section
         tag="h3"
-        title="About Google Summer of Code & Terasology Summer of Code"
+        title="GSoC & TSoC"
       >
         <Row className="justify-content-center">
           <div className="col-md-10">
@@ -105,100 +115,14 @@ function StudentPrograms() {
       </Section>
       {availableProjectVisible ? (
         <Section tag="h3" title="Available Projects">
-          <Carousel
-            responsive={responsive}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            className="card_project"
-          >
-            {readyProjects.map((project) => (
-              <div className="col h-100 ">
-                <div className="card h-100 row_shadow">
-                  {project.cover.scaled !== undefined ? (
-                    <img
-                      src={project.cover.scaled[4].url}
-                      className="card-img-top"
-                      alt={project.name}
-                    />
-                  ) : (
-                    <img
-                      src={defaultCardImg}
-                      className="card-img-top"
-                      alt={project.name}
-                    />
-                  )}
-                  <div className="card-body h-25 mt-2">
-                    <p className="font-weight-bolder">{project.name}</p>
-                    <div className="d-flex">
-                      <div className="md-tag tag_size">
-                        {project &&
-                          project.labels.map((tag) => (
-                            <Badge className="m-1">{tag.name}</Badge>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="ml-4 mb-4">
-                    <ProjectModal
-                      name={project.name}
-                      desc={project.desc}
-                      tags={project.labels}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Carousel>
+          <PostListing postList={readyProjects} />
         </Section>
       ) : (
         ""
       )}
       {ongoingProjectVisible ? (
         <Section tag="h3" title="Ongoing Projects">
-          <Carousel
-            responsive={responsive}
-            className="mt-4 card_project"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-          >
-            {ongoingProjects.map((project) => (
-              <div className="col  h-100 ">
-                <div className="card h-100 row_shadow">
-                  {project.cover.scaled !== undefined ? (
-                    <img
-                      src={project.cover.scaled[4].url}
-                      className="card-img-top"
-                      alt={project.name}
-                    />
-                  ) : (
-                    <img
-                      src={defaultCardImg}
-                      className="card-img-top"
-                      alt={project.name}
-                    />
-                  )}
-
-                  <div className="card-body  mt-2">
-                    <p className="font-weight-bolder">{project.name}</p>
-                    <div className="d-flex">
-                      <div className="md-tag tag_size">
-                        {project &&
-                          project.labels.map((tag) => (
-                            <Badge className="m-1">{tag.name}</Badge>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="ml-4 mb-4">
-                    <ProjectModal
-                      name={project.name}
-                      desc={project.desc}
-                      tags={project.labels}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Carousel>
+          <PostListing postList={ongoingProjects} />
         </Section>
       ) : (
         ""

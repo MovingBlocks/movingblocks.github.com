@@ -19,10 +19,15 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
   return (
     <Col className="pt-0 mt-2 mb-4" lg="4" md="8" sm="12">
       <Card className="row_shadow h-100">
-        <GatsbyImage
-          image={cover.gatsbyImageData}
-          className={`card-img-top ${imgClass}`}
-        />
+        {type !== "project" ? (
+          <GatsbyImage
+            image={cover.gatsbyImageData}
+            className={`card-img-top ${imgClass}`}
+          />
+        ) : (
+          ""
+        )}
+        ;
         <CardBody>
           <CardSubtitle tag="h7">
             {tags.length === 0 ? (

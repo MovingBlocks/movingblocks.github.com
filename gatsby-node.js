@@ -390,7 +390,7 @@ exports.createPages = async ({ graphql, actions }) => {
     JSON.stringify(availableProjectsIndex, null, 2)
   );
   fs.writeFileSync(
-    "./src/generated/available-projects-result.json",
+    "./src/generated/ongoing-projects-result.json",
     JSON.stringify(ongoingProjectsIndex, null, 2)
   );
 };

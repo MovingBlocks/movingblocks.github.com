@@ -291,90 +291,88 @@ exports.createPages = async ({ graphql, actions }) => {
     return index;
   }
 
-  // async function buildAvailableProjectsSearchIndex() {
-  //   const result = await graphql(
-  //     `
-  //       {
-  //         allTrelloCard(
-  //           filter: { list_name: { eq: "********** Ready Ideas **********" } }
-  //           sort: { fields: [index], order: ASC }
-  //         ) {
-  //           edges {
-  //             node {
-  //               list_index
-  //               list_id
-  //               list_slug
-  //               list_name
-  //               index
-  //               id
-  //               slug
-  //               name
-  //               content
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `
-  //   );
-  //   const index = result.data.allTrelloCard.edges.map((edge) => {
-  //     const { slug, name, content } = edge.node;
+  async function buildAvailableProjectsSearchIndex() {
+    const result = await graphql(
+      `
+        {
+          allTrelloCard(
+            filter: { list_name: { eq: "********** Ready Ideas **********" } }
+            sort: { fields: [index], order: ASC }
+          ) {
+            edges {
+              node {
+                list_index
+                list_id
+                list_slug
+                list_name
+                index
+                id
+                slug
+                name
+                content
+              }
+            }
+          }
+        }
+      `
+    );
+    const index = result.data.allTrelloCard.edges.map((edge) => {
+      const { slug, name, content } = edge.node;
 
-  //     return {
-  //       slug,
-  //       name,
-  //       content,
-  //       posttype: "project",
-  //     };
-  //   });
+      return {
+        slug,
+        name,
+        content,
+        posttype: "project",
+      };
+    });
 
-  //   return index;
-  // }
+    return index;
+  }
 
-  // async function buildOngoingProjectsSearchIndex() {
-  //   const result = await graphql(
-  //     `
-  //       {
-  //         allTrelloCard(
-  //           filter: { list_name: { eq: "Taken (ongoing) Projects" } }
-  //           sort: { fields: [index], order: ASC }
-  //         ) {
-  //           edges {
-  //             node {
-  //               list_index
-  //               list_id
-  //               list_slug
-  //               list_name
-  //               index
-  //               id
-  //               slug
-  //               name
-  //               content
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `
-  //   );
-  //   const index = result.data.allTrelloCard.edges.map((edge) => {
-  //     const { slug, name, content } = edge.node;
+  async function buildOngoingProjectsSearchIndex() {
+    const result = await graphql(
+      `
+        {
+          allTrelloCard(
+            filter: { list_name: { eq: "Taken (ongoing) Projects" } }
+            sort: { fields: [index], order: ASC }
+          ) {
+            edges {
+              node {
+                list_index
+                list_id
+                list_slug
+                list_name
+                index
+                id
+                slug
+                name
+                content
+              }
+            }
+          }
+        }
+      `
+    );
+    const index = result.data.allTrelloCard.edges.map((edge) => {
+      const { slug, name, content } = edge.node;
 
-  //     return {
-  //       slug,
-  //       name,
-  //       content,
-  //       posttype: "project",
-  //     };
-  //   });
+      return {
+        slug,
+        name,
+        content,
+        posttype: "project",
+      };
+    });
 
-  //   return index;
-  // }
-
-
+    return index;
+  }
 
   const blogIndex = await buildBlogSearchIndex();
   const moduleIndex = await buildModulesSearchIndex();
-  // const availableProjectsIndex = await buildAvailableProjectsSearchIndex();
-  // const ongoingProjectsIndex = await buildOngoingProjectsSearchIndex();
+  const availableProjectsIndex = await buildAvailableProjectsSearchIndex();
+  const ongoingProjectsIndex = await buildOngoingProjectsSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row } from "reactstrap";
-import "react-multi-carousel/lib/styles.css";
+import { graphql } from "gatsby";
 import Section from "../components/Section";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import { graphql } from "gatsby";
 import Layout from "../layout";
 
 function StudentPrograms({ data }) {
@@ -13,9 +12,7 @@ function StudentPrograms({ data }) {
   const projectEdges = data.allTrelloCard.edges;
 
   const availableProjects = projectEdges
-    .filter((node) => {
-      node.list_id === "5c3aab0bd640fe19e4069de5";
-    })
+    .filter((node) => node.list_id === "5c3aab0bd640fe19e4069de5")
     .map((node) => {
       console.log(projectEdges);
       const { id, name, childrenMarkdownRemark } = node;
@@ -24,14 +21,12 @@ function StudentPrograms({ data }) {
       return { posttype, title: name, path: id, excerpt };
     });
   const ongoingProjects = projectEdges
-    .filter((node) => {
-      node.list_id === "60ddd7cf64da4b3ee8c5a2e9";
-    })
+    .filter((node) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
     .map((node) => {
       const { id, name, childrenMarkdownRemark } = node;
       const { excerpt } = childrenMarkdownRemark;
       const posttype = "project";
-      return { posttype, title: name, excerpt };
+      return { posttype, title: name, path: id, excerpt };
     });
 
   return (

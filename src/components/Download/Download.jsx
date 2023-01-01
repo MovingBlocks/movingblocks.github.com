@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
+import { NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
+import Section from "../Section";
 
 function Download() {
   const isBrowser = typeof window !== "undefined";
@@ -119,66 +120,52 @@ function Download() {
         </Row>
       </div>
 
-      <div className="download-underline" />
-      <div className="my-5 ">
-        <h2 className=" m-3 download-system-requirement">
-          System Requirements
-        </h2>
-        <div className="my-5">
-          <Table className="download-table my-4" borderless>
-            <thead>
-              <tr>
-                <th />
-                <th>Minimum Requirements</th>
-                <th>Recommended Requirements</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">System (OS)</th>
-                <td>Windows, MacOS, Linux (64 bit)</td>
-                <td />
-              </tr>
-              <tr>
-                <th scope="row">Processor (CPU)</th>
-                <td>dual-core CPU</td>
-                <td>quad-core CPU</td>
-              </tr>
-              <tr>
-                <th scope="row">Memory (RAM)</th>
-
-                <td>2 GB</td>
-                <td>8 GB</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Graphics (GPU)</th>
-                <td>
-                  Intel HD Graphics (Gen 5)
-                  <br />
-                  GeForce 6xxx series or
-                  <br />
-                  Radeon HD 2000 series
-                  <br />
-                  with OpenGL 2.1*
-                </td>
-                <td>
-                  GeForce 8xxx series (or higher) or
-                  <br />
-                  Radeon HD 2000 series (or higher)
-                  <br />
-                  with OpenGL 3.x
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Storage (HDD)</th>
-                <td>1 GB</td>
-                <td />
-              </tr>
-            </tbody>
-          </Table>
-        </div>
-      </div>
+      <Section
+        title="Minimum System Requirements"
+        className="justify-content-center"
+      >
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            System (OS)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            Windows, MacOS, Linux (64 bit)
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Processor (CPU)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            dual-core CPU
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Memory (RAM)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            2 GB
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Storage (HDD/SSD)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            1 GB
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Graphics (GPU)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            Intel HD Graphics (Gen 7) or GeForce 8xxx series (or higher) or
+            Radeon HD 2000 series (or higher) with OpenGL 3.3
+          </Col>
+        </Row>
+      </Section>
     </div>
   );
 }

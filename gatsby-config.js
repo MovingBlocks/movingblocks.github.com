@@ -70,6 +70,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-trello-board`,
+      options: {
+        board_id: `5c3aaac60b229715c199b69e`,
+      }
+    },
+    {
       resolve: "gatsby-plugin-nprogress",
       options: {
         color: config.themeColor,

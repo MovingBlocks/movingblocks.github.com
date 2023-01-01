@@ -144,8 +144,41 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   }
 
+  async function createProjectPages() {
+    const projectPageTemplate = path.resolve("src/templates/Project.jsx");
+    const projectQueryResult = await graphql(
+      `
+        {
+          allMarkdownRemark(
+            filter: { frontmatter: { posttype: { eq: "project" } } }
+          ) {
+            edges {
+              node {
+                name
+                content
+                slug
+              }
+            }
+          }
+        }
+      `
+    );
+
+    const projects = projectQueryResult.data.allMarkdownRemark.edges;
+    projects.forEach((edge) => {
+      createPage({
+        path: `/modules${edge.node.slug}`,
+        component: projectPageTemplate,
+        context: {
+          slug: edge.node.slug,
+        },
+      });
+    });
+  }
+
   await createBlogPages();
   await createModulePages();
+  await createProjectPages
 
   // TODO: replace below with proper search index generation, see
   //          https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-search/
@@ -255,8 +288,90 @@ exports.createPages = async ({ graphql, actions }) => {
     return index;
   }
 
+  async function buildAvailableProjectsSearchIndex() {
+    const result = await graphql(
+      `
+        {
+          allTrelloCard(
+            filter: { list_name: { eq: "********** Ready Ideas **********" } }
+            sort: { fields: [index], order: ASC }
+          ) {
+            edges {
+              node {
+                list_index
+                list_id
+                list_slug
+                list_name
+                index
+                id
+                slug
+                name
+                content
+              }
+            }
+          }
+        }
+      `
+    );
+    const index = result.data.allTrelloCard.edges.map((edge) => {
+      const { slug, name, content } = edge.node;
+
+      return {
+        slug,
+        name,
+        content,
+        posttype: "project",
+      };
+    });
+
+    return index;
+  }
+
+  async function buildOngoingProjectsSearchIndex() {
+    const result = await graphql(
+      `
+        {
+          allTrelloCard(
+            filter: { list_name: { eq: "Taken (ongoing) Projects" } }
+            sort: { fields: [index], order: ASC }
+          ) {
+            edges {
+              node {
+                list_index
+                list_id
+                list_slug
+                list_name
+                index
+                id
+                slug
+                name
+                content
+              }
+            }
+          }
+        }
+      `
+    );
+    const index = result.data.allTrelloCard.edges.map((edge) => {
+      const { slug, name, content } = edge.node;
+
+      return {
+        slug,
+        name,
+        content,
+        posttype: "project",
+      };
+    });
+
+    return index;
+  }
+
+
+
   const blogIndex = await buildBlogSearchIndex();
   const moduleIndex = await buildModulesSearchIndex();
+  const availableProjectsIndex = await buildAvailableProjectsSearchIndex();
+  const ongoingProjectsIndex = await buildOngoingProjectsSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");
@@ -269,5 +384,13 @@ exports.createPages = async ({ graphql, actions }) => {
   fs.writeFileSync(
     "./src/generated/module-result.json",
     JSON.stringify(moduleIndex, null, 2)
+  );
+  fs.writeFileSync(
+    "./src/generated/available-projects-result.json",
+    JSON.stringify(availableProjectsIndex, null, 2)
+  );
+  fs.writeFileSync(
+    "./src/generated/available-projects-result.json",
+    JSON.stringify(ongoingProjectsIndex, null, 2)
   );
 };

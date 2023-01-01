@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Table, NavLink, Input, Row, Col, Alert } from "reactstrap";
+import { NavLink, Input, Row, Col, Alert } from "reactstrap";
 import { IconContext } from "react-icons";
 import { FaDownload } from "react-icons/fa";
 import Section from "../Section";
@@ -120,28 +120,50 @@ function Download() {
         </Row>
       </div>
 
-      <Section title="Minimum System Requirements" className="justify-content-center">
+      <Section
+        title="Minimum System Requirements"
+        className="justify-content-center"
+      >
         <Row className="justify-content-center">
-          <Col md="3" className="mr-4 font-weight-bold" tag="p">System (OS)</Col>
-          <Col md="3" className="ml-4" tag="p">Windows, MacOS, Linux (64 bit)</Col>
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            System (OS)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            Windows, MacOS, Linux (64 bit)
+          </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col md="3" className="mr-4 font-weight-bold" tag="p">Processor (CPU)</Col>
-          <Col md="3" className="ml-4" tag="p">dual-core CPU</Col>
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Processor (CPU)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            dual-core CPU
+          </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col md="3" className="mr-4 font-weight-bold" tag="p">Memory (RAM)</Col>
-          <Col md="3" className="ml-4" tag="p">2 GB</Col>
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Memory (RAM)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            2 GB
+          </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col md="3" className="mr-4 font-weight-bold" tag="p">Storage (HDD/SSD)</Col>
-          <Col md="3" className="ml-4" tag="p">1 GB</Col>
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Storage (HDD/SSD)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            1 GB
+          </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col md="3" className="mr-4 font-weight-bold" tag="p">Graphics (GPU)</Col>
-          <Col md="3" className="ml-4" tag="p">Intel HD Graphics (Gen 7) or
-            GeForce 8xxx series (or higher) or
-            Radeon HD 2000 series (or higher) with OpenGL 3.3</Col>
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">
+            Graphics (GPU)
+          </Col>
+          <Col md="3" className="ml-4" tag="p">
+            Intel HD Graphics (Gen 7) or GeForce 8xxx series (or higher) or
+            Radeon HD 2000 series (or higher) with OpenGL 3.3
+          </Col>
         </Row>
       </Section>
     </div>

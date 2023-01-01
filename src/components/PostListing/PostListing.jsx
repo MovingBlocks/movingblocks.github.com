@@ -8,18 +8,18 @@ function PostListing({ prefix, postList }) {
   return (
     <Col lg="12" className="card-spacing">
       <Row className="justify-content-center">
-        {postList.map((post) => (
+        {postList.map(({title, cover, tags, excerpt, author, path, date, posttype}) => (
           <Cards
-            title={post.title}
-            path={`${prefix}${post.path}`}
-            cover={post.cover}
-            tags={post.tags}
-            excerpt={post.excerpt}
-            author={post.author}
+            title={title}
+            path={path}
+            cover={cover}
+            tags={tags}
+            excerpt={excerpt}
+            author={author}
             date={
-              post.date ? moment(post.date).format("MMMM DD, YYYY") : undefined
+              date ? moment(date).format("MMMM DD, YYYY") : undefined
             }
-            type={post.posttype}
+            type={posttype}
           />
         ))}
       </Row>

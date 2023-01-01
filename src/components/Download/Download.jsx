@@ -120,45 +120,29 @@ function Download() {
         </Row>
       </div>
 
-      <Section title="System Requirements">
-        <Table className="download-table my-4" borderless>
-          <thead>
-            <tr>
-              <th />
-              <th>Minimum Requirements</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">System (OS)</th>
-              <td>Windows, MacOS, Linux (64 bit)</td>
-            </tr>
-            <tr>
-              <th scope="row">Processor (CPU)</th>
-              <td>dual-core CPU</td>
-            </tr>
-            <tr>
-              <th scope="row">Memory (RAM)</th>
-              <td>2 GB</td>
-            </tr>
-            <tr>
-              <th scope="row">Graphics (GPU)</th>
-              <td>
-                Intel HD Graphics (Gen 7) or
-                <br />
-                GeForce 8xxx series (or higher) or
-                <br />
-                Radeon HD 2000 series (or higher)
-                <br />
-                with OpenGL 3.3
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Storage (HDD)</th>
-              <td>1 GB</td>
-            </tr>
-          </tbody>
-        </Table>
+      <Section title="Minimum System Requirements" className="justify-content-center">
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">System (OS)</Col>
+          <Col md="3" className="ml-4" tag="p">Windows, MacOS, Linux (64 bit)</Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">Processor (CPU)</Col>
+          <Col md="3" className="ml-4" tag="p">dual-core CPU</Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">Memory (RAM)</Col>
+          <Col md="3" className="ml-4" tag="p">2 GB</Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">Storage (HDD/SSD)</Col>
+          <Col md="3" className="ml-4" tag="p">1 GB</Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col md="3" className="mr-4 font-weight-bold" tag="p">Graphics (GPU)</Col>
+          <Col md="3" className="ml-4" tag="p">Intel HD Graphics (Gen 7) or
+            GeForce 8xxx series (or higher) or
+            Radeon HD 2000 series (or higher) with OpenGL 3.3</Col>
+        </Row>
       </Section>
     </div>
   );

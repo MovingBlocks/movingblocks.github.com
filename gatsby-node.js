@@ -9,20 +9,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug;
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
-    ) {
-      slug = `/${kebabCase(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
-    }
-
+    const {relativePath} = fileNode;
+    if (relativePath) {
+      const parsedFilePath = path.parse(fileNode.relativePath);
+      if (
+        Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+        Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      ) {
+        slug = `/${kebabCase(node.frontmatter.title)}`;
+      } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+      } else if (parsedFilePath.dir === "") {
+        slug = `/${parsedFilePath.name}/`;
+      } else {
+        slug = `/${parsedFilePath.dir}/`;
+      }
+    }    
+    
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
         slug = `/${kebabCase(node.frontmatter.slug)}`;
@@ -288,90 +291,90 @@ exports.createPages = async ({ graphql, actions }) => {
     return index;
   }
 
-  async function buildAvailableProjectsSearchIndex() {
-    const result = await graphql(
-      `
-        {
-          allTrelloCard(
-            filter: { list_name: { eq: "********** Ready Ideas **********" } }
-            sort: { fields: [index], order: ASC }
-          ) {
-            edges {
-              node {
-                list_index
-                list_id
-                list_slug
-                list_name
-                index
-                id
-                slug
-                name
-                content
-              }
-            }
-          }
-        }
-      `
-    );
-    const index = result.data.allTrelloCard.edges.map((edge) => {
-      const { slug, name, content } = edge.node;
+  // async function buildAvailableProjectsSearchIndex() {
+  //   const result = await graphql(
+  //     `
+  //       {
+  //         allTrelloCard(
+  //           filter: { list_name: { eq: "********** Ready Ideas **********" } }
+  //           sort: { fields: [index], order: ASC }
+  //         ) {
+  //           edges {
+  //             node {
+  //               list_index
+  //               list_id
+  //               list_slug
+  //               list_name
+  //               index
+  //               id
+  //               slug
+  //               name
+  //               content
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `
+  //   );
+  //   const index = result.data.allTrelloCard.edges.map((edge) => {
+  //     const { slug, name, content } = edge.node;
 
-      return {
-        slug,
-        name,
-        content,
-        posttype: "project",
-      };
-    });
+  //     return {
+  //       slug,
+  //       name,
+  //       content,
+  //       posttype: "project",
+  //     };
+  //   });
 
-    return index;
-  }
+  //   return index;
+  // }
 
-  async function buildOngoingProjectsSearchIndex() {
-    const result = await graphql(
-      `
-        {
-          allTrelloCard(
-            filter: { list_name: { eq: "Taken (ongoing) Projects" } }
-            sort: { fields: [index], order: ASC }
-          ) {
-            edges {
-              node {
-                list_index
-                list_id
-                list_slug
-                list_name
-                index
-                id
-                slug
-                name
-                content
-              }
-            }
-          }
-        }
-      `
-    );
-    const index = result.data.allTrelloCard.edges.map((edge) => {
-      const { slug, name, content } = edge.node;
+  // async function buildOngoingProjectsSearchIndex() {
+  //   const result = await graphql(
+  //     `
+  //       {
+  //         allTrelloCard(
+  //           filter: { list_name: { eq: "Taken (ongoing) Projects" } }
+  //           sort: { fields: [index], order: ASC }
+  //         ) {
+  //           edges {
+  //             node {
+  //               list_index
+  //               list_id
+  //               list_slug
+  //               list_name
+  //               index
+  //               id
+  //               slug
+  //               name
+  //               content
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `
+  //   );
+  //   const index = result.data.allTrelloCard.edges.map((edge) => {
+  //     const { slug, name, content } = edge.node;
 
-      return {
-        slug,
-        name,
-        content,
-        posttype: "project",
-      };
-    });
+  //     return {
+  //       slug,
+  //       name,
+  //       content,
+  //       posttype: "project",
+  //     };
+  //   });
 
-    return index;
-  }
+  //   return index;
+  // }
 
 
 
   const blogIndex = await buildBlogSearchIndex();
   const moduleIndex = await buildModulesSearchIndex();
-  const availableProjectsIndex = await buildAvailableProjectsSearchIndex();
-  const ongoingProjectsIndex = await buildOngoingProjectsSearchIndex();
+  // const availableProjectsIndex = await buildAvailableProjectsSearchIndex();
+  // const ongoingProjectsIndex = await buildOngoingProjectsSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");

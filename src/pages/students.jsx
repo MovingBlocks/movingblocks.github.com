@@ -10,24 +10,23 @@ function toCardData(trelloCard, defaultCover) {
   const { id, name: title, labels, childMarkdownRemark } = trelloCard;
   const { excerpt } = childMarkdownRemark;
   const posttype = "project";
-  const tags = labels.map(l => l.name)
+  const tags = labels.map((l) => l.name);
   const cover = defaultCover;
   return { posttype, title, path: `/${id}`, excerpt, tags, cover };
 }
 
 function StudentPrograms({ data }) {
-
   const defaultCover = data.file;
 
   const prefix = "/projects";
   const projectEdges = data.allTrelloCard.edges;
 
   const availableProjects = projectEdges
-    .filter(({node}) => node.list_id === "5c3aab0bd640fe19e4069de5")
-    .map(({node}) => toCardData(node, defaultCover));
+    .filter(({ node }) => node.list_id === "5c3aab0bd640fe19e4069de5")
+    .map(({ node }) => toCardData(node, defaultCover));
   const ongoingProjects = projectEdges
-    .filter(({node}) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
-    .map(({node}) => toCardData(node, defaultCover));
+    .filter(({ node }) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
+    .map(({ node }) => toCardData(node, defaultCover));
 
   return (
     <Layout title="Student Programs">
@@ -97,7 +96,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    file(name: {eq: "defaultCardcover"}, ext: {eq: ".jpg"}) {
+    file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
       childImageSharp {
         gatsbyImageData
       }
@@ -110,6 +109,6 @@ export const pageQuery = graphql`
   }
 `;
 
-export function Head({data}) {
+export function Head({ data }) {
   return <SEO title={`Student Programs | ${data.site.siteMetadata.title}`} />;
 }

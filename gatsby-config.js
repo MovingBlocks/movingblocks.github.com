@@ -75,7 +75,7 @@ module.exports = {
         cache_expiration: "15 minutes",
         //TODO: add link to board for easier reference
         board_id: "5c3aaac60b229715c199b69e",
-      }
+      },
     },
     {
       resolve: "gatsby-plugin-nprogress",

@@ -9,7 +9,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug;
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
-    const {relativePath} = fileNode;
+    const { relativePath } = fileNode;
     if (relativePath) {
       const parsedFilePath = path.parse(fileNode.relativePath);
       if (
@@ -24,8 +24,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       } else {
         slug = `/${parsedFilePath.dir}/`;
       }
-    }    
-    
+    }
+
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
         slug = `/${kebabCase(node.frontmatter.slug)}`;
@@ -152,13 +152,10 @@ exports.createPages = async ({ graphql, actions }) => {
     const projectQueryResult = await graphql(
       `
         {
-          allMarkdownRemark(
-            filter: { frontmatter: { posttype: { eq: "project" } } }
-          ) {
+          allTrelloCard {
             edges {
               node {
-                name
-                content
+                id
                 slug
               }
             }
@@ -167,13 +164,15 @@ exports.createPages = async ({ graphql, actions }) => {
       `
     );
 
-    const projects = projectQueryResult.data.allMarkdownRemark.edges;
-    projects.forEach((edge) => {
+    const projects = projectQueryResult.data.allTrelloCard.edges;
+    projects.filter((edge) => {
+      edge.node.list_id === "5c3aab0bd640fe19e4069de5" || edge.node.list_id === "60ddd7cf64da4b3ee8c5a2e9"
+    }).forEach((edge) => {
       createPage({
-        path: `/modules${edge.node.slug}`,
+        path: `/projects/${edge.node.slug}`,
         component: projectPageTemplate,
         context: {
-          slug: edge.node.slug,
+          id: edge.node.id,
         },
       });
     });
@@ -181,7 +180,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   await createBlogPages();
   await createModulePages();
-  await createProjectPages
+  await createProjectPages();
 
   // TODO: replace below with proper search index generation, see
   //          https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-search/
@@ -291,88 +290,8 @@ exports.createPages = async ({ graphql, actions }) => {
     return index;
   }
 
-  async function buildAvailableProjectsSearchIndex() {
-    const result = await graphql(
-      `
-        {
-          allTrelloCard(
-            filter: { list_name: { eq: "********** Ready Ideas **********" } }
-            sort: { index: ASC }
-          ) {
-            edges {
-              node {
-                list_index
-                list_id
-                list_slug
-                list_name
-                index
-                id
-                slug
-                name
-                content
-              }
-            }
-          }
-        }
-      `
-    );
-    const index = result.data.allTrelloCard.edges.map((edge) => {
-      const { slug, name, content } = edge.node;
-
-      return {
-        slug,
-        name,
-        content,
-        posttype: "project",
-      };
-    });
-
-    return index;
-  }
-
-  async function buildOngoingProjectsSearchIndex() {
-    const result = await graphql(
-      `
-        {
-          allTrelloCard(
-            filter: { list_name: { eq: "Taken (ongoing) Projects" } }
-            sort: { index: ASC }
-          ) {
-            edges {
-              node {
-                list_index
-                list_id
-                list_slug
-                list_name
-                index
-                id
-                slug
-                name
-                content
-              }
-            }
-          }
-        }
-      `
-    );
-    const index = result.data.allTrelloCard.edges.map((edge) => {
-      const { slug, name, content } = edge.node;
-
-      return {
-        slug,
-        name,
-        content,
-        posttype: "project",
-      };
-    });
-
-    return index;
-  }
-
   const blogIndex = await buildBlogSearchIndex();
   const moduleIndex = await buildModulesSearchIndex();
-  const availableProjectsIndex = await buildAvailableProjectsSearchIndex();
-  const ongoingProjectsIndex = await buildOngoingProjectsSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");
@@ -385,13 +304,5 @@ exports.createPages = async ({ graphql, actions }) => {
   fs.writeFileSync(
     "./src/generated/module-result.json",
     JSON.stringify(moduleIndex, null, 2)
-  );
-  fs.writeFileSync(
-    "./src/generated/available-projects-result.json",
-    JSON.stringify(availableProjectsIndex, null, 2)
-  );
-  fs.writeFileSync(
-    "./src/generated/ongoing-projects-result.json",
-    JSON.stringify(ongoingProjectsIndex, null, 2)
   );
 };

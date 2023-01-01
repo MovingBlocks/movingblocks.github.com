@@ -43,7 +43,11 @@ export default class Blog extends React.Component {
             />
             <hr />
             <div className="post-meta">
-              <SocialLinks title={post.title} excerpt={post.excerpt} path={`/blog${slug}`} />
+              <SocialLinks
+                title={post.title}
+                excerpt={post.excerpt}
+                path={`/blog${slug}`}
+              />
             </div>
           </div>
         </div>

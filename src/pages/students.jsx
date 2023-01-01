@@ -12,28 +12,31 @@ function StudentPrograms({ data }) {
   const prefix = "/projects";
   const projectEdges = data.allTrelloCard.edges;
 
-  const availableProjects = projectEdges.filter((node) => { node.list_id === "5c3aab0bd640fe19e4069de5" }).map((node) => {
-    console.log(projectEdges)
-    const { id, name, childrenMarkdownRemark } = node;
-    const { excerpt } = childrenMarkdownRemark;
-    const posttype = "project";
-    return { posttype, title: name, path: id, excerpt };
-  });
-  const ongoingProjects = projectEdges.filter((node) => {
-    node.list_id === "60ddd7cf64da4b3ee8c5a2e9"
-  }).map((node) => {
-    const { id, name, childrenMarkdownRemark } = node;
-    const { excerpt } = childrenMarkdownRemark;
-    const posttype = "project";
-    return { posttype, title: name, excerpt };
-  });
+  const availableProjects = projectEdges
+    .filter((node) => {
+      node.list_id === "5c3aab0bd640fe19e4069de5";
+    })
+    .map((node) => {
+      console.log(projectEdges);
+      const { id, name, childrenMarkdownRemark } = node;
+      const { excerpt } = childrenMarkdownRemark;
+      const posttype = "project";
+      return { posttype, title: name, path: id, excerpt };
+    });
+  const ongoingProjects = projectEdges
+    .filter((node) => {
+      node.list_id === "60ddd7cf64da4b3ee8c5a2e9";
+    })
+    .map((node) => {
+      const { id, name, childrenMarkdownRemark } = node;
+      const { excerpt } = childrenMarkdownRemark;
+      const posttype = "project";
+      return { posttype, title: name, excerpt };
+    });
 
   return (
     <Layout title="Student Programs">
-      <Section
-        tag="h3"
-        title="GSoC & TSoC"
-      >
+      <Section tag="h3" title="GSoC & TSoC">
         <Row className="justify-content-center">
           <div className="col-md-10">
             <div className="text-center  student-programs-content">

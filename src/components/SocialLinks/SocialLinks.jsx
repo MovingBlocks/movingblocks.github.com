@@ -44,11 +44,7 @@ function SocialLinks({ title, excerpt, path, mobile }) {
           </div>
         </IconContext.Provider>
       </FacebookShareButton>
-      <LinkedinShareButton
-        url={url}
-        title={title}
-        description={excerpt}
-      >
+      <LinkedinShareButton url={url} title={title} description={excerpt}>
         <IconContext.Provider value={iconSize}>
           <div className="linkedin-icon-color">
             <FaLinkedin />

@@ -13,10 +13,14 @@ export default class Project extends React.Component {
     const { name, childrenMarkdownRemark } = project;
     const { html, excerpt } = childrenMarkdownRemark;
     return (
-      <Layout title={ name }>
+      <Layout title={name}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <div className="post-meta">
-          <SocialLinks title={ name } excerpt={ excerpt } path={`/projects/${id}`} />
+          <SocialLinks
+            title={name}
+            excerpt={excerpt}
+            path={`/projects/${id}`}
+          />
         </div>
       </Layout>
     );

@@ -75,7 +75,7 @@ module.exports = {
         key: "",
         token: "",
         board_id: `5c3aaac60b229715c199b69e`,
-      }
+      },
     },
     {
       resolve: "gatsby-plugin-nprogress",

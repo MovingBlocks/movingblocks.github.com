@@ -17,7 +17,7 @@ export default class Project extends React.Component {
       <Layout title={name}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <div className="post-meta">
-          <a href={url}>
+          <a href={url} target="_blank">
             {" "}
             <FaTrello />
             View on Trello.

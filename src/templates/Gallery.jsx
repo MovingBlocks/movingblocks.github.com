@@ -9,10 +9,6 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   PaginationItem,
   PaginationLink,
 } from "reactstrap";
@@ -36,6 +32,9 @@ function Gallery({ data, pageContext }) {
 
     return { image: gatsbyImageData, name, id };
   });
+
+  const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), []);
+  const paginationAttributes = useMemo(() => ({ className: "pagination-icon", size: "1.5em" }), []);
 
   const [imageDisplay, setImageDisplay] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,8 +65,7 @@ function Gallery({ data, pageContext }) {
     setActiveIndex(newIndex);
   };
 
-  const slides = imageList.map(({ id, name, image }) => {
-    return (
+  const slides = imageList.map(({ id, name, image }) => (
       <CarouselItem key={id}>
         <GatsbyImage
           image={image}
@@ -77,8 +75,7 @@ function Gallery({ data, pageContext }) {
         />
         <CarouselCaption captionText={name} captionHeader={name} />
       </CarouselItem>
-    );
-  });
+    ));
 
   return (
     <Layout title="Gallery">
@@ -92,14 +89,14 @@ function Gallery({ data, pageContext }) {
                 className="btn btn-lg btn-primary rounded-circle media-button-cancel"
                 onClick={hideImage}
               >
-                <IconContext.Provider value={{ size: "1.5em" }}>
+                <IconContext.Provider value={closeIconAttributes}>
                   <ImCross />
                 </IconContext.Provider>
               </button>
             </Col>
             <Col className="d-flex justify-content-center">
               <Carousel
-                fade={true}
+                fade
                 slide={false}
                 activeIndex={activeIndex}
                 next={showNext}
@@ -131,7 +128,7 @@ function Gallery({ data, pageContext }) {
       {/* Image Grid */}
       <Col lg="12" className="card-spacing">
         <Row className="justify-content-center">
-          {imageList.map(({ id, image }, index) => (
+          {imageList.map(({ image }, index) => (
             <Col className="pt-0 mt-2 mb-4" lg="4" md="8" sm="12">
               <Card
                 className="row_shadow h-100 align-items-center"
@@ -155,7 +152,7 @@ function Gallery({ data, pageContext }) {
               href={number === 0 ? `${prefix}` : `${prefix}/${number + 1}`}
             >
               <IconContext.Provider
-                value={{ className: "pagination-icon", size: "1.5em" }}
+                value={paginationAttributes}
               >
                 {(() => {
                   if (galleryCurrentPage === number + 1) {
@@ -195,6 +192,6 @@ export const imageQuery = graphql`
   }
 `;
 
-export function Head({ data }) {
+export function Head() {
   return <SEO title={`Gallery | ${config.siteTitle}`} />;
 }

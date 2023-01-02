@@ -39,19 +39,19 @@ query Modules($cursor:String) {
 
 exports.onPreInit = () => console.log("Loaded source-terasology-modules");
 
-exports.sourceNodes = async ({
-  actions: { createNode },
-  createContentDigest,
-  createNodeId,
-  reporter,
-  cache,
-}, {
-  access_token
-}) => {
-
+exports.sourceNodes = async (
+  {
+    actions: { createNode },
+    createContentDigest,
+    createNodeId,
+    reporter,
+    cache,
+  },
+  { accessToken }
+) => {
   const gql = graphql.defaults({
     headers: {
-      authorization: `token ${access_token}`,
+      authorization: `token ${accessToken}`,
     },
   });
 

@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: "source-terasology-modules",
       options: {
-        access_token: `<your GitHub access token>`
+        accessToken: `<your GitHub access token>`
       }
     }
   ]

@@ -165,5 +165,5 @@ function Gallery() {
 export default Gallery;
 
 export function Head() {
-  return <SEO title={`Media | ${config.siteTitle}`} />;
+  return <SEO title={`Gallery | ${config.siteTitle}`} />;
 }

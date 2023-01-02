@@ -17,6 +17,12 @@ query Modules($cursor:String) {
         name
         url
         description
+        homepageUrl
+        moduleTxt: object(expression: "develop:module.txt") {
+          ...on Blob {
+            text
+          }
+        }
       }
       pageInfo {
         hasNextPage
@@ -51,8 +57,21 @@ exports.sourceNodes = async ({
   console.log(`[${PLUGIN_NAME}] Found ${repositories.length} modules.`);
 
   repositories.forEach((repo) => {
+    if (!repo.moduleTxt) {
+      // skip non-module repositories
+      return;
+    }
+
+    let moduleTxt;
+    try {
+      moduleTxt = JSON.parse(repo.moduleTxt?.text);
+    } catch (err) {
+      console.warn(`[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`)
+    }
+
     const node = {
       ...repo,
+      moduleTxt,
       id: createNodeId(`TerasologyModule-${repo.id}`),
       parent: "__SOURCE__",
       children: [],

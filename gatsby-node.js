@@ -174,6 +174,7 @@ exports.createPages = async ({ graphql, actions }) => {
           skip: i * imagesPerPage,
           galleryNumPages: numGalleryPages,
           galleryCurrentPage: i + 1,
+          numImages: images.length,
         },
       });
     });

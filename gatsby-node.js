@@ -147,6 +147,38 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   }
 
+  async function createGalleryPages() {
+    const imageQueryResult = await graphql(
+      `
+        {
+          allFile(filter: { relativeDirectory: { eq: "images" } }) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+        }
+      `
+    );
+    const images = imageQueryResult.data.allFile.edges;
+    const galleryTemplate = path.resolve("./src/templates/Gallery.jsx");
+    const imagesPerPage = 9;
+    const numGalleryPages = Math.ceil(images.length / imagesPerPage);
+    Array.from({ length: numGalleryPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/gallery` : `/gallery/${i + 1}`,
+        component: galleryTemplate,
+        context: {
+          limit: imagesPerPage,
+          skip: i * imagesPerPage,
+          galleryNumPages: numGalleryPages,
+          galleryCurrentPage: i + 1,
+        },
+      });
+    });
+  }
+
   async function createProjectPages() {
     const projectPageTemplate = path.resolve("src/templates/Project.jsx");
     const projectQueryResult = await graphql(
@@ -184,6 +216,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   await createBlogPages();
   await createModulePages();
+  await createGalleryPages();
   await createProjectPages();
 
   // TODO: replace below with proper search index generation, see

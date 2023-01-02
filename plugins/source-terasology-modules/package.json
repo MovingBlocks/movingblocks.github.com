@@ -1,5 +1,6 @@
 {
   "name": "source-terasology-modules",
+  "version": "0.0.1",
   "private": true,
   "description": "A Gatsby source plugin to fetch Terasology module information.",
   "main": "index.js",
@@ -14,6 +15,7 @@
   "author": "Kyle Gill <kyle.robert.gill@gmail.com>",
   "license": "0BSD",
   "dependencies": {
-    "@octokit/graphql": "^5.0.4"
+    "@octokit/graphql": "^5.0.4",
+    "luxon": "^3.2.0"
   }
 }

@@ -74,10 +74,10 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build:pp": "gatsby build --prefix-paths",
-    "build": "gatsby build",
+    "build:pp": "NODE_OPTIONS='--no-experimental-fetch' gatsby build --prefix-paths",
+    "build": "NODE_OPTIONS='--no-experimental-fetch' gatsby build",
     "clean": "gatsby clean && rm -r src/generated",
-    "develop": "gatsby develop",
+    "develop": "NODE_OPTIONS='--no-experimental-fetch' gatsby develop",
     "format-check:js": "prettier '**/*.{js,jsx}' --check --ignore-path=.eslintignore",
     "format:js": "prettier '**/*.{js,jsx}' --write --ignore-path=.eslintignore",
     "generate-images": "node ./scripts/image-generation.js",

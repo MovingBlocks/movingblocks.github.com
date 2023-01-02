@@ -1,4 +1,5 @@
 const { graphql } = require("@octokit/graphql");
+const { DateTime } = require("luxon");
 
 const PLUGIN_NAME = "source-terasology-modules";
 
@@ -18,7 +19,16 @@ query Modules($cursor:String) {
         url
         description
         homepageUrl
+        openGraphImageUrl
+        usesCustomOpenGraphImage
+
         moduleTxt: object(expression: "develop:module.txt") {
+          ...on Blob {
+            text
+          }
+        }
+
+        readme: object(expression: "develop:README.md") {
           ...on Blob {
             text
           }
@@ -39,24 +49,44 @@ exports.sourceNodes = async ({
   actions: { createNode },
   createContentDigest,
   createNodeId,
+  reporter,
+  cache
 }) => {
-  const repositories = [];
 
-  let hasNextPage = true;
-  let cursor;
+  const lastFetchedKey = "terasology-modules-last-fetched";
+  const dataKey = "terasology-modules-data";
 
-  while (hasNextPage) {
-    const { organization } = await gql(query, { cursor });
+  const now = DateTime.utc();
+  const lastFetched = DateTime.fromISO(await cache.get(lastFetchedKey), {zone: "utc"});
 
-    organization.repositories.nodes.forEach((repo) => repositories.push(repo));
+  let repositories = [];
 
-    hasNextPage = organization.repositories.pageInfo.hasNextPage;
-    cursor = organization.repositories.pageInfo.endCursor;
+  if (lastFetched.plus({hours: 12}) > now) {
+    reporter.info(`[${PLUGIN_NAME}] Loading Terasology module info from cache ...`)
+    repositories = JSON.parse(await cache.get(dataKey))
+  } else {
+    reporter.info(`[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`)
+    let hasNextPage = true;
+    let cursor;
+
+    /* Loop iterations depend on the outcome of the previous request, thus 'await' is required here. */
+    /* eslint-disable no-await-in-loop */
+    while (hasNextPage) {
+      const { organization } = await gql(query, { cursor });
+
+      organization.repositories.nodes.forEach((repo) => repositories.push(repo));
+
+      hasNextPage = organization.repositories.pageInfo.hasNextPage;
+      cursor = organization.repositories.pageInfo.endCursor;
+    }
+
+    await cache.set(dataKey, JSON.stringify(repositories));
+    await cache.set(lastFetchedKey, now.toISO());
   }
 
-  console.log(`[${PLUGIN_NAME}] Found ${repositories.length} modules.`);
+  reporter.success(`[${PLUGIN_NAME}] Loaded ${repositories.length} modules.`);
 
-  repositories.forEach((repo) => {
+  const nodes = repositories.map((repo) => {
     if (!repo.moduleTxt) {
       // skip non-module repositories
       return;
@@ -67,11 +97,41 @@ exports.sourceNodes = async ({
       moduleTxt = JSON.parse(repo.moduleTxt?.text);
     } catch (err) {
       console.warn(`[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`)
+      return;
     }
+
+    const tags = [
+      moduleTxt.isTutorial ? "Tutorial" : undefined,
+      moduleTxt.isAsset ? "Asset" : undefined,
+      moduleTxt.isLibrary ? "Library" : undefined,
+      moduleTxt.isSpecial ? "Special" : undefined,
+      moduleTxt.isRendering ? "Rendering" : undefined,
+      moduleTxt.isAugmentation ? "Augmentation" : undefined,
+      moduleTxt.isServerSideOnly ? "Server" : undefined,
+      moduleTxt.isGameplay ? "Gameplay" : undefined,
+    ].filter(x => x)
+
+    const {id, version, displayName, description, dependencies} = moduleTxt;
+
+    const cover = repo.usesCustomOpenGraphImage ? repo.openGraphImageUrl : undefined;
+
+    const moduleInfo = {
+      id,
+      version,
+      displayName,
+      description,
+      dependencies,
+      tags
+    }
+
+    moduleInfo.dependencies = moduleInfo.dependencies.map(dep => ({...dep, optional: (/true/i).test(dep.optional)}))
 
     const node = {
       ...repo,
-      moduleTxt,
+      usesCustomOpenGraphImage: undefined,
+      openGraphImageUrl: undefined,
+      cover,
+      moduleTxt: moduleInfo,
       id: createNodeId(`TerasologyModule-${repo.id}`),
       parent: "__SOURCE__",
       children: [],
@@ -81,6 +141,10 @@ exports.sourceNodes = async ({
     };
     node.internal.contentDigest = createContentDigest(node);
 
-    createNode(node);
-  });
+    return node;    
+  }).filter(x => x);
+
+  nodes.forEach(node => createNode(node));
+
+  reporter.success(`[${PLUGIN_NAME}] Created ${nodes.length} nodes.`)
 };

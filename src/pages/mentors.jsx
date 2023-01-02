@@ -12,8 +12,13 @@ function Mentors({ data }) {
 
   console.log(JSON.stringify(projectEdges, null, 2));
   const mentorList = projectEdges.map(({ node }) => {
-    const { name, labels, custom_fields: customFields, childMarkdownRemark, childCardMedia } =
-      node;
+    const {
+      name,
+      labels,
+      custom_fields: customFields,
+      childMarkdownRemark,
+      childCardMedia,
+    } = node;
     const { html } = childMarkdownRemark;
     const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
 

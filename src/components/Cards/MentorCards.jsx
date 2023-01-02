@@ -18,7 +18,6 @@ function MentorCards({
   html,
   githubProfile,
   timeZone,
-  country,
   flagUrl,
 }) {
   return (
@@ -27,7 +26,7 @@ function MentorCards({
         {avatar ? (
           <GatsbyImage
             image={getImage(avatar)}
-            className={`card-img-top rounded-circle my-4`}
+            className="card-img-top rounded-circle my-4"
             style={{ width: "30%" }}
             alt={name}
           />

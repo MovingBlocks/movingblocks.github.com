@@ -12,25 +12,24 @@ function Mentors({ data }) {
 
   console.log(JSON.stringify(projectEdges, null, 2));
   const mentorList = projectEdges.map(({ node }) => {
-    const { name, labels, custom_fields, childMarkdownRemark, childCardMedia } =
+    const { name, labels, custom_fields: customFields, childMarkdownRemark, childCardMedia } =
       node;
     const { html } = childMarkdownRemark;
     const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
 
     const tags = labels.map((l) => l.name);
-    const githubProfile = custom_fields
+    const githubProfile = customFields
       .filter((field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8")
       .map((field) => field.value.text);
-    const timeZone = custom_fields
+    const timeZone = customFields
       .filter((field) => field.idCustomField === "5eb71b53f52d88487f550e83")
       .map((field) => field.value.text);
-    const countryCode = custom_fields
+    const countryCode = customFields
       .filter((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
       .map((field) => field.value.text.toLowerCase());
 
     return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
   });
-  const getCountryName = new Intl.DisplayNames(["en"], { type: "region" });
 
   return (
     <Layout title="Mentors">
@@ -46,7 +45,6 @@ function Mentors({ data }) {
               timeZone={moment
                 .tz(moment(), `${mentor.timeZone}`)
                 .format("HH:mm [(GMT] Z[)]")}
-              country={getCountryName.of(`${mentor.countryCode}`)}
               flagUrl={`https://flagcdn.com/w40/${mentor.countryCode}.png`}
             />
           ))}

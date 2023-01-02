@@ -70,9 +70,6 @@ module.exports = {
       },
     },
     {
-      resolve: "source-terasology-modules",
-    },
-    {
       resolve: "gatsby-source-trello-board",
       options: {
         token: "",

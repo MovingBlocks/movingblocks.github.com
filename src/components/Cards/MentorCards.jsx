@@ -11,7 +11,16 @@ import {
 } from "reactstrap";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-function MentorCards({ name, avatar, tags, html, githubProfile, timeZone, country, flagUrl }) {
+function MentorCards({
+  name,
+  avatar,
+  tags,
+  html,
+  githubProfile,
+  timeZone,
+  country,
+  flagUrl,
+}) {
   return (
     <Col className="pt-0 mt-2 mb-4" lg="4" md="8" sm="12">
       <Card className="row_shadow h-100 align-items-center">
@@ -35,14 +44,20 @@ function MentorCards({ name, avatar, tags, html, githubProfile, timeZone, countr
             )}
           </CardSubtitle>
           <CardTitle tag="h5" className="my-3">
-          <img src={flagUrl} alt="The flag of the mentor's home country" className="mr-3"/>
-          {name}
+            <img
+              src={flagUrl}
+              alt="The flag of the mentor's home country"
+              className="mr-3"
+            />
+            {name}
           </CardTitle>
           <CardSubtitle tag="h6">
-            {`${timeZone} | `}<FaGithub />{` @${githubProfile}`}
+            {`${timeZone} | `}
+            <FaGithub />
+            {` @${githubProfile}`}
           </CardSubtitle>
           <CardText className="mt-3">
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+            <div dangerouslySetInnerHTML={{ __html: html }} />
           </CardText>
         </CardBody>
       </Card>

@@ -81,7 +81,9 @@ export default StudentPrograms;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query projectQuery {
-    allTrelloCard {
+    allTrelloCard(
+      sort: { index: ASC }
+    ) {
       edges {
         node {
           id

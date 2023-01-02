@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import {
   Row,
@@ -12,7 +12,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from "reactstrap";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import { GiPlainSquare, GiSquare } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
@@ -34,7 +34,10 @@ function Gallery({ data, pageContext }) {
   });
 
   const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), []);
-  const paginationAttributes = useMemo(() => ({ className: "pagination-icon", size: "1.5em" }), []);
+  const paginationAttributes = useMemo(
+    () => ({ className: "pagination-icon", size: "1.5em" }),
+    []
+  );
 
   const [imageDisplay, setImageDisplay] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -46,16 +49,33 @@ function Gallery({ data, pageContext }) {
   const showNext = () => {
     console.log(numImages);
     console.log(activeIndex);
-    if (activeIndex >= limit - 1) {
+    if (activeIndex >= limit - 1 && galleryCurrentPage === galleryNumPages) {
       setImageDisplay(false);
+    } else if (
+      activeIndex >= limit - 1 &&
+      galleryCurrentPage !== galleryNumPages
+    ) {
+      // navigate to next page
+      navigate(`${prefix}/${galleryCurrentPage + 1}`);
+      // set index for carousel to 0
+      // set image display to open modal
     } else {
       setActiveIndex(activeIndex + 1);
     }
   };
 
   const showPrev = () => {
-    if (activeIndex <= 0) {
+    if (activeIndex <= 0 && galleryCurrentPage === 0) {
       setImageDisplay(false);
+    } else if (activeIndex <= 0 && galleryCurrentPage !== 0) {
+      // navigate to prev page
+      navigate(
+        galleryCurrentPage === 2
+          ? `${prefix}`
+          : `${prefix}/${galleryCurrentPage - 1}`
+      );
+      // set index for carousel to limit-1
+      // set image display to open modal
     } else {
       setActiveIndex(activeIndex - 1);
     }
@@ -66,16 +86,16 @@ function Gallery({ data, pageContext }) {
   };
 
   const slides = imageList.map(({ id, name, image }) => (
-      <CarouselItem key={id}>
-        <GatsbyImage
-          image={image}
-          id="lightbox-img"
-          className="m-4"
-          imgStyle={{ boxShadow: "0 0 30px rgba(0, 0, 0, 0.5)" }}
-        />
-        <CarouselCaption captionText={name} captionHeader={name} />
-      </CarouselItem>
-    ));
+    <CarouselItem key={id}>
+      <GatsbyImage
+        image={image}
+        id="lightbox-img"
+        className="m-4"
+        imgStyle={{ boxShadow: "0 0 30px rgba(0, 0, 0, 0.5)" }}
+      />
+      <CarouselCaption captionText={name} captionHeader={name} />
+    </CarouselItem>
+  ));
 
   return (
     <Layout title="Gallery">
@@ -151,9 +171,7 @@ function Gallery({ data, pageContext }) {
             <PaginationLink
               href={number === 0 ? `${prefix}` : `${prefix}/${number + 1}`}
             >
-              <IconContext.Provider
-                value={paginationAttributes}
-              >
+              <IconContext.Provider value={paginationAttributes}>
                 {(() => {
                   if (galleryCurrentPage === number + 1) {
                     return <GiPlainSquare />;

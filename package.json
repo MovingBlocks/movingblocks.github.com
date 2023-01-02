@@ -21,7 +21,7 @@
     "gatsby-remark-images": "^7.3.1",
     "gatsby-remark-prismjs": "^7.3.0",
     "gatsby-source-filesystem": "^5.3.1",
-    "gatsby-source-trello-board": "https://github.com/skaldarnar/gatsby-source-trello-board/#2.0.0-rc.1",
+    "gatsby-source-trello-board": "https://github.com/skaldarnar/gatsby-source-trello-board/#516f6fae8f7c8d89cd0d56cf2f21c9c0887e6189",
     "gatsby-transformer-remark": "^6.3.2",
     "gatsby-transformer-sharp": "^5.3.1",
     "html-react-parser": "^1.2.7",

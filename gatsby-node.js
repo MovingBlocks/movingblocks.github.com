@@ -238,7 +238,7 @@ exports.createPages = async ({ graphql, actions }) => {
           cover,
           date,
           ddate,
-          slug,
+          path: `/blog${slug}`,
           tags,
           title,
           posttype: "blog",
@@ -285,7 +285,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       return {
         excerpt,
-        slug,
+        path: `/modules${slug}`,
         tags,
         title,
         cover,

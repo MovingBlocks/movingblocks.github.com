@@ -12,13 +12,12 @@ function toCardData(trelloCard, defaultCover) {
   const posttype = "project";
   const tags = labels.map((l) => l.name);
   const cover = defaultCover;
-  return { posttype, title, path: `/${id}`, excerpt, tags, cover };
+  return { posttype, title, path: `/projects/${id}`, excerpt, tags, cover };
 }
 
 function StudentPrograms({ data }) {
   const defaultCover = data.file;
 
-  const prefix = "/projects";
   const projectEdges = data.allTrelloCard.edges;
 
   const availableProjects = projectEdges
@@ -68,10 +67,10 @@ function StudentPrograms({ data }) {
         </Row>
       </Section>
       <Section tag="h3" title="Available Projects">
-        <PostListing prefix={prefix} postList={availableProjects} />
+        <PostListing postList={availableProjects} />
       </Section>
       <Section tag="h3" title="Ongoing Projects">
-        <PostListing prefix={prefix} postList={ongoingProjects} />
+        <PostListing postList={ongoingProjects} />
       </Section>
     </Layout>
   );

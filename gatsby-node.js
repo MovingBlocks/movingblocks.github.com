@@ -103,35 +103,41 @@ exports.createPages = async ({ graphql, actions }) => {
     const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `
-        {
-          allMarkdownRemark(
-            filter: { frontmatter: { posttype: { eq: "module" } } }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
+      {
+        allGithubData {
+          nodes {
+            data {
+              organization {
+                repositories {
+                  nodes {
+                    name,
+                    url,
+                    description
+                  }
                 }
               }
             }
           }
         }
+      }
       `
     );
 
-    const modules = moduleQueryResult.data.allMarkdownRemark.edges;
-    modules.forEach((edge) => {
+    const modules = moduleQueryResult.data.allGithubData.nodes[0].data.organization.repositories.nodes;
+    modules.forEach(({name, url, description}) => {
       createPage({
-        path: `/modules${edge.node.fields.slug}`,
+        path: `/modules/${name}`,
         component: modulePageTemplate,
         context: {
-          slug: edge.node.fields.slug,
+          name,
+          url,
+          description,
         },
       });
     });
 
     const moduleListTemplate = path.resolve("./src/templates/ModuleList.jsx");
-    const modulesPerPage = 27;
+    const modulesPerPage = 9;
     const numModulePages = Math.ceil(modules.length / modulesPerPage);
     Array.from({ length: numModulePages }).forEach((_, i) => {
       createPage({
@@ -297,7 +303,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const blogIndex = await buildBlogSearchIndex();
-  const moduleIndex = await buildModulesSearchIndex();
+  //const moduleIndex = await buildModulesSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");
@@ -307,8 +313,8 @@ exports.createPages = async ({ graphql, actions }) => {
     "./src/generated/blog-result.json",
     JSON.stringify(blogIndex, null, 2)
   );
-  fs.writeFileSync(
-    "./src/generated/module-result.json",
-    JSON.stringify(moduleIndex, null, 2)
-  );
+  // fs.writeFileSync(
+  //   "./src/generated/module-result.json",
+  //   JSON.stringify(moduleIndex, null, 2)
+  // );
 };

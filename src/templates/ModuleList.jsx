@@ -11,9 +11,9 @@ import config from "../../data/SiteConfig";
 import moduleResultData from "../generated/module-result.json";
 
 function ModuleList({ data, pageContext, location }) {
-  const { moduleCurrentPage, moduleNumPages } = pageContext;
-  const postEdges = data.allMarkdownRemark.edges;
-  const moduleData = moduleResultData;
+  const { moduleCurrentPage, moduleNumPages, skip, limit } = pageContext;
+
+  const modules = data.allGithubData.nodes[0].data.organization.repositories.nodes;
 
   const prefix = "/modules";
   const isFirst = moduleCurrentPage === 1;
@@ -87,7 +87,7 @@ function ModuleList({ data, pageContext, location }) {
         {!isShown && <PostListing postList={moduleList} />}
       </div>
       <Row>
-        {!isFirst && results.length === 0 && (
+        {!isFirst && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}/${prevPage}`}
@@ -99,7 +99,7 @@ function ModuleList({ data, pageContext, location }) {
             </Link>
           </Col>
         )}
-        {!isLast && results.length === 0 && (
+        {!isLast && (
           <Col className="text-center m-4">
             <Link
               to={`${prefix}/${nextPage}`}
@@ -118,36 +118,28 @@ function ModuleList({ data, pageContext, location }) {
 
 /* eslint no-undef: "off" */
 export const moduleQuery = graphql`
-  query moduleQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      filter: { frontmatter: { posttype: { eq: "module" } } }
-      limit: $limit
-      skip: $skip
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          excerpt(format: PLAIN, pruneLength: 80, truncate: true)
-          timeToRead
-          frontmatter {
-            title
-            tags
-            date
-            posttype
-            cover {
-              publicURL
-              childImageSharp {
-                gatsbyImageData
-              }
+{
+  allGithubData {
+    nodes {
+      data {
+        organization {
+          repositories {
+            nodes {
+              name
+              url
+              description
             }
           }
         }
       }
     }
   }
-`;
+  file(relativePath: {eq: "logos/defaultCardcover.jpg"}) {
+    childImageSharp {
+      gatsbyImageData
+    }
+  }
+}`;
 
 export default ModuleList;
 

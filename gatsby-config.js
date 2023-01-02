@@ -1,8 +1,6 @@
 const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
 
-const { moduleQuery } = require("./src/hooks/github-query");
-
 module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
@@ -60,16 +58,15 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "modules",
-        path: `${__dirname}/modules/`,
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
         name: "images",
         path: `${__dirname}/static/images`,
       },
+    },
+    {
+      resolve: "source-terasology-modules",
+      options: {
+        accessToken: process.env.GITHUB_ACCESS_TOKEN
+      }
     },
     {
       resolve: "gatsby-source-trello-board",

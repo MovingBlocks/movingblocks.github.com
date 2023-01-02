@@ -63,7 +63,10 @@ export default Mentors;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query mentorQuery {
-    allTrelloCard(filter: { list_id: { eq: "5eb715b48caa18614425c25e" } }) {
+    allTrelloCard(
+      filter: { list_id: { eq: "5eb715b48caa18614425c25e" } }
+      sort: { index: ASC }
+    ) {
       edges {
         node {
           id

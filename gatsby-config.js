@@ -85,6 +85,7 @@ module.exports = {
         key: "",
         // https://trello.com/b/wdOVNQgo/mentors
         board_id: "5eb7158715e9136e6a4ef285",
+        include_custom_fields: true,
       },
     },
     {

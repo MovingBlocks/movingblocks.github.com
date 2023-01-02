@@ -1,0 +1,19 @@
+{
+  "name": "source-terasology-modules",
+  "private": true,
+  "description": "A Gatsby source plugin to fetch Terasology module information.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build script setup\""
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "Kyle Gill <kyle.robert.gill@gmail.com>",
+  "license": "0BSD",
+  "dependencies": {
+    "@octokit/graphql": "^5.0.4"
+  }
+}

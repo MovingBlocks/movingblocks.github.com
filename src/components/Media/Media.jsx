@@ -10,7 +10,10 @@ import MediaPagination from "../MediaPagination/MediaPagination";
 function Gallery() {
   const data = useStaticQuery(graphql`
     query Images {
-      images: allFile(filter: { relativeDirectory: { eq: "images" } }) {
+      images: allFile(
+        filter: { relativeDirectory: { eq: "images" } }
+        sort: { birthTime: DESC }
+      ) {
         nodes {
           id
           name

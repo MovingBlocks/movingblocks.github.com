@@ -1,54 +1,88 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { Badge } from "reactstrap";
 import Layout from "../layout";
-import PostTags from "../components/PostTags/PostTags";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import {FaGithub} from "react-icons/fa";
+import { FaGithub, FaLink } from "react-icons/fa";
 
-export default class Module extends React.Component {
-  render() {
-    const { data, pageContext } = this.props;
-    const { name, url, description } = pageContext;
-    return (
-      <Layout>
+function Module({ data }) {
+  console.log(JSON.stringify(data, null, 2));
+  const { terasologyModule, file } = data;
+  const { name, description, url, homepageUrl, moduleTxt } = terasologyModule;
+
+  const {version, tags} = moduleTxt;
+
+  return (
+    <Layout>
+      <div>
         <div>
+          <GatsbyImage className="post-cover" image={getImage(data.file)} />
+
+          <h1 className="text-center">{name}</h1>
+          <div className="title-underline" />
           <div>
-            <GatsbyImage
-              className="post-cover"
-              image={getImage(data.file)}
-            />
-            <h1 className="text-center">{name}</h1>
-            <div className="title-underline" />            
+            {tags.map((tag) => (
+              <Badge>{tag}</Badge>
+            ))}
+          </div>
+          <div>
+            {version}
+          </div>
+          <div>
+            <p>{description}</p>
             <p>
-              {description}
+              <a href={url} target="_blank">
+                <FaGithub /> View on GitHub.
+              </a>
             </p>
-            <a href={url} target="_blank"><FaGithub />View on GitHub.</a>
-            <div className="post-meta">
-              <SocialLinks
-                title={name}
-                excerpt={description}
-                path={`/modules/${name}`}
-              />
-            </div>
+            {homepageUrl ? (
+              <p>
+                <a href={homepageUrl} target="_blank">
+                  <FaLink /> Website
+                </a>
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="post-meta">
+            <SocialLinks
+              title={name}
+              excerpt={description}
+              path={`/modules/${name}`}
+            />
           </div>
         </div>
-      </Layout>
-    );
-  }
+      </div>
+    </Layout>
+  );
 }
 
+export default Module;
+
 export const query = graphql`
-  {
-    file(relativePath: {eq: "logos/defaultCardcover.jpg"}) {
+  query Module($name: String) {
+    terasologyModule(name: { eq: $name }) {
+      name
+      description
+      url
+      homepageUrl
+      moduleTxt {
+        version
+        tags
+      }
+    }
+
+    file(relativePath: { eq: "logos/defaultCardcover.jpg" }) {
       childImageSharp {
         gatsbyImageData
       }
     }
   }
-`
+`;
 
 export function Head({ data, pageContext }) {
   return (

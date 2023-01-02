@@ -103,41 +103,29 @@ exports.createPages = async ({ graphql, actions }) => {
     const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `
-      {
-        allGithubData {
+      query Modules {
+        allTerasologyModule(sort: {name: ASC}) {
           nodes {
-            data {
-              organization {
-                repositories {
-                  nodes {
-                    name,
-                    url,
-                    description
-                  }
-                }
-              }
-            }
+            name      
           }
         }
       }
       `
     );
 
-    const modules = moduleQueryResult.data.allGithubData.nodes[0].data.organization.repositories.nodes;
-    modules.forEach(({name, url, description}) => {
+    const modules = moduleQueryResult.data.allTerasologyModule.nodes;
+    modules.forEach(({ name }) => {
       createPage({
         path: `/modules/${name}`,
         component: modulePageTemplate,
         context: {
-          name,
-          url,
-          description,
+          name
         },
       });
     });
 
     const moduleListTemplate = path.resolve("./src/templates/ModuleList.jsx");
-    const modulesPerPage = 9;
+    const modulesPerPage = 27;
     const numModulePages = Math.ceil(modules.length / modulesPerPage);
     Array.from({ length: numModulePages }).forEach((_, i) => {
       createPage({

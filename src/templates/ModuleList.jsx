@@ -5,15 +5,15 @@ import { Row, Col } from "reactstrap";
 import Layout from "../layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import ModuleSearchForm from "../components/ModuleSearchForm/ModuleSearchForm";
 import SearchResults from "../components/SearchResult/SearchResult";
 import config from "../../data/SiteConfig";
-import moduleResultData from "../generated/module-result.json";
 
 function ModuleList({ data, pageContext, location }) {
-  const { moduleCurrentPage, moduleNumPages, skip, limit } = pageContext;
+  const { moduleCurrentPage, moduleNumPages } = pageContext;
 
-  const modules = data.allGithubData.nodes[0].data.organization.repositories.nodes;
+  const { allTerasologyModule, file } = data;
+
+  const modules = allTerasologyModule.nodes;
 
   const prefix = "/modules";
   const isFirst = moduleCurrentPage === 1;
@@ -35,55 +35,57 @@ function ModuleList({ data, pageContext, location }) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
-  useEffect(() => {
-    if (searchQuery || filterTag) {
-      setResults(
-        moduleData.filter((module) => {
-          const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
-          const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
-          const matchedTag = module.tags
-            .filter((tag) => tag != null)
-            .map((t) => t.match(tagRgx));
-          return (
-            matchedTag.toString().match(tagRgx) &&
-            module.title?.match(searchRgx)
-          );
-        })
-      );
-      setIsShown(true);
-    } else {
-      setResults([]);
-      setIsShown(false);
-    }
-  }, [filterTag, moduleData, searchQuery]);
+  // useEffect(() => {
+  //   if (searchQuery || filterTag) {
+  //     setResults(
+  //       moduleData.filter((module) => {
+  //         const searchRgx = new RegExp(escapeRegExp(searchQuery), "gi");
+  //         const tagRgx = new RegExp(escapeRegExp(filterTag), "gi");
+  //         const matchedTag = module.tags
+  //           .filter((tag) => tag != null)
+  //           .map((t) => t.match(tagRgx));
+  //         return (
+  //           matchedTag.toString().match(tagRgx) &&
+  //           module.title?.match(searchRgx)
+  //         );
+  //       })
+  //     );
+  //     setIsShown(true);
+  //   } else {
+  //     setResults([]);
+  //     setIsShown(false);
+  //   }
+  // }, [filterTag, moduleData, searchQuery]);
 
-  const moduleList = postEdges.map(({ node }) => {
-    const { frontmatter, fields, excerpt } = node;
-    const { posttype, tags, cover, title, author } = frontmatter;
-    const { slug, date } = fields;
+  const moduleList = modules.map((module) => {
+    const { name, description, moduleTxt } = module;
+    const { tags } = moduleTxt;
+
+    const cover = module.coverImage ?? file;
+
     return {
-      posttype,
-      title,
-      path: `${prefix}${slug}`,
+      posttype: "module",
+      title: name,
+      path: `${prefix}/${name}`,
       cover,
       tags,
-      excerpt,
-      date,
-      author,
+      excerpt: description,
+      date: undefined,
+      author: undefined,
     };
   });
 
   return (
     <Layout title="Modules">
       <div className="index-container">
-        <ModuleSearchForm
+        {/* <ModuleSearchForm
           query={searchQuery}
           filter={filterTag}
           prefix={prefix}
         />
         {isShown && (
           <SearchResults query={searchQuery} results={results} type="module" />
-        )}
+        )} */}
         {!isShown && <PostListing postList={moduleList} />}
       </div>
       <Row>
@@ -118,28 +120,28 @@ function ModuleList({ data, pageContext, location }) {
 
 /* eslint no-undef: "off" */
 export const moduleQuery = graphql`
-{
-  allGithubData {
-    nodes {
-      data {
-        organization {
-          repositories {
-            nodes {
-              name
-              url
-              description
-            }
+  query Modules($skip: Int, $limit: Int) {
+    allTerasologyModule(skip: $skip, limit: $limit, sort: { name: ASC }) {
+      nodes {
+        name
+        description
+        coverImage {
+          childImageSharp {
+            gatsbyImageData
           }
+        }
+        moduleTxt {
+          tags
         }
       }
     }
-  }
-  file(relativePath: {eq: "logos/defaultCardcover.jpg"}) {
-    childImageSharp {
-      gatsbyImageData
+    file(relativePath: { eq: "logos/defaultCardcover.jpg" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
     }
   }
-}`;
+`;
 
 export default ModuleList;
 

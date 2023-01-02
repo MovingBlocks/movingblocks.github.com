@@ -7,11 +7,10 @@ import SEO from "../components/SEO/SEO";
 import MentorCards from "../components/Cards/MentorCards";
 
 function Mentors({ data }) {
-  const projectEdges = data.allTrelloCard.edges;
+  const mentorEdges = data.allTrelloCard.edges;
   const defaultAvatar = data.file;
 
-  console.log(JSON.stringify(projectEdges, null, 2));
-  const mentorList = projectEdges.map(({ node }) => {
+  const mentorList = mentorEdges.map(({ node }) => {
     const {
       name,
       labels,
@@ -23,15 +22,15 @@ function Mentors({ data }) {
     const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
 
     const tags = labels.map((l) => l.name);
-    const githubProfile = customFields
-      .filter((field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8")
-      .map((field) => field.value.text);
-    const timeZone = customFields
-      .filter((field) => field.idCustomField === "5eb71b53f52d88487f550e83")
-      .map((field) => field.value.text);
+    const githubProfile = customFields.find(
+      (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
+    )?.value.text;
+    const timeZone = customFields.find(
+      (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
+    )?.value.text;
     const countryCode = customFields
-      .filter((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
-      .map((field) => field.value.text.toLowerCase());
+      .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
+      ?.value.text.toLowerCase();
 
     return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
   });

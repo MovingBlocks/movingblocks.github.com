@@ -1,142 +1,47 @@
 import React from "react";
+import { graphql } from "gatsby";
+import { Col, Row } from "reactstrap";
+import moment from "moment-timezone";
 import Layout from "../layout";
-import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
+import MentorCards from "../components/Cards/MentorCards";
 
-function Mentors() {
-  const [mentors, setmentors] = useState([]);
-  const [visible, setVisible] = useState(false);
-  const [status, setStatus] = useState("");
-  const onDismiss = () => setVisible(false);
+function Mentors({ data }) {
+  const projectEdges = data.allTrelloCard.edges;
+  const defaultAvatar = data.file;
 
-  const getmentor = async () => {
-    const url =
-      "https://api.trello.com/1/lists/5eb715b48caa18614425c25e/cards?fields=name,labels,cover,desc&customFields=true&customFieldItems=true&attachments=true&attachment_fields=all";
+  console.log(JSON.stringify(projectEdges, null, 2));
+  const mentorList = projectEdges
+    .map(({ node }) => {
+      const { name, labels, custom_fields, childMarkdownRemark, childCardMedia } = node;
+      const { html } = childMarkdownRemark;
+      const avatar = childCardMedia ? ( childCardMedia.localFile ) : ( defaultAvatar );
 
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      setmentors(data);
-    } else {
-      setVisible(true);
-      setStatus(response.status);
-    }
-  };
+      const tags = labels.map((l) => l.name);
+      const githubProfile = custom_fields.filter((field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8").map((field) => field.value.text);
+      const timeZone = custom_fields.filter((field) => field.idCustomField === "5eb71b53f52d88487f550e83").map((field) => field.value.text);
+      const countryCode = custom_fields.filter((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed").map((field) => field.value.text.toLowerCase());
 
-  useEffect(() => {
-    getmentor();
-  }, []);
+      return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
+    });
+    const getCountryName = new Intl.DisplayNames(["en"], {type: "region",});
 
   return (
   <Layout title="Mentors">
-    <Col lg="12">
-      <div>
-        <div className="container">
-          <Alert
-            className="my-2 alert-box"
-            color="danger"
-            isOpen={visible}
-            toggle={onDismiss}
-          >
-            <span className="alert-box">
-              {`Problem fetching mentor Information (Error Code: ${status})`}
-            </span>
-          </Alert>
-        </div>
-      </div>
+    <Col lg="12" className="card-spacing">
       <Row className="justify-content-center">
-        {mentors &&
-          mentors.map((mentor) => {
-            let mentorGitHubName = "";
-            let mentorCountry = "";
-            let mentorTimezone = "";
-            for (let i = 0; i < 3; i++) {
-              switch (mentor.customFieldItems[i].idCustomField) {
-                case "5eb71b3551de3a59ce8d9bd8":
-                  mentorGitHubName = mentor.customFieldItems[i].value.text;
-                  break;
-                case "5eb71b7081a67c3b58ea67ed":
-                  mentorCountry = mentor.customFieldItems[i].value.text;
-                  break;
-                case "5eb71b53f52d88487f550e83":
-                  mentorTimezone = mentor.customFieldItems[i].value.text;
-                  break;
-                default:
-                  break;
-              }
-            }
-            const flagURL = `https://flagcdn.com/w40/${mentorCountry.toLowerCase()}.png`;
-
-            const timeZone = moment
-              .tz(moment(), `${mentorTimezone}`)
-              .format("HH:mm [(GMT] Z[)]");
-
-            const getcountryName = new Intl.DisplayNames(["en"], {
-              type: "region",
-            });
-            const countryName = getcountryName.of(`${mentorCountry}`);
-
-            return (
-              <Col className="ml-1 mr-1 mt-2 mb-2" lg="3" md="8" sm="12">
-                <div className="card border border-0 row_shadow">
-                  <div className="card-body">
-                    <Row className="justify-content-center">
-                      <Col lg="5" md="12" className="text-center">
-                        {mentor.attachments.length !== 0 ? (
-                          mentor.attachments.map((image) => (
-                            <img
-                              className="rounded-circle "
-                              src={image.url}
-                              height="80px"
-                              width="80px"
-                              alt={mentor.name}
-                            />
-                          ))
-                        ) : (
-                          <img
-                            className="rounded-circle"
-                            src={defaultprofile}
-                            height="80px"
-                            width="80px"
-                            alt={mentor.name}
-                          />
-                        )}
-                      </Col>
-                      <Col lg="10" md="12" className="text-center pt-0">
-                        <p className="font-weight-bold">{mentor.name}</p>
-
-                        <div className="mt-2">
-                          <img
-                            src={flagURL}
-                            alt="The flag of the mentor's home country"
-                          />
-                          <span className="ml-3 font-weight-bold h4">
-                            {countryName}
-                          </span>
-                        </div>
-                        <div className="mt-3">
-                          <span className=" font-weight-bold h5">
-                            {`Local Time: `}
-                          </span>
-                          {timeZone}
-                        </div>
-                        <div>
-                          <MentorModal
-                            name={mentor.name}
-                            desc={mentor.desc}
-                            tags={mentor.labels}
-                            githubName={mentorGitHubName}
-                            timeZone={timeZone}
-                            country={countryName}
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-                </div>
-              </Col>
-            );
-          })}
+        {mentorList.map((mentor) => (
+          <MentorCards
+            name={mentor.name}
+            avatar={mentor.avatar}
+            tags={mentor.tags}
+            html={mentor.html}
+            githubProfile={mentor.githubProfile}
+            timeZone={moment.tz(moment(), `${mentor.timeZone}`).format("HH:mm [(GMT] Z[)]")}
+            country={getCountryName.of(`${mentor.countryCode}`)}
+            flagUrl={`https://flagcdn.com/w40/${mentor.countryCode}.png`}
+          />
+        ))}
       </Row>
     </Col>
   </Layout>
@@ -145,6 +50,52 @@ function Mentors() {
 
 export default Mentors;
 
-export function Head() {
-  return <SEO title={`Mentors | ${config.siteTitle}`} />;
+/* eslint no-undef: "off" */
+export const pageQuery = graphql`
+  query mentorQuery {
+    allTrelloCard(filter: {
+      list_id: {eq: "5eb715b48caa18614425c25e"}
+    }) {
+      edges {
+        node {
+          id
+          list_id
+          name
+          labels {
+            name
+          }
+          custom_fields {
+            idCustomField
+            value {
+              text
+            }
+          }
+          childMarkdownRemark {
+            html
+          }
+          childCardMedia {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+      }
+    }
+    file(name: { eq: "profile-placeholder" }, ext: { eq: ".png" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
+
+export function Head({ data }) {
+  return <SEO title={`Mentors | ${data.site.siteMetadata.title}`} />;
 }

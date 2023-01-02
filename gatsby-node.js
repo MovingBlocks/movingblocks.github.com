@@ -195,6 +195,7 @@ exports.createPages = async ({ graphql, actions }) => {
         {
           allMarkdownRemark(
             filter: { frontmatter: { posttype: { eq: "blog" } } }
+            sort: { frontmatter: { date: DESC } }
           ) {
             edges {
               node {
@@ -237,7 +238,7 @@ exports.createPages = async ({ graphql, actions }) => {
           cover,
           date,
           ddate,
-          slug,
+          path: `/blog${slug}`,
           tags,
           title,
           posttype: "blog",
@@ -254,6 +255,7 @@ exports.createPages = async ({ graphql, actions }) => {
         {
           allMarkdownRemark(
             filter: { frontmatter: { posttype: { eq: "module" } } }
+            sort: { frontmatter: { title: ASC } }
           ) {
             edges {
               node {
@@ -283,7 +285,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       return {
         excerpt,
-        slug,
+        path: `/modules${slug}`,
         tags,
         title,
         cover,

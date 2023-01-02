@@ -88,11 +88,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-github-api",
-      token: process.env.GITHUB_ACCESS_TOKEN,
-      graphQLQuery: moduleQuery,
-    },
-    {
       resolve: "gatsby-plugin-nprogress",
       options: {
         color: config.themeColor,

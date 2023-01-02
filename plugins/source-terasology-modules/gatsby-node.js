@@ -50,22 +50,27 @@ exports.sourceNodes = async ({
   createContentDigest,
   createNodeId,
   reporter,
-  cache
+  cache,
 }) => {
-
   const lastFetchedKey = "terasology-modules-last-fetched";
   const dataKey = "terasology-modules-data";
 
   const now = DateTime.utc();
-  const lastFetched = DateTime.fromISO(await cache.get(lastFetchedKey), {zone: "utc"});
+  const lastFetched = DateTime.fromISO(await cache.get(lastFetchedKey), {
+    zone: "utc",
+  });
 
   let repositories = [];
 
-  if (lastFetched.plus({hours: 12}) > now) {
-    reporter.info(`[${PLUGIN_NAME}] Loading Terasology module info from cache ...`)
-    repositories = JSON.parse(await cache.get(dataKey))
+  if (lastFetched.plus({ hours: 12 }) > now) {
+    reporter.info(
+      `[${PLUGIN_NAME}] Loading Terasology module info from cache ...`
+    );
+    repositories = JSON.parse(await cache.get(dataKey));
   } else {
-    reporter.info(`[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`)
+    reporter.info(
+      `[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`
+    );
     let hasNextPage = true;
     let cursor;
 
@@ -74,7 +79,9 @@ exports.sourceNodes = async ({
     while (hasNextPage) {
       const { organization } = await gql(query, { cursor });
 
-      organization.repositories.nodes.forEach((repo) => repositories.push(repo));
+      organization.repositories.nodes.forEach((repo) =>
+        repositories.push(repo)
+      );
 
       hasNextPage = organization.repositories.pageInfo.hasNextPage;
       cursor = organization.repositories.pageInfo.endCursor;
@@ -86,65 +93,74 @@ exports.sourceNodes = async ({
 
   reporter.success(`[${PLUGIN_NAME}] Loaded ${repositories.length} modules.`);
 
-  const nodes = repositories.map((repo) => {
-    if (!repo.moduleTxt) {
-      // skip non-module repositories
-      return;
-    }
+  let created = 0;
+  repositories
+    .forEach((repo) => {
+      if (!repo.moduleTxt) {
+        // skip non-module repositories
+        return;
+      }
 
-    let moduleTxt;
-    try {
-      moduleTxt = JSON.parse(repo.moduleTxt?.text);
-    } catch (err) {
-      console.warn(`[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`)
-      return;
-    }
+      let moduleTxt;
+      try {
+        moduleTxt = JSON.parse(repo.moduleTxt?.text);
+      } catch (err) {
+        console.warn(
+          `[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`
+        );
+        return;
+      }
 
-    const tags = [
-      moduleTxt.isTutorial ? "Tutorial" : undefined,
-      moduleTxt.isAsset ? "Asset" : undefined,
-      moduleTxt.isLibrary ? "Library" : undefined,
-      moduleTxt.isSpecial ? "Special" : undefined,
-      moduleTxt.isRendering ? "Rendering" : undefined,
-      moduleTxt.isAugmentation ? "Augmentation" : undefined,
-      moduleTxt.isServerSideOnly ? "Server" : undefined,
-      moduleTxt.isGameplay ? "Gameplay" : undefined,
-    ].filter(x => x)
+      const tags = [
+        moduleTxt.isTutorial ? "Tutorial" : undefined,
+        moduleTxt.isAsset ? "Asset" : undefined,
+        moduleTxt.isLibrary ? "Library" : undefined,
+        moduleTxt.isSpecial ? "Special" : undefined,
+        moduleTxt.isRendering ? "Rendering" : undefined,
+        moduleTxt.isAugmentation ? "Augmentation" : undefined,
+        moduleTxt.isServerSideOnly ? "Server" : undefined,
+        moduleTxt.isGameplay ? "Gameplay" : undefined,
+      ].filter((x) => x);
 
-    const {id, version, displayName, description, dependencies} = moduleTxt;
+      const { id, version, displayName, description, dependencies } = moduleTxt;
 
-    const cover = repo.usesCustomOpenGraphImage ? repo.openGraphImageUrl : undefined;
+      const cover = repo.usesCustomOpenGraphImage
+        ? repo.openGraphImageUrl
+        : undefined;
 
-    const moduleInfo = {
-      id,
-      version,
-      displayName,
-      description,
-      dependencies,
-      tags
-    }
+      const moduleInfo = {
+        id,
+        version,
+        displayName,
+        description,
+        dependencies,
+        tags,
+      };
 
-    moduleInfo.dependencies = moduleInfo.dependencies.map(dep => ({...dep, optional: (/true/i).test(dep.optional)}))
+      moduleInfo.dependencies = moduleInfo.dependencies.map((dep) => ({
+        ...dep,
+        optional: /true/i.test(dep.optional),
+      }));
 
-    const node = {
-      ...repo,
-      usesCustomOpenGraphImage: undefined,
-      openGraphImageUrl: undefined,
-      cover,
-      moduleTxt: moduleInfo,
-      id: createNodeId(`TerasologyModule-${repo.id}`),
-      parent: "__SOURCE__",
-      children: [],
-      internal: {
-        type: "TerasologyModule",
-      },
-    };
-    node.internal.contentDigest = createContentDigest(node);
+      const node = {
+        ...repo,
+        usesCustomOpenGraphImage: undefined,
+        openGraphImageUrl: undefined,
+        cover,
+        moduleTxt: moduleInfo,
+        id: createNodeId(`TerasologyModule-${repo.id}`),
+        parent: "__SOURCE__",
+        children: [],
+        internal: {
+          type: "TerasologyModule",
+        },
+      };
+      node.internal.contentDigest = createContentDigest(node);
 
-    return node;    
-  }).filter(x => x);
+      createNode(node);
+      created += 1;
+    })
+    .filter((x) => x);
 
-  nodes.forEach(node => createNode(node));
-
-  reporter.success(`[${PLUGIN_NAME}] Created ${nodes.length} nodes.`)
+  reporter.success(`[${PLUGIN_NAME}] Created ${created} nodes.`);
 };

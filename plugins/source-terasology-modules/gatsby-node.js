@@ -1,5 +1,7 @@
 const { graphql } = require("@octokit/graphql");
 const { DateTime } = require("luxon");
+const { createRemoteFileNode } = require("gatsby-source-filesystem");
+const fs = require("fs");
 
 const PLUGIN_NAME = "source-terasology-modules";
 
@@ -41,7 +43,7 @@ exports.onPreInit = () => console.log("Loaded source-terasology-modules");
 
 exports.sourceNodes = async (
   {
-    actions: { createNode },
+    actions: { createNode, createParentChildLink },
     createContentDigest,
     createNodeId,
     reporter,
@@ -63,45 +65,49 @@ exports.sourceNodes = async (
     zone: "utc",
   });
 
-  let repositories = [];
+  //let repositories = [];
 
-  if (lastFetched.plus({ hours: 12 }) > now) {
-    reporter.info(
-      `[${PLUGIN_NAME}] Loading Terasology module info from cache ...`
-    );
-    repositories = JSON.parse(await cache.get(dataKey));
-  } else {
-    reporter.info(
-      `[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`
-    );
-    let hasNextPage = true;
-    let cursor;
+  let repositories = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
 
-    /* Loop iterations depend on the outcome of the previous request, thus 'await' is required here. */
-    /* eslint-disable no-await-in-loop */
-    while (hasNextPage) {
-      const { organization } = await gql(query, { cursor });
+  // if (lastFetched.plus({ hours: 12 }) > now) {
+  //   reporter.info(
+  //     `[${PLUGIN_NAME}] Loading Terasology module info from cache ...`
+  //   );
+  //   repositories = JSON.parse(await cache.get(dataKey));
+  // } else {
+  //   reporter.info(
+  //     `[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`
+  //   );
+  //   let hasNextPage = true;
+  //   let cursor;
 
-      organization.repositories.nodes.forEach((repo) =>
-        repositories.push(repo)
-      );
+  //   /* Loop iterations depend on the outcome of the previous request, thus 'await' is required here. */
+  //   /* eslint-disable no-await-in-loop */
+  //   while (hasNextPage) {
+  //     const { organization } = await gql(query, { cursor });
 
-      hasNextPage = organization.repositories.pageInfo.hasNextPage;
-      cursor = organization.repositories.pageInfo.endCursor;
-    }
+  //     organization.repositories.nodes.forEach((repo) =>
+  //       repositories.push(repo)
+  //     );
 
-    await cache.set(dataKey, JSON.stringify(repositories));
-    await cache.set(lastFetchedKey, now.toISO());
-  }
+  //     hasNextPage = organization.repositories.pageInfo.hasNextPage;
+  //     cursor = organization.repositories.pageInfo.endCursor;
+  //   }
+
+  //   await cache.set(dataKey, JSON.stringify(repositories));
+  //   await cache.set(lastFetchedKey, now.toISO());
+
+  //   fs.writeFileSync(`${__dirname}/data.json`, JSON.stringify(repositories));
+  // }
 
   reporter.success(`[${PLUGIN_NAME}] Loaded ${repositories.length} modules.`);
 
   let created = 0;
-  repositories
-    .forEach((repo) => {
+  const nodes = repositories
+    .flatMap(async (repo) => {
       if (!repo.moduleTxt) {
         // skip non-module repositories
-        return;
+        return [];
       }
 
       let moduleTxt;
@@ -111,7 +117,7 @@ exports.sourceNodes = async (
         console.warn(
           `[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`
         );
-        return;
+        return [];
       }
 
       const tags = [
@@ -160,10 +166,40 @@ exports.sourceNodes = async (
       };
       node.internal.contentDigest = createContentDigest(node);
 
-      createNode(node);
-      created += 1;
-    })
-    .filter((x) => x);
+      let fileNode;
+      if (node.cover) {        
+        try {
+          fileNode = await createRemoteFileNode({
+            url: node.cover,
+            parentNodeId: node.id,
+            cache,
+            createNodeId,
+            createNode,
+            ext: ".png"
+          });
+        } catch (err) {
+          reporter.error(err);
+        }
+        if (fileNode) {
+          node.coverImage___NODE = fileNode.id;
+          reporter.info(`Created remote file node for ${node.name}: ${node.cover}`)
+        }
+      }
+
+      createNode(node)
+      if (fileNode) {
+        createParentChildLink(
+          {
+            paren: node,
+            child: fileNode
+          }
+        )
+      }
+      return Promise.resolve();
+    });
+
+  await Promise.all(nodes);
+
 
   reporter.success(`[${PLUGIN_NAME}] Created ${created} nodes.`);
 };

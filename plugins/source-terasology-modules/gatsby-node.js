@@ -3,12 +3,6 @@ const { DateTime } = require("luxon");
 
 const PLUGIN_NAME = "source-terasology-modules";
 
-const gql = graphql.defaults({
-  headers: {
-    authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
-  },
-});
-
 const query = `
 query Modules($cursor:String) {
   organization(login: "Terasology") {
@@ -51,7 +45,16 @@ exports.sourceNodes = async ({
   createNodeId,
   reporter,
   cache,
+}, {
+  access_token
 }) => {
+
+  const gql = graphql.defaults({
+    headers: {
+      authorization: `token ${access_token}`,
+    },
+  });
+
   const lastFetchedKey = "terasology-modules-last-fetched";
   const dataKey = "terasology-modules-data";
 

@@ -20,9 +20,7 @@ import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
-function Gallery({ data, pageContext }) {
-  const { galleryCurrentPage, galleryNumPages, numImages, limit } = pageContext;
-  const sildeNumber = Array.from(Array(galleryNumPages).keys());
+function Gallery({ data, pageContext, location }) {
   const prefix = "/gallery";
 
   const imageEdges = data.images.edges;
@@ -33,51 +31,71 @@ function Gallery({ data, pageContext }) {
     return { image: gatsbyImageData, name, id };
   });
 
+  const { galleryCurrentPage, galleryNumPages, numImages, limit } = pageContext;
+  const sildeNumber = Array.from(Array(galleryNumPages).keys());
+
+  const searchParams = new URLSearchParams(location.search);
+
   const closeIconAttributes = useMemo(() => ({ size: "1.5em" }), []);
   const paginationAttributes = useMemo(
     () => ({ className: "pagination-icon", size: "1.5em" }),
     []
   );
 
-  const [imageDisplay, setImageDisplay] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Boolean() call on purpose to set imageDisplay to boolean instead of index
+  const [imageDisplay, setImageDisplay] = useState(
+    Boolean(searchParams.get("index"))
+  );
+  const [activeIndex, setActiveIndex] = useState(
+    parseInt(searchParams.get("index"), 10) || 0
+  );
 
   const hideImage = () => {
     setImageDisplay(false);
+    navigate(
+      galleryCurrentPage === 1 ? `${prefix}` : `${prefix}/${galleryCurrentPage}`
+    );
   };
 
   const showNext = () => {
-    console.log(numImages);
-    console.log(activeIndex);
-    if (activeIndex >= limit - 1 && galleryCurrentPage === galleryNumPages) {
-      setImageDisplay(false);
-    } else if (
-      activeIndex >= limit - 1 &&
-      galleryCurrentPage !== galleryNumPages
+    if (
+      galleryCurrentPage === galleryNumPages &&
+      activeIndex >= (numImages % limit) - 1
     ) {
-      // navigate to next page
-      navigate(`${prefix}/${galleryCurrentPage + 1}`);
-      // set index for carousel to 0
-      // set image display to open modal
+      // continue on first page
+      setActiveIndex(0);
+      navigate(`${prefix}?index=0`);
+    } else if (
+      galleryCurrentPage !== galleryNumPages &&
+      activeIndex >= limit - 1
+    ) {
+      // continue on next page
+      setActiveIndex(0);
+      navigate(`${prefix}/${galleryCurrentPage + 1}?index=0`);
     } else {
+      // continue on same page
       setActiveIndex(activeIndex + 1);
+      navigate(`?index=${activeIndex + 1}`);
     }
   };
 
   const showPrev = () => {
-    if (activeIndex <= 0 && galleryCurrentPage === 0) {
-      setImageDisplay(false);
+    if (activeIndex <= 0 && galleryCurrentPage === 1) {
+      // continue on last page
+      setActiveIndex(limit - 1);
+      navigate(`${prefix}/${galleryNumPages}?index=${(numImages % limit) - 1}`);
     } else if (activeIndex <= 0 && galleryCurrentPage !== 0) {
-      // navigate to prev page
+      // continue on prev page
+      setActiveIndex(limit - 1);
       navigate(
         galleryCurrentPage === 2
-          ? `${prefix}`
-          : `${prefix}/${galleryCurrentPage - 1}`
+          ? `${prefix}?index=${limit - 1}`
+          : `${prefix}/${galleryCurrentPage - 1}?index=${limit - 1}`
       );
-      // set index for carousel to limit-1
-      // set image display to open modal
     } else {
+      // continue on same page
       setActiveIndex(activeIndex - 1);
+      navigate(`?index=${activeIndex - 1}`);
     }
   };
 
@@ -155,6 +173,11 @@ function Gallery({ data, pageContext }) {
                 onClick={() => {
                   setImageDisplay(true);
                   setActiveIndex(index);
+                  navigate(
+                    galleryCurrentPage === 1
+                      ? `${prefix}?index=${index}`
+                      : `${prefix}/${galleryCurrentPage}?index=${index}`
+                  );
                 }}
                 style={{ borderColor: "#08a045" }}
               >

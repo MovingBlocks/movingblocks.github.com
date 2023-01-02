@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.carousel-caption {
+  background-color: rgba(41, 41, 41, 0.3);
+}
+
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(0);

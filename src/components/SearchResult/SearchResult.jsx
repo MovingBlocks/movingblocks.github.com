@@ -1,7 +1,7 @@
 import React from "react";
 import PostListing from "../PostListing/PostListing";
 
-function SearchResults({ query, results, prefix, type }) {
+function SearchResults({ query, results, type }) {
   return (
     <div aria-label="Search results for all posts">
       {!!results.length && query && (
@@ -17,7 +17,7 @@ function SearchResults({ query, results, prefix, type }) {
         </h4>
       )}
       <h4>{results.length < 1 && "Found nothing"}</h4>
-      <PostListing prefix={prefix} postList={results} />
+      <PostListing postList={results} />
     </div>
   );
 }

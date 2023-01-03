@@ -23,10 +23,17 @@
   background-color: rgba(41, 41, 41, 0.3);
 }
 
+.carousel-indicators li {
+  background-color: #08a045;
+  border: 1px;
+  border-color: white;
+}
+
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(0);
   }
+
   to {
     -webkit-transform: scale(1);
   }
@@ -36,6 +43,7 @@
   from {
     transform: scale(0);
   }
+
   to {
     transform: scale(1);
   }

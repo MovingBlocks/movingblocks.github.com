@@ -16,6 +16,7 @@ import { graphql, navigate } from "gatsby";
 import { GiPlainSquare, GiSquare } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
+import moment from "moment";
 import Layout from "../layout";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
@@ -25,10 +26,10 @@ function Gallery({ data, pageContext, location }) {
 
   const imageEdges = data.images.edges;
   const imageList = imageEdges.map(({ node }) => {
-    const { id, name, childImageSharp } = node;
+    const { id, name, modifiedTime, childImageSharp } = node;
     const { gatsbyImageData } = childImageSharp;
 
-    return { image: gatsbyImageData, name, id };
+    return { image: gatsbyImageData, name, id, date: modifiedTime };
   });
 
   const { galleryCurrentPage, galleryNumPages, numImages, limit } = pageContext;
@@ -103,7 +104,7 @@ function Gallery({ data, pageContext, location }) {
     setActiveIndex(newIndex);
   };
 
-  const slides = imageList.map(({ id, name, image }) => (
+  const slides = imageList.map(({ id, name, date, image }) => (
     <CarouselItem key={id}>
       <GatsbyImage
         image={image}
@@ -111,7 +112,10 @@ function Gallery({ data, pageContext, location }) {
         className="m-4"
         imgStyle={{ boxShadow: "0 0 30px rgba(0, 0, 0, 0.5)" }}
       />
-      <CarouselCaption captionText={name} captionHeader={name} />
+      <CarouselCaption
+        captionText={moment(date).format("MMMM DD, YYYY")}
+        captionHeader={name.replaceAll("_", " ")}
+      />
     </CarouselItem>
   ));
 
@@ -217,6 +221,7 @@ export const imageQuery = graphql`
   query imageQuery($skip: Int!, $limit: Int!) {
     images: allFile(
       filter: { relativeDirectory: { eq: "images" } }
+      sort: { modifiedTime: DESC }
       limit: $limit
       skip: $skip
     ) {
@@ -224,6 +229,7 @@ export const imageQuery = graphql`
         node {
           id
           name
+          modifiedTime
           childImageSharp {
             gatsbyImageData(width: 1200, placeholder: BLURRED)
           }

@@ -18,7 +18,6 @@ import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
 import moment from "moment";
 import Layout from "../layout";
-import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
 function Gallery({ data, pageContext, location }) {
@@ -216,7 +215,6 @@ function Gallery({ data, pageContext, location }) {
 
 export default Gallery;
 
-/* eslint no-undef: "off" */
 export const imageQuery = graphql`
   query imageQuery($skip: Int!, $limit: Int!) {
     images: allFile(
@@ -236,9 +234,14 @@ export const imageQuery = graphql`
         }
       }
     }
+    site {
+      siteMetadata {
+        title
+      }
+    }
   }
 `;
 
-export function Head() {
-  return <SEO title={`Gallery | ${config.siteTitle}`} />;
+export function Head({data: {site}}) {
+  return <SEO title={`Gallery | ${site.siteMetadata.title}`} />;
 }

@@ -1,0 +1,20 @@
+{
+  "name": "source-terasology-modules",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A Gatsby source plugin to fetch Terasology module information.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build script setup\""
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "The Terasology Foundation <terasology@gmail.com>",
+  "dependencies": {
+    "@octokit/graphql": "^5.0.4",
+    "luxon": "^3.2.0"
+  }
+}

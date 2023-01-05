@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
   Row,
   Col,
@@ -24,10 +24,10 @@ function Gallery({ data, pageContext, location }) {
   const prefix = "/gallery";
 
   const imageList = data.images.nodes.map((node) => {
-    const { id, name, modifiedTime, childImageSharp } = node;
-    const { gatsbyImageData } = childImageSharp;
+    const { id, name, modifiedTime } = node;
+    const image = getImage(node);
 
-    return { image: gatsbyImageData, name, id, date: modifiedTime };
+    return { image, name, id, date: modifiedTime };
   });
 
   const { galleryCurrentPage, galleryNumPages, numImages, limit } = pageContext;

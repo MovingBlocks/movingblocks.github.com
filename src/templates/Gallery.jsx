@@ -31,7 +31,7 @@ function Gallery({ data, pageContext, location }) {
   });
 
   const { galleryCurrentPage, galleryNumPages, numImages, limit } = pageContext;
-  const sildeNumber = Array.from(Array(galleryNumPages).keys());
+  const slideNumbers = Array.from(Array(galleryNumPages).keys());
 
   const searchParams = new URLSearchParams(location.search);
 
@@ -41,7 +41,7 @@ function Gallery({ data, pageContext, location }) {
     []
   );
 
-  // Boolean() call on purpose to set imageDisplay to boolean instead of index
+  // use Boolean() on purpose to set imageDisplay to a truthy value based on whether an index is given or not
   const [imageDisplay, setImageDisplay] = useState(
     Boolean(searchParams.get("index"))
   );
@@ -100,6 +100,7 @@ function Gallery({ data, pageContext, location }) {
 
   const goToIndex = (newIndex) => {
     setActiveIndex(newIndex);
+    navigate(`?index=${newIndex}`);
   };
 
   const slides = imageList.map(({ id, name, date, image }) => (
@@ -191,7 +192,7 @@ function Gallery({ data, pageContext, location }) {
       </Col>
       {/* Pagination */}
       <div className="d-flex page-section">
-        {sildeNumber.map((number) => (
+        {slideNumbers.map((number) => (
           <PaginationItem key={number} className="mt-3">
             <PaginationLink
               href={number === 0 ? `${prefix}` : `${prefix}/${number + 1}`}
@@ -239,6 +240,6 @@ export const imageQuery = graphql`
   }
 `;
 
-export function Head({data: {site}}) {
+export function Head({ data: { site } }) {
   return <SEO title={`Gallery | ${site.siteMetadata.title}`} />;
 }

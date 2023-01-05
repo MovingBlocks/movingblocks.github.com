@@ -23,8 +23,7 @@ import SEO from "../components/SEO/SEO";
 function Gallery({ data, pageContext, location }) {
   const prefix = "/gallery";
 
-  const imageEdges = data.images.edges;
-  const imageList = imageEdges.map(({ node }) => {
+  const imageList = data.images.nodes.map((node) => {
     const { id, name, modifiedTime, childImageSharp } = node;
     const { gatsbyImageData } = childImageSharp;
 
@@ -223,14 +222,12 @@ export const imageQuery = graphql`
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          id
-          name
-          modifiedTime
-          childImageSharp {
-            gatsbyImageData(width: 1200, placeholder: BLURRED)
-          }
+      nodes {
+        id
+        name
+        modifiedTime
+        childImageSharp {
+          gatsbyImageData(width: 1200, placeholder: BLURRED)
         }
       }
     }

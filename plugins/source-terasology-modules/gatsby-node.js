@@ -65,7 +65,7 @@ exports.sourceNodes = async (
 
   let repositories = [];
 
-  if (lastFetched.plus({ hours: 12 }) > now) {
+  if (lastFetched.plus({ days: 1 }) > now) {
     reporter.info(
       `[${PLUGIN_NAME}] Loading Terasology module info from cache ...`
     );

@@ -148,23 +148,21 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   async function createGalleryPages() {
-    const imageQueryResult = await graphql(
+    const queryResult = await graphql(
       `
         {
           allFile(filter: { relativeDirectory: { eq: "images" } }) {
-            edges {
-              node {
-                id
-              }
-            }
+            totalCount
           }
         }
       `
     );
-    const images = imageQueryResult.data.allFile.edges;
+
+    const numImages = queryResult.data.allFile.totalCount;
+
     const galleryTemplate = path.resolve("./src/templates/Gallery.jsx");
     const imagesPerPage = 9;
-    const numGalleryPages = Math.ceil(images.length / imagesPerPage);
+    const numGalleryPages = Math.ceil(numImages / imagesPerPage);
     Array.from({ length: numGalleryPages }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/gallery` : `/gallery/${i + 1}`,
@@ -174,7 +172,7 @@ exports.createPages = async ({ graphql, actions }) => {
           skip: i * imagesPerPage,
           galleryNumPages: numGalleryPages,
           galleryCurrentPage: i + 1,
-          numImages: images.length,
+          numImages,
         },
       });
     });

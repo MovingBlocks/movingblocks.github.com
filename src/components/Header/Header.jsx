@@ -73,11 +73,11 @@ function Header() {
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/media"
+                      to="/gallery"
                       className="text-color"
                       activeClassName="active"
                     >
-                      Media
+                      Gallery
                     </Link>
                   </NavLink>
                 </DropdownItem>

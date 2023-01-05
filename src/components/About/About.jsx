@@ -48,7 +48,10 @@ function About() {
 
         <Row>
           <Col md="12">
-            <HighlightBox title="History" bgImage={withPrefix("/images/3.jpg")}>
+            <HighlightBox
+              title="History"
+              bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
+            >
               <p>
                 Founded in 2011 by {`Benjamin "Begla" Glatzel`} while
                 researching procedural terrain generation and effective
@@ -72,7 +75,7 @@ function About() {
           <Col md="12">
             <HighlightBox
               title="Modding API"
-              bgImage={withPrefix("/images/9.jpg")}
+              bgImage={withPrefix("/images/Quiet_Village.jpg")}
               align="end"
             >
               <p>
@@ -98,7 +101,7 @@ function About() {
           <Col md="12">
             <HighlightBox
               title="Community"
-              bgImage={withPrefix("/images/8.jpg")}
+              bgImage={withPrefix("/images/Colored_Torches.jpg")}
             >
               <p>
                 The creators and maintainers are a diverse mix of software

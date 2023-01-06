@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.MODULE_FETCH_GITHUB_TOKEN }}
     steps:
       - name: Checkout PR
         uses: actions/checkout@v3

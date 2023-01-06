@@ -1,0 +1,37 @@
+.module-container {
+  dl,
+  ol,
+  ul {
+    margin-bottom: 0;
+  }
+
+  .active {
+    border: none;
+  }
+
+  .page-section {
+    list-style-type: none;
+    justify-content: center;
+  }
+
+  .page-link {
+    color: $primary;
+    border: none;
+    background-color: transparent;
+  }
+
+  .page-link:hover {
+    color: $gray-2;
+    background-color: $gray;
+  }
+
+  .page-item.active .page-link {
+    background-color: $primary;
+    color: $white;
+  }
+
+  .page-item.disabled .page-link {
+    background-color: transparent;
+    color: $gray-2;
+  }
+}

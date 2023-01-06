@@ -103,23 +103,46 @@ exports.createPages = async ({ graphql, actions }) => {
     const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `
-      query Modules {
-        allTerasologyModule(sort: {name: ASC}) {
-          nodes {
-            name      
+        query Modules {
+          modules: allTerasologyModule(sort: { name: ASC }) {
+            nodes {
+              name
+            }
           }
         }
-      }
       `
     );
+    const modules = moduleQueryResult.data.modules.nodes;
 
-    const modules = moduleQueryResult.data.allTerasologyModule.nodes;
+    const availableLetters =
+      modules.reduce(
+        (keys, { name }) => {
+          keys.add(name.charAt(0).toLowerCase());
+          return keys;
+        },
+        new Set()
+      );
+
+    const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
+
+    alphabet.forEach((letter) => {
+      createPage({
+        path: `/modules/${letter}`,
+        component: path.resolve("src/templates/ModulesByLetter.jsx"),
+        context: {
+          letter,
+          availableLetters: Array.from(availableLetters),
+          regex: `/^${letter}.*/i`,
+        },
+      });
+    });
+
     modules.forEach(({ name }) => {
       createPage({
         path: `/modules/${name}`,
         component: modulePageTemplate,
         context: {
-          name
+          name,
         },
       });
     });

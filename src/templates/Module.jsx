@@ -13,7 +13,7 @@ function Module({ data }) {
   const { terasologyModule, file } = data;
   const { name, description, url, homepageUrl, moduleTxt } = terasologyModule;
 
-  const {version, tags} = moduleTxt;
+  const { version, tags } = moduleTxt;
 
   return (
     <Layout>
@@ -28,9 +28,7 @@ function Module({ data }) {
               <Badge>{tag}</Badge>
             ))}
           </div>
-          <div>
-            {version}
-          </div>
+          <div>{version}</div>
           <div>
             <p>{description}</p>
             <p>

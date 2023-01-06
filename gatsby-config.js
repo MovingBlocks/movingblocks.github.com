@@ -65,8 +65,8 @@ module.exports = {
     {
       resolve: "source-terasology-modules",
       options: {
-        accessToken: process.env.GITHUB_ACCESS_TOKEN
-      }
+        accessToken: process.env.GITHUB_ACCESS_TOKEN,
+      },
     },
     {
       resolve: "gatsby-source-trello-board",

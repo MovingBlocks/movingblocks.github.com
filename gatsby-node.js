@@ -58,9 +58,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         totalCount
       }
     }
-  `)
+  `);
 
-  reporter.info(`Loaded ${terasologyQueryResult.data.modules.totalCount} Terasology modules from GitHub.`)
+  reporter.info(
+    `Loaded ${terasologyQueryResult.data.modules.totalCount} Terasology modules from GitHub.`
+  );
 
   async function createBlogPages() {
     const blogPostTemplate = path.resolve("src/templates/Blog.jsx");

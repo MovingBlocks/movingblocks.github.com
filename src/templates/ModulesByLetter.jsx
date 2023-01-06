@@ -47,6 +47,7 @@ export const query = graphql`
         description
         url
         moduleTxt {
+          description
           tags
         }
       }

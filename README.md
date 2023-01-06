@@ -51,8 +51,11 @@ yarn install
 
 You can then use the [Gatsby CLI commands](https://www.gatsbyjs.com/docs/reference/gatsby-cli/) `build`, `clean`, `develop` and `serve`.
 
-To build the website, run
+Our custom source plugin fetches information from GitHub, and therefore needs a GitHub [personal access token] in the environment named `GITHUB_TOKEN`. 
 
+[personal access token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+To build the website, run
 
 ```sh
 yarn run build

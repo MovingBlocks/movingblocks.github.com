@@ -91,7 +91,7 @@ module.exports = {
     {
       resolve: "source-terasology-modules",
       options: {
-        accessToken: process.env.MODULE_FETCH_GITHUB_TOKEN,
+        accessToken: process.env.GITHUB_TOKEN,
       },
     },
     {

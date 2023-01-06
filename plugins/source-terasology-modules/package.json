@@ -15,6 +15,7 @@
   "author": "The Terasology Foundation <terasology@gmail.com>",
   "dependencies": {
     "@octokit/graphql": "^5.0.4",
+    "gatsby-source-filesystem": "^5.3.1",
     "luxon": "^3.2.0"
   }
 }

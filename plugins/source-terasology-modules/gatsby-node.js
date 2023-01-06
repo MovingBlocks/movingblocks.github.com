@@ -8,7 +8,7 @@ const PLUGIN_NAME = "source-terasology-modules";
 const query = `
 query Modules($cursor:String) {
   organization(login: "Terasology") {
-    repositories(first: 20, after: $cursor) {
+    repositories(orderBy: {field: NAME, direction: ASC}, first: 20, after: $cursor) {
       nodes {
         id
         name
@@ -65,141 +65,152 @@ exports.sourceNodes = async (
     zone: "utc",
   });
 
-  //let repositories = [];
+  let repositories = [];
 
-  let repositories = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
+  // Temporary hack to avoid fetching data from GitHub during local testing.
+  // Un-/comment as needed after changing the query.
+  repositories = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
 
-  // if (lastFetched.plus({ hours: 12 }) > now) {
-  //   reporter.info(
-  //     `[${PLUGIN_NAME}] Loading Terasology module info from cache ...`
-  //   );
-  //   repositories = JSON.parse(await cache.get(dataKey));
-  // } else {
-  //   reporter.info(
-  //     `[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`
-  //   );
-  //   let hasNextPage = true;
-  //   let cursor;
+  if (repositories.length > 0) {
+    reporter.info(
+      `[${PLUGIN_NAME}] Loaded Terasology module info from file ...`
+    );
+  } else if (lastFetched.plus({ hours: 12 }) > now) {
+    reporter.info(
+      `[${PLUGIN_NAME}] Loading Terasology module info from cache ...`
+    );
+    repositories = JSON.parse(await cache.get(dataKey));
+  } else {
+    reporter.info(
+      `[${PLUGIN_NAME}] Fetching Terasology module info from GitHub ...`
+    );
+    let hasNextPage = true;
+    let cursor;
 
-  //   /* Loop iterations depend on the outcome of the previous request, thus 'await' is required here. */
-  //   /* eslint-disable no-await-in-loop */
-  //   while (hasNextPage) {
-  //     const { organization } = await gql(query, { cursor });
+    /* Loop iterations depend on the outcome of the previous request, thus 'await' is required here. */
+    /* eslint-disable no-await-in-loop */
+    while (hasNextPage) {
+      const { organization } = await gql(query, { cursor });
 
-  //     organization.repositories.nodes.forEach((repo) =>
-  //       repositories.push(repo)
-  //     );
+      organization.repositories.nodes.forEach((repo) =>
+        repositories.push(repo)
+      );
 
-  //     hasNextPage = organization.repositories.pageInfo.hasNextPage;
-  //     cursor = organization.repositories.pageInfo.endCursor;
-  //   }
+      hasNextPage = organization.repositories.pageInfo.hasNextPage;
+      cursor = organization.repositories.pageInfo.endCursor;
+    }
 
-  //   await cache.set(dataKey, JSON.stringify(repositories));
-  //   await cache.set(lastFetchedKey, now.toISO());
+    await cache.set(dataKey, JSON.stringify(repositories));
+    await cache.set(lastFetchedKey, now.toISO());
 
-  //   fs.writeFileSync(`${__dirname}/data.json`, JSON.stringify(repositories));
-  // }
+    fs.writeFileSync(`${__dirname}/data.json`, JSON.stringify(repositories, null, 2));
+  }
 
   reporter.success(`[${PLUGIN_NAME}] Loaded ${repositories.length} modules.`);
 
   let created = 0;
-  const nodes = repositories
-    .flatMap(async (repo) => {
-      if (!repo.moduleTxt) {
-        // skip non-module repositories
-        return [];
-      }
+  const nodes = repositories.flatMap(async (repo) => {
+    if (!repo.moduleTxt) {
+      // skip non-module repositories
+      return [];
+    }
 
-      let moduleTxt;
+    let moduleTxt;
+    try {
+      moduleTxt = JSON.parse(repo.moduleTxt?.text);
+    } catch (err) {
+      console.warn(
+        `[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`
+      );
+      return [];
+    }
+
+    const tags = [
+      moduleTxt.isTutorial ? "Tutorial" : undefined,
+      moduleTxt.isAsset ? "Asset" : undefined,
+      moduleTxt.isLibrary ? "Library" : undefined,
+      moduleTxt.isSpecial ? "Special" : undefined,
+      moduleTxt.isRendering ? "Rendering" : undefined,
+      moduleTxt.isAugmentation ? "Augmentation" : undefined,
+      moduleTxt.isServerSideOnly ? "Server" : undefined,
+      moduleTxt.isGameplay ? "Gameplay" : undefined,
+    ].filter((x) => x);
+
+    const { id, version, displayName, description, dependencies } = moduleTxt;
+
+    const cover = repo.usesCustomOpenGraphImage
+      ? repo.openGraphImageUrl
+      : undefined;
+
+    const moduleInfo = {
+      id,
+      version,
+      displayName,
+      description,
+      dependencies,
+      tags,
+    };
+
+    moduleInfo.dependencies = moduleInfo.dependencies.map((dep) => ({
+      ...dep,
+      optional: /true/i.test(dep.optional),
+    }));
+
+    const node = {
+      ...repo,
+      usesCustomOpenGraphImage: undefined,
+      openGraphImageUrl: undefined,
+      cover,
+      moduleTxt: moduleInfo,
+      id: createNodeId(`TerasologyModule-${repo.id}`),
+      parent: "__SOURCE__",
+      internal: {
+        type: "TerasologyModule",
+      },
+    };
+    node.internal.contentDigest = createContentDigest(node);
+
+    let fileNode;
+    if (node.cover) {
       try {
-        moduleTxt = JSON.parse(repo.moduleTxt?.text);
+        fileNode = await createRemoteFileNode({
+          url: node.cover,
+          parentNodeId: node.id,
+          cache,
+          createNodeId,
+          createNode,
+          ext: ".png",
+        });
       } catch (err) {
-        console.warn(
-          `[${PLUGIN_NAME}] Could not parse 'module.txt' of ${repo.url}.`
-        );
-        return [];
+        reporter.error(err);
       }
-
-      const tags = [
-        moduleTxt.isTutorial ? "Tutorial" : undefined,
-        moduleTxt.isAsset ? "Asset" : undefined,
-        moduleTxt.isLibrary ? "Library" : undefined,
-        moduleTxt.isSpecial ? "Special" : undefined,
-        moduleTxt.isRendering ? "Rendering" : undefined,
-        moduleTxt.isAugmentation ? "Augmentation" : undefined,
-        moduleTxt.isServerSideOnly ? "Server" : undefined,
-        moduleTxt.isGameplay ? "Gameplay" : undefined,
-      ].filter((x) => x);
-
-      const { id, version, displayName, description, dependencies } = moduleTxt;
-
-      const cover = repo.usesCustomOpenGraphImage
-        ? repo.openGraphImageUrl
-        : undefined;
-
-      const moduleInfo = {
-        id,
-        version,
-        displayName,
-        description,
-        dependencies,
-        tags,
-      };
-
-      moduleInfo.dependencies = moduleInfo.dependencies.map((dep) => ({
-        ...dep,
-        optional: /true/i.test(dep.optional),
-      }));
-
-      const node = {
-        ...repo,
-        usesCustomOpenGraphImage: undefined,
-        openGraphImageUrl: undefined,
-        cover,
-        moduleTxt: moduleInfo,
-        id: createNodeId(`TerasologyModule-${repo.id}`),
-        parent: "__SOURCE__",
-        children: [],
-        internal: {
-          type: "TerasologyModule",
-        },
-      };
-      node.internal.contentDigest = createContentDigest(node);
-
-      let fileNode;
-      if (node.cover) {        
-        try {
-          fileNode = await createRemoteFileNode({
-            url: node.cover,
-            parentNodeId: node.id,
-            cache,
-            createNodeId,
-            createNode,
-            ext: ".png"
-          });
-        } catch (err) {
-          reporter.error(err);
-        }
-        if (fileNode) {
-          node.coverImage___NODE = fileNode.id;
-          reporter.info(`Created remote file node for ${node.name}: ${node.cover}`)
-        }
-      }
-
-      createNode(node)
       if (fileNode) {
-        createParentChildLink(
-          {
-            paren: node,
-            child: fileNode
-          }
-        )
+        node.coverImage___NODE = fileNode.id;
+        reporter.info(
+          `Created remote file node for ${node.name}: ${node.cover}`
+        );
       }
-      return Promise.resolve();
-    });
+    }
+
+    createNode(node);
+
+    //TODO: this is causing some issues I don't understand...
+    // if (fileNode) {
+    //   try {
+    //     createParentChildLink(
+    //       {
+    //         paren: node,
+    //         child: fileNode
+    //       }
+    //     )
+    //   } catch (err) {
+    //     reporter.error(err)
+    //   }
+    // }
+    return Promise.resolve();
+  });
 
   await Promise.all(nodes);
-
 
   reporter.success(`[${PLUGIN_NAME}] Created ${created} nodes.`);
 };

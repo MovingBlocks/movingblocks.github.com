@@ -191,7 +191,7 @@ function Gallery({ data, pageContext, location }) {
         </Row>
       </Col>
       {/* Pagination */}
-      <div className="d-flex page-section">
+      <div className="d-flex page-section media-pagination">
         {slideNumbers.map((number) => (
           <PaginationItem key={number} className="mt-3">
             <PaginationLink

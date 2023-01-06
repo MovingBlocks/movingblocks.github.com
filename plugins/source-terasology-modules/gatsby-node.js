@@ -44,7 +44,7 @@ exports.onPreInit = ({ reporter }) =>
 
 exports.sourceNodes = async (
   {
-    actions: { createNode }, // TODO: retrieve and use createParentChildLink?
+    actions: { createNode, createParentChildLink },
     createContentDigest,
     createNodeId,
     reporter,
@@ -71,7 +71,7 @@ exports.sourceNodes = async (
   // Temporary hack to avoid fetching data from GitHub during local testing.
   // Un-/comment as needed after changing the query.
   if (fs.existsSync(`${__dirname}/data.json`)) {
-    repositories = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
+    // repositories = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
   }
 
   if (repositories.length > 0) {
@@ -200,19 +200,16 @@ exports.sourceNodes = async (
 
     createNode(node);
 
-    // TODO: this is causing some issues I don't understand...
-    // if (fileNode) {
-    //   try {
-    //     createParentChildLink(
-    //       {
-    //         paren: node,
-    //         child: fileNode
-    //       }
-    //     )
-    //   } catch (err) {
-    //     reporter.error(err)
-    //   }
-    // }
+    if (fileNode) {
+      try {
+        createParentChildLink({
+          parent: node,
+          child: fileNode,
+        });
+      } catch (err) {
+        reporter.error(err);
+      }
+    }
     return Promise.resolve();
   });
 

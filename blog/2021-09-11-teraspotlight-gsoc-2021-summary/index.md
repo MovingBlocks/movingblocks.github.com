@@ -43,7 +43,7 @@ Read on to learn what the students achieved in their projects!
   The final feature, active defensive structures to be placed by players to affect players of the opposing team is still pending in the final review cycles.
 
   <div align="center">
-    <img src="./las.png" width="60%" />
+    <img src="./las.jpg" width="60%" />
     <figcaption>Light & Shadow - Shop Screen, Pre-game Phase with separating Domes and Team Balancing, Statistics Screen</figcaption>
   </div>
 
@@ -70,7 +70,7 @@ Read on to learn what the students achieved in their projects!
   The new `Shearable` component even allows the mechanism to be extended to other animals in the future.
 
   <div align="center">
-    <img src="./js_shearing.png" width="80%" />
+    <img src="./js_shearing.jpg" width="80%" />
     <figcaption>Josharias' Survival - Sheep Shearing</figcaption>
   </div>
 
@@ -78,7 +78,7 @@ Read on to learn what the students achieved in their projects!
   This allows the player to gather sheep at a desired place and is the first step towards enabling players to fulfill their dream and become a shepard.
 
   <div align="center">
-    <img src="./js_luring.png" width="80%" />
+    <img src="./js_luring.jpg" width="80%" />
     <figcaption>Josharias' Survival - Sheep Luring</figcaption>
   </div>
 
@@ -103,24 +103,24 @@ Read on to learn what the students achieved in their projects!
   _@Lorxu_ (aka _@tolziplohu_) completed the overhaul of the Metal Renegades world generation towards a shiny new Old West world with diverse biomes, strata, mesas, and rivers.
   The introduction of the new biomes for scrubland, rocky terrain, rivers and steppe are accompanied by a lot of work in the background.
 
-  <div style="float:left">
-    <img src="./mr_river-real.png" width="49%" />
-    <img src="{./mr_river-ingame.png" width="49%" />
+  <div class="row">
+   <div class="col-md-6"><img src="./mr_river-real.jpg" /></div>
+   <div class="col-md-6"><img src="./mr_river-ingame.jpg" /></div>    
   </div>
 
   The student changed the API for biomes to be more modular and reusable and re-implemented block tinting for grass blocks and leaves.
   More visible in-game are the more transition zones between biomes that Lorxu designed to look more messy instead of hard cut as well as the new Baobab trees based on `GrowingFlora`.
 
-  <div style="float:left">
-    <img src="./mr_terrain-transition.png" width="49%" />
-    <img src="./mr_baobab-trees.png" width="49%" />
+  <div class="row">
+   <div class="col-md-6"><img src="./mr_terrain-transition.jpg" /></div>
+   <div class="col-md-6"><img src="./mr_baobab-trees.jpg" /></div>
   </div>
 
   The flat-sided mountains called "Mesas" with their characteristic layers of different types of rock called "Strata" and the new dry and water-filled rivers that meander through the world let the player immerse in the Old West setting.
   The student proved their open-source mindset by getting active in related yet distant parts of the project, for instance the chunk ordering logic for chunk generation and processing as well as the world generation tutorial.
 
   <div align="center">
-    <img src="./mr_mesa-comparison.png" width="60%" />
+    <img src="./mr_mesa-comparison.jpg" width="60%" />
   </div>
 
   The project was mentored by _@Skaldarnar_ and _@keturn_, with additional support from _@Suhas_ (aka _@agent-q1_).
@@ -150,11 +150,13 @@ Read on to learn what the students achieved in their projects!
   Finally, the remaining content - especially all the blog posts - were migrated and can now even be filtered by tags, author, date or using a full-text search.
   As a special goodie for present and future blog authors, Yash is working on generating blog post images based on blog post metadata and new gallery images.
 
-  <div style="float:left">
-    <img src="./module-site_modules.png" width="49%" />
-    <img src="./module-site_gallery.png" width="49%" />
-    <img src="./module-site_mentors.png" width="49%" />
-    <img src="./module-site_blog-filters.png" width="49%" />
+  <div class="row">
+   <div class="col-md-6"><img src="./module-site_modules.jpg" /></div>
+   <div class="col-md-6"><img src="./module-site_gallery.jpg" /></div>
+  </div>
+  <div class="row">
+   <div class="col-md-6"><img src="./module-site_mentors.jpg" /></div>
+   <div class="col-md-6"><img src="./module-site_blog-filters.jpg" /></div>
   </div>
 
   The project was mentored by _@majordwarf_  and _@Michael P_ (aka _@pollend_), with additional support from _@Niruandaleth_ (aka _@jdrueckert_) and _@Cervator_.
@@ -181,9 +183,9 @@ Read on to learn what the students achieved in their projects!
   To enable current and future contributors to leverage this improvement as soon as possible, Isaiah created a tutorial to teach the creation of custom generators.
   Furthermore, the student created a new system to allow for custom maze layouts and shapes instead of purely randomly generated ones.
 
-  <div style="float:left">
-    <img src="./dest-sol-1.png" width="49%" />
-    <img src="./dest-sol-2.png" width="49%" />
+  <div class="row">
+   <div class="col-md-6"><img src="./dest-sol-1.jpg" /></div>
+   <div class="col-md-6"><img src="./dest-sol-2.jpg" /></div>    
   </div>
 
   The project was mentored by _@Nicholas Bates_ and _@Cervator_, with additional support from last year's student _@Isaac L_.

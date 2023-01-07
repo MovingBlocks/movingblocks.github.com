@@ -122,7 +122,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `);
 
-    const ghModules = moduleQueryResult.data.modules.nodes;
+    const ghModules = modulesFromGithub.data.modules.nodes;
 
     const availableLetters =
       ghModules.reduce(

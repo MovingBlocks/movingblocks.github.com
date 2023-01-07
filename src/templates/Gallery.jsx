@@ -12,7 +12,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from "reactstrap";
-import { graphql, navigate } from "gatsby";
+import { graphql, navigate, withPrefix } from "gatsby";
 import { GiPlainSquare, GiSquare } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { IconContext } from "react-icons";
@@ -176,11 +176,7 @@ function Gallery({ data, pageContext, location }) {
                 onClick={() => {
                   setImageDisplay(true);
                   setActiveIndex(index);
-                  navigate(
-                    galleryCurrentPage === 1
-                      ? `${prefix}?index=${index}`
-                      : `${prefix}/${galleryCurrentPage}?index=${index}`
-                  );
+                  navigate(`?index=${index}`);
                 }}
                 style={{ borderColor: "#08a045" }}
               >
@@ -195,7 +191,7 @@ function Gallery({ data, pageContext, location }) {
         {slideNumbers.map((number) => (
           <PaginationItem key={number} className="mt-3">
             <PaginationLink
-              href={number === 0 ? `${prefix}` : `${prefix}/${number + 1}`}
+              href={withPrefix(number === 0 ? `${prefix}` : `${prefix}/${number + 1}`)}
             >
               <IconContext.Provider value={paginationAttributes}>
                 {(() => {

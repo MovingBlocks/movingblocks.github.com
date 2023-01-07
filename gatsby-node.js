@@ -124,14 +124,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     const ghModules = modulesFromGithub.data.modules.nodes;
 
-    const availableLetters =
-      ghModules.reduce(
-        (keys, { name }) => {
-          keys.add(name.charAt(0).toLowerCase());
-          return keys;
-        },
-        new Set()
-      );
+    const availableLetters = ghModules.reduce((keys, { name }) => {
+      keys.add(name.charAt(0).toLowerCase());
+      return keys;
+    }, new Set());
 
     const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
 

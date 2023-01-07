@@ -1,10 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { Row } from "reactstrap";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 import ModuleListing from "../components/modules/ModuleListing";
 import ModulePagination from "../components/modules/ModulePagination";
-import { Row } from "reactstrap";
+
 
 export function Head({ data: { site } }) {
   return <SEO title={`Modules | ${site.metadata.title}`} />;

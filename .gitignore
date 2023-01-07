@@ -60,3 +60,4 @@ bundle-stats.json
 
 # Generated JSON
 src/generated/
+plugins/source-terasology-modules/data.json

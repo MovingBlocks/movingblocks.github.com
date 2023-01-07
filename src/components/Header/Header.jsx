@@ -62,17 +62,6 @@ function Header() {
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/game"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      The Game
-                    </Link>
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink>
-                    <Link
                       to="/gallery"
                       className="text-color"
                       activeClassName="active"

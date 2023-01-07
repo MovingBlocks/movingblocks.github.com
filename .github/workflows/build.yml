@@ -3,6 +3,9 @@ name: Test-Build ModuleSite
 # Trigger the workflow on all pull requests
 on: pull_request
 
+env:
+  GITHUB_TOKEN: ${{ secrets.MODULE_FETCH_GITHUB_TOKEN }}
+
 jobs:
   gatsby-build:
     runs-on: ubuntu-latest

@@ -51,8 +51,15 @@ yarn install
 
 You can then use the [Gatsby CLI commands](https://www.gatsbyjs.com/docs/reference/gatsby-cli/) `build`, `clean`, `develop` and `serve`.
 
-To build the website, run
+Our custom source plugin fetches information from GitHub, and therefore needs a GitHub [personal access token] in the environment named `GITHUB_TOKEN`. 
 
+[personal access token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+If the token expires, you can follow the ["How to fix an expired GitHub Action token"](https://github.com/MovingBlocks/Terasology/wiki/Maintenance#how-to-fix-an-expired-github-action-token) instructions with the following adjustments:
+* the token required for the custom source plugin does not require additional scopes, which means you can skip step 2
+* steps 4 and 5 should be performed in the [ModuleSite repository settings](https://github.com/MovingBlocks/ModuleSite/settings/secrets/actions) on the `MODULE_FETCH_GITHUB_TOKEN` secret
+
+To build the website, run
 
 ```sh
 yarn run build

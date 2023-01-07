@@ -49,8 +49,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
+
+  const terasologyQueryResult = await graphql(`
+    {
+      modules: allTerasologyModule {
+        totalCount
+      }
+    }
+  `);
+
+  reporter.info(
+    `Loaded ${terasologyQueryResult.data.modules.totalCount} Terasology modules from GitHub.`
+  );
 
   async function createBlogPages() {
     const blogPostTemplate = path.resolve("src/templates/Blog.jsx");

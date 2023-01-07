@@ -10,6 +10,7 @@ import {
   Col,
 } from "reactstrap";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Tags from "../common/Tags";
 
 function MentorCards({
   name,
@@ -35,12 +36,7 @@ function MentorCards({
         )}
         <CardBody className="w-100">
           <CardSubtitle tag="h6">
-            {tags.length === 0 ? (
-              // invisible dummy badge to keep the space for tags
-              <Badge className="mr-2 invisible"> </Badge>
-            ) : (
-              tags.map((tag) => <Badge className="mr-2">{tag}</Badge>)
-            )}
+            <Tags tags={tags} />
           </CardSubtitle>
           <CardTitle tag="h5" className="my-3">
             <img

@@ -56,7 +56,6 @@ function Index() {
     };
   });
 
-
   return (
     <section className="sect-home">
       <Row>

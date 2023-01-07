@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import {
-  Badge,
   Card,
   CardBody,
   CardSubtitle,
@@ -30,7 +29,7 @@ function Cards({ title, cover, tags, excerpt, path, author, date, type }) {
         )}
         <CardBody>
           <CardSubtitle tag="h7">
-            <Tags tags={tags} />            
+            <Tags tags={tags} />
           </CardSubtitle>
           <CardTitle tag="h5" className="mt-3">
             {title}

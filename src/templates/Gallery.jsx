@@ -191,7 +191,9 @@ function Gallery({ data, pageContext, location }) {
         {slideNumbers.map((number) => (
           <PaginationItem key={number} className="mt-3">
             <PaginationLink
-              href={withPrefix(number === 0 ? `${prefix}` : `${prefix}/${number + 1}`)}
+              href={withPrefix(
+                number === 0 ? `${prefix}` : `${prefix}/${number + 1}`
+              )}
             >
               <IconContext.Provider value={paginationAttributes}>
                 {(() => {

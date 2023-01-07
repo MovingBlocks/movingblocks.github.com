@@ -19,13 +19,6 @@ You can click on the components to navigate to their respective Github repositor
 Both of our games, _Terasology_ and _Destination: Sol_ (get it [on Steam](https://store.steampowered.com/app/342980/Destination_Sol/)), albeit being quite different in their setting and aesthetics, share a common technical foundation.
 You may have heard about our in-house libraries _gestalt_ (module and asset management, entity component system) and _TeraNUI_ (UI framework) from previous TeraSaturday posts. 😉
 
-<style>
- figcaption {
-  font-size: 2rem;
-  font-style: italic
- }
-</style>
-
 <div align="center">
  <img class="img-fluid" src="2021-05-gsoc-projects.svg" alt="gsoc_projects" />
  <figcaption>The Terasology Foundation ecosystem and areas of contribution for the GSOC projects.</figcaption>

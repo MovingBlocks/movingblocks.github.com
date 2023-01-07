@@ -35,7 +35,8 @@ function ModuleCard({ title, cover, tags, description, url }) {
         <a
           href={url}
           className="mt-auto m-4 btn-primary text-center"
-          target="_blank" rel="noreferrer"
+          target="_blank"
+          rel="noreferrer"
         >
           <FaGithub /> View on GitHub
         </a>

@@ -18,9 +18,7 @@ function ModuleListing({ modules, defaultCover }) {
               url={url}
               cover={defaultCover}
               tags={tags}
-              description={
-                moduleDescription || repoDescription
-              }
+              description={moduleDescription || repoDescription}
             />
           )
         )}

@@ -35,7 +35,7 @@ Read on to learn what the students achieved in their projects!
    </div>
 </div>
 
-  Alluri (aka _@ahv15_) overhauled the [`LightAndShadow`](https://github.com/Terasology/lightandshadow) module including removal of unused code and refactorings towards proper event-based Entity-Component-System architecture.
+  Alluri (aka _@ahv15_) overhauled the [LightAndShadow](https://github.com/Terasology/lightandshadow) module including removal of unused code and refactorings towards proper event-based Entity-Component-System architecture.
   Further, Alluri fixed a lot of gameplay bugs related to world generation, starting and respawning inventory, weapon drops and pickups, et cetera.
   In terms of features, the student introduced a pre-game phase designed to balance delays in team setup both with regards to players joining and teams discussing strategy.
   This pre-game phase also gives players time to buy in the new shop screen that was extracted from our tower-defense gameplay `GooeyDefence`.

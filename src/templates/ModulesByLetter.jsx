@@ -6,7 +6,6 @@ import Layout from "../layout";
 import ModuleListing from "../components/modules/ModuleListing";
 import ModulePagination from "../components/modules/ModulePagination";
 
-
 export function Head({ data: { site } }) {
   return <SEO title={`Modules | ${site.metadata.title}`} />;
 }

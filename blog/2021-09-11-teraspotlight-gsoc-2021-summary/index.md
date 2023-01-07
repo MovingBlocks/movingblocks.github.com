@@ -38,7 +38,7 @@ Read on to learn what the students achieved in their projects!
   Alluri (aka _@ahv15_) overhauled the [LightAndShadow](https://github.com/Terasology/lightandshadow) module including removal of unused code and refactorings towards proper event-based Entity-Component-System architecture.
   Further, Alluri fixed a lot of gameplay bugs related to world generation, starting and respawning inventory, weapon drops and pickups, et cetera.
   In terms of features, the student introduced a pre-game phase designed to balance delays in team setup both with regards to players joining and teams discussing strategy.
-  This pre-game phase also gives players time to buy in the new shop screen that was extracted from our tower-defense gameplay `GooeyDefence`.
+  This pre-game phase also gives players time to buy in the new shop screen that was extracted from our tower-defense gameplay [GooeyDefence](https://github.com/Terasology/GooeyDefence).
   Accessible throughout all game stages is the new statistics screen that shows the player distribution across the teams as well as stats on their deaths, kills and scored flag points.
   The final feature, active defensive structures to be placed by players to affect players of the opposing team is still pending in the final review cycles.
 

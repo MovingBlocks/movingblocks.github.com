@@ -125,7 +125,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
     alphabet.forEach((letter) => {
       createPage({
-        path: `/modules${edge.node.fields.slug}`,
         path: `/modules/${letter}`,
         component: path.resolve("src/templates/ModulesByLetter.jsx"),
         context: {

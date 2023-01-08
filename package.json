@@ -1,12 +1,13 @@
 {
-  "name": "gatsby-starter-advanced",
-  "description": "GatsbyJS starter that includes examples for advanced use cases.",
+  "name": "terasology-web-presence",
+  "description": "Web Presence of Terasology - a Voxel Engine and Game",
   "version": "1.1.0",
   "private": "true",
   "workspaces": [
-    ".", "plugins/source-terasology-modules"
+    ".",
+    "plugins/source-terasology-modules"
   ],
-  "author": "Ruben Harutyunyan <vagr9k@gmail.com>",
+  "author": "The Terasology Foundation",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "canvas": "^2.8.0",
@@ -42,6 +43,7 @@
     "react-twitter-widgets": "^1.7.1",
     "reactstrap": "^8.0.0",
     "remarkable": "^2.0.1",
+    "slugify": "^1.6.5",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

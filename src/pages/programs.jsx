@@ -1,5 +1,5 @@
 import React from "react";
-import { Row } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { graphql } from "gatsby";
 import Section from "../components/Section";
 import PostListing from "../components/PostListing/PostListing";
@@ -30,40 +30,37 @@ function ContributorPrograms({ data }) {
   return (
     <Layout title="Contributor Programs & Projects">
       <Section tag="h3" title="GSoC & TSoC">
-        <Row className="justify-content-center">
-          <div className="col-md-10">
-            <div className="text-center  student-programs-content">
-              <b>Google Summer of Code (GSoC) </b>
-              is a global program focused on bringing more student developers
-              into open source software development. Every year more than 1200
-              students are accepted. Accepted students work with a mentor and
-              become a part of the open source community. Many become lifetime
-              open source developers. Spend your summer break writing code and
-              learning about open source development while earning a stipend.
-              For more information visit{" "}
-              <a
-                className="text-success font-weight-bold"
-                href="https://summerofcode.withgoogle.com/"
-              >
-                Google Summer of Code
-              </a>
-              .
-            </div>
-            <div className="text-center mt-4 student-programs-content">
-              <b>Terasology Summer of Code (TSoC) </b>
-              is similar as Google Summer of Code (GSoC). It is sponsored by
-              Terasology with different timeline then GSoC, do half of work,
-              take a break for exams and other thing and then do second half
-              work. Lower stipend than GSoC. For more information join our{" "}
-              <a
-                className="text-success font-weight-bold"
-                href="https://discordapp.com/invite/Terasology"
-              >
-                Discord
-              </a>
-              .
-            </div>
-          </div>
+        <Row className="justify-content-center align-items-start">
+          <Col md="5" className="text-justify student-programs-content">
+            <b>Google Summer of Code (GSoC) </b>
+            is a global, online program focused on bringing new contributors
+            into open source software development. GSoC Contributors work with
+            an open source organization on a 12+ week programming project
+            under the guidance of mentors.<br />
+            For more information visit{" "}
+            <a
+              className="text-success font-weight-bold"
+              href="https://summerofcode.withgoogle.com/"
+            >
+              Google Summer of Code
+            </a>
+            .
+          </Col>
+          <Col md="5" className="text-justify student-programs-content">
+            <b>Terasology Summer of Code (TSoC) </b>
+            is similar to Google Summer of Code (GSoC). It is sponsored by
+            The Terasology Foundation and comes with more flexibility than GSoC.
+            It allows for projects tailored to your skill level and availability.
+            Lower stipend than GSoC.<br />
+            For more information join our{" "}
+            <a
+              className="text-success font-weight-bold"
+              href="https://discordapp.com/invite/Terasology"
+            >
+              Discord
+            </a>
+            .
+          </Col>
         </Row>
       </Section>
       <Section tag="h3" title="Available Projects">

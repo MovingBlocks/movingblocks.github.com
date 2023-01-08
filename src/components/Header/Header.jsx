@@ -54,35 +54,28 @@ function Header() {
                 </Link>
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                <span className="text-color">Terasology</span>
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>
-                  <NavLink>
-                    <Link
-                      to="/gallery"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Gallery
-                    </Link>
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink>
-                    <Link
-                      to="/modules"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Modules
-                    </Link>
-                  </NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavItem>
+              <NavLink>
+                <Link
+                  to="/gallery"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Gallery
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link
+                  to="/modules"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Modules
+                </Link>
+              </NavLink>
+            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret className="text-color">
                 <span className="text-color">Contribute</span>

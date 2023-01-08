@@ -66,7 +66,7 @@ function Index() {
             An open source voxel world - imagine the possibilities!
           </p>
           <p className="p-description">
-            The Terasology project was born from a Minecraft-inspired tech demo in 2012.
+            The Terasology project was born from a Minecraft-inspired tech demo in 2011.
             Over the years it has been a playground for different kinds of
             technical experiments and proof of concepts.
             The community strives to make Terasology a stable platform

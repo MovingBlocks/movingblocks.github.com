@@ -132,15 +132,15 @@ function Index() {
               bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
             >
               <p>
-                Founded in 2011 by {`Benjamin "Begla" Glatzel`} while researching
-                procedural terrain generation and effective rendering techniques,
-                He succeded in creating a minecraft like demo From the ground up,
-                Terasology was built to be a super hackable and modular game. We
-                host a large number of modules under the Terasology organization
-                and many more which are maintained by individual enthusiasts. We
-                welcome new ideas, both crazy and well thought-out for modules and
-                game extensions from anyone and everyone, so feel free to talk to
-                us on our{" "}
+                Founded in 2011 by {`Benjamin "Begla" Glatzel`} while
+                researching procedural terrain generation and effective
+                rendering techniques, He succeded in creating a minecraft like
+                demo From the ground up, Terasology was built to be a super
+                hackable and modular game. We host a large number of modules
+                under the Terasology organization and many more which are
+                maintained by individual enthusiasts. We welcome new ideas, both
+                crazy and well thought-out for modules and game extensions from
+                anyone and everyone, so feel free to talk to us on our{" "}
                 <a
                   className="text-white font-weight-bold"
                   href="https://discordapp.com/invite/Terasology"
@@ -158,8 +158,8 @@ function Index() {
               align="end"
             >
               <p>
-                {`Terasology's`} engine uses a whitelisting approach to expose an
-                API for modules using two primary methods and a rarely needed
+                {`Terasology's`} engine uses a whitelisting approach to expose
+                an API for modules using two primary methods and a rarely needed
                 third one:
               </p>
               <ul className="text-left">
@@ -185,10 +185,11 @@ function Index() {
               <p>
                 The creators and maintainers are a diverse mix of software
                 developers, designers, game testers, graphic artists, musicians
-                and open source loving high schoolers. We encourage and appreciate
-                contributions from everybody, and try to be as warm and welcoming
-                as possible to newcomers. If you have any questions or if you just
-                want to chat use this invite link for our{" "}
+                and open source loving high schoolers. We encourage and
+                appreciate contributions from everybody, and try to be as warm
+                and welcoming as possible to newcomers. If you have any
+                questions or if you just want to chat use this invite link for
+                our{" "}
                 <a
                   className="text-white font-weight-bolder"
                   href="https://discordapp.com/invite/Terasology"

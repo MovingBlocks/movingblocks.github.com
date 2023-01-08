@@ -94,9 +94,16 @@ function ContributorPrograms({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section tag="h3" title="Available Projects">
-        <PostListing postList={availableProjects} />
-      </Section>
+      {ongoingProjects.length !== 0 ? (
+        <Section tag="h3" title="Ongoing Projects">
+          <PostListing postList={ongoingProjects} />
+        </Section>
+      ) : null}
+      {availableProjects.length !== 0 ? (
+        <Section tag="h3" title="Available Projects">
+          <PostListing postList={availableProjects} />
+        </Section>
+      ) : null}
       <Section tag="h3" title="Mentors">
         <Col lg="12" className="card-spacing">
           <Row className="justify-content-center">
@@ -115,9 +122,6 @@ function ContributorPrograms({ data }) {
             ))}
           </Row>
         </Col>
-      </Section>
-      <Section tag="h3" title="Ongoing Projects">
-        <PostListing postList={ongoingProjects} />
       </Section>
     </Layout>
   );

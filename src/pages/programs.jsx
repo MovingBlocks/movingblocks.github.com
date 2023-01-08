@@ -18,20 +18,20 @@ function toCardData(trelloCard, defaultCover) {
 }
 
 function ContributorPrograms({ data }) {
-  const trelloCardEdges = data.allTrelloCard.edges;
+  const trelloCards = data.allTrelloCard.nodes;
 
   const defaultCover = data.projectCover;
-  const availableProjects = trelloCardEdges
-    .filter(({ node }) => node.list_id === "5c3aab0bd640fe19e4069de5")
-    .map(({ node }) => toCardData(node, defaultCover));
-  const ongoingProjects = trelloCardEdges
-    .filter(({ node }) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
-    .map(({ node }) => toCardData(node, defaultCover));
+  const availableProjects = trelloCards
+    .filter((node) => node.list_id === "5c3aab0bd640fe19e4069de5")
+    .map((node) => toCardData(node, defaultCover));
+  const ongoingProjects = trelloCards
+    .filter((node) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
+    .map((node) => toCardData(node, defaultCover));
 
   const defaultAvatar = data.profilePlaceholder;
-  const mentorList = trelloCardEdges
-    .filter(({ node }) => node.list_id === "5eb715b48caa18614425c25e")
-    .map(({ node }) => {
+  const mentorList = trelloCards
+    .filter((node) => node.list_id === "5eb715b48caa18614425c25e")
+    .map((node) => {
       const {
         name,
         labels,
@@ -132,29 +132,27 @@ export default ContributorPrograms;
 export const pageQuery = graphql`
   query projectQuery {
     allTrelloCard(sort: { index: ASC }) {
-      edges {
-        node {
-          id
-          list_id
+      nodes {
+        id
+        list_id
+        name
+        labels {
           name
-          labels {
-            name
+        }
+        custom_fields {
+          idCustomField
+          value {
+            text
           }
-          custom_fields {
-            idCustomField
-            value {
-              text
-            }
-          }
-          childMarkdownRemark {
-            excerpt
-            html
-          }
-          childCardMedia {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
+        }
+        childMarkdownRemark {
+          excerpt
+          html
+        }
+        childCardMedia {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
             }
           }
         }

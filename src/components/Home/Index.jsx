@@ -139,7 +139,7 @@ function Index() {
               bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
             >
               <p>
-                The project was founded in 2011 by {`Benjamin "Begla" Glatzel` }
+                The project was founded in 2011 by {`Benjamin "Begla" Glatzel`}
                 while researching procedural terrain generation and effective
                 rendering techniques. He succeeded in creating a minecraft-like
                 demo engine, the foundation stone for what Terasology is today.
@@ -185,7 +185,8 @@ function Index() {
                 modules and gameplay content.
               </p>
               <p>
-                If you are interested in gameplay development, come check out our{" "}
+                If you are interested in gameplay development, come check out
+                our{" "}
                 <Link to="/contribute#modules" className="link-about">
                   Terasology Module Contributor Quickstart
                 </Link>
@@ -212,9 +213,12 @@ function Index() {
                 newcomers.
               </p>
               <p>
-                If you want to talk to us or be the next in our group of Gooeys, come
-                join us on our{" "}
-                <Link to="https://discordapp.com/invite/Terasology" className="link-about">
+                If you want to talk to us or be the next in our group of Gooeys,
+                come join us on our{" "}
+                <Link
+                  to="https://discordapp.com/invite/Terasology"
+                  className="link-about"
+                >
                   Terasology Discord
                 </Link>
                 .

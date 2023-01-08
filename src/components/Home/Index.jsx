@@ -78,7 +78,7 @@ function Index() {
               type="button"
               className="font-weight-bold btn btn-lg btn-success home-btn"
             >
-              <Link to="/game" className="link-about">
+              <Link to="#about" className="link-about">
                 Learn More
               </Link>
             </button>
@@ -125,9 +125,9 @@ function Index() {
         </div>
       </Section>
 
-      <Row className="justify-content-center">
+      <Row id="about" className="justify-content-center">
         <Col md="8">
-          <Section id="about" title="About Us">
+          <Section title="About Us">
             <p className="text-center">
               The Terasology project was and is becoming a stable platform for
               various types of gameplay settings in a voxel world. The

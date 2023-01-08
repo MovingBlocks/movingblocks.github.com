@@ -124,9 +124,9 @@ function Index() {
         </div>
       </Section>
 
-      <Row id="about" className="justify-content-center">
-        <Col md="8">
-          <Section title="About Us">
+      <Section title="About Us">
+        <Row id="about" className="justify-content-center">
+          <Col md="8">
             <p className="text-center">
               The Terasology project was and is becoming a stable platform for
               various types of gameplay settings in a voxel world. The creators
@@ -134,9 +134,9 @@ function Index() {
               designers, game testers, graphic artists, and musicians. We
               encourage others to join
             </p>
-          </Section>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </Section>
 
       <Row>
         <Col md="12">

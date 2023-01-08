@@ -6048,9 +6048,9 @@ gatsby-source-filesystem@^5.3.1:
     valid-url "^1.0.9"
     xstate "^4.34.0"
 
-"gatsby-source-trello-board@https://github.com/skaldarnar/gatsby-source-trello-board/#v2.0.0-rc.2":
+"gatsby-source-trello-board@https://github.com/skaldarnar/gatsby-source-trello-board/#v2.0.0-rc.3":
   version "2.0.0-rc.1"
-  resolved "https://github.com/skaldarnar/gatsby-source-trello-board/#5eb875c2b6607c82c4f755f8fc6dc11ad78bd841"
+  resolved "https://github.com/skaldarnar/gatsby-source-trello-board/#313fa8975ccf058a6dd1e427a515a1a4de9c24a9"
   dependencies:
     axios "^1.2.2"
     gatsby-source-filesystem "^5.3.1"

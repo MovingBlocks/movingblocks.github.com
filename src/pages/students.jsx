@@ -34,13 +34,12 @@ function StudentPrograms({ data }) {
           <div className="col-md-10">
             <div className="text-center  student-programs-content">
               <b>Google Summer of Code (GSoC) </b>
-              is a global program focused on bringing more student developers
-              into open source software development. Every year more than 1200
-              students are accepted. Accepted students work with a mentor and
-              become a part of the open source community. Many become lifetime
-              open source developers. Spend your summer break writing code and
-              learning about open source development while earning a stipend.
-              For more information visit{" "}
+                is a global, online program focused on bringing new contributors
+                into open source software development. GSoC Contributors work with
+                an open source organization on a 12+ week programming project under
+                the guidance of mentors.
+                <br />
+                For more information visit{" "}
               <a
                 className="text-success font-weight-bold"
                 href="https://summerofcode.withgoogle.com/"
@@ -51,10 +50,12 @@ function StudentPrograms({ data }) {
             </div>
             <div className="text-center mt-4 student-programs-content">
               <b>Terasology Summer of Code (TSoC) </b>
-              is similar as Google Summer of Code (GSoC). It is sponsored by
-              Terasology with different timeline then GSoC, do half of work,
-              take a break for exams and other thing and then do second half
-              work. Lower stipend than GSoC. For more information join our{" "}
+                is similar to Google Summer of Code (GSoC). It is sponsored by The
+                Terasology Foundation and comes with more flexibility than GSoC. It
+                allows for projects tailored to your skill level and availability.
+                Lower stipend than GSoC.
+                <br />
+                For more information join our{" "}
               <a
                 className="text-success font-weight-bold"
                 href="https://discordapp.com/invite/Terasology"

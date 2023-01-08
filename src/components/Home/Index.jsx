@@ -196,7 +196,7 @@ function Index() {
           <Col md="12">
             <HighlightBox
               title="Community"
-              bgImage={withPrefix("/images/Colored_Torches.jpg")}
+              bgImage={withPrefix("/images/Flowing_Water.jpg")}
             >
               <p>
                 The Terasology community is a diverse mix of software

@@ -15,7 +15,7 @@ function toCardData(trelloCard, defaultCover) {
   return { posttype, title, path: `/projects/${id}`, excerpt, tags, cover };
 }
 
-function StudentPrograms({ data }) {
+function ContributorPrograms({ data }) {
   const defaultCover = data.file;
 
   const projectEdges = data.allTrelloCard.edges;
@@ -28,7 +28,7 @@ function StudentPrograms({ data }) {
     .map(({ node }) => toCardData(node, defaultCover));
 
   return (
-    <Layout title="Student Programs">
+    <Layout title="Contributor Programs & Projects">
       <Section tag="h3" title="GSoC & TSoC">
         <Row className="justify-content-center">
           <div className="col-md-10">
@@ -75,7 +75,7 @@ function StudentPrograms({ data }) {
     </Layout>
   );
 }
-export default StudentPrograms;
+export default ContributorPrograms;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -109,5 +109,5 @@ export const pageQuery = graphql`
 `;
 
 export function Head({ data }) {
-  return <SEO title={`Student Programs | ${data.site.siteMetadata.title}`} />;
+  return <SEO title={`Contributor Programs & Projects | ${data.site.siteMetadata.title}`} />;
 }

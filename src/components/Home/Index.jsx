@@ -77,7 +77,7 @@ function Index() {
               type="button"
               className="font-weight-bold btn btn-lg btn-success home-btn"
             >
-              <Link to="#about" className="link-about">
+              <Link to="#about-us" className="link-about">
                 Learn More
               </Link>
             </button>

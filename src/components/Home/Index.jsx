@@ -146,12 +146,16 @@ function Index() {
               <p>
                 The project was founded in 2011 by {`Benjamin "Begla" Glatzel`} while
                 researching procedural terrain generation and effective
-                rendering techniques. He succeeded in creating a minecraft like
-                demo engine, the foundation stone for what Terasology is today.<br/>
+                rendering techniques. He succeeded in creating a minecraft-like
+                demo engine, the foundation stone for what Terasology is today.
+              </p>
+              <p>
                 We're always on the lookout for contributors with expertise in rendering,
-                networking and concurrency, as well as in-game physics and AI technology.<br />
+                networking and concurrency, as well as in-game physics and AI technology.
+              </p>
+              <p>
                 If you're interested in game engine development, come check out our{" "}
-                <Link to="/contribute" className="link-contribute">
+                <Link to="/contribute#engine" className="link-contribute">
                   Terasology Engine Contributor Quickstart
                 </Link>
                 .
@@ -168,17 +172,23 @@ function Index() {
                 From the ground up, Terasology was built to be very modular and support
                 different kinds of gameplay ideas. We still host a large number of modules
                 under the "Terasology" GitHub organization providing basic and advanced gameplay
-                content as well as world generation options and technical libraries.<br />
+                content as well as world generation options and technical libraries.
+              </p>
+              <p>
                 Combining these modules allows to create very different kinds of gameplay in our
                 voxel worlds. The possibilities are manifold and range from crafting- or 
                 trading-oriented survival over capture-the-flag to puzzle-style experiences
-                and tower defenses.<br />
+                and tower defenses.
+              </p>
+              <p>
                 We especially appreciate expertise or interest in UI/UX, world generation or
                 well-thought out gameplay mechanics, but also always have an open ear for
-                crazy ideas for existing or new modules and gameplay content.<br />
+                crazy ideas for existing or new modules and gameplay content.
+              </p>
+              <p>
                 If you're interested in gameplay development, come check out our{" "}
-                <Link to="/contribute" className="link-contribute">
-                  Terasology Engine Contributor Quickstart
+                <Link to="/contribute#modules" className="link-contribute">
+                  Terasology Module Contributor Quickstart
                 </Link>
                 .
               </p>
@@ -193,10 +203,14 @@ function Index() {
                 The Terasology community is a diverse mix of software developers, designers, 
                 game testers, graphic artists, musicians and other open source loving "Gooeys".
                 We value a positive, inclusive and respectful environment without harassment,
-                attacks or inappropriate activities of any form.<br />
+                attacks or inappropriate activities of any form.
+              </p>
+              <p>
                 We encourage and appreciate contributions from everybody, and try to accept
                 constructive criticism even by newcomers as gracefully and warmly as possible.
-                and welcoming as possible to newcomers.<br />
+                and welcoming as possible to newcomers.
+              </p>
+              <p>
                 If you want to talk to us or be the next Gooey in our group, com join us on our{" "}
                 <a
                   className="text-white font-weight-bolder"

@@ -66,11 +66,13 @@ function Index() {
             An open source voxel world - imagine the possibilities!
           </p>
           <p className="p-description">
-            The Terasology project was born from a Minecraft-inspired tech demo
-            and is becoming a stable platform for various types of gameplay
-            settings in a voxel world. The creators and maintainers are a
-            diverse mix of software developers, designers, game testers, graphic
-            artists, and musicians. We encourage others to join!
+            The Terasology project was born from a Minecraft-inspired tech demo in 2012.
+            Over the years it has been a playground for different kinds of
+            technical experiments and proof of concepts.
+            The community strives to make Terasology a stable platform
+            for various types of gameplay settings in a voxel world.
+            The contributors are a diverse mix of software developers, designers,
+            game testers, graphic artists, and musicians.
           </p>
           <div className="my-5">
             <button

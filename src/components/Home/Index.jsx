@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Button } from "reactstrap";
 import { Link, graphql, useStaticQuery, withPrefix } from "gatsby";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import Section from "../Section";
@@ -74,16 +74,26 @@ function Index() {
             The contributors are a diverse mix of software developers, designers,
             game testers, graphic artists, and musicians.
           </p>
-          <div className="my-5">
-            <button
+          <Col className="my-5 justify-content-around">
+            <Button
               type="button"
-              className="font-weight-bold btn btn-lg btn-success home-btn"
+              color="primary"
+              size="lg"
             >
               <Link to="#about" className="link-about">
-                Learn More
+                Learn more
               </Link>
-            </button>
-          </div>
+            </Button>
+            <Button
+              type="button"
+              color="primary"
+              size="lg"
+            >
+              <Link to="https://discordapp.com/invite/Terasology" className="link-about">
+                Come join us!
+              </Link>
+            </Button>
+          </Col>
         </Col>
         <Col md="6">
           <div className="index">

@@ -2,6 +2,10 @@
   "name": "gatsby-starter-advanced",
   "description": "GatsbyJS starter that includes examples for advanced use cases.",
   "version": "1.1.0",
+  "private": "true",
+  "workspaces": [
+    ".", "plugins/source-terasology-modules"
+  ],
   "author": "Ruben Harutyunyan <vagr9k@gmail.com>",
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -21,6 +25,7 @@
     "gatsby-remark-images": "^7.3.1",
     "gatsby-remark-prismjs": "^7.3.0",
     "gatsby-source-filesystem": "^5.3.1",
+    "gatsby-source-trello-board": "https://github.com/skaldarnar/gatsby-source-trello-board/#v2.0.0-rc.3",
     "gatsby-transformer-remark": "^6.3.2",
     "gatsby-transformer-sharp": "^5.3.1",
     "html-react-parser": "^1.2.7",
@@ -69,10 +74,10 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build:pp": "gatsby build --prefix-paths",
-    "build": "gatsby build",
+    "build:pp": "NODE_OPTIONS='--no-experimental-fetch' gatsby build --prefix-paths",
+    "build": "NODE_OPTIONS='--no-experimental-fetch' gatsby build",
     "clean": "gatsby clean && rm -r src/generated",
-    "develop": "gatsby develop",
+    "develop": "NODE_OPTIONS='--no-experimental-fetch' gatsby develop",
     "format-check:js": "prettier '**/*.{js,jsx}' --check --ignore-path=.eslintignore",
     "format:js": "prettier '**/*.{js,jsx}' --write --ignore-path=.eslintignore",
     "generate-images": "node ./scripts/image-generation.js",

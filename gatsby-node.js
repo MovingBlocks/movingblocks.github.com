@@ -9,18 +9,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug;
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
-    ) {
-      slug = `/${kebabCase(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
+    const { relativePath } = fileNode;
+    if (relativePath) {
+      const parsedFilePath = path.parse(fileNode.relativePath);
+      if (
+        Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+        Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      ) {
+        slug = `/${kebabCase(node.frontmatter.title)}`;
+      } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+      } else if (parsedFilePath.dir === "") {
+        slug = `/${parsedFilePath.name}/`;
+      } else {
+        slug = `/${parsedFilePath.dir}/`;
+      }
     }
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
@@ -46,8 +49,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
+
+  const terasologyQueryResult = await graphql(`
+    {
+      modules: allTerasologyModule {
+        totalCount
+      }
+    }
+  `);
+
+  reporter.info(
+    `Loaded ${terasologyQueryResult.data.modules.totalCount} Terasology modules from GitHub.`
+  );
 
   async function createBlogPages() {
     const blogPostTemplate = path.resolve("src/templates/Blog.jsx");
@@ -97,6 +112,37 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   async function createModulePages() {
+    const modulesFromGithub = await graphql(`
+      query Modules {
+        modules: allTerasologyModule(sort: { name: ASC }) {
+          nodes {
+            name
+          }
+        }
+      }
+    `);
+
+    const ghModules = modulesFromGithub.data.modules.nodes;
+
+    const availableLetters = ghModules.reduce((keys, { name }) => {
+      keys.add(name.charAt(0).toLowerCase());
+      return keys;
+    }, new Set());
+
+    const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
+
+    alphabet.forEach((letter) => {
+      createPage({
+        path: `/modules/${letter}`,
+        component: path.resolve("src/templates/ModulesByLetter.jsx"),
+        context: {
+          letter,
+          availableLetters: Array.from(availableLetters),
+          regex: `/^${letter}.*/i`,
+        },
+      });
+    });
+
     const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `
@@ -144,8 +190,76 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   }
 
+  async function createGalleryPages() {
+    const queryResult = await graphql(
+      `
+        {
+          allFile(filter: { relativeDirectory: { eq: "images" } }) {
+            totalCount
+          }
+        }
+      `
+    );
+
+    const numImages = queryResult.data.allFile.totalCount;
+
+    const galleryTemplate = path.resolve("./src/templates/Gallery.jsx");
+    const imagesPerPage = 9;
+    const numGalleryPages = Math.ceil(numImages / imagesPerPage);
+    Array.from({ length: numGalleryPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/gallery` : `/gallery/${i + 1}`,
+        component: galleryTemplate,
+        context: {
+          limit: imagesPerPage,
+          skip: i * imagesPerPage,
+          galleryNumPages: numGalleryPages,
+          galleryCurrentPage: i + 1,
+          numImages,
+        },
+      });
+    });
+  }
+
+  async function createProjectPages() {
+    const projectPageTemplate = path.resolve("src/templates/Project.jsx");
+    const projectQueryResult = await graphql(
+      `
+        {
+          allTrelloCard {
+            edges {
+              node {
+                id
+                list_id
+              }
+            }
+          }
+        }
+      `
+    );
+
+    const projects = projectQueryResult.data.allTrelloCard.edges;
+    projects
+      .filter(
+        (edge) =>
+          edge.node.list_id === "5c3aab0bd640fe19e4069de5" ||
+          edge.node.list_id === "60ddd7cf64da4b3ee8c5a2e9"
+      )
+      .forEach((edge) => {
+        createPage({
+          path: `/projects/${edge.node.id}`,
+          component: projectPageTemplate,
+          context: {
+            id: edge.node.id,
+          },
+        });
+      });
+  }
+
   await createBlogPages();
   await createModulePages();
+  await createGalleryPages();
+  await createProjectPages();
 
   // TODO: replace below with proper search index generation, see
   //          https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-search/
@@ -156,6 +270,7 @@ exports.createPages = async ({ graphql, actions }) => {
         {
           allMarkdownRemark(
             filter: { frontmatter: { posttype: { eq: "blog" } } }
+            sort: { frontmatter: { date: DESC } }
           ) {
             edges {
               node {
@@ -198,7 +313,7 @@ exports.createPages = async ({ graphql, actions }) => {
           cover,
           date,
           ddate,
-          slug,
+          path: `/blog${slug}`,
           tags,
           title,
           posttype: "blog",
@@ -215,6 +330,7 @@ exports.createPages = async ({ graphql, actions }) => {
         {
           allMarkdownRemark(
             filter: { frontmatter: { posttype: { eq: "module" } } }
+            sort: { frontmatter: { title: ASC } }
           ) {
             edges {
               node {
@@ -244,7 +360,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       return {
         excerpt,
-        slug,
+        path: `/modules${slug}`,
         tags,
         title,
         cover,

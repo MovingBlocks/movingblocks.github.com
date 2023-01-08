@@ -19,7 +19,7 @@ function toCardData(trelloCard, defaultCover) {
 
 function ContributorPrograms({ data }) {
   const trelloCardEdges = data.allTrelloCard.edges;
-  
+
   const defaultCover = data.projectCover;
   const availableProjects = trelloCardEdges
     .filter(({ node }) => node.list_id === "5c3aab0bd640fe19e4069de5")
@@ -30,31 +30,31 @@ function ContributorPrograms({ data }) {
 
   const defaultAvatar = data.profilePlaceholder;
   const mentorList = trelloCardEdges
-  .filter(({ node }) => node.list_id === "5eb715b48caa18614425c25e")
-  .map(({ node }) => {
-    const {
-      name,
-      labels,
-      custom_fields: customFields,
-      childMarkdownRemark,
-      childCardMedia,
-    } = node;
-    const { html } = childMarkdownRemark;
-    const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
+    .filter(({ node }) => node.list_id === "5eb715b48caa18614425c25e")
+    .map(({ node }) => {
+      const {
+        name,
+        labels,
+        custom_fields: customFields,
+        childMarkdownRemark,
+        childCardMedia,
+      } = node;
+      const { html } = childMarkdownRemark;
+      const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
 
-    const tags = labels.map((l) => l.name);
-    const githubProfile = customFields.find(
-      (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
-    )?.value.text;
-    const timeZone = customFields.find(
-      (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
-    )?.value.text;
-    const countryCode = customFields
-      .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
-      ?.value.text.toLowerCase();
+      const tags = labels.map((l) => l.name);
+      const githubProfile = customFields.find(
+        (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
+      )?.value.text;
+      const timeZone = customFields.find(
+        (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
+      )?.value.text;
+      const countryCode = customFields
+        .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
+        ?.value.text.toLowerCase();
 
-    return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
-  });
+      return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
+    });
 
   return (
     <Layout title="Contributor Programs & Projects">
@@ -64,8 +64,9 @@ function ContributorPrograms({ data }) {
             <b>Google Summer of Code (GSoC) </b>
             is a global, online program focused on bringing new contributors
             into open source software development. GSoC Contributors work with
-            an open source organization on a 12+ week programming project
-            under the guidance of mentors.<br />
+            an open source organization on a 12+ week programming project under
+            the guidance of mentors.
+            <br />
             For more information visit{" "}
             <a
               className="text-success font-weight-bold"
@@ -77,10 +78,11 @@ function ContributorPrograms({ data }) {
           </Col>
           <Col md="5" className="text-justify student-programs-content">
             <b>Terasology Summer of Code (TSoC) </b>
-            is similar to Google Summer of Code (GSoC). It is sponsored by
-            The Terasology Foundation and comes with more flexibility than GSoC.
-            It allows for projects tailored to your skill level and availability.
-            Lower stipend than GSoC.<br />
+            is similar to Google Summer of Code (GSoC). It is sponsored by The
+            Terasology Foundation and comes with more flexibility than GSoC. It
+            allows for projects tailored to your skill level and availability.
+            Lower stipend than GSoC.
+            <br />
             For more information join our{" "}
             <a
               className="text-success font-weight-bold"
@@ -159,7 +161,10 @@ export const pageQuery = graphql`
         gatsbyImageData
       }
     }
-    profilePlaceholder: file(name: { eq: "profile-placeholder" }, ext: { eq: ".png" }) {
+    profilePlaceholder: file(
+      name: { eq: "profile-placeholder" }
+      ext: { eq: ".png" }
+    ) {
       childImageSharp {
         gatsbyImageData
       }
@@ -173,5 +178,9 @@ export const pageQuery = graphql`
 `;
 
 export function Head({ data }) {
-  return <SEO title={`Contributor Programs & Projects | ${data.site.siteMetadata.title}`} />;
+  return (
+    <SEO
+      title={`Contributor Programs & Projects | ${data.site.siteMetadata.title}`}
+    />
+  );
 }

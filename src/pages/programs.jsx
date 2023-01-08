@@ -128,7 +128,6 @@ function ContributorPrograms({ data }) {
 }
 export default ContributorPrograms;
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query projectQuery {
     allTrelloCard(sort: { index: ASC }) {

@@ -4,7 +4,7 @@ import { Link, graphql, useStaticQuery, withPrefix } from "gatsby";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import Section from "../Section";
 import PostListing from "../PostListing/PostListing";
-import HighlightBox from "../HighlightBox";
+import HighlightBox from "./HighlightBox";
 
 function Index() {
   const data = useStaticQuery(graphql`

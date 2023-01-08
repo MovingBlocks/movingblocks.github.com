@@ -103,10 +103,7 @@ function Index() {
           <Row className="justify-content-center ">
             <PostListing postList={recentPostList} />
           </Row>
-        </Col>
-
-        <div className="d-flex justify-content-center mb-4">
-          <div>
+          <Row className="d-flex justify-content-center mb-4">
             <Link
               to="/blog"
               className="btn-primary home-btn-read-more-blog font-weight-bold"
@@ -114,14 +111,13 @@ function Index() {
               Find More Blogs
               <FaRegArrowAltCircleRight
                 style={{
-                  fontSize: "28px",
-                  marginBottom: "4px",
-                  marginLeft: "6px",
+                  fontSize: "24px",
+                  marginLeft: "0.5rem",
                 }}
               />
             </Link>
-          </div>
-        </div>
+          </Row>
+        </Col>
       </Section>
 
       <Section title="About Us">

@@ -66,30 +66,25 @@ function Index() {
             An open source voxel world - imagine the possibilities!
           </p>
           <p className="p-description">
-            The Terasology project was born from a Minecraft-inspired tech demo in 2011.
-            Over the years it has been a playground for different kinds of
-            technical experiments and proof of concepts.
-            The community strives to make Terasology a stable platform
-            for various types of gameplay settings in a voxel world.
-            The contributors are a diverse mix of software developers, designers,
-            game testers, graphic artists, and musicians.
+            The Terasology project was born from a Minecraft-inspired tech demo
+            in 2011. Over the years it has been a playground for different kinds
+            of technical experiments and proof of concepts. The community
+            strives to make Terasology a stable platform for various types of
+            gameplay settings in a voxel world. The contributors are a diverse
+            mix of software developers, designers, game testers, graphic
+            artists, and musicians.
           </p>
           <Col className="my-5 justify-content-around">
-            <Button
-              type="button"
-              color="primary"
-              size="lg"
-            >
+            <Button type="button" color="primary" size="lg">
               <Link to="#about" className="link-about">
                 Learn more
               </Link>
             </Button>
-            <Button
-              type="button"
-              color="primary"
-              size="lg"
-            >
-              <Link to="https://discordapp.com/invite/Terasology" className="link-about">
+            <Button type="button" color="primary" size="lg">
+              <Link
+                to="https://discordapp.com/invite/Terasology"
+                className="link-about"
+              >
                 Come join us!
               </Link>
             </Button>
@@ -144,18 +139,20 @@ function Index() {
               bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
             >
               <p>
-                The project was founded in 2011 by {`Benjamin "Begla" Glatzel`} while
-                researching procedural terrain generation and effective
+                The project was founded in 2011 by {`Benjamin "Begla" Glatzel` }
+                while researching procedural terrain generation and effective
                 rendering techniques. He succeeded in creating a minecraft-like
                 demo engine, the foundation stone for what Terasology is today.
               </p>
               <p>
-                We're always on the lookout for contributors with expertise in rendering,
-                networking and concurrency, as well as in-game physics and AI technology.
+                We are always on the lookout for contributors with expertise in
+                rendering, networking and concurrency, as well as in-game
+                physics and AI technology.
               </p>
               <p>
-                If you're interested in game engine development, come check out our{" "}
-                <Link to="/contribute#engine" className="link-contribute">
+                If you are interested in game engine development, come check out
+                our{" "}
+                <Link to="/contribute#engine" className="link-about">
                   Terasology Engine Contributor Quickstart
                 </Link>
                 .
@@ -169,25 +166,27 @@ function Index() {
               align="end"
             >
               <p>
-                From the ground up, Terasology was built to be very modular and support
-                different kinds of gameplay ideas. We still host a large number of modules
-                under the "Terasology" GitHub organization providing basic and advanced gameplay
-                content as well as world generation options and technical libraries.
+                From the ground up, Terasology was built to be very modular and
+                support different kinds of gameplay ideas. We still host a large
+                number of modules under the {`"Terasology" `}GitHub organization
+                providing basic and advanced gameplay content as well as world
+                generation options and technical libraries.
               </p>
               <p>
-                Combining these modules allows to create very different kinds of gameplay in our
-                voxel worlds. The possibilities are manifold and range from crafting- or 
-                trading-oriented survival over capture-the-flag to puzzle-style experiences
-                and tower defenses.
+                Combining these modules allows to create very different kinds of
+                gameplay in our voxel worlds. The possibilities are manifold and
+                range from crafting- or trading-oriented survival over
+                capture-the-flag to puzzle-style experiences and tower defenses.
               </p>
               <p>
-                We especially appreciate expertise or interest in UI/UX, world generation or
-                well-thought out gameplay mechanics, but also always have an open ear for
-                crazy ideas for existing or new modules and gameplay content.
+                We especially appreciate expertise or interest in UI/UX, world
+                generation or well-thought out gameplay mechanics, but also
+                always have an open ear for crazy ideas for existing or new
+                modules and gameplay content.
               </p>
               <p>
-                If you're interested in gameplay development, come check out our{" "}
-                <Link to="/contribute#modules" className="link-contribute">
+                If you are interested in gameplay development, come check out our{" "}
+                <Link to="/contribute#modules" className="link-about">
                   Terasology Module Contributor Quickstart
                 </Link>
                 .
@@ -200,24 +199,24 @@ function Index() {
               bgImage={withPrefix("/images/Colored_Torches.jpg")}
             >
               <p>
-                The Terasology community is a diverse mix of software developers, designers, 
-                game testers, graphic artists, musicians and other open source loving "Gooeys".
-                We value a positive, inclusive and respectful environment without harassment,
-                attacks or inappropriate activities of any form.
+                The Terasology community is a diverse mix of software
+                developers, designers, game testers, graphic artists, musicians
+                and other open source loving {`"Gooeys"`}. We value a positive,
+                inclusive and respectful environment without harassment, attacks
+                or inappropriate activities of any form.
               </p>
               <p>
-                We encourage and appreciate contributions from everybody, and try to accept
-                constructive criticism even by newcomers as gracefully and warmly as possible.
-                and welcoming as possible to newcomers.
+                We encourage and appreciate contributions from everybody, and
+                try to accept constructive criticism even by newcomers as
+                gracefully and warmly as possible. and welcoming as possible to
+                newcomers.
               </p>
               <p>
-                If you want to talk to us or be the next Gooey in our group, com join us on our{" "}
-                <a
-                  className="text-white font-weight-bolder"
-                  href="https://discordapp.com/invite/Terasology"
-                >
+                If you want to talk to us or be the next in our group of Gooeys, come
+                join us on our{" "}
+                <Link to="https://discordapp.com/invite/Terasology" className="link-about">
                   Terasology Discord
-                </a>
+                </Link>
                 .
               </p>
             </HighlightBox>

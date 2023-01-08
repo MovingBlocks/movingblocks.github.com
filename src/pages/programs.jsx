@@ -1,10 +1,12 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 import { graphql } from "gatsby";
+import moment from "moment-timezone";
 import Section from "../components/Section";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
+import MentorCards from "../components/Cards/MentorCards";
 
 function toCardData(trelloCard, defaultCover) {
   const { id, name: title, labels, childMarkdownRemark } = trelloCard;
@@ -16,16 +18,43 @@ function toCardData(trelloCard, defaultCover) {
 }
 
 function ContributorPrograms({ data }) {
-  const defaultCover = data.file;
-
-  const projectEdges = data.allTrelloCard.edges;
-
-  const availableProjects = projectEdges
+  const trelloCardEdges = data.allTrelloCard.edges;
+  
+  const defaultCover = data.projectCover;
+  const availableProjects = trelloCardEdges
     .filter(({ node }) => node.list_id === "5c3aab0bd640fe19e4069de5")
     .map(({ node }) => toCardData(node, defaultCover));
-  const ongoingProjects = projectEdges
+  const ongoingProjects = trelloCardEdges
     .filter(({ node }) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
     .map(({ node }) => toCardData(node, defaultCover));
+
+  const defaultAvatar = data.profilePlaceholder;
+  const mentorList = trelloCardEdges
+  .filter(({ node }) => node.list_id === "5eb715b48caa18614425c25e")
+  .map(({ node }) => {
+    const {
+      name,
+      labels,
+      custom_fields: customFields,
+      childMarkdownRemark,
+      childCardMedia,
+    } = node;
+    const { html } = childMarkdownRemark;
+    const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
+
+    const tags = labels.map((l) => l.name);
+    const githubProfile = customFields.find(
+      (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
+    )?.value.text;
+    const timeZone = customFields.find(
+      (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
+    )?.value.text;
+    const countryCode = customFields
+      .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
+      ?.value.text.toLowerCase();
+
+    return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
+  });
 
   return (
     <Layout title="Contributor Programs & Projects">
@@ -66,6 +95,25 @@ function ContributorPrograms({ data }) {
       <Section tag="h3" title="Available Projects">
         <PostListing postList={availableProjects} />
       </Section>
+      <Section tag="h3" title="Mentors">
+        <Col lg="12" className="card-spacing">
+          <Row className="justify-content-center">
+            {mentorList.map((mentor) => (
+              <MentorCards
+                name={mentor.name}
+                avatar={mentor.avatar}
+                tags={mentor.tags}
+                html={mentor.html}
+                githubProfile={mentor.githubProfile}
+                timeZone={moment
+                  .tz(moment(), `${mentor.timeZone}`)
+                  .format("HH:mm [(GMT] Z[)]")}
+                flagUrl={`https://flagcdn.com/w40/${mentor.countryCode}.png`}
+              />
+            ))}
+          </Row>
+        </Col>
+      </Section>
       <Section tag="h3" title="Ongoing Projects">
         <PostListing postList={ongoingProjects} />
       </Section>
@@ -86,13 +134,32 @@ export const pageQuery = graphql`
           labels {
             name
           }
+          custom_fields {
+            idCustomField
+            value {
+              text
+            }
+          }
           childMarkdownRemark {
             excerpt
+            html
+          }
+          childCardMedia {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
         }
       }
     }
-    file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
+    projectCover: file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    profilePlaceholder: file(name: { eq: "profile-placeholder" }, ext: { eq: ".png" }) {
       childImageSharp {
         gatsbyImageData
       }

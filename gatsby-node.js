@@ -112,6 +112,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   async function createModulePages() {
+    const modulesFromGithub = await graphql(`
+      query Modules {
+        modules: allTerasologyModule(sort: { name: ASC }) {
+          nodes {
+            name
+          }
+        }
+      }
+    `);
+
+    const ghModules = modulesFromGithub.data.modules.nodes;
+
+    const availableLetters = ghModules.reduce((keys, { name }) => {
+      keys.add(name.charAt(0).toLowerCase());
+      return keys;
+    }, new Set());
+
+    const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
+
+    alphabet.forEach((letter) => {
+      createPage({
+        path: `/modules/${letter}`,
+        component: path.resolve("src/templates/ModulesByLetter.jsx"),
+        context: {
+          letter,
+          availableLetters: Array.from(availableLetters),
+          regex: `/^${letter}.*/i`,
+        },
+      });
+    });
+
     const modulePageTemplate = path.resolve("src/templates/Module.jsx");
     const moduleQueryResult = await graphql(
       `

@@ -4,6 +4,7 @@ import { Link, graphql, useStaticQuery, withPrefix } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import Section from "../Section";
+import PostListing from "../PostListing/PostListing";
 import HighlightBox from "../Home/HighlightBox";
 
 function Index() {
@@ -12,7 +13,7 @@ function Index() {
       allMarkdownRemark(
         sort: { frontmatter: { date: DESC } }
         filter: { frontmatter: { posttype: { eq: "blog" } } }
-        limit: 4
+        limit: 3
       ) {
         edges {
           node {
@@ -20,13 +21,14 @@ function Index() {
               slug
               date
             }
-            excerpt(format: PLAIN, pruneLength: 125, truncate: true)
+            excerpt(format: PLAIN, pruneLength: 120, truncate: true)
             timeToRead
             frontmatter {
               title
-              author
               date
+              author
               tags
+              posttype
               description
               cover {
                 childImageSharp {
@@ -39,7 +41,22 @@ function Index() {
       }
     }
   `);
-  const RecentPost = data.allMarkdownRemark.edges;
+  const recentPostEdges = data.allMarkdownRemark.edges;
+  const recentPostList = recentPostEdges.map(({ node }) => {
+    const { frontmatter, fields, excerpt } = node;
+    const { posttype, tags, cover, title, author } = frontmatter;
+    const { slug, date } = fields;
+    return {
+      posttype,
+      title,
+      path: `/blog${slug}`,
+      cover,
+      tags,
+      excerpt,
+      date,
+      author,
+    };
+  });
 
   return (
     <section className="sect-home">
@@ -85,41 +102,7 @@ function Index() {
       <Section title="Recent News">
         <Col lg="12">
           <Row className="justify-content-center ">
-            {RecentPost.map(({ node }) => (
-              <Col className="m-4" lg="5" md="8" sm="12">
-                <Row className="row_shadow h-100">
-                  <Col lg="12" md="12" className="p-0">
-                    <GatsbyImage
-                      image={
-                        node.frontmatter.cover.childImageSharp.gatsbyImageData
-                      }
-                      className="home-img"
-                    />
-                  </Col>
-                  <div className="d-flex flex-column my-4 ml-4">
-                    <h4 className="mt-auto">{node.frontmatter.title}</h4>
-                    <div>
-                      <p className="mt-auto font-weight-bold author">
-                        {`By: ${node.frontmatter.author}`}
-                      </p>
-                    </div>
-                    <p className="mt-auto my-4 mr-1">{node.excerpt}</p>
-
-                    <div className="mt-auto mb-4">
-                      <div className="align-self-end">
-                        <Link
-                          to={`/${`blog`}${node.fields.slug}`}
-                          key={node.frontmatter.title}
-                          className="btn-primary"
-                        >
-                          Read More
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </Row>
-              </Col>
-            ))}
+            <PostListing postList={recentPostList} />
           </Row>
         </Col>
 
@@ -129,7 +112,7 @@ function Index() {
               to="/blog"
               className="btn-primary home-btn-read-more-blog font-weight-bold"
             >
-              Read More Blogs
+              Find More Blogs
               <FaRegArrowAltCircleRight
                 style={{
                   fontSize: "28px",

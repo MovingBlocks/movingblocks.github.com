@@ -1,9 +1,10 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import { Link, graphql, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import Section from "../Section";
 import PostListing from "../PostListing/PostListing";
+import Link from "../common/Link";
 
 function Index() {
   const data = useStaticQuery(graphql`
@@ -122,6 +123,15 @@ function Index() {
           </div>
         </div>
       </Section>
+
+      <Link
+        to="https://github.com/MovingBlocks"
+        className="btn-primary home-btn-read-more-blog font-weight-bold"
+      >
+        MovingBlocks
+      </Link>
+
+      <Link to="https://github.com/MovingBlocks">MovingBlocks</Link>
     </section>
   );
 }

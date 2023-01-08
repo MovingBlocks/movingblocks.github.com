@@ -144,49 +144,44 @@ function Index() {
               bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
             >
               <p>
-                Founded in 2011 by {`Benjamin "Begla" Glatzel`} while researching
-                procedural terrain generation and effective rendering techniques,
-                He succeded in creating a minecraft like demo From the ground up,
-                Terasology was built to be a super hackable and modular game. We
-                host a large number of modules under the Terasology organization
-                and many more which are maintained by individual enthusiasts. We
-                welcome new ideas, both crazy and well thought-out for modules and
-                game extensions from anyone and everyone, so feel free to talk to
-                us on our{" "}
-                <a
-                  className="text-white font-weight-bold"
-                  href="https://discordapp.com/invite/Terasology"
-                >
-                  Discord
-                </a>
+                The project was founded in 2011 by {`Benjamin "Begla" Glatzel`} while
+                researching procedural terrain generation and effective
+                rendering techniques. He succeeded in creating a minecraft like
+                demo engine, the foundation stone for what Terasology is today.<br/>
+                We're always on the lookout for contributors with expertise in rendering,
+                networking and concurrency, as well as in-game physics and AI technology.<br />
+                If you're interested in game engine development, come check out our{" "}
+                <Link to="/contribute" className="link-contribute">
+                  Terasology Engine Contributor Quickstart
+                </Link>
                 .
               </p>
             </HighlightBox>
           </Col>
           <Col md="12">
             <HighlightBox
-              title="Modding API"
+              title="Modules & Gameplays"
               bgImage={withPrefix("/images/Quiet_Village.jpg")}
               align="end"
             >
               <p>
-                {`Terasology's`} engine uses a whitelisting approach to expose an
-                API for modules using two primary methods and a rarely needed
-                third one:
+                From the ground up, Terasology was built to be very modular and support
+                different kinds of gameplay ideas. We still host a large number of modules
+                under the "Terasology" GitHub organization providing basic and advanced gameplay
+                content as well as world generation options and technical libraries.<br />
+                Combining these modules allows to create very different kinds of gameplay in our
+                voxel worlds. The possibilities are manifold and range from crafting- or 
+                trading-oriented survival over capture-the-flag to puzzle-style experiences
+                and tower defenses.<br />
+                We especially appreciate expertise or interest in UI/UX, world generation or
+                well-thought out gameplay mechanics, but also always have an open ear for
+                crazy ideas for existing or new modules and gameplay content.<br />
+                If you're interested in gameplay development, come check out our{" "}
+                <Link to="/contribute" className="link-contribute">
+                  Terasology Engine Contributor Quickstart
+                </Link>
+                .
               </p>
-              <ul className="text-left">
-                <li>Classes or packages marked with the @API annotation</li>
-                <li>
-                  Classes or packages in the basic whitelist defined in
-                  ExternalApiWhitelist.java
-                </li>
-                <li>
-                  Rarely blocks of code in the engine may be hit in a way
-                  requiring use of AccessController.doPrivileged(...) usually
-                  module authors do not need to worry about this but once in a
-                  while it could explain something quirky
-                </li>
-              </ul>
             </HighlightBox>
           </Col>
           <Col md="12">
@@ -195,17 +190,19 @@ function Index() {
               bgImage={withPrefix("/images/Colored_Torches.jpg")}
             >
               <p>
-                The creators and maintainers are a diverse mix of software
-                developers, designers, game testers, graphic artists, musicians
-                and open source loving high schoolers. We encourage and appreciate
-                contributions from everybody, and try to be as warm and welcoming
-                as possible to newcomers. If you have any questions or if you just
-                want to chat use this invite link for our{" "}
+                The Terasology community is a diverse mix of software developers, designers, 
+                game testers, graphic artists, musicians and other open source loving "Gooeys".
+                We value a positive, inclusive and respectful environment without harassment,
+                attacks or inappropriate activities of any form.<br />
+                We encourage and appreciate contributions from everybody, and try to accept
+                constructive criticism even by newcomers as gracefully and warmly as possible.
+                and welcoming as possible to newcomers.<br />
+                If you want to talk to us or be the next Gooey in our group, com join us on our{" "}
                 <a
                   className="text-white font-weight-bolder"
                   href="https://discordapp.com/invite/Terasology"
                 >
-                  Discord
+                  Terasology Discord
                 </a>
                 .
               </p>

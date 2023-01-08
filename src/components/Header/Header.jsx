@@ -110,17 +110,6 @@ function Header() {
                     </Link>
                   </NavLink>
                 </DropdownItem>
-                <DropdownItem>
-                  <NavLink>
-                    <Link
-                      to="/mentors"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Mentors
-                    </Link>
-                  </NavLink>
-                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <Link to="/downloads">

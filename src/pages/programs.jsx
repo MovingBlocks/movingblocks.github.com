@@ -62,34 +62,34 @@ function ContributorPrograms({ data }) {
         <Row className="justify-content-center align-items-start">
           <Col md="5" className="text-justify student-programs-content">
             <b>Google Summer of Code (GSoC) </b>
-              is a global, online program focused on bringing new contributors
-              into open source software development. GSoC Contributors work with
-              an open source organization on a 12+ week programming project
-              under the guidance of mentors.
-              <br />
-              For more information visit{" "}
-              <a
-                className="text-success font-weight-bold"
-                href="https://summerofcode.withgoogle.com/"
-              >
-                Google Summer of Code
-              </a>
+            is a global, online program focused on bringing new contributors
+            into open source software development. GSoC Contributors work with
+            an open source organization on a 12+ week programming project under
+            the guidance of mentors.
+            <br />
+            For more information visit{" "}
+            <a
+              className="text-success font-weight-bold"
+              href="https://summerofcode.withgoogle.com/"
+            >
+              Google Summer of Code
+            </a>
             .
           </Col>
           <Col md="5" className="text-justify student-programs-content">
             <b>Terasology Summer of Code (TSoC) </b>
-              is similar to Google Summer of Code (GSoC). It is sponsored by The
-              Terasology Foundation and comes with more flexibility than GSoC.
-              It allows for projects tailored to your skill level and
-              availability. Lower stipend than GSoC.
-              <br />
-              For more information join our{" "}
-              <a
-                className="text-success font-weight-bold"
-                href="https://discordapp.com/invite/Terasology"
-              >
-                Discord
-              </a>
+            is similar to Google Summer of Code (GSoC). It is sponsored by The
+            Terasology Foundation and comes with more flexibility than GSoC. It
+            allows for projects tailored to your skill level and availability.
+            Lower stipend than GSoC.
+            <br />
+            For more information join our{" "}
+            <a
+              className="text-success font-weight-bold"
+              href="https://discordapp.com/invite/Terasology"
+            >
+              Discord
+            </a>
             .
           </Col>
         </Row>

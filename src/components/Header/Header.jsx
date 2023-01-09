@@ -84,22 +84,11 @@ function Header() {
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/students"
+                      to="/programs"
                       className="text-color"
                       activeClassName="active"
                     >
-                      Student Programs
-                    </Link>
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink>
-                    <Link
-                      to="/mentors"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Mentors
+                      Programs & Projects
                     </Link>
                   </NavLink>
                 </DropdownItem>

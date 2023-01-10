@@ -18,43 +18,36 @@ function toCardData(trelloCard, defaultCover) {
 }
 
 function ContributorPrograms({ data }) {
-  const trelloCards = data.allTrelloCard.nodes;
-
   const defaultCover = data.projectCover;
-  const availableProjects = trelloCards
-    .filter((node) => node.list_id === "5c3aab0bd640fe19e4069de5")
-    .map((node) => toCardData(node, defaultCover));
-  const ongoingProjects = trelloCards
-    .filter((node) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
-    .map((node) => toCardData(node, defaultCover));
+  const availableProjects = data.availableProjects.nodes.map((node) =>
+    toCardData(node, defaultCover)
+  );
 
   const defaultAvatar = data.profilePlaceholder;
-  const mentorList = trelloCards
-    .filter((node) => node.list_id === "5eb715b48caa18614425c25e")
-    .map((node) => {
-      const {
-        name,
-        labels,
-        custom_fields: customFields,
-        childMarkdownRemark,
-        childCardMedia,
-      } = node;
-      const { html } = childMarkdownRemark;
-      const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
+  const mentorList = data.mentors.nodes.map((node) => {
+    const {
+      name,
+      labels,
+      custom_fields: customFields,
+      childMarkdownRemark,
+      childCardMedia,
+    } = node;
+    const { html } = childMarkdownRemark;
+    const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
 
-      const tags = labels.map((l) => l.name);
-      const githubProfile = customFields.find(
-        (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
-      )?.value.text;
-      const timeZone = customFields.find(
-        (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
-      )?.value.text;
-      const countryCode = customFields
-        .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
-        ?.value.text.toLowerCase();
+    const tags = labels.map((l) => l.name);
+    const githubProfile = customFields.find(
+      (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
+    )?.value.text;
+    const timeZone = customFields.find(
+      (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
+    )?.value.text;
+    const countryCode = customFields
+      .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
+      ?.value.text.toLowerCase();
 
-      return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
-    });
+    return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
+  });
 
   return (
     <Layout title="Contributor Programs & Projects">
@@ -94,11 +87,6 @@ function ContributorPrograms({ data }) {
           </Col>
         </Row>
       </Section>
-      {ongoingProjects.length !== 0 ? (
-        <Section tag="h3" title="Ongoing Projects">
-          <PostListing postList={ongoingProjects} />
-        </Section>
-      ) : null}
       {availableProjects.length !== 0 ? (
         <Section tag="h3" title="Available Projects">
           <PostListing postList={availableProjects} />
@@ -130,7 +118,26 @@ export default ContributorPrograms;
 
 export const pageQuery = graphql`
   query projectQuery {
-    allTrelloCard(sort: { index: ASC }) {
+    availableProjects: allTrelloCard(
+      filter: { list_id: { eq: "5c3aab0bd640fe19e4069de5" } }
+      sort: { index: ASC }
+    ) {
+      nodes {
+        id
+        list_id
+        name
+        labels {
+          name
+        }
+        childMarkdownRemark {
+          excerpt
+        }
+      }
+    }
+    mentors: allTrelloCard(
+      filter: { list_id: { eq: "5eb715b48caa18614425c25e" } }
+      sort: { index: ASC }
+    ) {
       nodes {
         id
         list_id
@@ -145,7 +152,6 @@ export const pageQuery = graphql`
           }
         }
         childMarkdownRemark {
-          excerpt
           html
         }
         childCardMedia {

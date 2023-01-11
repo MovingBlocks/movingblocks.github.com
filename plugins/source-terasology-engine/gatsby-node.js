@@ -1,12 +1,11 @@
 const { graphql } = require("@octokit/graphql");
 const { DateTime } = require("luxon");
-const { createRemoteFileNode } = require("gatsby-source-filesystem");
 const fs = require("fs");
 
 const PLUGIN_NAME = "source-terasology-engine";
 
 const query = `
-query Engine($cursor:String) {
+query Engine {
   organization(login: "MovingBlocks") {
     repository(name: "Terasology") {
       issues(first: 10, filterBy: {labels: "Good First Issue", states: OPEN}, orderBy: {field: UPDATED_AT, direction: DESC}) {

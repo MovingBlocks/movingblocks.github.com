@@ -11,14 +11,14 @@ export function Head({ data: { site } }) {
   return <SEO title={`Modules | ${site.metadata.title}`} />;
 }
 
-function Search({ data, pageContext, search }) {
+function Search({ data, pageContext, searchParams }) {
   const allModules = data.modules.nodes;
 
   // build search index for all modules
   const { search: doSearch } = useJsSearch(allModules);
 
-  const tags = [].concat(search.tags).filter(x => x);
-  const term = search.term || "";
+  const tags = searchParams.get("tags")?.split(",").filter(x => x) || [];
+  const term = searchParams.get("term") || "";
 
   // filter based on searched term
   const searchResults = (term ? doSearch(term) : allModules);

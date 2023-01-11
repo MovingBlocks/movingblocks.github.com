@@ -36,7 +36,6 @@
     "moment": "^2.29.2",
     "moment-timezone": "^0.5.33",
     "prismjs": "^1.16.0",
-    "query-string": "^8.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-github-corner": "^2.5.0",

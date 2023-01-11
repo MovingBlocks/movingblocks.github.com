@@ -1,6 +1,5 @@
 import React from "react";
 import { Location } from "@reach/router";
-import queryString from "query-string";
 
 // Based on https://medium.com/@chrisfitkin/how-to-get-query-string-parameter-values-in-gatsby-f714161104f
 
@@ -13,7 +12,7 @@ const withLocation = (ComponentToWrap) => (props) =>
           {...props}
           location={location}
           navigate={navigate}
-          search={location.search ? queryString.parse(location.search, {arrayFormat: 'comma'}) : {}}
+          searchParams={new URLSearchParams(location.search ?? "")}
         />
       )}
     </Location>

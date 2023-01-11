@@ -36,6 +36,7 @@ exports.sourceNodes = async (
   {
     actions: { createNode },
     createContentDigest,
+    createNodeId,
     reporter,
     cache,
   },
@@ -73,7 +74,8 @@ exports.sourceNodes = async (
       `[${PLUGIN_NAME}] Fetching Terasology engine info from GitHub ...`
     );
 
-    const { engine } = await gql(query);
+    const { organization } = await gql(query);
+    engine = organization.repository;
 
     await cache.set(dataKey, JSON.stringify(engine));
     await cache.set(lastFetchedKey, now.toISO());
@@ -87,6 +89,7 @@ exports.sourceNodes = async (
   reporter.success(`[${PLUGIN_NAME}] Loaded Terasology engine info.`);
 
   const node = {
+    id: createNodeId(`TerasologyEngine`),
     issues: engine.issues,
     parent: "__SOURCE__",
     children: [],
@@ -99,5 +102,5 @@ exports.sourceNodes = async (
 
   createNode(node);
 
-  reporter.success(`[${PLUGIN_NAME}] Created nodes for Terasology modules.`);
+  reporter.success(`[${PLUGIN_NAME}] Created node for Terasology engine.`);
 }

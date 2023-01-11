@@ -30,22 +30,20 @@ query Modules($cursor:String) {
           }
         }
 
-        issues(first: 25, filterBy: {labels: "Good First Issue"}) {
-          edges {
-            node {
-              id
-              title
-              author {
-                login
-              }
-              labels(first: 10) {
-                nodes {
-                  name
-                }
-              }
-              updatedAt
-              url
+        issues(first: 25, filterBy: {labels: "Good First Issue", states: OPEN}) {
+          nodes {
+            id
+            title
+            author {
+              login
             }
+            labels(first: 10) {
+              nodes {
+                name
+              }
+            }
+            updatedAt
+            url
           }
         }
       }

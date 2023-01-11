@@ -36,11 +36,11 @@ function GettingStarted({ data }) {
   );
 
   const moduleIssues = data.moduleIssues.nodes
-    .filter((module) => module.issues.edges.length !== 0)
+    .filter((module) => module.issues.nodes.length !== 0)
     .flatMap((module) => {
       const { name, url: moduleUrl, issues } = module;
-      return issues.edges.map(({ node }) => {
-        const { title, author, labels, updatedAt, url } = node;
+      return issues.nodes.map(( issue ) => {
+        const { title, author, labels, updatedAt, url } = issue;
         const { login } = author;
         const { nodes } = labels;
         const tags = nodes.flatMap((node) => node.name)
@@ -475,21 +475,19 @@ export const pageQuery = graphql`
         name
         url
         issues {
-          edges {
-            node {
-              id
-              title
-              author {
-                login
-              }
-              labels {
-                nodes {
-                  name
-                }
-              }
-              updatedAt
-              url
+          nodes {
+            id
+            title
+            author {
+              login
             }
+            labels {
+              nodes {
+                name
+              }
+            }
+            updatedAt
+            url
           }
         }
       }

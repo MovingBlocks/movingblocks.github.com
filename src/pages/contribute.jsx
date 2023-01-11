@@ -6,17 +6,22 @@ import {
   Button,
   Card,
   CardBody,
+  CardHeader,
   CardSubtitle,
   CardTitle,
 } from "reactstrap";
+import moment from "moment";
+import { FaGithub } from "react-icons/fa";
 import Section from "../components/Section";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 import Tags from "../components/common/Tags";
+import gitHubLogo from "../../static/logos/github.svg";
 
 function GettingStarted({ data }) {
   function toCardData(project, defaultCover) {
+    console.log(project);
     const { id, name: title, labels, childMarkdownRemark } = project;
     const { excerpt } = childMarkdownRemark;
     const posttype = "project";
@@ -32,14 +37,17 @@ function GettingStarted({ data }) {
 
   const moduleIssues = data.moduleIssues.nodes
     .filter((module) => module.issues.edges.length !== 0)
-    .map((module) => {
-      const { name, issues } = module;
-      const { title, author, labels, updatedAt, url } = issues;
-
-      return { moduleName: name, title, author, labels, date: updatedAt, url };
-    });
-
-  console.log(moduleIssues);
+    .flatMap((module) => {
+      const { name, url: moduleUrl, issues } = module;
+      return issues.edges.map(({ node }) => {
+        const { title, author, labels, updatedAt, url } = node;
+        const { login } = author;
+        const { nodes } = labels;
+        const tags = nodes.flatMap((node) => node.name)
+        return { module: name, moduleUrl, title, author: login, tags, date: updatedAt, url };
+      });
+    })
+    .sort((a, b) => { return new Date(a.date).getTime() <= new Date(b.date).getTime() ? 1 : 0; });
 
   return (
     <Layout title="Getting Contributors Started">
@@ -261,15 +269,14 @@ function GettingStarted({ data }) {
                   World Generation Tutorial
                 </a>
               </li>
-              <li>
-                <a
-                  className="text-success"
-                  href="https://github.com/search?q=org%3ATerasology+label%3A%22Good+First+Issue%22+state%3Aopen&type=Issues&ref=advsearch&l=&l="
-                >
-                  Good First Module Land Issues
-                </a>
-              </li>
             </ul>
+            <p>
+              Jump below to our{" "}
+              <Link to="#moduleIssues" className="text-success">
+                <b>Good First Issues in Module Land</b>
+              </Link>
+              .
+            </p>
           </Col>
           <Col md="5" className="text-justify">
             <p>
@@ -373,45 +380,70 @@ function GettingStarted({ data }) {
           id="moduleIssues"
           title="Good First Module Land Issues"
         >
+          <Row className="justify-content-center align-items-start">
+            <Col md="8" className="text-justify justify-content-center">
+              <p>
+                Find our module-land issues below. If you'd like to work on one of them, 
+                start a draft PR for it. You can also view them on{" "}
+                <a
+                  className="text-success font-weight-bold"
+                  href="https://github.com/search?q=org%3ATerasology+label%3A%22Good+First+Issue%22+state%3Aopen&type=Issues&ref=advsearch&l=&l="
+                >
+                  GitHub
+                </a>
+                .
+              </p>
+            </Col>
+          </Row>
           <Col lg="12" className="card-spacing">
-            <Row className="justify-content-center">
-              <Card className="row_shadow h-100">
-                <CardBody>
-                  {moduleIssues.labels ? (
-                    <CardSubtitle tag="h7">
-                      <Tags tags={moduleIssues.labels.nodes} />
-                    </CardSubtitle>
-                  ) : (
-                    ""
-                  )}
-                  <CardTitle tag="h5" className="mt-3">
-                    {moduleIssues.title}
-                  </CardTitle>
-                  <CardSubtitle tag="h7">
-                    <b>Module:</b> {moduleIssues.moduleName}
-                  </CardSubtitle>
-                  {moduleIssues.author ? (
-                    <CardSubtitle className="text-muted">
-                      <b>Author:</b> {moduleIssues.author}
-                    </CardSubtitle>
-                  ) : (
-                    ""
-                  )}
-                  {moduleIssues.date ? (
-                    <CardSubtitle className="text-muted">
-                      <b>Last updated on:</b> {moduleIssues.date}
-                    </CardSubtitle>
-                  ) : (
-                    ""
-                  )}
-                </CardBody>
-                <Button type="button" color="primary" size="lg">
-                  <a href={moduleIssues.url} className="link-about">
-                    Visit on GitHub
-                  </a>
-                </Button>
-              </Card>
-            </Row>
+            {moduleIssues.map(
+              ({ module, moduleUrl, title, tags, author, url, date }) => (
+                <Row className="justify-content-start align-items-start">
+                  <Card className="row_shadow h-100 md-12 my-3" style={{ width: '100%' }}>
+                    <a href={moduleUrl} className="btn-success" target="_blank" rel="noreferrer">
+                      <CardHeader>
+                        {module}
+                      </CardHeader>
+                    </a>
+                    <a href={url} className="btn-light" target="_blank" rel="noreferrer">
+                      <Row className="justify-content-start align-items-center">
+                        <Col md="1" className="ml-5 pt-0 pb-2">
+                          <img src={gitHubLogo} class="img-fluid rounded-start" alt="Visit on GitHub" />
+                        </Col>
+                        <Col md="10" className="pt-0 pb-2">
+                          <CardBody>
+                            {tags ? (
+                              <CardSubtitle tag="h7">
+                                <Tags tags={tags} />
+                              </CardSubtitle>
+                            ) : (
+                              ""
+                            )}
+                            <CardTitle tag="h5" className="mt-3">
+                              {title}
+                            </CardTitle>
+                            {author ? (
+                              <CardSubtitle className="text-muted">
+                                <b>Author:</b> {author}
+                              </CardSubtitle>
+                            ) : (
+                              ""
+                            )}
+                            {date ? (
+                              <CardSubtitle className="text-muted">
+                                <b>Last updated on: </b>{moment(date).format("MMMM DD, YYYY")}
+                              </CardSubtitle>
+                            ) : (
+                              ""
+                            )}
+                          </CardBody>
+                        </Col>
+                      </Row>
+                    </a>
+                  </Card>
+                </Row>
+              ))
+            }
           </Col>
         </Section>
       </Section>
@@ -441,6 +473,7 @@ export const pageQuery = graphql`
     moduleIssues: allTerasologyModule {
       nodes {
         name
+        url
         issues {
           edges {
             node {

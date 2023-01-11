@@ -206,7 +206,7 @@ function Index() {
         </Row>
       </Section>
 
-      <Section title="About Us">
+      <Section title="About Us" id="about">
         <Row>
           <Col md="12">
             <HighlightBox

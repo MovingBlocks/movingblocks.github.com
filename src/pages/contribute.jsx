@@ -1,10 +1,21 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import { Row, Col } from "reactstrap";
+import {
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardHeader,
+  CardSubtitle,
+  CardTitle,
+} from "reactstrap";
+import moment from "moment";
 import PostListing from "../components/PostListing/PostListing";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
+import Tags from "../components/common/Tags";
+import gitHubLogo from "../../static/logos/github.svg";
 
 function GettingStarted({ data }) {
   function toCardData(project, defaultCover) {
@@ -21,6 +32,19 @@ function GettingStarted({ data }) {
   const ongoingProjects = data.ongoingProjects.nodes.map((project) =>
     toCardData(project, defaultCover)
   );
+
+  const engine = data.engineIssues.nodes[0];
+  const engineIssues = engine.issues.nodes
+    .map((issue) => {
+      const { title, author, labels, updatedAt, url } = issue;
+      const { login } = author;
+      const { nodes } = labels;
+      const tags = nodes.flatMap((node) => node.name);
+      return { title, author: login, tags, date: updatedAt, url };
+    })
+    .sort((a, b) =>
+      new Date(a.date).getTime() <= new Date(b.date).getTime() ? 1 : 0
+    );
 
   return (
     <Layout title="Getting Contributors Started">
@@ -290,6 +314,13 @@ function GettingStarted({ data }) {
                 </a>
               </li>
             </ul>
+            <p>
+              Jump below to our{" "}
+              <Link to="#good-first-engine-issues" className="text-success">
+                <b>Good First Issues in Engine</b>
+              </Link>
+              .
+            </p>
           </Col>
         </Row>
       </Section>
@@ -325,6 +356,81 @@ function GettingStarted({ data }) {
             <PostListing postList={ongoingProjects} />
           </Section>
         ) : null}
+        <Section tag="h4" title="Good First Engine Issues">
+          <Row className="justify-content-center align-items-start">
+            <Col md="8" className="text-justify justify-content-center">
+              <p>
+                Find some of our engine issues below. If you would like to work
+                on one of them, start a draft PR for it. You can also view the
+                full list on{" "}
+                <a
+                  className="text-success font-weight-bold"
+                  href="https://github.com/MovingBlocks/Terasology/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22"
+                >
+                  GitHub
+                </a>
+                .
+              </p>
+            </Col>
+          </Row>
+          <Col lg="12" className="card-spacing">
+            {engineIssues.map(({ title, tags, author, url, date }) => (
+              <Row className="justify-content-start align-items-start">
+                <Card
+                  className="row_shadow h-100 md-12 my-3"
+                  style={{ width: "100%" }}
+                >
+                  <CardHeader className="bg-success" />
+                  <a
+                    href={url}
+                    className="btn-light"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Row className="justify-content-start align-items-center">
+                      <Col md="1" className="ml-5 pt-0 pb-2">
+                        <img
+                          src={gitHubLogo}
+                          className="img-fluid rounded-start"
+                          alt="Visit on GitHub"
+                        />
+                      </Col>
+                      <Col md="10" className="pt-0 pb-2">
+                        <CardBody>
+                          {tags ? (
+                            <CardSubtitle tag="h7">
+                              <Tags tags={tags} />
+                            </CardSubtitle>
+                          ) : (
+                            ""
+                          )}
+                          <CardTitle tag="h5" className="mt-3">
+                            {title}
+                          </CardTitle>
+                          {author ? (
+                            <CardSubtitle className="text-muted">
+                              <b>Author:</b> {author}
+                            </CardSubtitle>
+                          ) : (
+                            ""
+                          )}
+                          {date ? (
+                            <CardSubtitle className="text-muted">
+                              <b>Last updated on: </b>
+                              {moment(date).format("MMMM DD, YYYY")}
+                            </CardSubtitle>
+                          ) : (
+                            ""
+                          )}
+                        </CardBody>
+                      </Col>
+                    </Row>
+                  </a>
+                </Card>
+              </Row>
+            ))}
+          </Col>
+        </Section>
       </Section>
     </Layout>
   );
@@ -346,6 +452,26 @@ export const pageQuery = graphql`
         }
         childMarkdownRemark {
           excerpt
+        }
+      }
+    }
+    engineIssues: allTerasologyEngine {
+      nodes {
+        issues {
+          nodes {
+            id
+            title
+            author {
+              login
+            }
+            labels {
+              nodes {
+                name
+              }
+            }
+            updatedAt
+            url
+          }
         }
       }
     }

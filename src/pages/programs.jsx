@@ -24,29 +24,29 @@ function ContributorPrograms({ data }) {
   );
   const defaultAvatar = data.profilePlaceholder;
   const mentorList = data.mentors.nodes.map((node) => {
-      const {
-        name,
-        labels,
-        custom_fields: customFields,
-        childMarkdownRemark,
-        childCardMedia,
-      } = node;
-      const { html } = childMarkdownRemark;
-      const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
+    const {
+      name,
+      labels,
+      custom_fields: customFields,
+      childMarkdownRemark,
+      childCardMedia,
+    } = node;
+    const { html } = childMarkdownRemark;
+    const avatar = childCardMedia ? childCardMedia.localFile : defaultAvatar;
 
-      const tags = labels.map((l) => l.name);
-      const githubProfile = customFields.find(
-        (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
-      )?.value.text;
-      const timeZone = customFields.find(
-        (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
-      )?.value.text;
-      const countryCode = customFields
-        .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
-        ?.value.text.toLowerCase();
+    const tags = labels.map((l) => l.name);
+    const githubProfile = customFields.find(
+      (field) => field.idCustomField === "5eb71b3551de3a59ce8d9bd8"
+    )?.value.text;
+    const timeZone = customFields.find(
+      (field) => field.idCustomField === "5eb71b53f52d88487f550e83"
+    )?.value.text;
+    const countryCode = customFields
+      .find((field) => field.idCustomField === "5eb71b7081a67c3b58ea67ed")
+      ?.value.text.toLowerCase();
 
-      return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
-    });
+    return { name, avatar, tags, html, githubProfile, timeZone, countryCode };
+  });
 
   return (
     <Layout title="Contributor Programs & Projects">

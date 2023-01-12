@@ -18,20 +18,12 @@ function toCardData(trelloCard, defaultCover) {
 }
 
 function ContributorPrograms({ data }) {
-  const trelloCards = data.allTrelloCard.nodes;
-
   const defaultCover = data.projectCover;
-  const availableProjects = trelloCards
-    .filter((node) => node.list_id === "5c3aab0bd640fe19e4069de5")
-    .map((node) => toCardData(node, defaultCover));
-  const ongoingProjects = trelloCards
-    .filter((node) => node.list_id === "60ddd7cf64da4b3ee8c5a2e9")
-    .map((node) => toCardData(node, defaultCover));
-
+  const availableProjects = data.availableProjects.nodes.map((node) =>
+    toCardData(node, defaultCover)
+  );
   const defaultAvatar = data.profilePlaceholder;
-  const mentorList = trelloCards
-    .filter((node) => node.list_id === "5eb715b48caa18614425c25e")
-    .map((node) => {
+  const mentorList = data.mentors.nodes.map((node) => {
       const {
         name,
         labels,
@@ -94,11 +86,6 @@ function ContributorPrograms({ data }) {
           </Col>
         </Row>
       </Section>
-      {ongoingProjects.length !== 0 ? (
-        <Section tag="h3" title="Ongoing Projects">
-          <PostListing postList={ongoingProjects} />
-        </Section>
-      ) : null}
       {availableProjects.length !== 0 ? (
         <Section tag="h3" title="Available Projects">
           <PostListing postList={availableProjects} />
@@ -130,7 +117,26 @@ export default ContributorPrograms;
 
 export const pageQuery = graphql`
   query projectQuery {
-    allTrelloCard(sort: { index: ASC }) {
+    availableProjects: allTrelloCard(
+      filter: { list_id: { eq: "5c3aab0bd640fe19e4069de5" } }
+      sort: { index: ASC }
+    ) {
+      nodes {
+        id
+        list_id
+        name
+        labels {
+          name
+        }
+        childMarkdownRemark {
+          excerpt
+        }
+      }
+    }
+    mentors: allTrelloCard(
+      filter: { list_id: { eq: "5eb715b48caa18614425c25e" } }
+      sort: { index: ASC }
+    ) {
       nodes {
         id
         list_id

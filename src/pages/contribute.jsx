@@ -5,7 +5,7 @@ import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 
-function GettingStarted() {
+function GettingStarted({ data }) {
   return (
     <Layout title="Getting Contributors Started">
       <Row className="justify-content-center align-items-start">
@@ -21,6 +21,13 @@ function GettingStarted() {
               {`Terasology's Engine & Module Land`}
             </Link>{" "}
             should help you to get started and set yourself up for success.
+          </p>
+          <p>
+            To get started with your first contribution, you'll also find{" "}
+            <Link className="text-success" to="#ongoing-projects">
+              Ongoing Projects
+            </Link>
+            {` to join.`}
           </p>
           <p>
             Make sure to also join our{" "}
@@ -270,13 +277,67 @@ function GettingStarted() {
           </Col>
         </Row>
       </Section>
+      <Section tag="h3" title="Projects">
+        <Row className="justify-content-center align-items-start">
+          <Col md="10" className="text-justify">
+            <p>
+              While you are free to roam our codebase and contribute in any area
+              you'd like, below are some tasks and projects that we encourage
+              you to consider. Their scope and feasibility are potentially more
+              realistic than a goal you might set for yourself without knowing
+              the depths and intricacies of our codebase.
+            </p>
+          </Col>
+        </Row>
+        {ongoingProjects.length !== 0 ? (
+          <Section tag="h4" title="Ongoing Projects">
+            <Row className="justify-content-center align-items-start">
+              <Col md="8" className="text-justify">
+                <p>
+                  Find our ongoing projects below. Come talk to us on our{" "}
+                  <a
+                    className="text-success font-weight-bold"
+                    href="https://discordapp.com/invite/Terasology"
+                  >
+                    Discord
+                  </a>{" "}
+                  if you'd like to join one of them. You can also propose your
+                  own project ideas.
+                </p>
+              </Col>
+            </Row>
+            <PostListing postList={ongoingProjects} />
+          </Section>
+        ) : null}
+      </Section>
     </Layout>
   );
 }
 export default GettingStarted;
 
 export const pageQuery = graphql`
-  query siteQuery {
+  query projectQuery {
+    ongoingProjects: allTrelloCard(
+      filter: { list_id: { eq: "60ddd7cf64da4b3ee8c5a2e9" } }
+      sort: { index: ASC }
+    ) {
+      nodes {
+        id
+        list_id
+        name
+        labels {
+          name
+        }
+        childMarkdownRemark {
+          excerpt
+        }
+      }
+    }
+    projectCover: file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
     site {
       siteMetadata {
         title

@@ -76,7 +76,7 @@ function Index() {
           </p>
           <Col className="my-5 justify-content-around">
             <Button type="button" color="primary" size="lg">
-              <Link to="#about" className="link-about">
+              <Link to="#about-us" className="link-about">
                 Learn more
               </Link>
             </Button>
@@ -206,7 +206,7 @@ function Index() {
         </Row>
       </Section>
 
-      <Section title="About Us" id="about">
+      <Section title="About Us">
         <Row>
           <Col md="12">
             <HighlightBox

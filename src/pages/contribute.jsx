@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { Row, Col } from "reactstrap";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
@@ -274,6 +274,16 @@ function GettingStarted() {
   );
 }
 export default GettingStarted;
+
+export const pageQuery = graphql`
+  query siteQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
 
 export function Head({ data }) {
   return (

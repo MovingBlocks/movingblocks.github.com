@@ -298,10 +298,10 @@ function GettingStarted({ data }) {
           <Col md="10" className="text-justify">
             <p>
               While you are free to roam our codebase and contribute in any area
-              you would like, below are some tasks and projects that we encourage
-              you to consider. Their scope and feasibility are potentially more
-              realistic than a goal you might set for yourself without knowing
-              the depths and intricacies of our codebase.
+              you would like, below are some tasks and projects that we
+              encourage you to consider. Their scope and feasibility are
+              potentially more realistic than a goal you might set for yourself
+              without knowing the depths and intricacies of our codebase.
             </p>
           </Col>
         </Row>
@@ -317,8 +317,8 @@ function GettingStarted({ data }) {
                   >
                     Discord
                   </a>{" "}
-                  if you would like to join one of them. You can also propose your
-                  own project ideas.
+                  if you would like to join one of them. You can also propose
+                  your own project ideas.
                 </p>
               </Col>
             </Row>

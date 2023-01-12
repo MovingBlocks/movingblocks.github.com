@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 import { Row, Col } from "reactstrap";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
@@ -274,37 +274,6 @@ function GettingStarted() {
   );
 }
 export default GettingStarted;
-
-export const pageQuery = graphql`
-  query projectQuery {
-    ongoingProjects: allTrelloCard(
-      filter: { list_id: { eq: "60ddd7cf64da4b3ee8c5a2e9" } }
-      sort: { index: ASC }
-    ) {
-      nodes {
-        id
-        list_id
-        name
-        labels {
-          name
-        }
-        childMarkdownRemark {
-          excerpt
-        }
-      }
-    }
-    projectCover: file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
 
 export function Head({ data }) {
   return (

@@ -61,3 +61,4 @@ bundle-stats.json
 # Generated JSON
 src/generated/
 plugins/source-terasology-modules/data.json
+plugins/source-terasology-engine/data.json

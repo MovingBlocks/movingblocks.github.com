@@ -1,11 +1,27 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import { Row, Col } from "reactstrap";
+import PostListing from "../components/PostListing/PostListing";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 
 function GettingStarted({ data }) {
+  function toCardData(project, defaultCover) {
+    console.log(project);
+    const { id, name: title, labels, childMarkdownRemark } = project;
+    const { excerpt } = childMarkdownRemark;
+    const posttype = "project";
+    const tags = labels.map((l) => l.name);
+    const cover = defaultCover;
+    return { posttype, title, path: `/projects/${id}`, excerpt, tags, cover };
+  }
+
+  const defaultCover = data.projectCover;
+  const ongoingProjects = data.ongoingProjects.nodes.map((project) =>
+    toCardData(project, defaultCover)
+  );
+
   return (
     <Layout title="Getting Contributors Started">
       <Row className="justify-content-center align-items-start">
@@ -23,7 +39,7 @@ function GettingStarted({ data }) {
             should help you to get started and set yourself up for success.
           </p>
           <p>
-            To get started with your first contribution, you'll also find{" "}
+            To get started with your first contribution, you will also find{" "}
             <Link className="text-success" to="#ongoing-projects">
               Ongoing Projects
             </Link>
@@ -282,7 +298,7 @@ function GettingStarted({ data }) {
           <Col md="10" className="text-justify">
             <p>
               While you are free to roam our codebase and contribute in any area
-              you'd like, below are some tasks and projects that we encourage
+              you would like, below are some tasks and projects that we encourage
               you to consider. Their scope and feasibility are potentially more
               realistic than a goal you might set for yourself without knowing
               the depths and intricacies of our codebase.
@@ -301,7 +317,7 @@ function GettingStarted({ data }) {
                   >
                     Discord
                   </a>{" "}
-                  if you'd like to join one of them. You can also propose your
+                  if you would like to join one of them. You can also propose your
                   own project ideas.
                 </p>
               </Col>

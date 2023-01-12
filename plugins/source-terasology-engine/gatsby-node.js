@@ -80,10 +80,7 @@ exports.sourceNodes = async (
     await cache.set(dataKey, JSON.stringify(engine));
     await cache.set(lastFetchedKey, now.toISO());
 
-    fs.writeFileSync(
-      `${__dirname}/data.json`,
-      JSON.stringify(engine, null, 2)
-    );
+    fs.writeFileSync(`${__dirname}/data.json`, JSON.stringify(engine, null, 2));
   }
 
   reporter.success(`[${PLUGIN_NAME}] Loaded Terasology engine info.`);
@@ -103,4 +100,4 @@ exports.sourceNodes = async (
   createNode(node);
 
   reporter.success(`[${PLUGIN_NAME}] Created node for Terasology engine.`);
-}
+};

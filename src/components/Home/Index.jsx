@@ -135,7 +135,7 @@ function Index() {
               bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
             >
               <p>
-                The project was founded in 2011 by {`Benjamin "Begla" Glatzel`}
+                The project was founded in 2011 by {`Benjamin "Begla" Glatzel `}
                 while researching procedural terrain generation and effective
                 rendering techniques. He succeeded in creating a minecraft-like
                 demo engine, the foundation stone for what Terasology is today.

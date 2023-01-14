@@ -33,8 +33,11 @@ function GettingStarted({ data }) {
               Workspace Setup
             </Link>
             {` and `}
-            <Link className="text-success" to="#engine-modules">
-              {`Terasology's Engine & Module Land`}
+            <Link
+              className="text-success"
+              to="#terasology-engine-and-module-land"
+            >
+              Terasology Engine & Module Land
             </Link>{" "}
             should help you to get started and set yourself up for success.
           </p>
@@ -289,7 +292,7 @@ function GettingStarted({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section tag="h3" title="Ongoing Projects">
+      <Section tag="h3" title="Tasks & Projects">
         <Row className="justify-content-center align-items-start">
           <Col md="10" className="text-justify">
             <p>

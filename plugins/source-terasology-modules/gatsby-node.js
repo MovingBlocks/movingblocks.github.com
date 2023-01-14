@@ -29,6 +29,23 @@ query Modules($cursor:String) {
             text
           }
         }
+
+        issues(first: 25, filterBy: {labels: "Good First Issue", states: OPEN}) {
+          nodes {
+            id
+            title
+            author {
+              login
+            }
+            labels(first: 10) {
+              nodes {
+                name
+              }
+            }
+            updatedAt
+            url
+          }
+        }
       }
       pageInfo {
         hasNextPage
@@ -167,6 +184,7 @@ exports.sourceNodes = async (
       openGraphImageUrl: undefined,
       cover,
       moduleTxt: moduleInfo,
+      issues: repo.issues,
       id: createNodeId(`TerasologyModule-${repo.id}`),
       parent: "__SOURCE__",
       children: [],

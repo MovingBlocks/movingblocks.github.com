@@ -84,6 +84,17 @@ function Header() {
                 <DropdownItem>
                   <NavLink>
                     <Link
+                      to="/contribute"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Getting Started
+                    </Link>
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink>
+                    <Link
                       to="/programs"
                       className="text-color"
                       activeClassName="active"

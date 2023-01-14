@@ -125,10 +125,7 @@ function GettingStarted() {
           </Col>
         </Row>
       </Section>
-      <Section
-        tag="h3"
-        title="Terasology Engine & Module Land"
-      >
+      <Section tag="h3" title="Terasology Engine & Module Land">
         <Row className="justify-content-center align-items-start">
           <Col md="8" className="text-justify">
             <p>

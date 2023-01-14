@@ -13,7 +13,7 @@ function GettingStarted() {
           <p>
             All beginnings are difficult, but the below mentioned learning
             resources for{" "}
-            <Link className="text-success" to="#setup">
+            <Link className="text-success" to="#terasology-workspace-setup">
               Workspace Setup
             </Link>
             {` and `}
@@ -35,7 +35,7 @@ function GettingStarted() {
           </p>
         </Col>
       </Row>
-      <Section tag="h3" id="setup" title="Terasology Workspace Setup">
+      <Section tag="h3" title="Terasology Workspace Setup">
         <Row className="justify-content-center align-items-start">
           <Col md="7" className="text-justify">
             <p>
@@ -125,11 +125,7 @@ function GettingStarted() {
           </Col>
         </Row>
       </Section>
-      <Section
-        tag="h3"
-        id="engine-modules"
-        title="Terasology's Engine & Module Land"
-      >
+      <Section tag="h3" title="Terasology Engine & Module Land">
         <Row className="justify-content-center align-items-start">
           <Col md="8" className="text-justify">
             <p>

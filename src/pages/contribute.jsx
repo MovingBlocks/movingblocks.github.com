@@ -29,7 +29,7 @@ function GettingStarted({ data }) {
           <p>
             All beginnings are difficult, but the below mentioned learning
             resources for{" "}
-            <Link className="text-success" to="#setup">
+            <Link className="text-success" to="#terasology-workspace-setup">
               Workspace Setup
             </Link>
             {` and `}
@@ -58,7 +58,7 @@ function GettingStarted({ data }) {
           </p>
         </Col>
       </Row>
-      <Section tag="h3" id="setup" title="Terasology Workspace Setup">
+      <Section tag="h3" title="Terasology Workspace Setup">
         <Row className="justify-content-center align-items-start">
           <Col md="7" className="text-justify">
             <p>
@@ -148,11 +148,7 @@ function GettingStarted({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section
-        tag="h3"
-        id="engine-modules"
-        title="Terasology's Engine & Module Land"
-      >
+      <Section tag="h3" title="Terasology Engine & Module Land">
         <Row className="justify-content-center align-items-start">
           <Col md="8" className="text-justify">
             <p>
@@ -293,7 +289,7 @@ function GettingStarted({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section tag="h3" title="Projects">
+      <Section tag="h3" title="Ongoing Projects">
         <Row className="justify-content-center align-items-start">
           <Col md="10" className="text-justify">
             <p>
@@ -332,7 +328,7 @@ function GettingStarted({ data }) {
 export default GettingStarted;
 
 export const pageQuery = graphql`
-  query projectQuery {
+  query pageQuery {
     ongoingProjects: allTrelloCard(
       filter: { list_id: { eq: "60ddd7cf64da4b3ee8c5a2e9" } }
       sort: { index: ASC }

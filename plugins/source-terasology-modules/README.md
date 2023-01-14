@@ -57,6 +57,23 @@ query Modules {
       readme {
         text
       }
+
+      issues {
+        nodes {
+          id
+          title
+          author {
+            login
+          }
+          labels {
+            nodes {
+              name
+            }
+          }
+          updatedAt
+          url
+        }
+      }
     }
   }
 }

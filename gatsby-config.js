@@ -95,6 +95,12 @@ module.exports = {
       },
     },
     {
+      resolve: "source-terasology-engine",
+      options: {
+        accessToken: process.env.GITHUB_TOKEN,
+      },
+    },
+    {
       resolve: "gatsby-plugin-nprogress",
       options: {
         color: config.themeColor,

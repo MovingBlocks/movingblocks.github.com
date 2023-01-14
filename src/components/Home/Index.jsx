@@ -146,8 +146,8 @@ function Index() {
               <p>
                 If you are interested in game engine development, come check out
                 our{" "}
-                <Link to="/contribute#engine" className="link-about">
-                  Terasology Engine Contributor Quickstart
+                <Link to="/contribute#terasology-engine-and-module-land" className="link-about">
+                  Terasology Engine & Module Land
                 </Link>
                 .
               </p>
@@ -181,8 +181,8 @@ function Index() {
               <p>
                 If you are interested in gameplay development, come check out
                 our{" "}
-                <Link to="/contribute#modules" className="link-about">
-                  Terasology Module Contributor Quickstart
+                <Link to="/contribute#terasology-engine-and-module-land" className="link-about">
+                  Terasology Engine & Module Land
                 </Link>
                 .
               </p>

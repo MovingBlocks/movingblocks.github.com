@@ -70,9 +70,7 @@ function Index() {
             in 2011. Over the years it has been a playground for different kinds
             of technical experiments and proof of concepts. The community
             strives to make Terasology a stable platform for various types of
-            gameplay settings in a voxel world. The contributors are a diverse
-            mix of software developers, designers, game testers, graphic
-            artists, and musicians.
+            gameplay settings in a voxel world.
           </p>
           <Col className="my-5 justify-content-around">
             <Button type="button" color="primary" size="lg">

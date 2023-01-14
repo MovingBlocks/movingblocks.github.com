@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button } from "reactstrap";
 import { Link, graphql, useStaticQuery, withPrefix } from "gatsby";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaRegArrowAltCircleRight, FaDiscord } from "react-icons/fa";
 import Section from "../Section";
 import PostListing from "../PostListing/PostListing";
 import HighlightBox from "./HighlightBox";
@@ -65,7 +65,7 @@ function Index() {
           <p className="p-title">
             An open source voxel world - imagine the possibilities!
           </p>
-          <p className="p-description">
+          <p className="p-description text-justify">
             The Terasology project was born from a Minecraft-inspired tech demo
             in 2011. Over the years it has been a playground for different kinds
             of technical experiments and proof of concepts. The community
@@ -83,7 +83,7 @@ function Index() {
                 to="https://discordapp.com/invite/Terasology"
                 className="link-about"
               >
-                Come join us!
+                Join our Discord <FaDiscord />
               </Link>
             </Button>
           </Col>

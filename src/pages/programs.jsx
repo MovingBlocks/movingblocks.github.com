@@ -49,7 +49,7 @@ function ContributorPrograms({ data }) {
   });
 
   return (
-    <Layout title="Contributor Programs & Projects">
+    <Layout title="Contributor Programs">
       <Section tag="h3" title="GSoC & TSoC">
         <Row className="justify-content-center align-items-start">
           <Col md="5" className="text-justify student-programs-content">
@@ -87,7 +87,7 @@ function ContributorPrograms({ data }) {
         </Row>
       </Section>
       {availableProjects.length !== 0 ? (
-        <Section tag="h3" title="Available Projects">
+        <Section tag="h3" title="Available Topics">
           <PostListing postList={availableProjects} />
         </Section>
       ) : null}
@@ -186,8 +186,6 @@ export const pageQuery = graphql`
 
 export function Head({ data }) {
   return (
-    <SEO
-      title={`Contributor Programs & Projects | ${data.site.siteMetadata.title}`}
-    />
+    <SEO title={`Contributor Programs | ${data.site.siteMetadata.title}`} />
   );
 }

@@ -42,11 +42,12 @@ function GettingStarted({ data }) {
             should help you to get started and set yourself up for success.
           </p>
           <p>
-            To get started with your first contribution, you will also find{" "}
-            <Link className="text-success" to="#ongoing-projects">
-              Ongoing Projects
+            To get started with your first contribution, you will also find our
+            current{" "}
+            <Link className="text-success" to="#hot-topics">
+              Hot Topics
             </Link>
-            {` to join.`}
+            {` below that you can consider joining.`}
           </p>
           <p>
             Make sure to also join our{" "}
@@ -292,24 +293,25 @@ function GettingStarted({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section tag="h3" title="Tasks & Projects">
+      <Section tag="h3" title="Tasks & Topics">
         <Row className="justify-content-center align-items-start">
           <Col md="10" className="text-justify">
             <p>
               While you are free to roam our codebase and contribute in any area
-              you would like, below are some tasks and projects that we
-              encourage you to consider. Their scope and feasibility are
-              potentially more realistic than a goal you might set for yourself
-              without knowing the depths and intricacies of our codebase.
+              you would like, below are some tasks and topics that we encourage
+              you to consider. Their scope and feasibility are potentially more
+              realistic than a goal you might set for yourself without knowing
+              the depths and intricacies of our codebase.
             </p>
           </Col>
         </Row>
         {ongoingProjects.length !== 0 ? (
-          <Section tag="h4" title="Ongoing Projects">
+          <Section tag="h4" title="Hot Topics">
             <Row className="justify-content-center align-items-start">
               <Col md="8" className="text-justify">
                 <p>
-                  Find our ongoing projects below. Come talk to us on our{" "}
+                  Find our currently ongoing efforts below. Come talk to us on
+                  our{" "}
                   <a
                     className="text-success font-weight-bold"
                     href="https://discordapp.com/invite/Terasology"

@@ -1,7 +1,7 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Button } from "reactstrap";
 import { Link, graphql, useStaticQuery, withPrefix } from "gatsby";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaRegArrowAltCircleRight, FaDiscord } from "react-icons/fa";
 import Section from "../Section";
 import PostListing from "../PostListing/PostListing";
 import HighlightBox from "./HighlightBox";
@@ -65,23 +65,28 @@ function Index() {
           <p className="p-title">
             An open source voxel world - imagine the possibilities!
           </p>
-          <p className="p-description">
+          <p className="p-description text-justify">
             The Terasology project was born from a Minecraft-inspired tech demo
-            and is becoming a stable platform for various types of gameplay
-            settings in a voxel world. The creators and maintainers are a
-            diverse mix of software developers, designers, game testers, graphic
-            artists, and musicians. We encourage others to join!
+            in 2011. Over the years it has been a playground for different kinds
+            of technical experiments and proof of concepts. The community
+            strives to make Terasology a stable platform for various types of
+            gameplay settings in a voxel world.
           </p>
-          <div className="my-5">
-            <button
-              type="button"
-              className="font-weight-bold btn btn-lg btn-success home-btn"
-            >
+          <Col className="my-5 justify-content-around">
+            <Button type="button" color="primary" size="lg">
               <Link to="#about-us" className="link-about">
-                Learn More
+                Learn more
               </Link>
-            </button>
-          </div>
+            </Button>
+            <Button type="button" color="primary" size="lg">
+              <Link
+                to="https://discordapp.com/invite/Terasology"
+                className="link-about"
+              >
+                Join our Discord <FaDiscord />
+              </Link>
+            </Button>
+          </Col>
         </Col>
         <Col md="6">
           <div className="index">
@@ -128,70 +133,94 @@ function Index() {
               bgImage={withPrefix("/images/Light_at_the_End_of_the_Tunnel.jpg")}
             >
               <p>
-                Founded in 2011 by {`Benjamin "Begla" Glatzel`} while
-                researching procedural terrain generation and effective
-                rendering techniques, He succeded in creating a minecraft like
-                demo From the ground up, Terasology was built to be a super
-                hackable and modular game. We host a large number of modules
-                under the Terasology organization and many more which are
-                maintained by individual enthusiasts. We welcome new ideas, both
-                crazy and well thought-out for modules and game extensions from
-                anyone and everyone, so feel free to talk to us on our{" "}
-                <a
-                  className="text-white font-weight-bold"
-                  href="https://discordapp.com/invite/Terasology"
+                The project was founded in 2011 by {`Benjamin "Begla" Glatzel `}
+                while researching procedural terrain generation and effective
+                rendering techniques. He succeeded in creating a minecraft-like
+                demo engine, the foundation stone for what Terasology is today.
+              </p>
+              <p>
+                We are always on the lookout for contributors with expertise in
+                rendering, networking and concurrency, as well as in-game
+                physics and AI technology.
+              </p>
+              <p>
+                If you are interested in game engine development, come check out
+                our{" "}
+                <Link
+                  to="/contribute#terasology-engine-and-module-land"
+                  className="link-about"
                 >
-                  Discord
-                </a>
+                  Terasology Engine & Module Land
+                </Link>
                 .
               </p>
             </HighlightBox>
           </Col>
           <Col md="12">
             <HighlightBox
-              title="Modding API"
+              title="Modules & Gameplays"
               bgImage={withPrefix("/images/Quiet_Village.jpg")}
               align="end"
             >
               <p>
-                {`Terasology's`} engine uses a whitelisting approach to expose
-                an API for modules using two primary methods and a rarely needed
-                third one:
+                From the ground up, Terasology was built to be very modular and
+                support different kinds of gameplay ideas. We still host a large
+                number of modules under the {`"Terasology" `}GitHub organization
+                providing basic and advanced gameplay content as well as world
+                generation options and technical libraries.
               </p>
-              <ul className="text-left">
-                <li>Classes or packages marked with the @API annotation</li>
-                <li>
-                  Classes or packages in the basic whitelist defined in
-                  ExternalApiWhitelist.java
-                </li>
-                <li>
-                  Rarely blocks of code in the engine may be hit in a way
-                  requiring use of AccessController.doPrivileged(...) usually
-                  module authors do not need to worry about this but once in a
-                  while it could explain something quirky
-                </li>
-              </ul>
+              <p>
+                Combining these modules allows to create very different kinds of
+                gameplay in our voxel worlds. The possibilities are manifold and
+                range from crafting- or trading-oriented survival over
+                capture-the-flag to puzzle-style experiences and tower defenses.
+              </p>
+              <p>
+                We especially appreciate expertise or interest in UI/UX, world
+                generation or well-thought out gameplay mechanics, but also
+                always have an open ear for crazy ideas for existing or new
+                modules and gameplay content.
+              </p>
+              <p>
+                If you are interested in gameplay development, come check out
+                our{" "}
+                <Link
+                  to="/contribute#terasology-engine-and-module-land"
+                  className="link-about"
+                >
+                  Terasology Engine & Module Land
+                </Link>
+                .
+              </p>
             </HighlightBox>
           </Col>
           <Col md="12">
             <HighlightBox
               title="Community"
-              bgImage={withPrefix("/images/Colored_Torches.jpg")}
+              bgImage={withPrefix("/images/Flowing_Water.jpg")}
             >
               <p>
-                The creators and maintainers are a diverse mix of software
+                The Terasology community is a diverse mix of software
                 developers, designers, game testers, graphic artists, musicians
-                and open source loving high schoolers. We encourage and
-                appreciate contributions from everybody, and try to be as warm
-                and welcoming as possible to newcomers. If you have any
-                questions or if you just want to chat use this invite link for
-                our{" "}
-                <a
-                  className="text-white font-weight-bolder"
-                  href="https://discordapp.com/invite/Terasology"
+                and other open source loving {`"Gooeys"`}. We value a positive,
+                inclusive and respectful environment without harassment, attacks
+                or inappropriate activities of any form.
+              </p>
+              <p>
+                We encourage and appreciate contributions from everybody, and
+                try to accept constructive criticism even by newcomers as
+                gracefully and warmly as possible. and welcoming as possible to
+                newcomers.
+              </p>
+              <p>
+                If you want to talk to us or be the next in our group of Gooeys,
+                come join us on our{" "}
+                <Link
+                  to="https://discordapp.com/invite/Terasology"
+                  className="link-about"
                 >
-                  Discord
-                </a>
+                  Terasology Discord
+                </Link>
                 .
               </p>
             </HighlightBox>

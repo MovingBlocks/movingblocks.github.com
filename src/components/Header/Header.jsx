@@ -71,7 +71,7 @@ function Header() {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
-                <NavLink>
+                  <NavLink>
                     <Link
                       to="/modules/a"
                       className="text-color"
@@ -82,7 +82,7 @@ function Header() {
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                <NavLink>
+                  <NavLink>
                     <Link
                       to="/modules/search"
                       className="text-color"

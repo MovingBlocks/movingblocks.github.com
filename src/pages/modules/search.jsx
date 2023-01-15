@@ -82,18 +82,24 @@ function Search({ data, searchParams: initialSearchParams }) {
   const [searchParams, setSearchParams] = useState(initialSearchParams);
   const [searchDirty, setSearchDirty] = useState(true);
   const [filteredModules, setFilteredModules] = useState(allModules);
+  const [noResults, setNoResults] = useState(
+    "Filter by tags or type a search term to show matching modules."
+  );
 
-  const updateSearchParams = useCallback((params) => {
-    setSearchParams(params);
-    setSearchDirty(true);
-  }, [setSearchParams, setSearchDirty]);
+  const updateSearchParams = useCallback(
+    (params) => {
+      setSearchParams(params);
+      setSearchDirty(true);
+    },
+    [setSearchParams, setSearchDirty]
+  );
 
   useEffect(() => {
     if (searchDirty) {
       const tags = searchParams.getAll("tag").filter((x) => x);
       const term = searchParams.get("term") || "";
       // filter based on searched term
-      const searchResults = term ? search(term) : allModules;
+      const searchResults = term ? search(term) : [];
       // filter based on tags
       const result = searchResults.filter((m) =>
         tags.every((t) => m.moduleTxt.tags.includes(t))
@@ -103,6 +109,18 @@ function Search({ data, searchParams: initialSearchParams }) {
       navigate(`?${searchParams.toString()}`);
     }
   }, [searchDirty, searchParams, allModules, search]);
+
+  useEffect(() => {
+    if (!searchParams.get("term")) {
+      setNoResults(
+        "Filter by tags or type a search term to show matching modules."
+      );
+    } else if (filteredModules.length) {
+      setNoResults("");
+    } else {
+      setNoResults("No modules found matching the search criteria.");
+    }
+  }, [searchParams, filteredModules]);
 
   // "Load More" functionality based on https://www.erichowey.dev/writing/load-more-button-and-infinite-scroll-in-gatsby/
   const [modules, setModules] = useState(
@@ -148,6 +166,11 @@ function Search({ data, searchParams: initialSearchParams }) {
         <Row className="justify-content-center">
           <ModuleListing defaultCover={data.defaultCover} modules={modules} />
         </Row>
+        {noResults ? (
+          <Row className="justify-content-center">
+            <p>{noResults}</p>
+          </Row>
+        ) : null}
         {hasMore ? (
           <Row className="justify-content-center">
             <Button onClick={() => setLoadMore(true)}>Load More</Button>

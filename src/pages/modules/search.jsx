@@ -80,7 +80,6 @@ function Search({ data, pageContext, searchParams: initialSearchParams }) {
   const { search } = useJsSearch(allModules);
 
   const [searchParams, setSearchParams] = useState(initialSearchParams);
-  // TODO: check whether we need this dirty flag (infinite rendering loops?)
   const [searchDirty, setSearchDirty] = useState(true);
   const [filteredModules, setFilteredModules] = useState(allModules);
 

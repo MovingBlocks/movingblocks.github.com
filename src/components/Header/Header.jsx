@@ -65,17 +65,35 @@ function Header() {
                 </Link>
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link
-                  to="/modules"
-                  className="text-color"
-                  activeClassName="active"
-                >
-                  Modules
-                </Link>
-              </NavLink>
-            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret className="text-color">
+                <span className="text-color">Modules</span>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>
+                <NavLink>
+                    <Link
+                      to="/modules/a"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Browse all
+                    </Link>
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                <NavLink>
+                    <Link
+                      to="/modules/search"
+                      className="text-color"
+                      activeClassName="active"
+                    >
+                      Search
+                    </Link>
+                  </NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret className="text-color">
                 <span className="text-color">Contribute</span>

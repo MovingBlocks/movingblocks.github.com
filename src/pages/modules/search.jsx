@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { graphql, navigate } from "gatsby";
-import { Button, Col, Row, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
+import Select from "react-select";
 import SEO from "../../components/SEO/SEO";
 import Layout from "../../layout";
 import ModuleListing from "../../components/modules/ModuleListing";
 import withLocation from "../../components/common/withLocation";
 import useJsSearch from "../../components/modules/useJsSearch";
-import Select from "react-select";
 
 // TODO: factor this out into it's own component in components/modules.
 function SearchForm({ searchParams, allTags, setSearchParams }) {
@@ -67,7 +67,7 @@ export function Head({ data: { site } }) {
   return <SEO title={`Modules | ${site.metadata.title}`} />;
 }
 
-function Search({ data, pageContext, searchParams: initialSearchParams }) {
+function Search({ data, searchParams: initialSearchParams }) {
   const MODULES_PER_PAGE = 9;
 
   const allModules = data.modules.nodes;
@@ -83,10 +83,10 @@ function Search({ data, pageContext, searchParams: initialSearchParams }) {
   const [searchDirty, setSearchDirty] = useState(true);
   const [filteredModules, setFilteredModules] = useState(allModules);
 
-  function updateSearchParams(params) {
+  const updateSearchParams = useCallback((params) => {
     setSearchParams(params);
     setSearchDirty(true);
-  }
+  }, [setSearchParams, setSearchDirty]);
 
   useEffect(() => {
     if (searchDirty) {
@@ -102,7 +102,7 @@ function Search({ data, pageContext, searchParams: initialSearchParams }) {
       setSearchDirty(false);
       navigate(`?${searchParams.toString()}`);
     }
-  }, [searchDirty, searchParams]);
+  }, [searchDirty, searchParams, allModules, search]);
 
   // "Load More" functionality based on https://www.erichowey.dev/writing/load-more-button-and-infinite-scroll-in-gatsby/
   const [modules, setModules] = useState(
@@ -126,7 +126,7 @@ function Search({ data, pageContext, searchParams: initialSearchParams }) {
       setModules(nextModules);
     }
     setLoadMore(false);
-  }, [loadMore, hasMore]);
+  }, [loadMore, hasMore, filteredModules, modules.length]);
 
   // compute whether there are more results to show whenever the list of results changes
   useEffect(() => {

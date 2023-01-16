@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { graphql, Link } from "gatsby";
 import {
   Row,
@@ -10,12 +10,13 @@ import {
   CardTitle,
 } from "reactstrap";
 import moment from "moment";
+import { IconContext } from "react-icons";
+import { FaGithub } from "react-icons/fa";
 import PostListing from "../components/PostListing/PostListing";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 import Tags from "../components/common/Tags";
-import gitHubLogo from "../../static/logos/github.svg";
 
 function GettingStarted({ data }) {
   function toCardData(project, defaultCover) {
@@ -45,6 +46,7 @@ function GettingStarted({ data }) {
       new Date(a.date).getTime() <= new Date(b.date).getTime() ? 1 : 0
     );
 
+  const githubIconSize = useMemo(() => ({ size: "4em" }), []);
   return (
     <Layout title="Getting Contributors Started">
       <Row className="justify-content-center align-items-start">
@@ -389,11 +391,11 @@ function GettingStarted({ data }) {
                   >
                     <Row className="justify-content-start align-items-center">
                       <Col md="1" className="ml-5 pt-0 pb-2">
-                        <img
-                          src={gitHubLogo}
-                          className="img-fluid rounded-start"
-                          alt="Visit on GitHub"
-                        />
+                        <div>
+                          <IconContext.Provider value={githubIconSize}>
+                            <FaGithub />
+                          </IconContext.Provider>
+                        </div>
                       </Col>
                       <Col md="10" className="pt-0 pb-2">
                         <CardBody>

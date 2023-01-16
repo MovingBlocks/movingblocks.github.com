@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, useMemo } from "gatsby";
 import {
   Row,
   Col,
@@ -57,6 +57,7 @@ function GettingStarted({ data }) {
       new Date(a.date).getTime() <= new Date(b.date).getTime() ? 1 : 0
     );
 
+  const githubIconSize = useMemo(() => ({ size: "4em" }), []);
   return (
     <Layout title="Getting Contributors Started">
       <Row className="justify-content-center align-items-start">
@@ -417,7 +418,7 @@ function GettingStarted({ data }) {
                           className="ml-5 pt-0 pb-2 d-none d-md-block"
                         >
                           <div>
-                            <IconContext.Provider value={{ size: "4em" }}>
+                            <IconContext.Provider value={githubIconSize}>
                               <FaGithub />
                             </IconContext.Provider>
                           </div>

@@ -19,7 +19,6 @@ import gitHubLogo from "../../static/logos/github.svg";
 
 function GettingStarted({ data }) {
   function toCardData(project, defaultCover) {
-    console.log(project);
     const { id, name: title, labels, childMarkdownRemark } = project;
     const { excerpt } = childMarkdownRemark;
     const posttype = "project";
@@ -53,21 +52,25 @@ function GettingStarted({ data }) {
           <p>
             All beginnings are difficult, but the below mentioned learning
             resources for{" "}
-            <Link className="text-success" to="#setup">
+            <Link className="text-success" to="#terasology-workspace-setup">
               Workspace Setup
             </Link>
             {` and `}
-            <Link className="text-success" to="#engine-modules">
-              {`Terasology's Engine & Module Land`}
+            <Link
+              className="text-success"
+              to="#terasology-engine-and-module-land"
+            >
+              Terasology Engine & Module Land
             </Link>{" "}
             should help you to get started and set yourself up for success.
           </p>
           <p>
-            To get started with your first contribution, you will also find{" "}
-            <Link className="text-success" to="#ongoing-projects">
-              Ongoing Projects
+            To get started with your first contribution, you will also find our
+            current{" "}
+            <Link className="text-success" to="#hot-topics">
+              Hot Topics
             </Link>
-            {` to join.`}
+            {` below that you can consider joining.`}
           </p>
           <p>
             Make sure to also join our{" "}
@@ -82,7 +85,7 @@ function GettingStarted({ data }) {
           </p>
         </Col>
       </Row>
-      <Section tag="h3" id="setup" title="Terasology Workspace Setup">
+      <Section tag="h3" title="Terasology Workspace Setup">
         <Row className="justify-content-center align-items-start">
           <Col md="7" className="text-justify">
             <p>
@@ -172,11 +175,7 @@ function GettingStarted({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section
-        tag="h3"
-        id="engine-modules"
-        title="Terasology's Engine & Module Land"
-      >
+      <Section tag="h3" title="Terasology Engine & Module Land">
         <Row className="justify-content-center align-items-start">
           <Col md="8" className="text-justify">
             <p>
@@ -324,24 +323,25 @@ function GettingStarted({ data }) {
           </Col>
         </Row>
       </Section>
-      <Section tag="h3" title="Projects">
+      <Section tag="h3" title="Tasks & Topics">
         <Row className="justify-content-center align-items-start">
-          <Col md="10" className="text-justify">
+          <Col md="8" className="text-justify">
             <p>
               While you are free to roam our codebase and contribute in any area
-              you would like, below are some tasks and projects that we
-              encourage you to consider. Their scope and feasibility are
-              potentially more realistic than a goal you might set for yourself
-              without knowing the depths and intricacies of our codebase.
+              you would like, below are some tasks and topics that we encourage
+              you to consider. Their scope and feasibility are potentially more
+              realistic than a goal you might set for yourself without knowing
+              the depths and intricacies of our codebase.
             </p>
           </Col>
         </Row>
         {ongoingProjects.length !== 0 ? (
-          <Section tag="h4" title="Ongoing Projects">
+          <Section tag="h4" title="Hot Topics">
             <Row className="justify-content-center align-items-start">
               <Col md="8" className="text-justify">
                 <p>
-                  Find our ongoing projects below. Come talk to us on our{" "}
+                  Find our currently ongoing efforts below. Come talk to us on
+                  our{" "}
                   <a
                     className="text-success font-weight-bold"
                     href="https://discordapp.com/invite/Terasology"
@@ -438,7 +438,7 @@ function GettingStarted({ data }) {
 export default GettingStarted;
 
 export const pageQuery = graphql`
-  query projectQuery {
+  query pageQuery {
     ongoingProjects: allTrelloCard(
       filter: { list_id: { eq: "60ddd7cf64da4b3ee8c5a2e9" } }
       sort: { index: ASC }

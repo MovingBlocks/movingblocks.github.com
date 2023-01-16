@@ -278,7 +278,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return index;
   }
 
-  const blogIndex = await buildBlogSearchIndex();  
+  const blogIndex = await buildBlogSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");

@@ -10,12 +10,13 @@ import {
   CardTitle,
 } from "reactstrap";
 import moment from "moment";
+import { IconContext } from "react-icons";
+import { FaGithub } from "react-icons/fa";
 import PostListing from "../components/PostListing/PostListing";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 import Tags from "../components/common/Tags";
-import gitHubLogo from "../../static/logos/github.svg";
 
 function GettingStarted({ data }) {
   function toCardData(project, defaultCover) {
@@ -411,12 +412,12 @@ function GettingStarted({ data }) {
                       rel="noreferrer"
                     >
                       <Row className="justify-content-start align-items-center">
-                        <Col md="1" className="ml-5 pt-0 pb-2">
-                          <img
-                            src={gitHubLogo}
-                            className="img-fluid rounded-start"
-                            alt="Visit on GitHub"
-                          />
+                        <Col md="1" className="ml-5 pt-0 pb-2 d-none d-md-block">
+                          <div>
+                            <IconContext.Provider value={{ size: "4em" }}>
+                              <FaGithub />
+                            </IconContext.Provider>
+                          </div>
                         </Col>
                         <Col md="10" className="pt-0 pb-2">
                           <CardBody>

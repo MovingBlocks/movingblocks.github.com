@@ -278,55 +278,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return index;
   }
 
-  async function buildModulesSearchIndex() {
-    const result = await graphql(
-      `
-        {
-          allMarkdownRemark(
-            filter: { frontmatter: { posttype: { eq: "module" } } }
-            sort: { frontmatter: { title: ASC } }
-          ) {
-            edges {
-              node {
-                excerpt
-                fields {
-                  slug
-                }
-                frontmatter {
-                  tags
-                  title
-                  cover {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `
-    );
-    const index = result.data.allMarkdownRemark.edges.map((edge) => {
-      const { excerpt, fields, frontmatter } = edge.node;
-      const { slug } = fields;
-      const { tags, title, cover } = frontmatter;
-
-      return {
-        excerpt,
-        path: `/modules${slug}`,
-        tags,
-        title,
-        cover,
-        posttype: "module",
-      };
-    });
-
-    return index;
-  }
-
-  const blogIndex = await buildBlogSearchIndex();
-  const moduleIndex = await buildModulesSearchIndex();
+  const blogIndex = await buildBlogSearchIndex();  
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");
@@ -335,9 +287,5 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   fs.writeFileSync(
     "./src/generated/blog-result.json",
     JSON.stringify(blogIndex, null, 2)
-  );
-  fs.writeFileSync(
-    "./src/generated/module-result.json",
-    JSON.stringify(moduleIndex, null, 2)
   );
 };

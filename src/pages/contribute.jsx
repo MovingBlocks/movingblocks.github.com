@@ -1,5 +1,5 @@
-import React from "react";
-import { graphql, Link, useMemo } from "gatsby";
+import React, { useMemo } from "react";
+import { graphql, Link } from "gatsby";
 import {
   Row,
   Col,

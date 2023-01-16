@@ -1,11 +1,63 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { graphql, Link } from "gatsby";
-import { Row, Col } from "reactstrap";
+import {
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardHeader,
+  CardSubtitle,
+  CardTitle,
+} from "reactstrap";
+import moment from "moment";
+import { IconContext } from "react-icons";
+import { FaGithub } from "react-icons/fa";
+import PostListing from "../components/PostListing/PostListing";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
+import Tags from "../components/common/Tags";
 
-function GettingStarted() {
+function GettingStarted({ data }) {
+  function toCardData(project, defaultCover) {
+    const { id, name: title, labels, childMarkdownRemark } = project;
+    const { excerpt } = childMarkdownRemark;
+    const posttype = "project";
+    const tags = labels.map((l) => l.name);
+    const cover = defaultCover;
+    return { posttype, title, path: `/projects/${id}`, excerpt, tags, cover };
+  }
+
+  const defaultCover = data.projectCover;
+  const ongoingProjects = data.ongoingProjects.nodes.map((project) =>
+    toCardData(project, defaultCover)
+  );
+
+  const moduleIssues = data.moduleIssues.nodes
+    .filter((module) => module.issues.nodes.length !== 0)
+    .flatMap((module) => {
+      const { name, url: moduleUrl, issues } = module;
+      return issues.nodes.map((issue) => {
+        const { title, author, labels, updatedAt, url } = issue;
+        const { login } = author;
+        const { nodes } = labels;
+        const tags = nodes.flatMap((node) => node.name);
+        return {
+          module: name,
+          moduleUrl,
+          title,
+          author: login,
+          tags,
+          date: updatedAt,
+          url,
+        };
+      });
+    })
+    .sort((a, b) =>
+      new Date(a.date).getTime() <= new Date(b.date).getTime() ? 1 : 0
+    );
+
+  const githubIconSize = useMemo(() => ({ size: "4em" }), []);
   return (
     <Layout title="Getting Contributors Started">
       <Row className="justify-content-center align-items-start">
@@ -17,10 +69,21 @@ function GettingStarted() {
               Workspace Setup
             </Link>
             {` and `}
-            <Link className="text-success" to="#engine-modules">
-              {`Terasology's Engine & Module Land`}
+            <Link
+              className="text-success"
+              to="#terasology-engine-and-module-land"
+            >
+              Terasology Engine & Module Land
             </Link>{" "}
             should help you to get started and set yourself up for success.
+          </p>
+          <p>
+            To get started with your first contribution, you will also find our
+            current{" "}
+            <Link className="text-success" to="#hot-topics">
+              Hot Topics
+            </Link>
+            {` below that you can consider joining.`}
           </p>
           <p>
             Make sure to also join our{" "}
@@ -208,6 +271,16 @@ function GettingStarted() {
                 </a>
               </li>
             </ul>
+            <p>
+              Jump below to our{" "}
+              <Link
+                to="#good-first-module-land-issues"
+                className="text-success"
+              >
+                <b>Good First Issues in Module Land</b>
+              </Link>
+              .
+            </p>
           </Col>
           <Col md="5" className="text-justify">
             <p>
@@ -266,13 +339,177 @@ function GettingStarted() {
           </Col>
         </Row>
       </Section>
+      <Section tag="h3" title="Tasks & Topics">
+        <Row className="justify-content-center align-items-start">
+          <Col md="8" className="text-justify">
+            <p>
+              While you are free to roam our codebase and contribute in any area
+              you would like, below are some tasks and topics that we encourage
+              you to consider. Their scope and feasibility are potentially more
+              realistic than a goal you might set for yourself without knowing
+              the depths and intricacies of our codebase.
+            </p>
+          </Col>
+        </Row>
+        {ongoingProjects.length !== 0 ? (
+          <Section tag="h4" title="Hot Topics">
+            <Row className="justify-content-center align-items-start">
+              <Col md="8" className="text-justify">
+                <p>
+                  Find our currently ongoing efforts below. Come talk to us on
+                  our{" "}
+                  <a
+                    className="text-success font-weight-bold"
+                    href="https://discordapp.com/invite/Terasology"
+                  >
+                    Discord
+                  </a>{" "}
+                  if you would like to join one of them. You can also propose
+                  your own project ideas.
+                </p>
+              </Col>
+            </Row>
+            <PostListing postList={ongoingProjects} />
+          </Section>
+        ) : null}
+        <Section tag="h4" title="Good First Module Land Issues">
+          <Row className="justify-content-center align-items-start">
+            <Col md="8" className="text-justify justify-content-center">
+              <p>
+                Find some of our module-land issues below. If you would like to
+                work on one of them, start a draft PR for it. You can also view
+                the full list on{" "}
+                <a
+                  className="text-success font-weight-bold"
+                  href="https://github.com/search?q=org%3ATerasology+label%3A%22Good+First+Issue%22+state%3Aopen&type=Issues&ref=advsearch&l=&l="
+                >
+                  GitHub
+                </a>
+                .
+              </p>
+            </Col>
+          </Row>
+          <Col lg="12" className="card-spacing">
+            {moduleIssues
+              .slice(0, 10)
+              .map(({ module, moduleUrl, title, tags, author, url, date }) => (
+                <Row className="justify-content-start align-items-start">
+                  <Card
+                    className="row_shadow h-100 md-12 my-3"
+                    style={{ width: "100%" }}
+                  >
+                    <a
+                      href={moduleUrl}
+                      className="btn-success"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <CardHeader>{module}</CardHeader>
+                    </a>
+                    <a
+                      href={url}
+                      className="btn-light"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Row className="justify-content-start align-items-center">
+                        <Col
+                          md="1"
+                          className="ml-5 pt-0 pb-2 d-none d-md-block"
+                        >
+                          <div>
+                            <IconContext.Provider value={githubIconSize}>
+                              <FaGithub />
+                            </IconContext.Provider>
+                          </div>
+                        </Col>
+                        <Col md="10" className="pt-0 pb-2">
+                          <CardBody>
+                            {tags ? (
+                              <CardSubtitle tag="h7">
+                                <Tags tags={tags} />
+                              </CardSubtitle>
+                            ) : (
+                              ""
+                            )}
+                            <CardTitle tag="h5" className="mt-3">
+                              {title}
+                            </CardTitle>
+                            {author ? (
+                              <CardSubtitle className="text-muted">
+                                <b>Author:</b> {author}
+                              </CardSubtitle>
+                            ) : (
+                              ""
+                            )}
+                            {date ? (
+                              <CardSubtitle className="text-muted">
+                                <b>Last updated on: </b>
+                                {moment(date).format("MMMM DD, YYYY")}
+                              </CardSubtitle>
+                            ) : (
+                              ""
+                            )}
+                          </CardBody>
+                        </Col>
+                      </Row>
+                    </a>
+                  </Card>
+                </Row>
+              ))}
+          </Col>
+        </Section>
+      </Section>
     </Layout>
   );
 }
 export default GettingStarted;
 
 export const pageQuery = graphql`
-  query siteQuery {
+  query pageQuery {
+    ongoingProjects: allTrelloCard(
+      filter: { list_id: { eq: "60ddd7cf64da4b3ee8c5a2e9" } }
+      sort: { index: ASC }
+    ) {
+      nodes {
+        id
+        list_id
+        name
+        labels {
+          name
+        }
+        childMarkdownRemark {
+          excerpt
+        }
+      }
+    }
+    moduleIssues: allTerasologyModule {
+      nodes {
+        name
+        url
+        issues {
+          nodes {
+            id
+            title
+            author {
+              login
+            }
+            labels {
+              nodes {
+                name
+              }
+            }
+            updatedAt
+            url
+          }
+        }
+      }
+    }
+    projectCover: file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
     site {
       siteMetadata {
         title

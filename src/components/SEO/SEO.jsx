@@ -1,6 +1,6 @@
 import React from "react";
 import urljoin from "url-join";
-import { useSiteMetadata } from "../../hooks/use-site-metadata";
+import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 
 function SEO({ title, description, pathname, children }) {
   const {

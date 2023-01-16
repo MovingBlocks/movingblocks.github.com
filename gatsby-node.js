@@ -142,52 +142,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
     });
-
-    const modulePageTemplate = path.resolve("src/templates/Module.jsx");
-    const moduleQueryResult = await graphql(
-      `
-        {
-          allMarkdownRemark(
-            filter: { frontmatter: { posttype: { eq: "module" } } }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-              }
-            }
-          }
-        }
-      `
-    );
-
-    const modules = moduleQueryResult.data.allMarkdownRemark.edges;
-    modules.forEach((edge) => {
-      createPage({
-        path: `/modules${edge.node.fields.slug}`,
-        component: modulePageTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-        },
-      });
-    });
-
-    const moduleListTemplate = path.resolve("./src/templates/ModuleList.jsx");
-    const modulesPerPage = 27;
-    const numModulePages = Math.ceil(modules.length / modulesPerPage);
-    Array.from({ length: numModulePages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/modules` : `/modules/${i + 1}`,
-        component: moduleListTemplate,
-        context: {
-          limit: modulesPerPage,
-          skip: i * modulesPerPage,
-          moduleNumPages: numModulePages,
-          moduleCurrentPage: i + 1,
-        },
-      });
-    });
   }
 
   async function createGalleryPages() {

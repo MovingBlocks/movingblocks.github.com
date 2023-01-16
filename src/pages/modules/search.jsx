@@ -98,12 +98,16 @@ function Search({ data, searchParams: initialSearchParams }) {
     if (searchDirty) {
       const tags = searchParams.getAll("tag").filter((x) => x);
       const term = searchParams.get("term") || "";
-      // filter based on searched term
-      const searchResults = term ? search(term) : [];
-      // filter based on tags
-      const result = searchResults.filter((m) =>
-        tags.every((t) => m.moduleTxt.tags.includes(t))
-      );
+      const hasSearchParams = term || tags.length > 0;
+      let result = [];
+      if (hasSearchParams) {
+        // filter based on searched term
+        const searchResults = term ? search(term) : allModules;
+        // filter based on tags
+        result = searchResults.filter((m) =>
+          tags.every((t) => m.moduleTxt.tags.includes(t))
+        );
+      }
       setFilteredModules(result);
       setSearchDirty(false);
       navigate(`?${searchParams.toString()}`);
@@ -111,7 +115,7 @@ function Search({ data, searchParams: initialSearchParams }) {
   }, [searchDirty, searchParams, allModules, search]);
 
   useEffect(() => {
-    if (!searchParams.get("term")) {
+    if (!searchParams.get("term") && !searchParams.get("tag")) {
       setNoResults(
         "Filter by tags or type a search term to show matching modules."
       );

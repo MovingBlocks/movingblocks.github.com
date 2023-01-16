@@ -601,8 +601,6 @@ export const pageQuery = graphql`
     }
     engineIssues: allTerasologyEngine {
       nodes {
-        name
-        url
         issues {
           nodes {
             id

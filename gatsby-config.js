@@ -58,13 +58,6 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "modules",
-        path: `${__dirname}/modules/`,
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
         name: "images",
         path: `${__dirname}/static/images`,
       },
@@ -90,6 +83,12 @@ module.exports = {
     },
     {
       resolve: "source-terasology-modules",
+      options: {
+        accessToken: process.env.GITHUB_TOKEN,
+      },
+    },
+    {
+      resolve: "source-terasology-engine",
       options: {
         accessToken: process.env.GITHUB_TOKEN,
       },

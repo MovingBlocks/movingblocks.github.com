@@ -54,41 +54,41 @@ function Header() {
                 </Link>
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link
+                  to="/gallery"
+                  className="text-color"
+                  activeClassName="active"
+                >
+                  Gallery
+                </Link>
+              </NavLink>
+            </NavItem>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                <span className="text-color">Terasology</span>
+              <DropdownToggle nav caret className="text-color">
+                <span className="text-color">Modules</span>
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/game"
+                      to="/modules/a"
                       className="text-color"
                       activeClassName="active"
                     >
-                      The Game
+                      Browse all
                     </Link>
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/gallery"
+                      to="/modules/search"
                       className="text-color"
                       activeClassName="active"
                     >
-                      Gallery
-                    </Link>
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink>
-                    <Link
-                      to="/modules"
-                      className="text-color"
-                      activeClassName="active"
-                    >
-                      Modules
+                      Search
                     </Link>
                   </NavLink>
                 </DropdownItem>
@@ -102,22 +102,22 @@ function Header() {
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/students"
+                      to="/contribute"
                       className="text-color"
                       activeClassName="active"
                     >
-                      Student Programs
+                      Getting Started
                     </Link>
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
                   <NavLink>
                     <Link
-                      to="/mentors"
+                      to="/programs"
                       className="text-color"
                       activeClassName="active"
                     >
-                      Mentors
+                      Contributor Programs
                     </Link>
                   </NavLink>
                 </DropdownItem>

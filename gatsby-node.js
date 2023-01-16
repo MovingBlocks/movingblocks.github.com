@@ -142,52 +142,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
     });
-
-    const modulePageTemplate = path.resolve("src/templates/Module.jsx");
-    const moduleQueryResult = await graphql(
-      `
-        {
-          allMarkdownRemark(
-            filter: { frontmatter: { posttype: { eq: "module" } } }
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-              }
-            }
-          }
-        }
-      `
-    );
-
-    const modules = moduleQueryResult.data.allMarkdownRemark.edges;
-    modules.forEach((edge) => {
-      createPage({
-        path: `/modules${edge.node.fields.slug}`,
-        component: modulePageTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-        },
-      });
-    });
-
-    const moduleListTemplate = path.resolve("./src/templates/ModuleList.jsx");
-    const modulesPerPage = 27;
-    const numModulePages = Math.ceil(modules.length / modulesPerPage);
-    Array.from({ length: numModulePages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/modules` : `/modules/${i + 1}`,
-        component: moduleListTemplate,
-        context: {
-          limit: modulesPerPage,
-          skip: i * modulesPerPage,
-          moduleNumPages: numModulePages,
-          moduleCurrentPage: i + 1,
-        },
-      });
-    });
   }
 
   async function createGalleryPages() {
@@ -324,55 +278,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return index;
   }
 
-  async function buildModulesSearchIndex() {
-    const result = await graphql(
-      `
-        {
-          allMarkdownRemark(
-            filter: { frontmatter: { posttype: { eq: "module" } } }
-            sort: { frontmatter: { title: ASC } }
-          ) {
-            edges {
-              node {
-                excerpt
-                fields {
-                  slug
-                }
-                frontmatter {
-                  tags
-                  title
-                  cover {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `
-    );
-    const index = result.data.allMarkdownRemark.edges.map((edge) => {
-      const { excerpt, fields, frontmatter } = edge.node;
-      const { slug } = fields;
-      const { tags, title, cover } = frontmatter;
-
-      return {
-        excerpt,
-        path: `/modules${slug}`,
-        tags,
-        title,
-        cover,
-        posttype: "module",
-      };
-    });
-
-    return index;
-  }
-
   const blogIndex = await buildBlogSearchIndex();
-  const moduleIndex = await buildModulesSearchIndex();
 
   if (!fs.existsSync("src/generated")) {
     fs.mkdirSync("src/generated");
@@ -381,9 +287,5 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   fs.writeFileSync(
     "./src/generated/blog-result.json",
     JSON.stringify(blogIndex, null, 2)
-  );
-  fs.writeFileSync(
-    "./src/generated/module-result.json",
-    JSON.stringify(moduleIndex, null, 2)
   );
 };

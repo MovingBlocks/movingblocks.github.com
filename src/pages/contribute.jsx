@@ -8,7 +8,6 @@ import Layout from "../layout";
 
 function GettingStarted({ data }) {
   function toCardData(project, defaultCover) {
-    console.log(project);
     const { id, name: title, labels, childMarkdownRemark } = project;
     const { excerpt } = childMarkdownRemark;
     const posttype = "project";
@@ -295,7 +294,7 @@ function GettingStarted({ data }) {
       </Section>
       <Section tag="h3" title="Tasks & Topics">
         <Row className="justify-content-center align-items-start">
-          <Col md="10" className="text-justify">
+          <Col md="8" className="text-justify">
             <p>
               While you are free to roam our codebase and contribute in any area
               you would like, below are some tasks and topics that we encourage

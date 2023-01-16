@@ -6,8 +6,7 @@ import { Location } from "@reach/router";
 /* Explicitly use property spreading for higher-order component (a component wrapping another component). */
 /* eslint-disable react/jsx-props-no-spreading */
 function withLocation(ComponentToWrap) {
-  /* eslint-disable func-names */
-  return function (props) {
+  return function wrapComponent(props) {
     return (
       <Location>
         {({ location, navigate }) => (

@@ -1,11 +1,26 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import { Row, Col } from "reactstrap";
+import PostListing from "../components/PostListing/PostListing";
 import Section from "../components/Section";
 import SEO from "../components/SEO/SEO";
 import Layout from "../layout";
 
-function GettingStarted() {
+function GettingStarted({ data }) {
+  function toCardData(project, defaultCover) {
+    const { id, name: title, labels, childMarkdownRemark } = project;
+    const { excerpt } = childMarkdownRemark;
+    const posttype = "project";
+    const tags = labels.map((l) => l.name);
+    const cover = defaultCover;
+    return { posttype, title, path: `/projects/${id}`, excerpt, tags, cover };
+  }
+
+  const defaultCover = data.projectCover;
+  const ongoingProjects = data.ongoingProjects.nodes.map((project) =>
+    toCardData(project, defaultCover)
+  );
+
   return (
     <Layout title="Getting Contributors Started">
       <Row className="justify-content-center align-items-start">
@@ -17,10 +32,21 @@ function GettingStarted() {
               Workspace Setup
             </Link>
             {` and `}
-            <Link className="text-success" to="#engine-modules">
-              {`Terasology's Engine & Module Land`}
+            <Link
+              className="text-success"
+              to="#terasology-engine-and-module-land"
+            >
+              Terasology Engine & Module Land
             </Link>{" "}
             should help you to get started and set yourself up for success.
+          </p>
+          <p>
+            To get started with your first contribution, you will also find our
+            current{" "}
+            <Link className="text-success" to="#hot-topics">
+              Hot Topics
+            </Link>
+            {` below that you can consider joining.`}
           </p>
           <p>
             Make sure to also join our{" "}
@@ -266,13 +292,68 @@ function GettingStarted() {
           </Col>
         </Row>
       </Section>
+      <Section tag="h3" title="Tasks & Topics">
+        <Row className="justify-content-center align-items-start">
+          <Col md="8" className="text-justify">
+            <p>
+              While you are free to roam our codebase and contribute in any area
+              you would like, below are some tasks and topics that we encourage
+              you to consider. Their scope and feasibility are potentially more
+              realistic than a goal you might set for yourself without knowing
+              the depths and intricacies of our codebase.
+            </p>
+          </Col>
+        </Row>
+        {ongoingProjects.length !== 0 ? (
+          <Section tag="h4" title="Hot Topics">
+            <Row className="justify-content-center align-items-start">
+              <Col md="8" className="text-justify">
+                <p>
+                  Find our currently ongoing efforts below. Come talk to us on
+                  our{" "}
+                  <a
+                    className="text-success font-weight-bold"
+                    href="https://discordapp.com/invite/Terasology"
+                  >
+                    Discord
+                  </a>{" "}
+                  if you would like to join one of them. You can also propose
+                  your own project ideas.
+                </p>
+              </Col>
+            </Row>
+            <PostListing postList={ongoingProjects} />
+          </Section>
+        ) : null}
+      </Section>
     </Layout>
   );
 }
 export default GettingStarted;
 
 export const pageQuery = graphql`
-  query siteQuery {
+  query pageQuery {
+    ongoingProjects: allTrelloCard(
+      filter: { list_id: { eq: "60ddd7cf64da4b3ee8c5a2e9" } }
+      sort: { index: ASC }
+    ) {
+      nodes {
+        id
+        list_id
+        name
+        labels {
+          name
+        }
+        childMarkdownRemark {
+          excerpt
+        }
+      }
+    }
+    projectCover: file(name: { eq: "defaultCardcover" }, ext: { eq: ".jpg" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
     site {
       siteMetadata {
         title

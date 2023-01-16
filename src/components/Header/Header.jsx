@@ -99,7 +99,7 @@ function Header() {
                       className="text-color"
                       activeClassName="active"
                     >
-                      Programs & Projects
+                      Contributor Programs
                     </Link>
                   </NavLink>
                 </DropdownItem>

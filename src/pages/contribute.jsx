@@ -412,7 +412,10 @@ function GettingStarted({ data }) {
                       rel="noreferrer"
                     >
                       <Row className="justify-content-start align-items-center">
-                        <Col md="1" className="ml-5 pt-0 pb-2 d-none d-md-block">
+                        <Col
+                          md="1"
+                          className="ml-5 pt-0 pb-2 d-none d-md-block"
+                        >
                           <div>
                             <IconContext.Provider value={{ size: "4em" }}>
                               <FaGithub />

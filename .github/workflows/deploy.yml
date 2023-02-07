@@ -50,7 +50,7 @@ jobs:
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Build ModuleSite
-        run: yarn run build:pp
+        run: yarn run build
       - name: Upload artifact
         # packaging static assets and uploading artifact that can be deployed to GitHub Pages
         # https://github.com/actions/upload-pages-artifact

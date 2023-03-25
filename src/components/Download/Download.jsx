@@ -39,7 +39,7 @@ function Download() {
       let downloadUrl;
 
       if (platform === "Win32") {
-        downloadUrl = data.assets && data.assets[3].browser_download_url;
+        downloadUrl = data.assets && data.assets[2].browser_download_url;
         srcLoc.href = downloadUrl;
       } else if (platform === "Linux x86_64") {
         downloadUrl = data.assets && data.assets[0].browser_download_url;

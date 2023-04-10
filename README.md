@@ -4,9 +4,6 @@
 [![status](https://img.shields.io/badge/status-pre--alpha-red.svg)](https://github.com/MovingBlocks/ModuleSite)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/MovingBlocks/ModuleSite.svg)](https://github.com/MovingBlocks/ModuleSite/issues/)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/MovingBlocks/movingblocks.github.com)](https://codeclimate.com/)
-[![TechDebt](https://img.shields.io/codeclimate/tech-debt/MovingBlocks/movingblocks.github.com)](https://codeclimate.com/)
-[![Issues](https://img.shields.io/codeclimate/issues/MovingBlocks/movingblocks.github.com)](https://codeclimate.com/)
 
 ---
 

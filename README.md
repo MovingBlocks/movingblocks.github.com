@@ -27,37 +27,21 @@ We are present in nearly the complete round-up of social networks. Follow/friend
 &nbsp;
 
 <p align="center">
-    <a title="Terasology Forum" href="https://forum.terasology.org">
-        <img src="./src/main/resources/org/terasology/launcher/images/forum.png" width="48px"/>
-    </a>
+    <a title="Discord" href="https://discord.gg/terasology"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/discord.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Discord" href="https://discord.gg/terasology">
-        <img src="./src/main/resources/org/terasology/launcher/images/discord.png" width="48px"/>
-    </a>
+    <a title="Twitter" href="https://twitter.com/Terasology"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/twitter.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Twitter" href="https://twitter.com/Terasology">
-    <img src="./src/main/resources/org/terasology/launcher/images/twitter.png" width="48px"/>
-    </a>
+    <a title="Facebook" href="https://www.facebook.com/Terasology"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/facebook.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Facebook" href="https://www.facebook.com/Terasology">
-        <img src="./src/main/resources/org/terasology/launcher/images/facebook.png" width="48px"/>
-    </a>
+    <a title="Reddit" href="http://www.reddit.com/r/Terasology"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/reddit.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Reddit" href="http://www.reddit.com/r/Terasology">
-        <img src="./src/main/resources/org/terasology/launcher/images/reddit.png" width="48px"/>
-    </a>
+    <a title="Youtube" href="https://www.youtube.com/user/blockmaniaTV"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/youtube.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Youtube" href="https://www.youtube.com/user/blockmaniaTV">
-        <img src="./src/main/resources/org/terasology/launcher/images/youtube.png" width="48px"/>
-    </a>
+    <a title="Patreon" href="https://www.patreon.com/Terasology"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/patreon.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Patreon" href="https://www.patreon.com/Terasology">
-        <img src="./src/main/resources/org/terasology/launcher/images/patreon.jpg" width="48px"/>
-    </a>
+    <a title="GitHub Issues" href="https://github.com/MovingBlocks/movingblocks.github.com/issues"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/github.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="GitHub Issues" href="https://github.com/MovingBlocks/TerasologyLauncher/issues">
-        <img src="./src/main/resources/org/terasology/launcher/images/github.png" width="48px"/>
-    </a>
+    <a title="Terasology Forum" href="https://forum.terasology.org"><img src="./static/logos/gooey_gray.png" width="48px"/></a>
 </p>
 
 

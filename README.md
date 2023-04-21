@@ -44,7 +44,7 @@ We are present in nearly the complete round-up of social networks. Follow/friend
 
 ## Authoring Blog Posts
 
-Terasology blog posts are authored in [GitHub markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) and typically cover relatively neutral news related to releases, recent contributions or contributor programs.
+Terasology blog posts are authored in [GitHub markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax). They typically cover relatively neutral news related to releases, recent contributions or contributor programs; however, we also value your personal project-related opinions, thoughts, and insights.
 
 > **⚠️ NOTE:** If you write an opinionated post about your personal experiences and views on Terasology or related topics, please add a disclaimer at the top of your blog post indicating this.
 

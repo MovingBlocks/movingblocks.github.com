@@ -26,7 +26,7 @@ It's not a hard task and I've done it uncountable times before, but not everybod
 
 ### Updating my Iota Workspace
 
-To bring my Iota workspace up to speed I'm used the `groovyw' utility tool that is shipped with the engine repository.
+To bring my Iota workspace up to speed I used the `groovyw` utility tool that is shipped with the engine repository.
 You can run it easily via the provided wrapper scripts, that is `./groovyw` on Linux or `./groovyw.bat` on Windows.
 It comes in handy to initialize a workspace with a specific set of modules, fetch additional modules, or update everything via git.
 Our [Contributor Quick Start Guide](https://github.com/MovingBlocks/Terasology/wiki/Contributor-Quick-Start#set-up-your-terasology-development-workspace) also references it for the initial setup.

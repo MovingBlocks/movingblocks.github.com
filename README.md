@@ -49,8 +49,10 @@ Terasology blog posts are authored in [GitHub markdown](https://docs.github.com/
 > **⚠️ NOTE:** If you write an opinionated post about your personal experiences and views on Terasology or related topics, please add a disclaimer at the top of your blog post indicating this.
 
 All blog posts are stored in the `/blog` directory with a dedicated subdirectory for each of them.
-Every blog post directory name consists of the publish date and blog post title, e.g. `2017-07-14-gsoc-2017-an-overview`
+Every blog post directory name consists of the publish date and blog post title: `<date>-<title>`, e.g. `2017-07-14-gsoc-2017-an-overview`
 Blog post directory names should not contain non-alphanumeric characters other than dashes (`-`)
+
+> **⚠️ NOTE:** The directory name is, on a technical level, not related to the date and title in the blog post metadata. However, we ask you to comply with our convention and ensure that date and title match the blog post metadata.
 
 Blog post directories should always contain a markdown file named `index.md` which will hold the blog post content and metadata.
 Additionally, you can provide a cover image in jpg format named `cover.jpg`.
@@ -88,12 +90,13 @@ THe lower part is your blog post content. You'll also see an example of how to i
 > **⚠️ NOTE:** All the metadata fields are required.
 
 - `posttype` should always be `blog` (without quotation marks)
-- `title` is your news in a short phrase
+- `title` is your news in a short phrase and also the path your blog will be published under, e.g. `blog/my-first-terasology-blog`
    (if you're writing a TeraSaturday post, please prefix it with `TeraSaturday #<id>: ` where "\<id\>" is the last TeraSaturday post ID + 1)
-- `cover` should always be `"./cover.jpg"`
+- `cover` should always be `"./cover.jpg"` and the cover a JPG image with ratio 16:9
 - `description` is a short one or two line summary of your blog post 
 - `author` is your name / nickname / alias - we recommend using either your GitHub or Discord name
 - `date` is the date you want your blog post to be published aka. go online (in ISO form: `YYYY-MM-DD`)
+   (this feature is no longer supported, your blog post will always be visible irrespective of the date you set)
 - `tags` should always be an array, multiple values are possible
    (please tag TeraSaturday posts with "TeraSaturday")
 

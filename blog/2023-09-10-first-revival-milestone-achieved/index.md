@@ -8,23 +8,17 @@ date: "2023-09-10"
 tags: ["Announcement"]
 ---
 
-_Terasology Revival Milestone 1: Success unlocked! We’re celebrating our achievements and planning our path ahead. Explore it with us and join us for crafting the future together! Your enthusiasm is our fuel!_
-
-- [🌟 The Terasology Revival Story So Far](#-the-terasology-revival-story-so-far)
-- [🚀 Goals \& Challenges: A Pledge to Playability and Collaboration in Complex Terrain](#-goals--challenges-a-pledge-to-playability-and-collaboration-in-complex-terrain)
-- [📜 Definition of Done: A Checklist of Triumphs](#-definition-of-done-a-checklist-of-triumphs)
-- [💡 Lessons Learned and Future Outlook: A Catalyst for Growth](#-lessons-learned-and-future-outlook-a-catalyst-for-growth)
-  - [🔄 Mono-Repo vs. Multi-Repo - an Age-old Debate](#-mono-repo-vs-multi-repo---an-age-old-debate)
-  - [📆 Real Life vs. Voluntary Open Source](#-real-life-vs-voluntary-open-source)
-  - [🩹 Addressing Long-Standing Pain Points](#-addressing-long-standing-pain-points)
-  - [🌱 Exploring the Uncharted Territory](#-exploring-the-uncharted-territory)
-
+_Terasology Revival Milestone 1: Success unlocked!
+We’re celebrating our achievements and planning our path ahead.
+Explore it with us and join us for crafting the future together!
+Your enthusiasm is our fuel!_
 
 Hey there, fellow adventurers! 
 🚀 Today, we're embarking on a journey through the incredible world of Terasology, a voxel game that has captured the hearts of (mostly) developers (and some gamers alike).
 But before we dive into the exciting details of Terasology's revival, let's take a step back and uncover the roots of this remarkable project.
 
-Terasology was born in 2011 from a Minecraft-inspired tech demo by Benjamin "Begla" Glatzel while researching procedural terrain generation and effective rendering techniques.Over the years, it has been a playground for different kinds of technical experiments and proof of concepts.
+Terasology was born in 2011 from a Minecraft-inspired tech demo by Benjamin "Begla" Glatzel while researching procedural terrain generation and effective rendering techniques.
+Over the years, it has been a playground for different kinds of technical experiments and proof of concepts.
 But Terasology is not just a game; it's a community.
 A community that values warmth, inclusivity, and respect above all else.
 Within our blocky borders, harassment, attacks, and inappropriate activities find no place, fostering an environment where even the wildest dreams were sought to integrate.
@@ -35,12 +29,11 @@ However, amidst the challenging times, a resilient few remained, refusing to let
 Why? Because we’re bound together by our unwavering love for Terasology and our belief in its untapped potential.
 Our shared desire to build a thriving community-driven voxel game sparked the current revival effort.
 
-## 🌟 The Terasology Revival Story So Far
-
 So welcome aboard, dear fellow gooeys and gooeys-to-be, as we embark on a journey through the evolving tale of Terasology's revival.
 As we reflect on the past weeks, we're thrilled to share our plans and achievements for the first step that we took on our revival path.
 
-## 🚀 Goals & Challenges: A Pledge to Playability and Collaboration in Complex Terrain
+
+## 🚀 Goals & Challenges A Pledge to Playability and Collaboration in Complex Terrain
 
 In the early days, Terasology was known for being a tech playground for developers, filled with half-done proof of concepts aiming at realistic implementation of wildlife, weather, technology, and more.
 All of us worked in a corner of the huge codebase we call our engine, focused on our own pet projects, expanding what we built while losing sight of why we built it.

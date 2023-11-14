@@ -127,7 +127,7 @@ Our custom source plugin fetches information from GitHub, and therefore needs a 
 
 > 🧰 Access Tokens in CI
 >
-> If the token expires, you can follow the ["How to fix an expired GitHub Action token"](https://github.com/MovingBlocks/Terasology/wiki/Maintenance#how-to-fix-an-expired-github-action-token) instructions with the following adjustments:
+> If the token expires, you can follow the ["How to fix an expired GitHub Action token"](http://terasology.org/Terasology/#/Maintenance?id=how-to-fix-an-expired-github-action-token) instructions with the following adjustments:
 > * the token required for the custom source plugin does not require additional scopes, which means you can skip step 2
 > * steps 4 and 5 should be performed in the [repository settings for actions] and in the [repository settings for dependabot] on the respective `MODULE_FETCH_GITHUB_TOKEN` secrets
 

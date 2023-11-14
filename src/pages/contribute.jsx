@@ -135,7 +135,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Contributor-Quick-Start"
+                  href="https://terasology.org/Terasology/#/Contributor-Quick-Start"
                 >
                   Contributor Quick Start
                 </a>
@@ -143,7 +143,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Multi-Repo-Workspace"
+                  href="https://terasology.org/Terasology/#/Multi-Repo-Workspace"
                 >
                   Multi-Repo Workspace
                 </a>
@@ -175,7 +175,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Code-Conventions"
+                  href="https://terasology.org/Terasology/#/Code-Conventions"
                 >
                   Code Style Conventions
                 </a>
@@ -214,7 +214,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Entity-System-Architecture"
+                  href="https://terasology.org/Terasology/#/Entity-System-Architecture"
                 >
                   Entity Component System (ECS)
                 </a>
@@ -253,7 +253,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Developing-Modules"
+                  href="https://terasology.org/Terasology/#/Developing-Modules"
                 >
                   Developing Modules
                 </a>
@@ -261,7 +261,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Testing-Modules"
+                  href="https://terasology.org/Terasology/#/Testing-Modules"
                 >
                   Testing Modules
                 </a>
@@ -269,7 +269,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Module-Dependencies"
+                  href="https://terasology.org/Terasology/#/Module-Dependencies"
                 >
                   Module Dependencies
                 </a>
@@ -310,7 +310,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="http://terasology.org/Terasology/#/Serialization-Overview"
+                  href="https://terasology.org/Terasology/#/Serialization-Overview"
                 >
                   Serialization
                 </a>

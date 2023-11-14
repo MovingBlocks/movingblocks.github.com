@@ -131,7 +131,7 @@ Let's end this post with a teaser for a TeraSpotlight post about our recent comm
 [aseprite]: https://www.aseprite.org/
 [terasology/flyingislands]: https://github.com/Terasology/FlyingIslands
 [terasology/fallingblocks]: https://github.com/Terasology/FallingBlocks
-[terasology wiki]: http://terasology.org/Terasology/#/
+[terasology wiki]: https://terasology.org/Terasology/#/
 [movingblocks/terasology]: https://github.com/MovingBlocks/Terasology
 [movingblocks/gestalt]: https://github.com/MovingBlocks/gestalt
 [movingblocks/teranui]: https://github.com/MovingBlocks/TeraNUI

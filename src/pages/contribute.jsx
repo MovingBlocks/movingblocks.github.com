@@ -135,7 +135,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Contributor-Quick-Start"
+                  href="http://terasology.org/Terasology/#/Contributor-Quick-Start"
                 >
                   Contributor Quick Start
                 </a>
@@ -143,7 +143,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Terasology's-Multi-Repo-Workspace"
+                  href="http://terasology.org/Terasology/#/Multi-Repo-Workspace"
                 >
                   Multi-Repo Workspace
                 </a>
@@ -175,7 +175,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Code-Conventions"
+                  href="http://terasology.org/Terasology/#/Code-Conventions"
                 >
                   Code Style Conventions
                 </a>
@@ -191,7 +191,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/blob/develop/docs/CODE_OF_CONDUCT.md"
+                  href="https://github.com/MovingBlocks/Terasology/blob/develop/.github/CODE_OF_CONDUCT.md"
                 >
                   Code of Conduct
                 </a>
@@ -214,7 +214,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Entity-System-Architecture"
+                  href="http://terasology.org/Terasology/#/Entity-System-Architecture"
                 >
                   Entity Component System (ECS)
                 </a>
@@ -253,7 +253,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Developing-Modules"
+                  href="http://terasology.org/Terasology/#/Developing-Modules"
                 >
                   Developing Modules
                 </a>
@@ -261,7 +261,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Testing-Modules"
+                  href="http://terasology.org/Terasology/#/Testing-Modules"
                 >
                   Testing Modules
                 </a>
@@ -269,7 +269,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Module-Dependencies"
+                  href="http://terasology.org/Terasology/#/Module-Dependencies"
                 >
                   Module Dependencies
                 </a>
@@ -277,7 +277,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/Terasology/TutorialWorldGeneration/wiki"
+                  href="https://terasology.github.io/TutorialWorldGeneration/#/tutorial/"
                 >
                   World Generation Tutorial
                 </a>
@@ -310,7 +310,7 @@ function GettingStarted({ data }) {
               <li>
                 <a
                   className="text-success"
-                  href="https://github.com/MovingBlocks/Terasology/wiki/Serialization-Overview"
+                  href="http://terasology.org/Terasology/#/Serialization-Overview"
                 >
                   Serialization
                 </a>

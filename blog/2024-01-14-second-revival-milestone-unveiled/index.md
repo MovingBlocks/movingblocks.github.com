@@ -1,10 +1,10 @@
 ---
 posttype: blog
-title: "Revival Milestone 2 Unveiled - Elevating Quality, Boosting Performance, Advancing to Java 17!"
+title: "Revival Milestone 2 Complete - Elevating Quality, Boosting Performance, Advancing to Java 17!"
 cover: "./cover.jpg"
-description: "Unveiling Terasology Revival Milestone 2 - where quality meets performance, and Java 17 takes the spotlight. We’re celebrating our achievements and planning our path ahead. Ready to join the journey? New contributors welcome!"
+description: "Completing Terasology Revival Milestone 2 - where quality meets performance, and Java 17 takes the spotlight. We’re celebrating our achievements and planning our path ahead. Ready to join the journey? New contributors welcome!"
 author: "Niruandaleth"
-date: "2023-11-20"
+date: "2024-01-14"
 tags: ["Announcement"]
 ---
 

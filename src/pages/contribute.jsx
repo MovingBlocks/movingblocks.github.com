@@ -37,7 +37,7 @@ function GettingStarted({ data }) {
   const engineIssues = engine.issues.nodes
     .map((issue) => {
       const { title, author, labels, updatedAt, url } = issue;
-      const login = author?.login | "(deleted user)";
+      const login = author?.login || "(deleted user)";
       const { nodes } = labels;
       const tags = nodes.flatMap((node) => node.name);
       return { title, author: login, tags, date: updatedAt, url };
@@ -51,7 +51,7 @@ function GettingStarted({ data }) {
       const { name, url: moduleUrl, issues } = module;
       return issues.nodes.map((issue) => {
         const { title, author, labels, updatedAt, url } = issue;
-        const login = author?.login | "(deleted user)";
+        const login = author?.login || "(deleted user)";
         const { nodes } = labels;
         const tags = nodes.flatMap((node) => node.name);
         return {

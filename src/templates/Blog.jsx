@@ -12,7 +12,6 @@ export default class Blog extends React.Component {
     const { data, pageContext } = this.props;
     const { slug } = pageContext;
     const postNode = data.markdownRemark;
-    console.log("here\n", data);
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;

@@ -12,6 +12,7 @@ export default class Blog extends React.Component {
     const { data, pageContext } = this.props;
     const { slug } = pageContext;
     const postNode = data.markdownRemark;
+    console.log("here\n", data);
     const post = postNode.frontmatter;
     if (!post.id) {
       post.id = slug;
@@ -20,6 +21,9 @@ export default class Blog extends React.Component {
       post.category_id = config.postDefaultCategoryID;
     }
     const { date } = postNode.fields;
+
+    const codeBlockRegex = /```([\s\S]*?)```/g;
+
     return (
       <Layout title={post.title}>
         <div>

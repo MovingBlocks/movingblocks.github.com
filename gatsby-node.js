@@ -76,6 +76,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               node {
                 fields {
                   slug
+                  date
                 }
               }
             }
@@ -85,8 +86,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     );
     const posts = blogQueryResult.data.allMarkdownRemark.edges;
     posts.forEach((edge) => {
-      createPage({
-        path: `/blog${edge.node.fields.slug}`,
+    console.log("HHHHHHH", edge.node.fields);
+    createPage({
+        path: `/blog${edge.node.fields.slug}${edge.node.fields.date.replace(/[-T:.Z]/g, '-')}`,
         component: blogPostTemplate,
         context: {
           slug: edge.node.fields.slug,

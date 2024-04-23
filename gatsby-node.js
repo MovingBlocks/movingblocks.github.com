@@ -86,7 +86,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     );
     const posts = blogQueryResult.data.allMarkdownRemark.edges;
     posts.forEach((edge) => {
-    console.log("HHHHHHH", edge.node.fields);
     createPage({
         path: `/blog${edge.node.fields.slug}${edge.node.fields.date.replace(/[-T:.Z]/g, '-')}`,
         component: blogPostTemplate,

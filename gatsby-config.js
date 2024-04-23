@@ -1,5 +1,6 @@
 const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
+require('dotenv').config();
 
 module.exports = {
   pathPrefix: config.pathPrefix,

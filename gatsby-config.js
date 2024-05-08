@@ -44,8 +44,8 @@ module.exports = {
               },
               // Customize Prism options here
               classPrefix: "language-", // Prefix for CSS classes added to code blocks
-              inlineCodeMarker: '`',   // Marker for inline code snippets
-              showLineNumbers: true,   // Whether to show line numbers
+              inlineCodeMarker: "`", // Marker for inline code snippets
+              showLineNumbers: true, // Whether to show line numbers
               languageExtensions: [
                 {
                   language: "superscript",

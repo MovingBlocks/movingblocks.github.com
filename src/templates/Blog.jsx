@@ -23,11 +23,11 @@ export default class Blog extends React.Component {
     return (
       <Layout title={post.title}>
         <style jsx>{`
-        .gatsby-highlight {
-          font-size: 15px;
-          color: red;
-        }
-      `}</style>
+          .gatsby-highlight {
+            font-size: 15px;
+            color: red;
+          }
+        `}</style>
         <div>
           <div>
             <div className="title">

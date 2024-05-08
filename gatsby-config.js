@@ -34,7 +34,34 @@ module.exports = {
               wrapperStyle: `left:0; width: 100%;`,
             },
           },
-          "gatsby-remark-prismjs",
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              additionalStyles: {
+                ".gatsby-highlight": {
+                  fontSize: "50px", // Set the desired font size
+                },
+              },
+              // Customize Prism options here
+              classPrefix: "language-", // Prefix for CSS classes added to code blocks
+              inlineCodeMarker: "`", // Marker for inline code snippets
+              showLineNumbers: true, // Whether to show line numbers
+              languageExtensions: [
+                {
+                  language: "superscript",
+                  extend: "javascript",
+                  definition: {
+                    superscript_types: /(SuperType)/,
+                  },
+                  insertBefore: {
+                    function: {
+                      superscript_keywords: /(superif|superelse)/,
+                    },
+                  },
+                },
+              ],
+            },
+          },
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-autolink-headers",
         ],

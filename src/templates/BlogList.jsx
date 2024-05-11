@@ -72,7 +72,7 @@ function BlogList({ data, pageContext, location }) {
     return {
       posttype,
       title,
-      path: `${prefix}${slug}`,
+      path: `${prefix}${slug}${date.replace(/[-T:.Z]/g, '-')}`,
       cover,
       tags,
       excerpt,

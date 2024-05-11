@@ -48,7 +48,7 @@ function Index() {
     return {
       posttype,
       title,
-      path: `/blog${slug}`,
+      path: `/blog${slug}-${date.replace(/[-T:.Z]/g, "-").substring(0, 10)}`,
       cover,
       tags,
       excerpt,

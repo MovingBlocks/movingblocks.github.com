@@ -2,7 +2,7 @@
 posttype: blog
 title: "Exploring Revival Milestone 3 - Upgrades, Fixes and Improvements Left, Right and Center"
 cover: "./cover.jpg"
-description: "Exploring Terasology Revival Milestone 3: Our continued focus on performance and quality was supported by various fixes left and right. We’re celebrating our achievements and planning our path ahead. We’re nearing the gameplay content work phase: Almost Ready!"
+description: "Exploring Terasology Revival Milestone 3: Our continued focus on performance and quality was supported by various fixes left and right. We’re celebrating our achievements and planning our path ahead. We’re laying the foundations for new and improved gameplay: Almost Ready!"
 author: "Niruandaleth"
 date: "2024-06-26"
 tags: ["Announcement"]
@@ -10,7 +10,7 @@ tags: ["Announcement"]
 
 _Exploring Terasology Revival Milestone 3: Our continued focus on performance and quality was supported by various fixes left and right.
 We’re celebrating our achievements and planning our path ahead.
-We’re nearing the gameplay content work phase: Almost Ready!_
+We’re laying the foundations for new and improved gameplay: Almost Ready!_
 
 Hey there, fellow gooeys! Welcome to Terasology, where blocks meet potential ✨
 Terasology is a unique, Minecraft-inspired project built with modularity in mind and designed to support a wide array of gameplay ideas, allowing for a rich and diverse gaming experience.
@@ -37,7 +37,7 @@ Together, we can make Terasology better than ever! 🙌
 
 🎉 In total, we merged [27 engine PRs](https://github.com/MovingBlocks/Terasology/pulls?page=1&q=is%3Apr+sort%3Aupdated-desc+is%3Amerged+merged%3A2023-11-20..2024-06-16), [78 module PRs](https://github.com/search?q=+org%3Aterasology+is%3Apr+merged%3A2023-11-20..2024-06-16+&type=pullrequests&p=1), and [20 PRs](https://github.com/search?q=-repo%3Amovingblocks%2Fterasology+org%3Amovingblocks+is%3Apr+merged%3A2023-11-20..2024-06-16+&type=pullrequests&p=3) on libraries and side projects such as gestalt, the launcher, or the module site.
 
-After the migration to Java 17 as part of our last milestone, in this milestone we spent time resolving issues arising from this migration 🐛
+After the migration to Java 17 as part of our last milestone, in this milestone we spent time resolving issues arising from the migration 🐛
 This involved a thorough review and discussion to determine the relevance of different visibility levels for component fields in terms of serialization, ensuring consistency across the codebase.
 We adjusted our serialization approach in the engine accordingly, made all fields in engine and module comopnents public and updated relevant documentation for ECS developers 👩‍💻
 You can find our documentation on creating components in our [Entity-Component-System (ECS) Tutorial](https://github.com/Terasology/TutorialEntitySystem/wiki/Creating-Components).
@@ -60,15 +60,15 @@ Developers on the other hand are now enabled to get their PRs in much quicker af
 
 Thanks to various new contributors as well as our core revival team, we merged many many fixes this milestone 💪
 They removed client and server bugs, in-game content and graphics bugs as well as vulnerable web dependencies and broken documentation links 🐞
-Thank you to _@Khaled-Dridi_ and _@Imitater967_ for their fixes for the windows fullscren bug and no longer working visual effects and command line arguments 👏
+Thank you to _@Khaled-Dridi_ and _@Imitater967_ for their fixes for the fullscreen bug on Windows and no longer working visual effects and command line arguments 👏
 Special thanks go to _@priya4991_, the author of the partial fix for M1 support 💚 This problem is not fully gone yet, so if you develop on Mac and want to contribute to Terasology, any help with getting Terasology on M1 Macs to build and run again would be highly appreciated! 🍎
 
 Next to these bigger efforts, a lot of smaller discussions and activities happened across our GitHub repositories and Discord channels.
 _@BSA_ and _@Niruandaleth_ met once per week virtually to discuss milestone progress, agree on strategic questions, and collaborate on blockers and reviews 📅
 Over the course of our third revival milestone, _@Cervator_ provided guidance for new community members and revivers alike, sharing his knowledge of the project history and in particular its infrastructure ⌨
-Revival milestone contributor already for the previous milestone, _@soloturn_, considerably contributed to this milestone as well by updating dependencies, facilitating migrations to Kotlin, and streamlining PR workflows by addressing issues flagged by PMD 🤓
+Returning from our previous milestone, _@soloturn_ again contributed considerably to this milestone as well by updating dependencies, facilitating migrations to Kotlin, and streamlining PR workflows by addressing issues flagged by PMD 🤓
 Recently joined contributors _@spookynutz_ and _@manumafe98_ authored various moduleland PRs refactoring components and test annotations, thus achieving a more consistent use of ECS and our module testing framework 💪
-Long-time contributor _@engiValk_ visited the project to fix the water super jump bug reported by @SomethingSomethingV2, improving gameplay consistency 🔨
+Long-time contributor _@engiValk_ visited the project to fix the water super jump bug reported by _@SomethingSomethingV2_, improving gameplay consistency 🔨
 _@qwc_ will host the Valheim server again for our third revival milestone completion celebrations, fostering team spirit and camaraderie 🕹
 
 In conclusion, Milestone 3 represents a testament to our commitment to excellence in performance, quality, and user experience.
@@ -82,9 +82,8 @@ Here’s a detailed breakdown of our priorities and the contributors driving eac
 
 ### 🛠 Infrastructure & Stability Enhancements
 
-Led by @BenjaminAmos (BSA), we will be migrating to gestalt 8. This involves upgrading dependencies to gestalt 8.0.0-SNAPSHOT and transitioning from nui-gestalt7 to nui-gestalt.
-Annotating all relevant annotations and base classes with @Index and @IndexInherited respectively ensures efficient class discovery.
-Additionally, replacing deprecated API references with org.terasology.context.annotation.API standardizes our codebase for future enhancements. 🛠️
+Led by @BenjaminAmos (BSA), we will be migrating to the latest iteration of our gestalt library (gestalt 8). This involves upgrading dependencies to gestalt 8.0.0-SNAPSHOT and transitioning from nui-gestalt7 to nui-gestalt.
+Annotating all relevant annotations and base classes with @Index and @IndexInherited respectively ensures efficient class discovery 🛠️
 
 @jdrueckert (Niruandaleth) will address the flaky integration tests that have been bothering for a while now, particularly those causing sporadic NPEs in chunk lighting.
 This investigation ensures our testing suite remains reliable, providing a stable foundation for ongoing development efforts. 🔍
@@ -96,7 +95,7 @@ This feature allows to start old and new Terasology releases from the same launc
 
 @BenjaminAmos (BSA) and @jdrueckert (Niruandaleth) continue to investigate performance bottlenecks, particularly focusing on chunk generation and loading stuttering identified in CoreGameplay.
 This initiative aims to deliver smoother gameplay experiences across various hardware configurations.
-Planned efforts include refactoring code in the top ten critical performance areas as documented in [Terasology#5150]() for optimization potential.
+Planned efforts include refactoring code in the top ten critical performance areas as documented in [Terasology#5150](https://github.com/MovingBlocks/Terasology/issues/5150) for optimization potential.
 
 Cleaning up the codebase further and improving sprint/crouch mechanics are additional key goals set by @jdrueckert (Niruandaleth).
 This includes removing obsolete controller settings and graphic configurations (#5152), streamlining our codebase for improved maintainability and performance 🧹
@@ -106,7 +105,7 @@ Finally, @BenjaminAmos (BSA) will begin researching requirements for the clean s
 
 ### ⚙ Quality Assurance and Engine Refactorings
 
-Like before, if time permits, @jdrueckert (Niruandaleth) aims to continue with quality improvements and code refactorings.
+As before, @jdrueckert (Niruandaleth) aims to continue with quality improvements and code refactorings.
 This includes configuring PMD as mandatory in our CI pipeline and reducing log noise (#4991), ensuring code quality and clarity throughout our development process. These measures are critical for maintaining high standards of software craftsmanship. 🛡️ 
 In addition, exploring the purposeful usage of Java 17 features, completing the autoconfig refactorings (#4304 (comment)) and refactoring code areas such as SaveTransaction#writeChunkStores underscores our commitment to getting our codebase in order so we can focus on gameplay content work again soon. 🚀
 

@@ -46,7 +46,7 @@ jobs:
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Download generated resources from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: generated
           path: src/generated

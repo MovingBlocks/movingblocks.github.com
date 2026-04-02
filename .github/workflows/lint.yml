@@ -13,9 +13,9 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.MODULE_FETCH_GITHUB_TOKEN }}
     steps:
       - name: Checkout PR
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           # Globally caches yarn dependencies
@@ -25,7 +25,7 @@ jobs:
       - name: Build ModuleSite
         run: yarn run build
       - name: Upload generated resources
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: generated
           path: src/generated
@@ -36,9 +36,9 @@ jobs:
       security-events: write
     steps:
       - name: Checkout PR
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           # Globally caches yarn dependencies
@@ -46,14 +46,14 @@ jobs:
       - name: Install Project Dependencies
         run: yarn install --frozen-lockfile --immutable
       - name: Download generated resources from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: generated
           path: src/generated
       - name: Lint JavaScript
         run: yarn run lint:js --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
       - name: Upload analysis results to GItHub
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
@@ -61,9 +61,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           # Globally caches yarn dependencies

@@ -4,7 +4,7 @@ title: "Bifrost: First Contact"
 cover: "./cover.png"
 description: "Motion once again! A new arc, in a new era, with something neat."
 author: "Cervator"
-date: "2026-04-01"
+date: "2026-04-01T12:00:00"
 tags: ["Announcement"]
 ---
 

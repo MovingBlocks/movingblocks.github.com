@@ -46,7 +46,9 @@ export default class Blog extends React.Component {
               <SocialLinks
                 title={post.title}
                 excerpt={post.excerpt}
-                path={`/blog${slug}`}
+                path={`/blog${slug}-${date
+                  .replace(/[-T:.Z]/g, "-")
+                  .substring(0, 10)}`}
               />
             </div>
           </div>

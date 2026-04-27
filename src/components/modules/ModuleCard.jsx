@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Tags from "../common/Tags";
+import "prismjs/themes/prism.css";
 
 function ModuleCard({ title, cover, tags, description, url }) {
   return (

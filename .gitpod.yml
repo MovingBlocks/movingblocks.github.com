@@ -1,7 +1,7 @@
 tasks:
-  - init: yarn install
-    command: yarn run develop
+  - init: npm install
+    command: npm run dev -- --host
 
 ports:
-  - port: 8000
+  - port: 4321
     onOpen: open-preview

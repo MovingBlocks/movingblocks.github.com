@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import MentorCard from "../components/MentorCard.astro";
+import PostListing from "../components/PostListing.jsx";
+import { LISTS } from "../loaders/trello";
+import { cardsOfList, projectCards } from "../lib/trello";
+
+const availableProjects = await projectCards(LISTS.readyIdeas);
+const mentors = await cardsOfList(LISTS.mentors);
+---
+
+<Layout heading="Contributor Programs" title="Contributor Programs">
+  <Section tag="h3" title="GSoC & TSoC">
+    <div class="row justify-content-center align-items-start">
+      <div class="col-md-5 text-justify student-programs-content">
+        <b>Google Summer of Code (GSoC) </b>
+        is a global, online program focused on bringing new contributors into open source software
+        development. GSoC Contributors work with an open source organization on a 12+ week
+        programming project under the guidance of mentors.
+        <br />
+        For more information visit{" "}
+        <a class="text-success fw-bold" href="https://summerofcode.withgoogle.com/">
+          Google Summer of Code
+        </a>
+        .
+      </div>
+      <div class="col-md-5 text-justify student-programs-content">
+        <b>Terasology Summer of Code (TSoC) </b>
+        is similar to Google Summer of Code (GSoC). It is sponsored by The Terasology Foundation and
+        comes with more flexibility than GSoC. It allows for projects tailored to your skill level
+        and availability. Lower stipend than GSoC.
+        <br />
+        For more information join our{" "}
+        <a class="text-success fw-bold" href="https://discordapp.com/invite/Terasology">
+          Discord
+        </a>
+        .
+      </div>
+    </div>
+  </Section>
+  {availableProjects.length !== 0 && (
+    <Section tag="h3" title="Available Topics">
+      <PostListing postList={availableProjects} />
+    </Section>
+  )}
+  <Section tag="h3" title="Mentors">
+    <div class="col-lg-12 card-spacing">
+      <div class="row justify-content-center">
+        {mentors.map((mentor) => (
+          <MentorCard mentor={mentor} />
+        ))}
+      </div>
+    </div>
+  </Section>
+</Layout>

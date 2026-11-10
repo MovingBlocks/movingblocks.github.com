@@ -1,0 +1,249 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import IssueCard from "../components/IssueCard.astro";
+import LinkList from "../components/LinkList.astro";
+import PostListing from "../components/PostListing.jsx";
+import { LISTS } from "../loaders/trello";
+import { projectCards } from "../lib/trello";
+
+const byDateDesc = (a: { date: string }, b: { date: string }) => b.date.localeCompare(a.date);
+
+const ongoingProjects = await projectCards(LISTS.ongoingProjects);
+const engineIssues = (await getCollection("engineIssues")).map((e) => e.data).sort(byDateDesc);
+const moduleIssues = (await getCollection("modules"))
+  .flatMap(({ data }) =>
+    data.issues.map((issue) => ({ ...issue, module: { name: data.name, url: data.url } })),
+  )
+  .sort(byDateDesc)
+  .slice(0, 10);
+
+const wiki = "https://terasology.org/Terasology/#/";
+const engineTree =
+  "https://github.com/MovingBlocks/Terasology/tree/develop/engine/src/main/java/org/terasology/engine/";
+const discord = "https://discordapp.com/invite/Terasology";
+---
+
+<Layout heading="Getting Contributors Started" title="Getting Contributors Started">
+  <div class="row justify-content-center align-items-start">
+    <div class="col-md-8 text-justify">
+      <p>
+        All beginnings are difficult, but the below mentioned learning resources for{" "}
+        <a class="text-success" href="#terasology-workspace-setup">
+          Workspace Setup
+        </a>{" "}
+        and{" "}
+        <a class="text-success" href="#terasology-engine-and-module-land">
+          Terasology Engine & Module Land
+        </a>{" "}
+        should help you to get started and set yourself up for success.
+      </p>
+      <p>
+        To get started with your first contribution, you will also find our current{" "}
+        <a class="text-success" href="#hot-topics">
+          Hot Topics
+        </a>{" "}
+        below that you can consider joining.
+      </p>
+      <p>
+        Make sure to also join our{" "}
+        <a class="text-success fw-bold" href={discord}>
+          Discord
+        </a>{" "}
+        to get answers to your questions and help with any issues you might face.
+      </p>
+    </div>
+  </div>
+  <Section tag="h3" title="Terasology Workspace Setup">
+    <div class="row justify-content-center align-items-start">
+      <div class="col-md-7 text-justify">
+        <p>
+          Setting up your Terasology Workspace is the first step in your journey as a Terasology
+          contributor. Follow the Contributor Quickstart and make sure you understand our multi-repo
+          setup.
+        </p>
+        <p>
+          If you are new to Git and GitHub, we also recommend to especially get familiar with the
+          Git branching basics and GitHub forking workflow.
+        </p>
+        <p>
+          Further, remember that all submissions must be licensed under Apache License, Version 2.0,
+          that we encourage certain best practices regarding code style, commits and pull requests,
+          and that we maintain a code of conduct.
+        </p>
+      </div>
+      <div class="col-md-3 text-justify">
+        <LinkList
+          links={[
+            [`${wiki}Contributor-Quick-Start`, "Contributor Quick Start"],
+            [`${wiki}Multi-Repo-Workspace`, "Multi-Repo Workspace"],
+            ["https://learngitbranching.js.org/", "Learn Git Branching"],
+            [
+              "https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks/about-forks",
+              "Working with Forks",
+            ],
+            ["https://www.apache.org/licenses/LICENSE-2.0", "Apache License, Version 2.0"],
+            [`${wiki}Code-Conventions`, "Code Style Conventions"],
+            [
+              "https://github.com/MovingBlocks/Terasology/blob/develop/.github/CONTRIBUTING.md",
+              "Commits & PRs",
+            ],
+            [
+              "https://github.com/MovingBlocks/Terasology/blob/develop/.github/CODE_OF_CONDUCT.md",
+              "Code of Conduct",
+            ],
+          ]}
+        />
+      </div>
+    </div>
+  </Section>
+  <Section tag="h3" title="Terasology Engine & Module Land">
+    <div class="row justify-content-center align-items-start">
+      <div class="col-md-8 text-justify">
+        <p>
+          We recommend to start contributing in Module Land rather than the Terasology Engine,
+          especially if you do not have a lot of experience with Java or have not worked with an
+          already existing and big codebase yet. However, the following concepts are important for
+          both areas:
+        </p>
+        <LinkList
+          links={[
+            [`${wiki}Entity-System-Architecture`, "Entity Component System (ECS)"],
+            ["https://github.com/Terasology/TutorialAssetSystem/wiki", "Asset System"],
+          ]}
+        />
+      </div>
+      <div class="col-md-5 text-justify">
+        <p>
+          Contributing to <b>Terasology's Module Land</b> requires basic Java knowledge and interest
+          in UI/UX, world generation or gameplay mechanics. Browse through our existing modules, see
+          what we already have and what we might still be missing.
+        </p>
+        <p>
+          To get started, you should make yourself familiar with module development and testing.
+          Furthermore, you should to learn about module dependencies and world generation.
+        </p>
+        <LinkList
+          links={[
+            ["https://github.com/Terasology", "Terasology's Module Land"],
+            [`${wiki}Developing-Modules`, "Developing Modules"],
+            [`${wiki}Testing-Modules`, "Testing Modules"],
+            [`${wiki}Module-Dependencies`, "Module Dependencies"],
+            [
+              "https://terasology.github.io/TutorialWorldGeneration/#/tutorial/",
+              "World Generation Tutorial",
+            ],
+          ]}
+        />
+        <p>
+          Jump below to our{" "}
+          <a href="#good-first-module-land-issues" class="text-success">
+            <b>Good First Issues in Module Land</b>
+          </a>
+          .
+        </p>
+      </div>
+      <div class="col-md-5 text-justify">
+        <p>
+          Contributing to the <b>Terasology Engine</b> requires being very comfortable with Java and
+          ideally having expertise in game engine topics like rendering, networking and concurrency,
+          as well as in-game physics and AI technology.
+        </p>
+        <p>
+          To get started, you should make yourself familiar with the codebase itself and any
+          specific areas within it that match your interest. Most of the engine-related
+          documentation is in-code.
+        </p>
+        <LinkList
+          links={[
+            [`${wiki}Serialization-Overview`, "Serialization"],
+            [`${engineTree}network`, "Network Package"],
+            [`${engineTree}persistence`, "Persistence Package"],
+            [`${engineTree}physics`, "Physics Package"],
+            [`${engineTree}rendering`, "Rendering Package"],
+          ]}
+        />
+        <p>
+          Jump below to our{" "}
+          <a href="#good-first-engine-issues" class="text-success">
+            <b>Good First Issues in Engine</b>
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </Section>
+  <Section tag="h3" title="Tasks & Topics">
+    <div class="row justify-content-center align-items-start">
+      <div class="col-md-8 text-justify">
+        <p>
+          While you are free to roam our codebase and contribute in any area you would like, below
+          are some tasks and topics that we encourage you to consider. Their scope and feasibility
+          are potentially more realistic than a goal you might set for yourself without knowing the
+          depths and intricacies of our codebase.
+        </p>
+      </div>
+    </div>
+    {ongoingProjects.length !== 0 && (
+      <Section tag="h4" title="Hot Topics">
+        <div class="row justify-content-center align-items-start">
+          <div class="col-md-8 text-justify">
+            <p>
+              Find our currently ongoing efforts below. Come talk to us on our{" "}
+              <a class="text-success fw-bold" href={discord}>
+                Discord
+              </a>{" "}
+              if you would like to join one of them. You can also propose your own project ideas.
+            </p>
+          </div>
+        </div>
+        <PostListing postList={ongoingProjects} />
+      </Section>
+    )}
+    <Section tag="h4" title="Good First Module Land Issues">
+      <div class="row justify-content-center align-items-start">
+        <div class="col-md-8 text-justify">
+          <p>
+            Find some of our module-land issues below. If you would like to work on one of them,
+            start a draft PR for it. You can also view the full list on{" "}
+            <a
+              class="text-success fw-bold"
+              href="https://github.com/search?q=org%3ATerasology+label%3A%22Good+First+Issue%22+state%3Aopen&type=Issues&ref=advsearch&l=&l="
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-12 card-spacing">
+        {moduleIssues.map((issue) => (
+          <IssueCard issue={issue} module={issue.module} />
+        ))}
+      </div>
+    </Section>
+    <Section tag="h4" title="Good First Engine Issues">
+      <div class="row justify-content-center align-items-start">
+        <div class="col-md-8 text-justify">
+          <p>
+            Find some of our engine issues below. If you would like to work on one of them, start a
+            draft PR for it. You can also view the full list on{" "}
+            <a
+              class="text-success fw-bold"
+              href="https://github.com/MovingBlocks/Terasology/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-12 card-spacing">
+        {engineIssues.map((issue) => (
+          <IssueCard issue={issue} />
+        ))}
+      </div>
+    </Section>
+  </Section>
+</Layout>

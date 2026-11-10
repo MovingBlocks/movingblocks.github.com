@@ -38,7 +38,7 @@ We are present in nearly the complete round-up of social networks. Follow/friend
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a title="GitHub Issues" href="https://github.com/MovingBlocks/movingblocks.github.com/issues"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/github.svg" width="50" height="50" /></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a title="Terasology Forum" href="https://forum.terasology.org"><img src="./static/logos/gooey_gray.png" width="48px"/></a>
+    <a title="Terasology Forum" href="https://forum.terasology.org"><img src="./public/logos/gooey_gray.png" width="48px"/></a>
 </p>
 
 
@@ -57,6 +57,7 @@ Blog post directory names should not contain non-alphanumeric characters other t
 Blog post directories should always contain a markdown file named `index.md` which will hold the blog post content and metadata.
 Additionally, you can provide a cover image in jpg format named `cover.jpg`.
 Optionally, any images you want to include into the blog post should be in jpg format and included in the blog post directory.
+Images referenced with markdown syntax (`![alt](./image.jpg)`) are optimized at build time; files referenced from raw HTML (`<img src="./image.jpg">`) are copied as-is.
 
 ### Blog Post Template
 
@@ -104,59 +105,34 @@ THe lower part is your blog post content. You'll also see an example of how to i
 
 ## Development
 
-The Terasology website is built with [Gatsby](https://www.gatsbyjs.org/).
-A respective development environment can be installed on macOS, Windows, and Linux (Debian or Ubuntu recommended).
-You’ll need at least 1GB of available RAM.
-
-Make sure that you install the following tools to be able to build and serve the website locally:
-* [Node.js](https://nodejs.org/en/)
-* [Yarn](https://yarnpkg.com/en/)
-
-
-To install all dependencies, run
+The Terasology website is built with [Astro](https://astro.build/) and a few React islands for the interactive parts (blog search, module search, gallery lightbox, download picker).
+You need [Node.js](https://nodejs.org/en/) 24 or newer; npm ships with it.
 
 ```sh
-yarn install
+npm install        # install dependencies
+npm run dev        # dev server with live reload on http://localhost:4321
+npm run build      # static build into dist/
+npm run preview    # serve the last build
+npm run check      # type-check Astro/TS files
+npm run lint:js    # ESLint;  lint:css = Stylelint, format = Prettier
+npm run clean      # remove build output and caches
 ```
 
-You can then use the [Gatsby CLI commands](https://www.gatsbyjs.com/docs/reference/gatsby-cli/) `build`, `clean`, `develop` and `serve`.
-
-Our custom source plugin fetches information from GitHub, and therefore needs a GitHub [personal access token] in the environment named `GITHUB_TOKEN`. 
+Module and "Good First Issue" data come from the GitHub GraphQL API and need a GitHub [personal access token] (no extra scopes) in the environment as `GITHUB_TOKEN`.
+Without it the build still completes: it warns and renders module pages from previously cached data, or empty if there is none.
+Fetched data is cached for 12 hours in `.astro/`; `npm run clean` forces a refetch.
+Contributor program topics and mentors come from public Trello boards and need no token.
 
 [personal access token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
 > 🧰 Access Tokens in CI
 >
 > If the token expires, you can follow the ["How to fix an expired GitHub Action token"](https://terasology.org/Terasology/#/Maintenance?id=how-to-fix-an-expired-github-action-token) instructions with the following adjustments:
-> * the token required for the custom source plugin does not require additional scopes, which means you can skip step 2
+> * the token required for the module data does not require additional scopes, which means you can skip step 2
 > * steps 4 and 5 should be performed in the [repository settings for actions] and in the [repository settings for dependabot] on the respective `MODULE_FETCH_GITHUB_TOKEN` secrets
 
 [repository settings for actions]: https://github.com/MovingBlocks/movingblocks.github.com/settings/secrets/actions
 [repository settings for dependabot]: https://github.com/MovingBlocks/movingblocks.github.com/settings/secrets/dependabot
-
-To build the website, run
-
-```sh
-yarn run build
-```
-
-To serve the website from a previous build, run 
-
-```sh
-yarn run serve
-``` 
-
-To compile and serve a preview of the website that reflects your source code changes in the browser in real time, run
-
-```sh
-yarn run develop
-```
-
-To clean up built assets and caches, run 
-
-```sh
-yarn run clean
-```
 
 > To learn more about the project structure and working of the project please refer to our [docs](docs/project-structure.md).
 

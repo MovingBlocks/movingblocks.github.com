@@ -1,0 +1,131 @@
+@use "sass:color";
+@use "variables" as *;
+
+section {
+  padding: 100px 0;
+}
+
+[class*="col-"] {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+[class*="col-"]:first-child {
+  border-left-width: 2px;
+}
+
+[class*="col-"]:last-child {
+  border-right-width: 2px;
+}
+
+.md-tag {
+  padding-bottom: 5px;
+}
+
+.md-tag > span {
+  font-size: 1.2em;
+  font-weight: 400;
+  background: $lg-accent;
+  border: 2px solid $lg-accent;
+  color: $gray-2;
+}
+
+.card-img-top {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-img-project,
+.card-img-module {
+  aspect-ratio: 17/5;
+}
+
+.card-img-blog {
+  aspect-ratio: 12/7;
+}
+
+.details-card {
+  background: $white;
+}
+
+.card-content {
+  height: 100%;
+  background: $white;
+  border: 4px;
+  border-radius: 2px;
+  box-shadow:
+    0 2px 5px 0 rgb(0 0 0 / 20%),
+    0 2px 10px 0 rgb(0 0 0 / 20%);
+  margin-bottom: 0.5em;
+}
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px 2px 0 0;
+  object-fit: cover;
+}
+
+.card-img span {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background: $primary;
+  min-width: 100%;
+  overflow: hidden;
+  height: 25px;
+  border-radius: 2px 2px 0 0;
+  color: $white;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.card-img span h4 {
+  font-size: 12px;
+  margin: 0;
+  padding: 13px 5px;
+  line-height: 0;
+}
+
+.card-desc {
+  padding: 1.25rem;
+}
+
+.card-desc h3 {
+  color: $black;
+  line-height: 1.3em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.card-desc p {
+  color: color.adjust($black, $lightness: 20%);
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.card-subtitle {
+  font-size: 1.3rem;
+}
+
+.word-break {
+  hyphens: auto;
+}
+
+.card-spacing {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}

@@ -1,0 +1,143 @@
+---
+import { FaDiscord, FaRegArrowAltCircleRight } from "react-icons/fa";
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import HighlightBox from "../components/HighlightBox.astro";
+import PostListing from "../components/PostListing.jsx";
+import { getPosts, toCard } from "../lib/blog";
+import tunnel from "../assets/gallery/Light_at_the_End_of_the_Tunnel.jpg";
+import village from "../assets/gallery/Quiet_Village.jpg";
+import water from "../assets/gallery/Flowing_Water.jpg";
+
+const recent = await Promise.all((await getPosts()).slice(0, 3).map(toCard));
+const discord = "https://discordapp.com/invite/Terasology";
+const engineLand = "/contribute#terasology-engine-and-module-land";
+---
+
+<Layout heading="Welcome to Terasology">
+  <div class="about-container">
+    <section class="sect-home">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>What is Terasology?</h3>
+          <p class="p-title">An open source voxel world - imagine the possibilities!</p>
+          <p class="p-description text-justify">
+            The Terasology project was born from a Minecraft-inspired tech demo in 2011. Over the
+            years it has been a playground for different kinds of technical experiments and proof of
+            concepts. The community strives to make Terasology a stable platform for various types
+            of gameplay settings in a voxel world.
+          </p>
+          <div class="col my-5 justify-content-around">
+            <a href="#about-us" class="btn btn-primary btn-lg link-about">
+              Learn more
+            </a>
+            <a href={discord} class="btn btn-primary btn-lg link-about">
+              Join our Discord <FaDiscord />
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="index">
+            <iframe
+              src="https://www.youtube.com/embed/Wpa2aiadwE8"
+              title="Terasology trailer"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="border: 0px"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <Section title="Recent News">
+        <div class="col-lg-12">
+          <div class="row justify-content-center">
+            <PostListing postList={recent} />
+          </div>
+          <div class="row d-flex justify-content-center mb-4">
+            <a href="/blog" class="col-auto btn-primary home-btn-read-more-blog fw-bold">
+              Find More Blogs
+              <FaRegArrowAltCircleRight style={{ fontSize: "24px", marginLeft: "0.5rem" }} />
+            </a>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="About Us">
+        <div class="row">
+          <div class="col-md-12">
+            <HighlightBox title="History" image={tunnel}>
+              <p>
+                The project was founded in 2011 by Benjamin "Begla" Glatzel while researching
+                procedural terrain generation and effective rendering techniques. He succeeded in
+                creating a minecraft-like demo engine, the foundation stone for what Terasology is
+                today.
+              </p>
+              <p>
+                We are always on the lookout for contributors with expertise in rendering,
+                networking and concurrency, as well as in-game physics and AI technology.
+              </p>
+              <p>
+                If you are interested in game engine development, come check out our{" "}
+                <a href={engineLand} class="link-about">
+                  Terasology Engine & Module Land
+                </a>
+                .
+              </p>
+            </HighlightBox>
+          </div>
+          <div class="col-md-12">
+            <HighlightBox title="Modules & Gameplays" image={village} align="end">
+              <p>
+                From the ground up, Terasology was built to be very modular and support different
+                kinds of gameplay ideas. We still host a large number of modules under the
+                "Terasology" GitHub organization providing basic and advanced gameplay content as
+                well as world generation options and technical libraries.
+              </p>
+              <p>
+                Combining these modules allows to create very different kinds of gameplay in our
+                voxel worlds. The possibilities are manifold and range from crafting- or
+                trading-oriented survival over capture-the-flag to puzzle-style experiences and
+                tower defenses.
+              </p>
+              <p>
+                We especially appreciate expertise or interest in UI/UX, world generation or
+                well-thought out gameplay mechanics, but also always have an open ear for crazy
+                ideas for existing or new modules and gameplay content.
+              </p>
+              <p>
+                If you are interested in gameplay development, come check out our{" "}
+                <a href={engineLand} class="link-about">
+                  Terasology Engine & Module Land
+                </a>
+                .
+              </p>
+            </HighlightBox>
+          </div>
+          <div class="col-md-12">
+            <HighlightBox title="Community" image={water}>
+              <p>
+                The Terasology community is a diverse mix of software developers, designers, game
+                testers, graphic artists, musicians and other open source loving "Gooeys". We value
+                a positive, inclusive and respectful environment without harassment, attacks or
+                inappropriate activities of any form.
+              </p>
+              <p>
+                We encourage and appreciate contributions from everybody, and try to accept
+                constructive criticism even by newcomers as gracefully and warmly as possible. and
+                welcoming as possible to newcomers.
+              </p>
+              <p>
+                If you want to talk to us or be the next in our group of Gooeys, come join us on our{" "}
+                <a href={discord} class="link-about">
+                  Terasology Discord
+                </a>
+                .
+              </p>
+            </HighlightBox>
+          </div>
+        </div>
+      </Section>
+    </section>
+  </div>
+</Layout>

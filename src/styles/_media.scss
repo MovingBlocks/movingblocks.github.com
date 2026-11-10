@@ -1,0 +1,40 @@
+.media-modal {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: rgb(41 41 41 / 80%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  bottom: 0;
+  left: 0;
+}
+
+.lightbox {
+  z-index: 10000;
+  position: fixed;
+  align-items: center;
+}
+
+.carousel-caption {
+  background-color: rgb(41 41 41 / 30%);
+}
+
+.carousel-indicators li {
+  background-color: #08a045;
+  border: 1px;
+  border-color: white;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

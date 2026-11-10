@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Download from "../components/Download.jsx";
+
+const requirements = [
+  ["System (OS)", "Windows, MacOS, Linux (64 bit)"],
+  ["Processor (CPU)", "dual-core CPU"],
+  ["Memory (RAM)", "2 GB"],
+  ["Storage (HDD/SSD)", "1 GB"],
+  [
+    "Graphics (GPU)",
+    "Intel HD Graphics (Gen 7) or GeForce 8xxx series (or higher) or Radeon HD 2000 series (or higher) with OpenGL 3.3",
+  ],
+];
+---
+
+<Layout heading="Download" title="Download">
+  <Download client:load />
+  <Section title="Minimum System Requirements">
+    {requirements.map(([key, value]) => (
+      <div class="row justify-content-center">
+        <p class="col-md-3 me-4 fw-bold">{key}</p>
+        <p class="col-md-3 ms-4">{value}</p>
+      </div>
+    ))}
+  </Section>
+</Layout>

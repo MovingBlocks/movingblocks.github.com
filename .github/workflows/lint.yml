@@ -1,74 +1,40 @@
-name: Lint ModuleSite Code
+name: Lint website code
 
-# Trigger the workflow on all pull requests with base branch 'master' and commits to 'master'.
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
   push:
-    branches: [ "master" ]
+    branches: ["master"]
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.MODULE_FETCH_GITHUB_TOKEN }}
-    steps:
-      - name: Checkout PR
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
-      - name: Install Project Dependencies
-        run: yarn install --frozen-lockfile --immutable
-      - name: Build ModuleSite
-        run: yarn run build
-      - name: Upload generated resources
-        uses: actions/upload-artifact@v4
-        with:
-          name: generated
-          path: src/generated
   eslint:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       security-events: write
     steps:
-      - name: Checkout PR
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '18'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
-      - name: Install Project Dependencies
-        run: yarn install --frozen-lockfile --immutable
-      - name: Download generated resources from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: generated
-          path: src/generated
-      - name: Lint JavaScript
-        run: yarn run lint:js --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
-      - name: Upload analysis results to GItHub
-        uses: github/codeql-action/upload-sarif@v3
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Lint JavaScript/TypeScript/Astro
+        run: npm run lint:js -- --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
+      - name: Upload analysis results to GitHub
+        if: always()
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
-  prettier:
+  format-and-styles:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '18'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
-      - name: Install Project Dependencies
-        run: yarn install --frozen-lockfile --immutable
-      - name: Validate JavaScript Formatting
-        run: yarn run format-check:js
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint:css

@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ModuleListing from "../../components/ModuleListing.jsx";
+
+const ALPHABET = [..."abcdefghijklmnopqrstuvwxyz"];
+
+export async function getStaticPaths() {
+  return [..."abcdefghijklmnopqrstuvwxyz"].map((letter) => ({ params: { letter } }));
+}
+
+const { letter } = Astro.params;
+const modules = (await getCollection("modules"))
+  .map((m) => m.data)
+  .sort((a, b) => a.name.localeCompare(b.name));
+const available = new Set(modules.map((m) => m.name.charAt(0).toLowerCase()));
+const shown = modules.filter((m) => m.name.charAt(0).toLowerCase() === letter);
+---
+
+<Layout heading="Modules" title="Modules">
+  <div class="module-container">
+    {[0, 1].map((n) => (
+      <>
+        {n === 1 && (
+          <div class="row">
+            <ModuleListing modules={shown} />
+          </div>
+        )}
+        <div class="row justify-content-center">
+          <ul class="pagination mb-2 justify-content-center flex-wrap">
+            {ALPHABET.map((l) => (
+              <li class:list={["page-item", { active: l === letter, disabled: !available.has(l) }]}>
+                <a class="page-link" href={`/modules/${l}`}>
+                  {l.toUpperCase()}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </>
+    ))}
+  </div>
+</Layout>

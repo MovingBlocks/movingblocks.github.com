@@ -1,0 +1,187 @@
+// Noto Sans is loaded via <link> in Layout.astro
+
+h1 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 4.8828125rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 3.90625rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 3.125rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h4 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h5 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h6 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h7 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+h1 a {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+h2 a {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h3 a {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h4 a {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+h5 a {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+h6 a {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+a,
+p,
+li {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+@media screen and (width <= 768px) {
+  h1 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3.5em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.75em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  h3 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.25em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  h4 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  h5 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  h6 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  h1 a {
+    font-size: 3.25rem;
+    font-weight: 700;
+  }
+
+  h2 a {
+    font-size: 2.6rem;
+    font-weight: 700;
+  }
+
+  h3 a {
+    font-size: 2.1rem;
+    font-weight: 700;
+  }
+
+  h4 a {
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+
+  h5 a {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  h6 a {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  a,
+  p,
+  li {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+}

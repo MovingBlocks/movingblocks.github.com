@@ -1,0 +1,21 @@
+---
+import slugify from "slugify";
+
+interface Props {
+  title: string;
+  id?: string;
+  tag?: "h2" | "h3" | "h4";
+}
+
+const { title, id = slugify(title, { lower: true }), tag: Tag = "h2" } = Astro.props;
+---
+
+<div>
+  <Tag class="text-center ts-anchor" id={id}>
+    {title}
+  </Tag>
+  <div class="container my-4">
+    <div class="title-underline"></div>
+  </div>
+</div>
+<slot />

@@ -1,0 +1,22 @@
+---
+import type { GetStaticPaths, Page } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import Gallery from "../../components/Gallery.jsx";
+import { getGalleryImages, PER_PAGE, type GalleryImage } from "../../lib/gallery";
+
+export const getStaticPaths = (async ({ paginate }) =>
+  paginate(await getGalleryImages(), { pageSize: PER_PAGE })) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page<GalleryImage> };
+---
+
+<Layout heading="Gallery" title="Gallery">
+  <Gallery
+    client:load
+    images={page.data}
+    currentPage={page.currentPage}
+    lastPage={page.lastPage}
+    total={page.total}
+    perPage={page.size}
+  />
+</Layout>

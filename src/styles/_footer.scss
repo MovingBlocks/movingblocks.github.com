@@ -1,0 +1,73 @@
+@use "variables" as *;
+
+footer {
+  border-top: 0.25em solid $primary;
+  box-shadow: 0 -2px 20px 0 rgb(0 0 0 / 5%);
+  padding: 2em;
+}
+
+.footer-nav {
+  list-style: none;
+}
+
+.link {
+  color: rgb(0 0 0 / 50%);
+  transition: all 150ms linear;
+}
+
+.link:hover {
+  color: rgb(0 0 0 / 70%);
+  transition: all 150ms linear;
+}
+
+a:hover {
+  color: grey;
+}
+
+.reddit-icon-color {
+  color: #ff4301;
+}
+
+.patreon-icon-color {
+  color: #f96854;
+}
+
+.discord-icon-color {
+  color: #5865f2;
+}
+
+.twitter-icon-color {
+  color: #1baae1;
+}
+
+.facebook-icon-color {
+  color: #3b5998;
+}
+
+.youtube-icon-color {
+  color: #f00;
+}
+
+.github-icon-color {
+  color: #333;
+}
+
+.telegram-icon-color {
+  color: #08c;
+}
+
+.linkedin-icon-color {
+  color: #4875b4;
+}
+
+.gooey-icon {
+  width: 43px;
+  height: 44px;
+  background-image: url("/logos/gooey-1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gooey-icon:hover {
+  background-image: url("/logos/gooey_gray.png");
+}

@@ -1,0 +1,70 @@
+---
+import { getImage } from "astro:assets";
+import { render, type CollectionEntry } from "astro:content";
+import { FaGithub } from "react-icons/fa";
+import Tags from "./Tags.jsx";
+
+interface Props {
+  mentor: CollectionEntry<"trello">;
+}
+
+const { mentor } = Astro.props;
+const { name, tags, avatarUrl, githubProfile, timeZone, countryCode } = mentor.data;
+const { Content } = await render(mentor);
+
+// Trello avatars are optimized at build time; if Astro can't read one, link it directly.
+let avatar = avatarUrl ?? "/logos/profile-placeholder.png";
+if (avatarUrl) {
+  try {
+    avatar = (await getImage({ src: avatarUrl, inferSize: true, width: 200, format: "webp" })).src;
+  } catch (err) {
+    console.warn(`[programs] avatar for ${name} not optimized, linking original: ${err}`);
+  }
+}
+
+// Mentor's local time at build time, "HH:mm (GMT+hh:mm)" as on the Gatsby site.
+let localTime = "";
+if (timeZone) {
+  try {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone,
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+      timeZoneName: "longOffset",
+    }).formatToParts(new Date());
+    const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
+    const offset = get("timeZoneName").replace("GMT", "") || "+00:00";
+    localTime = `${get("hour")}:${get("minute")} (GMT ${offset})`;
+  } catch {
+    localTime = "";
+  }
+}
+---
+
+<div class="col-lg-4 col-md-8 col-sm-12 pt-0 mt-2 mb-4">
+  <div class="card row_shadow h-100 align-items-center">
+    <img src={avatar} alt={name} class="card-img-top rounded-circle my-4" style="width: 30%" />
+    <div class="card-body w-100">
+      <h6 class="card-subtitle">
+        <Tags tags={tags} />
+      </h6>
+      <h5 class="card-title my-3">
+        {countryCode && (
+          <img
+            src={`https://flagcdn.com/w40/${countryCode}.png`}
+            alt="The flag of the mentor's home country"
+            class="me-3"
+          />
+        )}
+        {name}
+      </h5>
+      <h6 class="card-subtitle">
+        {localTime} | <FaGithub /> @{githubProfile}
+      </h6>
+      <div class="card-text mt-3">
+        <Content />
+      </div>
+    </div>
+  </div>
+</div>

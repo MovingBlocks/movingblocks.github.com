@@ -5,7 +5,7 @@ on:
     branches:
       - master
   schedule:
-    # daily check; the build only runs if a scheduled post has come due
+    # daily check; builds only if a scheduled post came due or the last deploy is 30+ days old
     - cron: "0 2 * * *"
   workflow_dispatch:
 

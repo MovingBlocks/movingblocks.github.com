@@ -1,8 +1,11 @@
 // Decides whether a deploy run has anything to publish. Scheduled runs only build
-// when a post's date has passed since the last successful deploy; every other
+// when a post's date has passed since the last successful deploy, or when that
+// deploy is over REFRESH_DAYS old (to refresh module and issue data); every other
 // trigger (push, manual) always builds. Writes `publish=true|false` to $GITHUB_OUTPUT.
 import { execFileSync } from "node:child_process";
 import { appendFileSync, readdirSync, readFileSync } from "node:fs";
+
+const REFRESH_DAYS = Number(process.env.REFRESH_DAYS ?? 30);
 
 function lastSuccessfulDeploy() {
   const repo = process.env.GITHUB_REPOSITORY;
@@ -35,7 +38,8 @@ let publish = true;
 if (process.env.EVENT === "schedule") {
   const since = lastSuccessfulDeploy();
   const now = new Date();
-  publish = since === null || postDates().some((d) => d > since && d <= now);
+  const stale = since !== null && now - since > REFRESH_DAYS * 24 * 3600e3;
+  publish = since === null || stale || postDates().some((d) => d > since && d <= now);
 }
 
 console.log(`publish=${publish}`);

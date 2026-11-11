@@ -1,0 +1,26 @@
+---
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  image: ImageMetadata;
+  align?: "start" | "end";
+}
+
+const { title, image, align = "start" } = Astro.props;
+const bg = await getImage({ src: image, width: 1600, format: "webp" });
+---
+
+<div class="with-bg-image" style={`background-image: url(${bg.src})`}>
+  <div class={`ts-gradient-background-${align}`}>
+    <div class={`row justify-content-${align}`}>
+      <div class="col-md-5 mx-4">
+        <h3 class="text-white pb-2">{title}</h3>
+        <div class="text-white text-justify">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

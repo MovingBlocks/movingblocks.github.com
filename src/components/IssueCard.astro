@@ -1,0 +1,48 @@
+---
+import { FaGithub } from "react-icons/fa";
+import Tags from "./Tags.jsx";
+import { formatDate } from "../lib/format";
+import type { Issue } from "../loaders/github";
+
+interface Props {
+  issue: Issue;
+  /** Module name and URL for the header; omitted for engine issues. */
+  module?: { name: string; url: string };
+}
+
+const { issue, module } = Astro.props;
+---
+
+<div class="row justify-content-start align-items-start">
+  <div class="card row_shadow h-100 my-3 p-0" style="width: 100%">
+    {module ? (
+      <a href={module.url} class="btn-success" target="_blank" rel="noreferrer">
+        <div class="card-header">{module.name}</div>
+      </a>
+    ) : (
+      <div class="card-header bg-success" />
+    )}
+    <a href={issue.url} class="btn-light" target="_blank" rel="noreferrer">
+      <div class="row justify-content-start align-items-center">
+        <div class="col-md-1 ms-5 pt-0 pb-2 d-none d-md-block">
+          <FaGithub size="4em" />
+        </div>
+        <div class="col-md-10 pt-0 pb-2">
+          <div class="card-body">
+            <h6 class="card-subtitle">
+              <Tags tags={issue.tags} />
+            </h6>
+            <h5 class="card-title mt-3">{issue.title}</h5>
+            <h6 class="card-subtitle text-muted">
+              <b>Author:</b> {issue.author}
+            </h6>
+            <h6 class="card-subtitle text-muted">
+              <b>Last updated on: </b>
+              {formatDate(issue.date)}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

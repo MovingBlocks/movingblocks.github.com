@@ -1,0 +1,30 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { FaTrello } from "react-icons/fa";
+import Layout from "../../layouts/Layout.astro";
+import SocialLinks from "../../components/SocialLinks.astro";
+import { LISTS } from "../../loaders/trello";
+
+export async function getStaticPaths() {
+  const projectLists: string[] = [LISTS.readyIdeas, LISTS.ongoingProjects];
+  const cards = await getCollection("trello", (c) => projectLists.includes(c.data.listId));
+  return cards.map((card) => ({ params: { id: card.id }, props: { card } }));
+}
+
+const { card } = Astro.props as { card: CollectionEntry<"trello"> };
+const { Content } = await render(card);
+const { name, url } = card.data;
+---
+
+<Layout heading={name} title={name} description={card.data.excerpt}>
+  <div>
+    <Content />
+  </div>
+  <div class="post-meta">
+    <a href={url} target="_blank" rel="noreferrer">
+      {" "}
+      <FaTrello /> View on Trello.
+    </a>
+    <SocialLinks title={name} path={`/projects/${card.id}`} />
+  </div>
+</Layout>

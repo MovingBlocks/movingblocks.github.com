@@ -1,0 +1,55 @@
+---
+import {
+  FaDiscord,
+  FaFacebookSquare,
+  FaGithubSquare,
+  FaPatreon,
+  FaRedditSquare,
+  FaTwitterSquare,
+  FaYoutubeSquare,
+} from "react-icons/fa";
+
+const links = [
+  ["github-icon-color", "https://github.com/MovingBlocks/Terasology", FaGithubSquare, "GitHub"],
+  ["facebook-icon-color", "https://www.facebook.com/Terasology", FaFacebookSquare, "Facebook"],
+  ["twitter-icon-color", "https://twitter.com/terasology", FaTwitterSquare, "Twitter"],
+  ["discord-icon-color", "https://discord.gg/terasology", FaDiscord, "Discord"],
+  ["youtube-icon-color", "https://www.youtube.com/user/blockmaniaTV", FaYoutubeSquare, "YouTube"],
+  ["reddit-icon-color", "https://reddit.com/r/Terasology", FaRedditSquare, "Reddit"],
+  ["ms-2 mt-2 patreon-icon-color", "https://www.patreon.com/Terasology", FaPatreon, "Patreon"],
+] as const;
+---
+
+<footer class="mt-auto">
+  <div class="container footer">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h5>
+          <span>The Terasology Foundation</span>
+        </h5>
+        <h6 class="text-muted">
+          Licensed under:{" "}
+          <a class="text-success" href="https://www.apache.org/licenses/LICENSE-2.0">
+            Apache 2.0
+          </a>
+        </h6>
+      </div>
+      <div class="col-lg-6 col-md-4">
+        <div class="row justify-content-center">
+          <div class="col-auto p-0 me-1">
+            <a href="https://forum.terasology.org/" aria-label="Forum">
+              <div class="gooey-icon"></div>
+            </a>
+          </div>
+          {links.map(([cls, href, Icon, label]) => (
+            <div class="col-auto p-0">
+              <a class={cls} href={href} aria-label={label}>
+                <Icon size="2.5em" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

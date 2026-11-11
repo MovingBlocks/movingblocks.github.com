@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import SocialLinks from "../../components/SocialLinks.astro";
+import { getPosts, type Post } from "../../lib/blog";
+import { formatDate } from "../../lib/format";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: Post };
+const { Content } = await render(post);
+const { title, author, date, cover, description } = post.data;
+---
+
+<Layout heading={title} title={title} description={description}>
+  <div class="title">
+    <h6>Posted by {author} on <span>{formatDate(date)}</span></h6>
+  </div>
+  <br />
+  <Image class="post-cover img-fluid" src={cover} alt="" width={1200} format="webp" />
+  <br />
+  <hr />
+  <div class="post-content">
+    <Content />
+  </div>
+  <hr />
+  <div class="post-meta">
+    <SocialLinks title={title} path={`/blog/${post.id}`} />
+  </div>
+</Layout>

@@ -1,0 +1,44 @@
+@use "variables" as *;
+
+.module-container {
+  dl,
+  ol,
+  ul {
+    margin-bottom: 0;
+  }
+
+  .active {
+    border: none;
+  }
+
+  .page-section {
+    list-style-type: none;
+    justify-content: center;
+  }
+
+  // Bootstrap 5 sizes .page-link at 1rem (10px on this site); the old <a> took 1.6rem.
+  .page-link {
+    padding: 0.5rem 0.75rem;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.6rem;
+    color: $primary;
+    border: none;
+    background-color: transparent;
+  }
+
+  .page-link:hover {
+    color: $gray-2;
+    background-color: $gray;
+  }
+
+  .page-item.disabled .page-link {
+    background-color: transparent;
+    color: $gray-2;
+  }
+
+  // After .disabled so the current letter stays marked even when it has no modules.
+  .page-item.active .page-link {
+    background-color: $primary;
+    color: $white;
+  }
+}

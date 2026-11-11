@@ -1,39 +1,22 @@
-name: Test-Build ModuleSite
+name: Test-build website
 
-# Trigger the workflow on all pull requests
 on: pull_request
 
 env:
   GITHUB_TOKEN: ${{ secrets.MODULE_FETCH_GITHUB_TOKEN }}
 
 jobs:
-  gatsby-build:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ["24", "26"]
     steps:
-      - name: Checkout PR
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '18'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
-      - name: Install Project Dependencies
-        run: yarn install --frozen-lockfile --immutable
-      - name: Build ModuleSite
-        run: yarn run build
-  gatsby-build-mutable-lockfile:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout PR
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          # Globally caches yarn dependencies
-          cache: 'yarn'
-      - name: Install Project Dependencies
-        run: yarn install
-      - name: Build ModuleSite
-        run: yarn run build
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build

@@ -1,0 +1,42 @@
+@use "variables" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+// Bootstrap 5 dropped .text-justify
+.text-justify {
+  text-align: justify;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: $gray;
+}
+
+.main {
+  padding: 2em;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.title-underline {
+  background-color: $primary;
+  height: 2px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.ts-anchor {
+  scroll-margin-top: 72px;
+}

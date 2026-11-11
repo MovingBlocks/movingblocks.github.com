@@ -1,0 +1,36 @@
+---
+import { FaFacebook, FaLinkedin, FaReddit, FaTelegram, FaTwitter } from "react-icons/fa";
+import { site } from "../site.config";
+
+interface Props {
+  title: string;
+  path: string;
+}
+
+const { title, path } = Astro.props;
+const url = encodeURIComponent(new URL(path, site.url).href);
+const text = encodeURIComponent(title);
+const shares = [
+  ["reddit", `https://www.reddit.com/submit?url=${url}&title=${text}`, FaReddit],
+  ["twitter", `https://twitter.com/intent/tweet?url=${url}&text=${text}`, FaTwitter],
+  ["facebook", `https://www.facebook.com/sharer/sharer.php?u=${url}`, FaFacebook],
+  ["linkedin", `https://www.linkedin.com/sharing/share-offsite/?url=${url}`, FaLinkedin],
+  ["telegram", `https://t.me/share/url?url=${url}&text=${text}`, FaTelegram],
+] as const;
+---
+
+<div class="social-links">
+  {shares.map(([name, href, Icon]) => (
+    <div class={`${name}-icon-color`}>
+      <a
+        href={href}
+        class={`${name}-icon-color`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Share on ${name}`}
+      >
+        <Icon size={48} />
+      </a>
+    </div>
+  ))}
+</div>

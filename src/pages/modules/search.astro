@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ModuleSearch from "../../components/ModuleSearch.jsx";
+
+const modules = (await getCollection("modules"))
+  .map(({ data: { name, url, description, moduleDescription, tags } }) => ({
+    name,
+    url,
+    description,
+    moduleDescription,
+    tags,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout heading="Modules" title="Modules">
+  <div class="module-container">
+    <ModuleSearch client:load modules={modules} />
+  </div>
+</Layout>

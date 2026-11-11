@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths, Page } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import BlogList from "../../components/BlogList.jsx";
+import { getPosts, toCard, type CardData } from "../../lib/blog";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getPosts();
+  const cards = await Promise.all(posts.map(toCard));
+  const authors = [...new Set(posts.map((p) => p.data.author))];
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return paginate(cards, { pageSize: 27, props: { authors, tags } });
+}) satisfies GetStaticPaths;
+
+const { page, authors, tags } = Astro.props as {
+  page: Page<CardData>;
+  authors: string[];
+  tags: string[];
+};
+---
+
+<Layout heading="Blog" title="Blog">
+  <BlogList
+    client:load
+    posts={page.data}
+    authors={authors}
+    tags={tags}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+  />
+</Layout>

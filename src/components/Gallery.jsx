@@ -36,13 +36,21 @@ export default function Gallery({ images, currentPage, lastPage, total, perPage 
   };
 
   // Re-bound every render so the handlers always see the current image.
+  // Lightbox open: step through images. Overview: step through gallery pages (wrapping).
   useEffect(() => {
-    if (active === null) return undefined;
     const onKey = (e) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
-      if (e.key === "ArrowRight" || e.key === "l") next();
-      else if (e.key === "ArrowLeft" || e.key === "h") prev();
-      else if (e.key === "Escape") show(null);
+      const forward = e.key === "ArrowRight" || e.key === "l";
+      const back = e.key === "ArrowLeft" || e.key === "h";
+      if (active !== null) {
+        if (forward) next();
+        else if (back) prev();
+        else if (e.key === "Escape") show(null);
+      } else if (forward) {
+        window.location.href = pageUrl(currentPage === lastPage ? 1 : currentPage + 1);
+      } else if (back) {
+        window.location.href = pageUrl(currentPage === 1 ? lastPage : currentPage - 1);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

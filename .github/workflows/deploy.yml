@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  schedule:
+    # daily check; the build only runs if a scheduled post has come due
+    - cron: "0 2 * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,7 +20,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      publish: ${{ steps.due.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: due
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+        run: node scripts/posts-due.mjs
   build:
+    needs: check
+    if: needs.check.outputs.publish == 'true'
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.MODULE_FETCH_GITHUB_TOKEN }}

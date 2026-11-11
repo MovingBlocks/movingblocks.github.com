@@ -4,14 +4,21 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { AstroIntegration } from "astro";
 import kebabCase from "lodash.kebabcase";
+import { isPublished } from "../lib/published";
 
-/** Map of post slug -> post directory; slug = kebab-cased frontmatter title. */
-async function postDirs(blogDir: string): Promise<Map<string, string>> {
+/**
+ * Map of post slug -> post directory; slug = kebab-cased frontmatter title.
+ * With `publishedOnly`, posts dated in the future are left out.
+ */
+async function postDirs(blogDir: string, publishedOnly = false): Promise<Map<string, string>> {
   const dirs = new Map<string, string>();
   for (const dir of await readdir(blogDir)) {
     const md = path.join(blogDir, dir, "index.md");
     if (!existsSync(md)) continue;
-    const title = /^title:\s*["']?(.*?)["']?\s*$/m.exec(await readFile(md, "utf8"))?.[1];
+    const text = await readFile(md, "utf8");
+    const title = /^title:\s*["']?(.*?)["']?\s*$/m.exec(text)?.[1];
+    const date = /^date:\s*["']?(.*?)["']?\s*$/m.exec(text)?.[1];
+    if (publishedOnly && date && !isPublished(new Date(date))) continue;
     if (title) dirs.set(kebabCase(title), path.join(blogDir, dir));
   }
   return dirs;
@@ -44,7 +51,7 @@ export default function blogAssets(): AstroIntegration {
       },
       "astro:build:done": async ({ dir, logger }) => {
         const out = fileURLToPath(dir);
-        const dirs = await postDirs(path.join(root, "blog"));
+        const dirs = await postDirs(path.join(root, "blog"), true);
         for (const [slug, src] of dirs) {
           await cp(src, path.join(out, "blog", slug), {
             recursive: true,

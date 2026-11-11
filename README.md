@@ -118,7 +118,8 @@ npm run lint:js    # ESLint;  lint:css = Stylelint, format = Prettier
 npm run clean      # remove build output and caches
 ```
 
-Module and "Good First Issue" data come from the GitHub GraphQL API and need a GitHub [personal access token] (no extra scopes) in the environment as `GITHUB_TOKEN`.
+Module and "Good First Issue" data come from the GitHub GraphQL API and need a GitHub [personal access token] (no extra scopes) in the environment as `GITHUB_TOKEN`, or in a git-ignored `.env` file in the project root (`GITHUB_TOKEN=...`).
+With the GitHub CLI you can pass your login token for one build: `GITHUB_TOKEN=$(gh auth token) npm run build`.
 Without it the build still completes: it warns and renders module pages from previously cached data, or empty if there is none.
 Fetched data is cached for 12 hours in `.astro/`; `npm run clean` forces a refetch.
 Contributor program topics and mentors come from public Trello boards and need no token.

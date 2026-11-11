@@ -78,6 +78,18 @@ async function gql<T>(token: string, query: string, variables = {}): Promise<T> 
   return json.data;
 }
 
+/** GITHUB_TOKEN from the environment, else from a local .env file. */
+function githubToken(): string | undefined {
+  if (!process.env.GITHUB_TOKEN) {
+    try {
+      process.loadEnvFile();
+    } catch {
+      // no .env file
+    }
+  }
+  return process.env.GITHUB_TOKEN;
+}
+
 /**
  * Wraps a fetch in the shared policy: reuse store data younger than 12h,
  * and without GITHUB_TOKEN (or on fetch errors) keep whatever is stored.
@@ -94,7 +106,7 @@ function cachedLoader(
         logger.info(`using cached data (${store.keys().length} entries)`);
         return;
       }
-      const token = process.env.GITHUB_TOKEN;
+      const token = githubToken();
       if (!token) {
         logger.warn(`GITHUB_TOKEN not set; keeping ${store.keys().length} cached entries`);
         return;

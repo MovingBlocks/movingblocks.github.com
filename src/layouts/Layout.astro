@@ -11,12 +11,16 @@ interface Props {
   /** Document title prefix; "<title> | Terasology". Omit for the plain site title. */
   title?: string;
   description?: string;
+  /** Social preview image, as a site path or absolute URL; defaults to the logo. */
+  image?: string;
+  /** Open Graph type; "article" for blog posts. */
+  type?: "website" | "article";
 }
 
-const { heading, title, description = site.description } = Astro.props;
+const { heading, title, description = site.description, type = "website" } = Astro.props;
 const fullTitle = title ? `${title} | ${site.title}` : site.title;
 const url = new URL(Astro.url.pathname, site.url).href;
-const image = new URL(site.logo, site.url).href;
+const image = new URL(Astro.props.image ?? site.logo, site.url).href;
 ---
 
 <!doctype html>
@@ -35,9 +39,11 @@ const image = new URL(site.logo, site.url).href;
     />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={url} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content={site.twitterUsername} />
     <meta name="twitter:title" content={fullTitle} />

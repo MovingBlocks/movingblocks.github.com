@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GiPlainSquare, GiSquare } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { formatDate } from "../lib/format";
@@ -34,6 +34,19 @@ export default function Gallery({ images, currentPage, lastPage, total, perPage 
       window.location.href = `${pageUrl(lastPage)}?index=${lastCount - 1}`;
     else window.location.href = `${pageUrl(currentPage - 1)}?index=${perPage - 1}`;
   };
+
+  // Re-bound every render so the handlers always see the current image.
+  useEffect(() => {
+    if (active === null) return undefined;
+    const onKey = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "ArrowRight" || e.key === "l") next();
+      else if (e.key === "ArrowLeft" || e.key === "h") prev();
+      else if (e.key === "Escape") show(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   const current = active === null ? null : images[active];
 

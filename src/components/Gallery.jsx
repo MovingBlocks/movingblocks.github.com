@@ -86,7 +86,7 @@ export default function Gallery({ images, currentPage, lastPage, total, perPage 
                     />
                     <div className="carousel-caption">
                       <h5>{current.name.replaceAll("_", " ")}</h5>
-                      <p>{formatDate(current.date)}</p>
+                      {current.date ? <p>{formatDate(current.date)}</p> : null}
                     </div>
                   </div>
                 </div>

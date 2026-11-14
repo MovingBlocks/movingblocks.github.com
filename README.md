@@ -97,7 +97,8 @@ THe lower part is your blog post content. You'll also see an example of how to i
 - `description` is a short one or two line summary of your blog post 
 - `author` is your name / nickname / alias - we recommend using either your GitHub or Discord name
 - `date` is the date you want your blog post to be published aka. go online (in ISO form: `YYYY-MM-DD`)
-   (this feature is no longer supported, your blog post will always be visible irrespective of the date you set)
+   A post dated in the future stays hidden until the first build on or after that date. A daily check at 02:00 UTC starts that build on the day a post comes due; to publish sooner, run the "Publish website on GitHub Pages" workflow from the Actions tab.
+   `npm run dev` shows scheduled posts so you can preview them.
 - `tags` should always be an array, multiple values are possible
    (please tag TeraSaturday posts with "TeraSaturday")
 

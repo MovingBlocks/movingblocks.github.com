@@ -10,7 +10,7 @@ export default [
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,
   {
-    files: ["**/*.{js,jsx,ts}"],
+    files: ["**/*.{js,jsx,mjs,ts}"],
     languageOptions: {
       parserOptions: { ecmaFeatures: { jsx: true } },
       globals: { ...globals.browser, ...globals.node },

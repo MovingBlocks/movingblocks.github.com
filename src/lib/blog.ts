@@ -1,6 +1,7 @@
 import { getImage } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { excerpt } from "./format";
+import { isPublished } from "./published";
 
 export type Post = CollectionEntry<"blog">;
 
@@ -17,7 +18,8 @@ export interface CardData {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  const posts = await getCollection("blog");
+  // `astro dev` also lists scheduled posts, so authors can preview them.
+  const posts = await getCollection("blog", (p) => import.meta.env.DEV || isPublished(p.data.date));
   return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 

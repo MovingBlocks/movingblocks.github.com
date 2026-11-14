@@ -48,6 +48,9 @@ jspm_packages
 .yarn-integrity
 
 
+# Local secrets (GITHUB_TOKEN)
+.env
+
 # Build output and Astro caches
 dist/
 .astro/

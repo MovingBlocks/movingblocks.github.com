@@ -13,12 +13,27 @@ const issue = z.object({
   url: z.string(),
 });
 
+// Slugs handed out so far, by post directory. Two posts with one slug would
+// silently overwrite each other, so a repeat fails the build instead.
+const blogSlugs = new Map<string, string>();
+
 const blog = defineCollection({
   // Slug = kebab-cased title, as on the Gatsby site (/blog/<slug>).
   loader: glob({
     base: "./blog",
     pattern: "*/index.md",
-    generateId: ({ data }) => kebabCase(String(data.title)),
+    generateId: ({ entry, data }) => {
+      const slug = kebabCase(String(data.title));
+      for (const [other, taken] of blogSlugs) {
+        if (taken === slug && other !== entry) {
+          throw new Error(
+            `Blog posts ${other} and ${entry} both map to /blog/${slug}; retitle one.`,
+          );
+        }
+      }
+      blogSlugs.set(entry, slug);
+      return slug;
+    },
   }),
   schema: ({ image }) =>
     z.object({

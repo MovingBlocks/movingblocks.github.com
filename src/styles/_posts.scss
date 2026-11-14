@@ -19,6 +19,13 @@
   margin-right: auto;
 }
 
+// body is 10px, so Bootstrap's `pre { font-size: .875em }` would render ~9px.
+.post-content pre {
+  font-size: 1.4rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
 .post-cover {
   border-radius: 5px;
   box-shadow:

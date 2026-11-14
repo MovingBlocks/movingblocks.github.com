@@ -46,7 +46,7 @@
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "eslint": "^10.14.0",
+    "eslint": "^10.15.0",
     "eslint-plugin-astro": "^3.2.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
@@ -59,6 +59,15 @@
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.2"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    },
+    "remark-cli": {
+      "glob": "^14.0.2",
+      "minimatch": "^11.0.1"
+    }
   },
   "remarkConfig": {
     "plugins": [
